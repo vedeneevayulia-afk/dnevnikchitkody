@@ -506,6 +506,11 @@ canvas{max-width:100%;}
   background:linear-gradient(135deg,#2C2825 0%,#3d2020 100%);
   border-radius:var(--radius);padding:22px 20px;margin-bottom:14px;
   position:relative;overflow:hidden;
+  border:1px solid rgba(212,137,154,.25);
+}
+.pattern-intro::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
 }
 .pattern-intro::after{
   content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
@@ -513,44 +518,69 @@ canvas{max-width:100%;}
 }
 .pattern-intro-title{
   font-size:1.3rem;font-weight:800;color:#fff;
-  line-height:1.2;margin-bottom:6px;letter-spacing:-.02em;
+  line-height:1.2;margin-bottom:8px;letter-spacing:-.02em;
 }
-.pattern-intro-sub{font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.5;}
+.pattern-intro-title span.hi-olive{color:var(--accent2);}
+.pattern-intro-sub{
+  font-size:.72rem;color:rgba(255,255,255,.6);line-height:1.5;
+  padding:6px 10px;background:rgba(255,255,255,.05);border-radius:8px;
+  display:inline-block;
+}
 .pattern-intro-rule{
   margin-top:14px;padding:12px 14px;
-  background:rgba(255,255,255,.06);border-radius:10px;
+  background:rgba(212,137,154,.12);border-radius:10px;
   font-family:Georgia,'Times New Roman',serif;font-style:italic;
-  font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.55;
+  font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.55;
   border-left:3px solid var(--accent2);
 }
 
-.patt-card{background:var(--card);border-radius:var(--radius-sm);border:1px solid var(--border);margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.patt-card{
+  background:var(--card);border-radius:var(--radius-sm);
+  border:1px solid var(--border);margin-bottom:10px;overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:border-color .15s;
+}
+.patt-card:hover{border-color:rgba(212,137,154,.3);}
 .patt-header{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;transition:background .15s;-webkit-tap-highlight-color:transparent;}
 .patt-header:active{background:var(--bg);}
-.patt-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:.02em;}
+.patt-num{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:.02em;box-shadow:0 2px 8px rgba(0,0,0,.3);}
 .patt-meta{flex:1;}
 .patt-name{font-size:.9rem;font-weight:800;color:var(--text);line-height:1.2;}
-.patt-sub{font-size:.67rem;color:var(--muted);margin-top:2px;}
+.patt-sub{font-size:.67rem;color:var(--muted);margin-top:3px;font-style:italic;}
 .patt-arrow{font-size:.75rem;color:var(--muted);transition:transform .2s;flex-shrink:0;}
 .patt-card.open .patt-arrow{transform:rotate(180deg);}
+.patt-card.open .patt-header{border-bottom:1px solid var(--border);}
 .patt-body{display:none;padding:0 16px 16px;}
 .patt-card.open .patt-body{display:block;}
-.patt-brain{background:var(--bg);border-radius:10px;padding:12px 14px;margin-bottom:12px;font-size:.78rem;color:var(--text);line-height:1.55;border-left:3px solid var(--accent2);}
+.patt-brain{
+  background:var(--bg);border-radius:10px;padding:12px 14px;margin-bottom:12px;
+  font-size:.78rem;color:var(--text);line-height:1.55;
+  border-left:3px solid var(--accent2);
+  margin-top:12px;
+}
 .patt-brain-lbl{font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:5px;}
 .patt-cols{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
 .patt-col{border-radius:10px;padding:10px;}
-.patt-col-stop{background:#fdf0f0;}
-.patt-col-go{background:#E8F0D8;}
+.patt-col-stop{background:#fdf0f0;border-top:2px solid #e8b0b0;}
+.patt-col-go{background:#E8F0D8;border-top:2px solid var(--accent2);}
 .patt-col-lbl{font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
-.patt-col-stop .patt-col-lbl{color:var(--red);}
+.patt-col-stop .patt-col-lbl{color:#c0392b;}
 .patt-col-go .patt-col-lbl{color:var(--accent);}
 .patt-col-item{font-size:.74rem;color:var(--text);line-height:1.5;padding:2px 0;}
-.patt-col-stop .patt-col-item{color:var(--red);}
+.patt-col-stop .patt-col-item{color:#c0392b;}
 .patt-col-go .patt-col-item{color:var(--accent);font-weight:600;}
-.patt-progress{display:flex;gap:4px;padding:10px 16px;border-top:1px solid var(--border);align-items:center;justify-content:space-between;}
+.patt-progress{display:flex;gap:4px;padding:10px 16px;border-top:1px solid var(--border);align-items:center;justify-content:space-between;background:rgba(0,0,0,.02);}
 .patt-week-lbl{font-size:.63rem;color:var(--muted);}
 .patt-week-btn{font-size:.63rem;font-weight:700;padding:5px 12px;border-radius:20px;border:1.5px solid var(--border);cursor:pointer;background:transparent;color:var(--muted);transition:all .15s;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;}
 .patt-week-btn.active{background:var(--graphite);color:#fff;border-color:var(--graphite);}
+
+/* highlight spans inside patterns */
+.hi-pink{color:var(--accent2);font-weight:700;}
+.hi-olive{color:var(--accent);font-weight:700;}
+.hi-block{
+  display:inline;background:rgba(212,137,154,.15);
+  border-radius:4px;padding:0 3px;
+}
 </style>
 <link rel="apple-touch-icon" href="data:image/png;base64,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">
 <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMTgwIj4KICA8cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgcng9IjQwIiBmaWxsPSIjMkMyODI1Ii8+CiAgPHJlY3QgeD0iMCIgeT0iMTU1IiB3aWR0aD0iOTAiIGhlaWdodD0iNCIgZmlsbD0iI0Q0ODk5QSIvPgogIDxyZWN0IHg9IjkwIiB5PSIxNTUiIHdpZHRoPSI5MCIgaGVpZ2h0PSI0IiBmaWxsPSIjNkE3QTNFIi8+CiAgPHRleHQgeD0iOTAiIHk9IjExNSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMTAwIiBmb250LXdlaWdodD0iYm9sZCIgCiAgICAgICAgZmlsbD0iI0Q0ODk5QSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+0Jw8L3RleHQ+Cjwvc3ZnPg==">
@@ -937,8 +967,11 @@ canvas{max-width:100%;}
       <div id="notif-help" style="display:none;margin-top:14px;background:var(--accent-light);border-radius:12px;padding:12px 14px;">
         <div style="font-size:.72rem;font-weight:800;color:var(--accent);margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;">Как включить вручную</div>
         <div style="font-size:.75rem;color:var(--text);line-height:1.6;">
-          <b>На телефоне:</b> Настройки → Safari или Chrome → Уведомления → найди этот сайт → разреши.<br><br>
-          <b>На компьютере Chrome:</b> нажми на замочек в адресной строке → Уведомления → Разрешить → обнови страницу.<br><br>
+          <b>На телефоне (iPhone/Android):</b> Настройки → Safari или Chrome → Уведомления → найди этот сайт → разреши.<br><br>
+          <b>Mac — Safari:</b> Настройки Safari → Веб-сайты → Уведомления → найди сайт → Разрешить.<br><br>
+          <b>Mac / Windows — Chrome:</b> нажми на замочек в адресной строке → Уведомления → Разрешить → обнови страницу.<br><br>
+          <b>Mac / Windows — Firefox:</b> нажми на замочек в адресной строке → Разрешения → Получать уведомления → Разрешить.<br><br>
+          <b>Windows — Edge:</b> нажми на замочек → Разрешения для этого сайта → Уведомления → Разрешить.<br><br>
           После этого нажми «Включить напоминания» снова.
         </div>
       </div>
@@ -1033,20 +1066,21 @@ canvas{max-width:100%;}
     <a href="https://app.xmind.com/share/mHBhtqJz" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:9px;padding:11px 20px;font-size:.85rem;font-weight:800;box-shadow:0 4px 14px rgba(212,137,154,.3);">Смотреть карту паттернов →</a>
   </div>
   <!-- Что такое репликатор -->
-  <div style="background:var(--graphite);border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
-    <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
-    <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);margin-bottom:10px;">Что такое речевой репликатор</div>
+  <div style="background:var(--graphite);border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;position:relative;overflow:hidden;border:1px solid rgba(106,122,62,.3);">
+    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div>
+    <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);margin-bottom:10px;">Что такое речевой <span style="color:var(--accent);">репликатор</span></div>
     <div style="display:flex;flex-direction:column;gap:8px;">
-      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.6;padding:10px 12px;background:rgba(255,255,255,.06);border-radius:10px;border-left:2px solid var(--accent2);">Речь — это не выражение мысли. Речь — это мысль в форме. Мозг исполняет то, что слышит постоянно.</div>
-      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.6;padding:10px 12px;background:rgba(255,255,255,.06);border-radius:10px;border-left:2px solid var(--accent2);">Ты уже не думаешь эту мысль. Ты просто говоришь — и она сама себя копирует.</div>
-      <div style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.55;margin-top:4px;">Нейронная цепочка которая срабатывает достаточно часто — становится дефолтной. Мозг выбирает путь наименьшего сопротивления. Речевой репликатор — это и есть такой путь. Ты не выбираешь бедность сознательно. Репликатор выбирает за тебя.</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.9rem;color:rgba(255,255,255,.9);line-height:1.6;padding:10px 12px;background:rgba(212,137,154,.1);border-radius:10px;border-left:3px solid var(--accent2);">Речь — это <span class="hi-pink">не выражение мысли</span>. Речь — это <span class="hi-pink">мысль в форме</span>. Мозг исполняет то, что слышит постоянно.</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.9rem;color:rgba(255,255,255,.9);line-height:1.6;padding:10px 12px;background:rgba(106,122,62,.12);border-radius:10px;border-left:3px solid var(--accent);">Ты уже не думаешь эту мысль. Ты просто говоришь — и она <span class="hi-olive">сама себя копирует</span>.</div>
+      <div style="font-size:.78rem;color:rgba(255,255,255,.7);line-height:1.6;margin-top:4px;padding:10px 12px;background:rgba(255,255,255,.04);border-radius:8px;">Нейронная цепочка которая срабатывает достаточно часто — становится <span class="hi-olive">дефолтной</span>. Мозг выбирает путь наименьшего сопротивления. <span class="hi-pink">Речевой репликатор</span> — это и есть такой путь. Ты не выбираешь бедность сознательно. Репликатор выбирает за тебя.</div>
     </div>
   </div>
 
   <div class="pattern-intro">
-    <div class="pattern-intro-title">Карта паттернов</div>
-    <div class="pattern-intro-sub">7 речевых программ · Что убрать · Чем заменить · Как это работает в мозге</div>
-    <div class="pattern-intro-rule">Один паттерн в неделю. Поймала — заменила вслух — закрепила телесно. Только один. Доводишь до конца.</div>
+    <div class="pattern-intro-title">Карта <span class="hi-pink">паттернов</span></div>
+    <div class="pattern-intro-sub"><span class="hi-olive">7 речевых программ</span> · Что убрать · Чем заменить · Как это работает в мозге</div>
+    <div class="pattern-intro-rule">Один паттерн в неделю. <span class="hi-pink">Поймала</span> — <span class="hi-olive">заменила вслух</span> — закрепила телесно. Только один. Доводишь до конца.</div>
   </div>
 
   <!-- 01 -->
@@ -1640,7 +1674,7 @@ function svgRadar(avgs){
   const polyPts=avgs.map((v,i)=>{const a=ang(i),r=R*(Math.max(0,v)/10);return(cx+r*Math.cos(a))+','+(cy+r*Math.sin(a));}).join(' ');
   out+=`<polygon points="${polyPts}" fill="rgba(106,122,62,.18)" stroke="#6A7A3E" stroke-width="2.5" stroke-linejoin="round"/>`;
   avgs.forEach((v,i)=>{const a=ang(i),r=R*(Math.max(0,v)/10);out+=`<circle cx="${cx+r*Math.cos(a)}" cy="${cy+r*Math.sin(a)}" r="4" fill="#6A7A3E"/>`;});
-  for(let i=0;i<N;i++){const a=ang(i),lx=cx+(R+24)*Math.cos(a),ly=cy+(R+24)*Math.sin(a);const anchor=Math.abs(Math.cos(a))<.15?'middle':Math.cos(a)>0?'start':'end';out+=`<text x="${lx}" y="${ly+4}" text-anchor="${anchor}" font-size="11" fill="#6a5a50" font-weight="700">${SPHERES[i].icon} ${SPHERES[i].name}</text>`;}
+  for(let i=0;i<N;i++){const a=ang(i),lx=cx+(R+24)*Math.cos(a),ly=cy+(R+24)*Math.sin(a);const anchor=Math.abs(Math.cos(a))<.15?'middle':Math.cos(a)>0?'start':'end';out+=`<text x="${lx}" y="${ly+4}" text-anchor="${anchor}" font-size="11" fill="#6a5a50" font-weight="700">${SPHERES[i].name}</text>`;}
   return`<svg viewBox="0 0 300 300" width="100%" style="display:block;max-width:320px;margin:0 auto;">${out}</svg>`;
 }
 
@@ -1757,7 +1791,7 @@ function renderDynamic(){
   // Radar wheel
   const radarEl=document.getElementById('radar-wheel');
   if(radarEl){
-    const R=100,cx=200,cy=200,n=avgs.length;
+    const R=90,cx=210,cy=210,n=avgs.length;
     const angle=(i)=>(-Math.PI/2)+(2*Math.PI/n)*i;
     const pt=(i,r)=>[cx+r*Math.cos(angle(i)),cy+r*Math.sin(angle(i))];
     let svg='';
@@ -1769,18 +1803,18 @@ function renderDynamic(){
     avgs.forEach((_,i)=>{const[x,y]=pt(i,R);svg+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#e8e0d8" stroke-width=".7"/>`;});
     const dataPts=avgs.map((s,i)=>pt(i,R*(Math.max(s.avg,0)/10)).join(',')).join(' ');
     svg+=`<polygon points="${dataPts}" fill="rgba(106,122,62,.18)" stroke="#6A7A3E" stroke-width="2" stroke-linejoin="round"/>`;
-    avgs.forEach((s,i)=>{const[x,y]=pt(i,R*(Math.max(s.avg,0)/10));const c=s.avg>=7?'#6A7A3E':s.avg>=4?'#6A7A3E':'#D4899A';svg+=`<circle cx="${x}" cy="${y}" r="4.5" fill="${c}" stroke="white" stroke-width="1.5"/>`;});
-    // Иконки + названия сфер
+    const dotColors=['#C0607A','#7A5FA0','#4A8A6A','#D4899A','#E8A030','#6A7A3E','#5588AA'];
+    avgs.forEach((s,i)=>{const[x,y]=pt(i,R*(Math.max(s.avg,0)/10));svg+=`<circle cx="${x}" cy="${y}" r="5" fill="${dotColors[i]||'#6A7A3E'}" stroke="white" stroke-width="1.5"/>`;});
+    // Названия сфер с цветом
+    const sphColors=['#C0607A','#7A5FA0','#4A8A6A','#D4899A','#E8A030','#6A7A3E','#5588AA'];
     avgs.forEach((s,i)=>{
       const a=angle(i);
-      const[xi,yi]=pt(i,R+20);
-      // Название всегда дальше от центра чем иконка
-      const lx=cx+(R+38)*Math.cos(a);
-      const ly=cy+(R+38)*Math.sin(a);
-      svg+=`<text x="${xi}" y="${yi}" text-anchor="middle" dominant-baseline="middle" font-size="15">${s.icon}</text>`;
-      svg+=`<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="10" font-weight="700" fill="#9A918A" font-family="-apple-system,BlinkMacSystemFont,sans-serif">${s.name}</text>`;
+      const lx=cx+(R+44)*Math.cos(a);
+      const ly=cy+(R+44)*Math.sin(a);
+      const col=sphColors[i]||'#9A918A';
+      svg+=`<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="middle" font-size="10" font-weight="800" fill="${col}" font-family="-apple-system,BlinkMacSystemFont,sans-serif">${s.name}</text>`;
     });
-    radarEl.innerHTML=`<svg width="400" height="400" viewBox="0 0 400 400" style="max-width:100%;">${svg}</svg>`;
+    radarEl.innerHTML=`<svg width="480" height="480" viewBox="30 30 360 360" style="max-width:100%;">${svg}</svg>`;
   }
 
   renderSphereDetail(activeSphereTab||0);
