@@ -284,6 +284,19 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
 .affirm-btn:hover{background:#1a1a1a;}
 .affirm-btn.done{background:var(--accent);border-color:var(--accent);}
 
+/* ─── COLLAPSIBLE AFFIRM ─── */
+.affirm-collapsible{cursor:pointer;transition:background .15s;border-radius:10px;padding:6px 8px;margin:-6px -8px;}
+.affirm-collapsible:active{background:rgba(0,0,0,.04);}
+.affirm-item-inner{flex:1;}
+.affirm-item-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.95rem;color:var(--text);line-height:1.5;}
+.affirm-item-hint{font-size:.75rem;color:var(--muted);line-height:1.5;margin-top:6px;padding:8px 10px;background:rgba(106,122,62,.07);border-radius:8px;border-left:2px solid var(--accent);}
+.my-affirm-item{display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:1px solid var(--border);}
+.my-affirm-item:last-child{border-bottom:none;}
+.my-affirm-num{min-width:22px;height:22px;background:var(--accent2);border-radius:6px;font-size:.62rem;font-weight:800;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;margin-top:2px;font-style:normal;}
+.my-affirm-txt{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.92rem;color:var(--text);line-height:1.5;flex:1;}
+.my-affirm-del{background:none;border:none;cursor:pointer;color:var(--muted);font-size:.8rem;padding:0 2px;opacity:.5;flex-shrink:0;margin-top:2px;}
+.my-affirm-del:hover{opacity:1;}
+
 /* ─── CHECKS ─── */
 .checks{display:flex;gap:18px;margin-top:12px;}
 .ck{display:flex;align-items:center;gap:7px;font-size:.8rem;cursor:pointer;font-weight:600;}
@@ -545,8 +558,6 @@ canvas{max-width:100%;}
 <meta name="apple-mobile-web-app-title" content="Чит-коды">
 </head>
 <body>
-
-<!-- ══════════ ЗАЩИТА — ПРОВЕРКА КЛЮЧА ══════════ -->
 <div id="access-gate" style="display:none;min-height:100vh;background:#FDF6F0;display:flex;align-items:center;justify-content:center;padding:24px;">
   <div style="max-width:400px;width:100%;text-align:center;">
     <div style="background:#2C2825;border-radius:20px;padding:40px 28px 36px;box-shadow:0 8px 40px rgba(0,0,0,.18);">
@@ -604,7 +615,6 @@ canvas{max-width:100%;}
 })();
 </script>
 
-<!-- ══════════ ONBOARDING ══════════ -->
 <div id="onboarding" style="display:none;min-height:100vh;background:var(--bg);padding:0 0 40px;max-width:520px;margin:0 auto;">
   <div style="background:var(--graphite);padding:40px 22px 32px;position:relative;overflow:hidden;">
     <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
@@ -687,11 +697,10 @@ canvas{max-width:100%;}
   <button class="tab" onclick="showOnboarding()">Главная</button>
   <button class="tab active" onclick="go('week')">Неделя</button>
   <button class="tab" onclick="go('days')">Дни</button>
-  <button class="tab" onclick="go('result')">Итог</button>
-  <button class="tab" onclick="go('calendar')">Календарь</button>
-  <button class="tab" onclick="go('archive')">Архив</button>
+    <button class="tab" onclick="go('calendar')">Календарь</button>
   <button class="tab" onclick="go('dynamic')">Динамика</button>
-  <button class="tab" onclick="go('patterns')" style="color:var(--accent2);">Паттерны</button>
+  <button class="tab" onclick="go('patterns')">Паттерны</button>
+  <button class="tab" onclick="go('archive')">Архив</button>
 </div>
 
 <!-- ══════════ WEEK ══════════ -->
@@ -754,20 +763,61 @@ canvas{max-width:100%;}
     </div>
     <div class="affirm-card">
       <div class="affirm-title">Утренняя практика — произнести вслух</div>
-      <div class="affirm-list">
-        <div class="affirm-item"><span class="a-num">1</span>Мир хочет меня</div>
-        <div class="affirm-item"><span class="a-num">2</span>Сейчас я вижу возможным и свидетельствую</div>
-        <div class="affirm-item"><span class="a-num">3</span>Моё состояние соответствует реальности</div>
-        <div class="affirm-item"><span class="a-num">4</span>Мои декорации отражают мой внутренний мир</div>
-        <div class="affirm-item"><span class="a-num">5</span>Иду и делаю что вижу</div>
-        <div class="affirm-item"><span class="a-num">6</span>Я выбираю и меня это меняет</div>
-        <div class="affirm-item"><span class="a-num">7</span>Вижу возможности</div>
-        <div class="affirm-item"><span class="a-num">8</span>Я есть то что есть</div>
-        <div class="affirm-item"><span class="a-num">9</span>Всё, что не происходит сейчас — это всё для меня</div>
-        <div class="affirm-item"><span class="a-num">10</span>Весь мир разворачивается для меня</div>
-        <div class="affirm-item"><span class="a-num">11</span>Я выбираю то, что меня расширяет и даёт мне энергию</div>
+      <div class="affirm-list" id="affirm-list-base">
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">1</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Мир хочет меня</div><div class="affirm-item-hint" style="display:none">Ты не борешься с миром. Мир разворачивается навстречу — когда ты перестаёшь сопротивляться.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">2</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Сейчас я вижу возможным и свидетельствую</div><div class="affirm-item-hint" style="display:none">Видеть — значит уже создавать. Свидетель не ждёт, он замечает то, что уже происходит.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">3</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Моё состояние соответствует реальности</div><div class="affirm-item-hint" style="display:none">Тело не врёт. Если внутри расширение — снаружи возможности. Настрой состояние — реальность подтянется.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">4</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Мои декорации отражают мой внутренний мир</div><div class="affirm-item-hint" style="display:none">Всё что вокруг — зеркало. Хочешь изменить декорации — меняй программу внутри.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">5</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Иду и делаю что вижу</div><div class="affirm-item-hint" style="display:none">Действие из состояния, а не из страха. Вижу следующий шаг — делаю его. Без лишних объяснений.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">6</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я выбираю и меня это меняет</div><div class="affirm-item-hint" style="display:none">Каждый выбор — это перезапись кода. Маленький выбор из силы меняет больше, чем большое усилие из страха.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">7</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Вижу возможности</div><div class="affirm-item-hint" style="display:none">Мозг находит то, на что настроен. Настройся на возможности — и он начнёт их замечать везде.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">8</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я есть то что есть</div><div class="affirm-item-hint" style="display:none">Принятие — не слабость. Это точка опоры. Отсюда можно двигаться.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">9</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Всё, что не происходит сейчас — это всё для меня</div><div class="affirm-item-hint" style="display:none">Задержка — не отказ. Всё приходит в нужное время. Твоя задача — оставаться открытой.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">10</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Весь мир разворачивается для меня</div><div class="affirm-item-hint" style="display:none">Не против тебя — для тебя. Даже трудное — для тебя. Эта позиция меняет восприятие любой ситуации.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">11</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я выбираю то, что меня расширяет и даёт мне энергию</div><div class="affirm-item-hint" style="display:none">Каждое решение можно проверить телом: расширяет или сжимает? Выбирай расширение.</div></div>
+        </div>
       </div>
-      <button class="affirm-btn" id="affirm-btn" onclick="toggleAffirm()">Практику выполнила</button>
+
+      <!-- Свои аффирмации -->
+      <div id="my-affirms-list" style="margin-top:4px;"></div>
+      <div style="display:flex;gap:8px;margin-top:10px;">
+        <input type="text" id="my-affirm-input" placeholder="Добавить свою аффирмацию..." style="flex:1;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#fefefe;">
+        <button onclick="addMyAffirm()" style="padding:10px 16px;background:var(--graphite);color:#fff;border:none;border-radius:10px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">+</button>
+      </div>
+
+      <button class="affirm-btn" id="affirm-btn" onclick="toggleAffirm()" style="margin-top:14px;">Практику выполнила</button>
     </div>
     <div class="card">
       <div class="card-lbl">Мысль дня</div>
@@ -794,62 +844,26 @@ canvas{max-width:100%;}
 
   <!-- СФЕРЫ -->
   <div id="ss-spheres" class="sub-section">
+    <div style="background:var(--graphite);border-radius:var(--radius);padding:16px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
+      <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);margin-bottom:8px;">Как работать с сферами</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.6;">Каждый день ты оцениваешь 7 сфер жизни по шкале от 0 до 10. Нажми на сферу — раскроется блок где пишешь что сегодня даёт тебе энергию, а что забирает. За 7 дней увидишь паттерн — где реально теряешь силу, а где растёшь.</div>
+      <div style="display:flex;gap:16px;margin-top:12px;">
+        <div style="flex:1;background:rgba(106,122,62,.2);border-radius:10px;padding:10px 12px;border-left:2px solid var(--accent);">
+          <div style="font-size:.6rem;font-weight:800;color:var(--mint);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">↑ Даёт энергию</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.45;">Люди, действия, мысли после которых чувствуешь подъём</div>
+        </div>
+        <div style="flex:1;background:rgba(138,74,74,.2);border-radius:10px;padding:10px 12px;border-left:2px solid var(--accent2);">
+          <div style="font-size:.6rem;font-weight:800;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">↓ Забирает</div>
+          <div style="font-size:.75rem;color:rgba(255,255,255,.7);line-height:1.45;">То что сжимает, тянет вниз или опустошает</div>
+        </div>
+      </div>
+    </div>
     <div id="spheres-list"></div>
   </div>
 </div>
 
 <!-- ══════════ RESULT ══════════ -->
-<div id="s-result" class="section">
-  <div id="result-no-word" class="card" style="display:none">
-    <div class="empty">Сначала задай слово недели</div>
-  </div>
-  <div id="result-content">
-    <div class="word-hero" id="result-word-hero" style="margin-bottom:14px">
-      <div class="word-old" id="res-word"></div>
-      <div class="word-arrow">↓</div>
-      <div class="word-new" id="res-replace"></div>
-    </div>
-    <div class="card">
-      <div class="card-lbl">Итог недели — заполни в воскресенье</div>
-      <label>Что изменилось в речи?</label>
-      <textarea id="r-speech" placeholder="Реже использую, замечаю сразу..." onblur="saveResult()"></textarea>
-      <label>Что изменилось в мышлении?</label>
-      <textarea id="r-thinking" placeholder="Меньше сомневаюсь..." onblur="saveResult()"></textarea>
-      <label>Что изменилось в действиях?</label>
-      <textarea id="r-actions" placeholder="Назвала стоимость, написала пост..." onblur="saveResult()"></textarea>
-      <label>Что пришло в реальность?</label>
-      <textarea id="r-reality" placeholder="Деньги, клиенты, запросы, энергия..." onblur="saveResult()"></textarea>
-      <button class="btn" onclick="archiveWeek()">В архив + новое слово</button>
-      <button class="btn btn-ghost" onclick="exportWeek()" style="margin-top:8px">Скачать итог недели</button>
-    </div>
-    <div class="card">
-      <div class="card-lbl">Напоминания</div>
-      <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;line-height:1.5;">Браузер пришлёт уведомление утром (8:00) и вечером (21:00) чтобы не забыть заполнить дневник.</div>
-      <div id="notif-status" style="font-size:.75rem;font-weight:700;margin-bottom:10px;"></div>
-      <button class="btn btn-ghost" onclick="setupNotifications()" id="notif-btn">Включить напоминания</button>
-    </div>
-    <div class="funnel-card" style="margin-bottom:14px;">
-      <div class="funnel-eyebrow">Следующий шаг</div>
-      <div class="funnel-title">«Почему ничего не меняется: 8 слов которые программируют твою жизнь»</div>
-      <div class="funnel-body">У каждой свои слова — они работают незаметно, на автомате. Гайд помогает их обнаружить.</div>
-      <a href="https://t.me/meta_soznaniye" target="_blank" class="funnel-btn">Забрать гайд в Телеграм</a>
-      <div class="funnel-note">Канал Мета-сознание · @meta_soznaniye</div>
-    </div>
-  <div style="background:linear-gradient(135deg,#1a2410 0%,#2C2825 60%,#3d2a2a 100%);border-radius:var(--radius);padding:24px 20px;margin-bottom:14px;position:relative;overflow:hidden;">
-      <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
-      <div style="font-size:.52rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--accent2);margin-bottom:8px;opacity:.9;">Следующий уровень</div>
-      <div style="font-size:1.1rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:8px;">Лаборатория<br>тела как состояние</div>
-      <div style="font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.5;margin-bottom:12px;">Дневник — твой ежедневный инструмент.<br>Лаборатория — 4 недели где меняем оба уровня сразу.</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
-        <span style="font-size:.67rem;color:rgba(255,255,255,.8);background:rgba(255,255,255,.08);border-radius:6px;padding:4px 10px;">8 встреч</span>
-        <span style="font-size:.67rem;color:rgba(255,255,255,.8);background:rgba(255,255,255,.08);border-radius:6px;padding:4px 10px;">28 дней</span>
-        <span style="font-size:.67rem;color:rgba(255,255,255,.8);background:rgba(255,255,255,.08);border-radius:6px;padding:4px 10px;">1:1 разбор</span>
-        <span style="font-size:.67rem;color:rgba(212,137,154,.9);background:rgba(212,137,154,.12);border-radius:6px;padding:4px 10px;font-weight:800;">10 мест</span>
-      </div>
-      <a href="https://t.me/meta_ulia" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:10px;padding:10px 18px;font-size:.78rem;font-weight:800;box-shadow:0 4px 16px rgba(212,137,154,.35);">Написать ЛАБОРАТОРИЯ →</a>
-    </div>
-  </div>
-</div>
 
 <!-- ══════════ CALENDAR ══════════ -->
 <div id="s-calendar" class="section">
@@ -868,6 +882,43 @@ canvas{max-width:100%;}
     </div>
   </div>
   <div id="cal-week-info"></div>
+<!-- ══════════ ИТОГ (внутри Календаря) ══════════ -->
+<div id="result-in-calendar" style="padding:0 16px 14px;">
+  <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:18px 0 10px;display:flex;align-items:center;gap:7px;"><span style="display:inline-block;width:16px;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;"></span>Итог недели</div>
+  <div id="result-no-word-cal" class="card" style="display:none"><div class="empty">Сначала задай слово недели</div></div>
+  <div id="result-content-cal">
+    <div class="word-hero" id="result-word-hero-cal" style="margin-bottom:14px">
+      <div class="word-old" id="res-word-cal"></div>
+      <div class="word-arrow">↓</div>
+      <div class="word-new" id="res-replace-cal"></div>
+      <div style="font-size:.72rem;color:var(--muted);margin-top:10px;font-weight:600;" id="res-dates-cal"></div>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Итог недели — заполни в воскресенье</div>
+      <label>Что изменилось в речи?</label>
+      <textarea id="r-speech" placeholder="Реже использую, замечаю сразу..." onblur="saveResult()"></textarea>
+      <label>Что изменилось в мышлении?</label>
+      <textarea id="r-thinking" placeholder="Меньше сомневаюсь..." onblur="saveResult()"></textarea>
+      <label>Что изменилось в действиях?</label>
+      <textarea id="r-actions" placeholder="Назвала стоимость, написала пост..." onblur="saveResult()"></textarea>
+      <label>Что пришло в реальность?</label>
+      <textarea id="r-reality" placeholder="Деньги, клиенты, запросы, энергия..." onblur="saveResult()"></textarea>
+      <button class="btn" onclick="archiveWeek()">В архив + новое слово</button>
+      <button class="btn btn-ghost" onclick="exportWeek()" style="margin-top:8px">Скачать итог недели</button>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Напоминания</div>
+      <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;line-height:1.5;">Выбери время — браузер пришлёт уведомление чтобы не забыть заполнить дневник.</div>
+      <div style="display:flex;gap:10px;margin-bottom:12px;">
+        <div style="flex:1"><div style="font-size:.65rem;font-weight:700;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;">Утро</div><input type="time" id="notif-morning" value="08:00" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:.85rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:#fefefe;"></div>
+        <div style="flex:1"><div style="font-size:.65rem;font-weight:700;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;">Вечер</div><input type="time" id="notif-evening" value="21:00" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:.85rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:#fefefe;"></div>
+      </div>
+      <div id="notif-status" style="font-size:.75rem;font-weight:700;margin-bottom:10px;"></div>
+      <button class="btn btn-ghost" onclick="setupNotifications()" id="notif-btn">Включить напоминания</button>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <!-- ══════════ DAY DETAIL SHEET ══════════ -->
@@ -890,17 +941,21 @@ canvas{max-width:100%;}
     <div style="font-size:.78rem;color:var(--muted);line-height:1.5;">Начни неделю, выстави оценки сферам — и здесь появятся графики.</div>
   </div>
   <div id="dyn-content" style="display:none;">
-  <div class="card">
-    <div class="card-lbl">Колесо баланса — средние за неделю</div>
-    <div id="radar-chart"></div>
+  <div class="card" id="week-header-card">
+    <div class="card-lbl" id="dynamic-week-label">Неделя</div>
+    <div id="balance-bars"></div>
   </div>
   <div class="card">
-    <div class="card-lbl">Динамика расширения / сжатия по дням</div>
+    <div class="card-lbl">Динамика по дням</div>
     <div id="line-chart"></div>
   </div>
   <div class="card">
     <div class="card-lbl">Дисциплина недели</div>
     <div class="stat-row" id="disc-stats"></div>
+  </div>
+  <div class="card" id="dynamic-summary-card">
+    <div class="card-lbl">Итог недели</div>
+    <div id="dynamic-summary"></div>
   </div>
   <div class="card">
     <div class="card-lbl">Сферы жизни по датам</div>
@@ -944,8 +999,21 @@ canvas{max-width:100%;}
 <div id="s-patterns" class="section">
   <div style="background:linear-gradient(135deg,#1a2410,#2C2825);border-radius:var(--radius);padding:18px 20px;margin-bottom:14px;position:relative;overflow:hidden;">
     <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
+    <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:6px;">Карта паттернов — речевые репликаторы</div>
+    <div style="font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.55;margin-bottom:14px;">Полная интерактивная карта всех речевых кодов которые программируют бедность, остановку и жертву. Открой — найди своё, выбери один паттерн на неделю и работай только с ним в дневнике.</div>
     <a href="https://app.xmind.com/share/mHBhtqJz" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:9px;padding:11px 20px;font-size:.85rem;font-weight:800;box-shadow:0 4px 14px rgba(212,137,154,.3);">Смотреть карту паттернов →</a>
   </div>
+  <!-- Что такое репликатор -->
+  <div style="background:var(--graphite);border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
+    <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);margin-bottom:10px;">Что такое речевой репликатор</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.6;padding:10px 12px;background:rgba(255,255,255,.06);border-radius:10px;border-left:2px solid var(--accent2);">Речь — это не выражение мысли. Речь — это мысль в форме. Мозг исполняет то, что слышит постоянно.</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.6;padding:10px 12px;background:rgba(255,255,255,.06);border-radius:10px;border-left:2px solid var(--accent2);">Ты уже не думаешь эту мысль. Ты просто говоришь — и она сама себя копирует.</div>
+      <div style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.55;margin-top:4px;">Нейронная цепочка которая срабатывает достаточно часто — становится дефолтной. Мозг выбирает путь наименьшего сопротивления. Речевой репликатор — это и есть такой путь. Ты не выбираешь бедность сознательно. Репликатор выбирает за тебя.</div>
+    </div>
+  </div>
+
   <div class="pattern-intro">
     <div class="pattern-intro-title">Карта паттернов</div>
     <div class="pattern-intro-sub">7 речевых программ · Что убрать · Чем заменить · Как это работает в мозге</div>
@@ -1071,6 +1139,34 @@ canvas{max-width:100%;}
     <div class="patt-progress"><span class="patt-week-lbl">Работаю с этим паттерном</span><button class="patt-week-btn" id="pw-7" onclick="toggleWeek(7)">Неделя</button></div>
   </div>
 
+  <!-- Итоговая формула -->
+  <div style="background:linear-gradient(135deg,#1a3a1a,#2C2825);border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div>
+    <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--mint);margin-bottom:14px;">Итоговая формула</div>
+    <div style="display:flex;align-items:center;gap:0;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;">
+      <div style="flex-shrink:0;text-align:center;padding:10px 12px;background:rgba(255,255,255,.07);border-radius:10px;">
+        <div style="font-size:.65rem;font-weight:800;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;">Речь</div>
+        <div style="font-size:.68rem;color:rgba(255,255,255,.6);margin-top:3px;line-height:1.3;">меняешь слово</div>
+      </div>
+      <div style="color:var(--mint);font-size:1rem;padding:0 6px;flex-shrink:0;">→</div>
+      <div style="flex-shrink:0;text-align:center;padding:10px 12px;background:rgba(255,255,255,.07);border-radius:10px;">
+        <div style="font-size:.65rem;font-weight:800;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;">Состояние</div>
+        <div style="font-size:.68rem;color:rgba(255,255,255,.6);margin-top:3px;line-height:1.3;">тело слышит</div>
+      </div>
+      <div style="color:var(--mint);font-size:1rem;padding:0 6px;flex-shrink:0;">→</div>
+      <div style="flex-shrink:0;text-align:center;padding:10px 12px;background:rgba(255,255,255,.07);border-radius:10px;">
+        <div style="font-size:.65rem;font-weight:800;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;">Действия</div>
+        <div style="font-size:.68rem;color:rgba(255,255,255,.6);margin-top:3px;line-height:1.3;">меняется</div>
+      </div>
+      <div style="color:var(--mint);font-size:1rem;padding:0 6px;flex-shrink:0;">→</div>
+      <div style="flex-shrink:0;text-align:center;padding:10px 12px;background:rgba(255,255,255,.07);border-radius:10px;">
+        <div style="font-size:.65rem;font-weight:800;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;">Реальность</div>
+        <div style="font-size:.68rem;color:rgba(255,255,255,.6);margin-top:3px;line-height:1.3;">другой уровень</div>
+      </div>
+    </div>
+    <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6;margin-top:14px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px;">Ветка реальности меняется не через визуализации. А через то, что человек говорит себе в обычный вторник.</div>
+  </div>
+
   <div class="funnel-card" style="margin-top:4px;margin-bottom:14px;">
     <div class="funnel-eyebrow">Хочешь разобрать свои паттерны точнее?</div>
     <div class="funnel-title">Разбор 15 мин · вопрос-ответ</div>
@@ -1161,7 +1257,7 @@ let calMonth=new Date().getMonth();
 function save(){localStorage.setItem('kodyYazyka_v4',JSON.stringify(S));}
 
 function go(tab){
-  ['week','days','result','calendar','archive','dynamic','patterns'].forEach((t,i)=>{
+  ['week','days','calendar','dynamic','patterns','archive'].forEach((t,i)=>{
     const sec=document.getElementById('s-'+t);
     if(sec)sec.classList.toggle('active',t===tab);
     const tabs=document.querySelectorAll('.tab');
@@ -1170,7 +1266,7 @@ function go(tab){
   if(tab==='week')renderWeek();
   if(tab==='days')renderDays();
   if(tab==='result')renderResult();
-  if(tab==='calendar')renderCalendar();
+  if(tab==='calendar'){renderCalendar();renderResult();}
   if(tab==='dynamic')renderDynamic();
   if(tab==='archive')renderArchive();
   if(tab==='patterns')renderPatterns();
@@ -1207,7 +1303,7 @@ function renderWeek(){
   if(!has)return;
   document.getElementById('v-word').textContent=S.word;
   document.getElementById('v-replace').textContent=S.replace;
-  document.getElementById('v-wnum').textContent='Неделя '+S.weekNum;
+  const _today=new Date();const _dow=_today.getDay()===0?6:_today.getDay()-1;const _mon=new Date(_today);_mon.setDate(_today.getDate()-_dow);const _sun=new Date(_mon);_sun.setDate(_mon.getDate()+6);const _fmt=d=>d.getDate()+' '+['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'][d.getMonth()];document.getElementById('v-wnum').textContent='Неделя '+S.weekNum+' · '+_fmt(_mon)+'–'+_fmt(_sun);
   const filled=S.days.filter(d=>d.action.length>0||d.reflection.length>0).length;
   document.getElementById('v-prog').style.width=(filled/7*100)+'%';
   document.getElementById('v-days').textContent=filled+' из 7 дней';
@@ -1218,6 +1314,8 @@ function renderWeek(){
   document.getElementById('cn-result').textContent=S.result?trunc(S.result.reality,28):'—';
 }
 
+let editingExistingWord=false;
+
 function startWeek(){
   const w=document.getElementById('f-word').value.trim();
   const r=document.getElementById('f-replace').value.trim();
@@ -1225,11 +1323,13 @@ function startWeek(){
   S.word=w;S.replace=r;
   S.context=document.getElementById('f-context').value;
   S.belief=document.getElementById('f-belief').value;
-  S.days=blank7();S.result=null;S.weekNum++;
+  if(!editingExistingWord){S.days=blank7();S.result=null;S.weekNum++;}
+  editingExistingWord=false;
   save();renderWeek();
 }
 
 function editWord(){
+  editingExistingWord=true;
   document.getElementById('f-word').value=S.word||'';
   document.getElementById('f-replace').value=S.replace||'';
   document.getElementById('f-context').value=S.context||'';
@@ -1260,9 +1360,53 @@ function loadMorning(){
   const btn=document.getElementById('affirm-btn');
   btn.classList.toggle('done',d.affirm);
   btn.textContent=d.affirm?'✓ Практика выполнена':'Практику выполнила';
+  renderMyAffirms();
 }
 
 function toggleAffirm(){S.days[curDay].affirm=!S.days[curDay].affirm;save();loadMorning();}
+
+function toggleAffirmItem(el){
+  const hint=el.querySelector('.affirm-item-hint');
+  if(!hint)return;
+  const open=hint.style.display!=='none';
+  hint.style.display=open?'none':'block';
+}
+
+function addMyAffirm(){
+  const inp=document.getElementById('my-affirm-input');
+  const txt=inp.value.trim();
+  if(!txt)return;
+  const key=getAffirmKey();
+  const list=JSON.parse(localStorage.getItem(key)||'[]');
+  list.push(txt);
+  localStorage.setItem(key,JSON.stringify(list));
+  inp.value='';
+  renderMyAffirms();
+}
+
+function delMyAffirm(i){
+  const key=getAffirmKey();
+  const list=JSON.parse(localStorage.getItem(key)||'[]');
+  list.splice(i,1);
+  localStorage.setItem(key,JSON.stringify(list));
+  renderMyAffirms();
+}
+
+function getAffirmKey(){
+  const params=new URLSearchParams(window.location.search);
+  const k=params.get('key')||'default';
+  return'myAffirms_'+k;
+}
+
+function renderMyAffirms(){
+  const key=getAffirmKey();
+  const list=JSON.parse(localStorage.getItem(key)||'[]');
+  const el=document.getElementById('my-affirms-list');
+  if(!el)return;
+  if(!list.length){el.innerHTML='';return;}
+  const base=document.querySelectorAll('#affirm-list-base .affirm-item').length;
+  el.innerHTML=list.map((txt,i)=>`<div class="my-affirm-item"><span class="a-num my-affirm-num">${base+i+1}</span><span class="my-affirm-txt">${txt}</span><button class="my-affirm-del" onclick="delMyAffirm(${i})">✕</button></div>`).join('');
+}
 function saveMorning(){S.days[curDay].thought=document.getElementById('d-thought').value;save();}
 
 function loadEvening(){
@@ -1286,12 +1430,25 @@ function saveEvening(){
 
 function renderResult(){
   const has=!!S.word;
-  document.getElementById('result-no-word').style.display=has?'none':'block';
-  document.getElementById('result-content').style.display=has?'block':'none';
+  const nw=document.getElementById('result-no-word-cal');
+  const rc=document.getElementById('result-content-cal');
+  if(nw)nw.style.display=has?'none':'block';
+  if(rc)rc.style.display=has?'block':'none';
   if(!has)return;
-  document.getElementById('res-word').textContent=S.word;
-  document.getElementById('res-replace').textContent=S.replace;
-  if(S.result){['speech','thinking','actions','reality'].forEach(k=>document.getElementById('r-'+k).value=S.result[k]||'');}
+  const rw=document.getElementById('res-word-cal');
+  const rr=document.getElementById('res-replace-cal');
+  const rd=document.getElementById('res-dates-cal');
+  if(rw)rw.textContent=S.word;
+  if(rr)rr.textContent=S.replace;
+  if(rd){
+    const today=new Date();
+    const dow=today.getDay()===0?6:today.getDay()-1;
+    const mon=new Date(today);mon.setDate(today.getDate()-dow);
+    const sun=new Date(mon);sun.setDate(mon.getDate()+6);
+    const fmt=d=>d.getDate()+' '+['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'][d.getMonth()];
+    rd.textContent='Неделя '+S.weekNum+' · '+fmt(mon)+' — '+fmt(sun);
+  }
+  if(S.result){['speech','thinking','actions','reality'].forEach(k=>{const el=document.getElementById('r-'+k);if(el)el.value=S.result[k]||'';});}
 }
 
 function saveResult(){
@@ -1466,30 +1623,106 @@ function svgLine(data,labels,maxY,color){
 
 function renderDynamic(){
   const el=document.getElementById('s-dynamic');if(!el)return;
-  // Берём текущую неделю если есть данные, иначе последнюю заархивированную
-  const currentHasData=S.word||S.days.some(d=>SPHERES.some(s=>d.spheres?.[s.key]?.score>0||(d.spheres?.[s.key]?.gives||[]).length>0)||d.thought||d.reflection||d.action);
-  const archiveHasData=S.archive.length>0&&S.archive[0].days;
-  if(!currentHasData&&!archiveHasData){el.innerHTML='<div class="card"><div class="empty" style="padding:40px 0;text-align:center;"><div style="font-size:2rem;margin-bottom:10px;">📊</div><div style="font-weight:800;margin-bottom:6px;">Данных пока нет</div><div style="font-size:.78rem;color:var(--muted);">Начни неделю и заполни сферы — здесь появятся графики.</div></div></div>';return;}
-  const dynDays=currentHasData?S.days:(S.archive[0].days||blank7());
-  const dynWord=currentHasData?S.word:S.archive[0].word;
-  const dynWeekLabel=currentHasData?'Текущая неделя':`Неделя ${S.archive[0].week} · ${S.archive[0].date}`;
-  const avgs=SPHERES.map(sp=>{const vals=dynDays.map(d=>d.spheres?.[sp.key]?.score||0).filter(v=>v>0);return vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length):0;});
-  const totals=dynDays.map(d=>SPHERES.reduce((s,sp)=>s+(d.spheres?.[sp.key]?.score||0),0));
-  const affirmed=dynDays.filter(d=>d.affirm).length;
-  const replaced=dynDays.filter(d=>d.replaced).length;
-  const filled=dynDays.filter(d=>(d.reflection||'').length>0).length;
-  _dynDaysCache=dynDays;
-  const tabs=SPHERES.map((sp,i)=>`<button onclick="renderSphereDetail(${i})" id="sdt-${i}" style="flex-shrink:0;padding:6px 10px;border:1.5px solid var(--border);border-radius:9px;font-size:.68rem;font-weight:700;cursor:pointer;background:${i===0?'var(--graphite)':'var(--card)'};color:${i===0?'#fff':'var(--muted)'};transition:all .2s;font-family:inherit;">${sp.icon} ${sp.name}</button>`).join('');
-  el.innerHTML=`
-    <div class="card"><div class="card-lbl">Колесо баланса — средние за неделю</div><div id="radar-chart">${svgRadar(avgs)}</div></div>
-    <div class="card"><div class="card-lbl">Динамика расширения / сжатия по дням</div><div id="line-chart">${svgLine(totals,SHORT,70,'rgba(106,122,62,.85)')}</div></div>
-    <div class="card"><div class="card-lbl">Дисциплина недели</div><div class="stat-row" id="disc-stats"><div class="stat-box"><div class="stat-num">${affirmed}/7</div><div class="stat-txt">Практик утром</div></div><div class="stat-box"><div class="stat-num">${replaced}/7</div><div class="stat-txt">Замен слова</div></div><div class="stat-box"><div class="stat-num">${filled}/7</div><div class="stat-txt">Вечеров заполнено</div></div></div></div>
-    <div class="card"><div class="card-lbl">Сферы жизни по датам</div><div id="sphere-detail-tabs" style="display:flex;gap:4px;margin-bottom:12px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch;">${tabs}</div><div id="sphere-line-chart" style="margin-bottom:12px"></div><div id="sphere-detail-content"></div></div>
-    <div class="card"><div class="card-lbl">Рейтинг сфер за неделю</div><div id="sphere-ranking"></div></div>`;
-  renderSphereDetail(0);
+  // Show content always
+  const dynEmpty=document.getElementById('dyn-empty');
+  const dynContent=document.getElementById('dyn-content');
+  if(dynEmpty)dynEmpty.style.display='none';
+  if(dynContent)dynContent.style.display='block';
+
+  // Week label with dates
+  const today=new Date();
+  const dow=today.getDay()===0?6:today.getDay()-1;
+  const mon=new Date(today);mon.setDate(today.getDate()-dow);
+  const sun=new Date(mon);sun.setDate(mon.getDate()+6);
+  const fmt=d=>d.getDate()+' '+['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'][d.getMonth()];
+  const wlbl=document.getElementById('dynamic-week-label');
+  if(wlbl)wlbl.textContent=(S.weekNum?'Неделя '+S.weekNum+' · ':'')+fmt(mon)+' — '+fmt(sun);
+
+  // Balance bars (replaces radar)
+  const avgs=SPHERES.map(sp=>{
+    const vals=S.days.map(d=>d.spheres[sp.key]?.score||0).filter(v=>v>0);
+    return{...sp,avg:vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length):0};
+  });
+  const maxAvg=Math.max(...avgs.map(s=>s.avg),1);
+  const barsEl=document.getElementById('balance-bars');
+  if(barsEl){
+    barsEl.innerHTML=avgs.map(s=>{
+      const pct=(s.avg/10*100).toFixed(0);
+      const color=s.avg>=7?'var(--green)':s.avg>=4?'var(--accent)':'var(--accent2)';
+      const label=s.avg>=7?'сильно':s.avg>=4?'средне':s.avg>0?'слабо':'';
+      return`<div style="margin-bottom:10px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <span style="font-size:.95rem;width:22px;text-align:center;">${s.icon}</span>
+          <span style="font-size:.78rem;font-weight:700;flex:1;color:var(--text);">${s.name}</span>
+          <span style="font-size:.75rem;font-weight:900;color:${color};min-width:26px;text-align:right;">${s.avg>0?s.avg.toFixed(1):'—'}</span>
+          ${label?`<span style="font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:20px;background:${s.avg>=7?'var(--green-bg)':s.avg>=4?'var(--accent-light)':'var(--red-bg)'};color:${color};">${label}</span>`:''}
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:${pct}%;background:${color};border-radius:3px;transition:width .5s ease;"></div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // Line chart
+  const totals=S.days.map(d=>SPHERES.reduce((sum,sp)=>sum+(d.spheres[sp.key]?.score||0),0));
+  const lCtx=document.getElementById('line-chart');
+  if(lCtx){
+    // Simple SVG line chart
+    const W=lCtx.offsetWidth||300;const H=140;const pad=30;
+    const maxV=Math.max(...totals,10);
+    const pts=totals.map((v,i)=>({
+      x:pad+(i/(totals.length-1))*(W-pad*2),
+      y:H-pad-(v/maxV)*(H-pad*2)
+    }));
+    const pathD=pts.map((p,i)=>i===0?`M${p.x},${p.y}`:`L${p.x},${p.y}`).join(' ');
+    const areaD=`M${pts[0].x},${H-pad} `+pts.map(p=>`L${p.x},${p.y}`).join(' ')+` L${pts[pts.length-1].x},${H-pad} Z`;
+    const bestDay=totals.indexOf(Math.max(...totals));
+    lCtx.innerHTML=`<svg width="100%" height="${H}" viewBox="0 0 ${W} ${H}">
+      <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6A7A3E" stop-opacity=".25"/><stop offset="100%" stop-color="#6A7A3E" stop-opacity="0"/></linearGradient></defs>
+      <path d="${areaD}" fill="url(#lg)"/>
+      <path d="${pathD}" fill="none" stroke="#6A7A3E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      ${pts.map((p,i)=>`<circle cx="${p.x}" cy="${p.y}" r="${i===bestDay?5:3.5}" fill="${i===bestDay?'#D4899A':'#6A7A3E'}" stroke="white" stroke-width="1.5"/>`).join('')}
+      ${pts.map((p,i)=>`<text x="${p.x}" y="${H-6}" text-anchor="middle" font-size="10" fill="#9A918A" font-family="-apple-system,sans-serif">${['Пн','Вт','Ср','Чт','Пт','Сб','Вс'][i]}</text>`).join('')}
+      ${pts.map((p,i)=>totals[i]>0?`<text x="${p.x}" y="${p.y-8}" text-anchor="middle" font-size="10" fill="${i===bestDay?'#D4899A':'#6A7A3E'}" font-weight="700" font-family="-apple-system,sans-serif">${totals[i]}</text>`:'').join('')}
+    </svg>`;
+  }
+
+  // Discipline stats
+  const affirmed=S.days.filter(d=>d.affirm).length;
+  const replaced=S.days.filter(d=>d.replaced).length;
+  const filled=S.days.filter(d=>d.reflection&&d.reflection.length>0).length;
+  document.getElementById('disc-stats').innerHTML=`
+    <div class="stat-box"><div class="stat-num">${affirmed}/7</div><div class="stat-txt">Практик утром</div></div>
+    <div class="stat-box"><div class="stat-num">${replaced}/7</div><div class="stat-txt">Замен слова</div></div>
+    <div class="stat-box"><div class="stat-num">${filled}/7</div><div class="stat-txt">Вечеров заполнено</div></div>`;
+
+  // Best/worst day summary
+  const summaryEl=document.getElementById('dynamic-summary');
+  if(summaryEl&&totals.some(v=>v>0)){
+    const bestIdx=totals.indexOf(Math.max(...totals.filter(v=>v>0)));
+    const dnames=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+    const rankedSph=[...SPHERES].map(s=>{const vals=S.days.map(d=>d.spheres[s.key]?.score||0);return{...s,avg:vals.reduce((a,b)=>a+b,0)/vals.length};}).sort((a,b)=>b.avg-a.avg);
+    summaryEl.innerHTML=`<div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:120px;background:var(--accent-light);border-radius:10px;padding:10px 12px;border-left:3px solid var(--accent);">
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:3px;">Лучший день</div>
+        <div style="font-size:.95rem;font-weight:900;color:var(--graphite);">${dnames[bestIdx]}</div>
+        <div style="font-size:.7rem;color:var(--muted);margin-top:1px;">${totals[bestIdx]} баллов</div>
+      </div>
+      <div style="flex:1;min-width:120px;background:var(--powder);border-radius:10px;padding:10px 12px;border-left:3px solid var(--accent2);">
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);margin-bottom:3px;">Сильная сфера</div>
+        <div style="font-size:.95rem;font-weight:900;color:var(--graphite);">${rankedSph[0].icon} ${rankedSph[0].name}</div>
+        <div style="font-size:.7rem;color:var(--muted);margin-top:1px;">${rankedSph[0].avg.toFixed(1)} из 10</div>
+      </div>
+    </div>`;
+  }
+
+  renderSphereDetail(activeSphereTab||0);
+  const tabsEl=document.getElementById('sphere-detail-tabs');
+  if(tabsEl)tabsEl.innerHTML=SPHERES.map((sp,i)=>`<button onclick="renderSphereDetail(${i})" id="sdt-${i}" style="flex-shrink:0;padding:6px 10px;border:1.5px solid var(--border);border-radius:9px;font-size:.68rem;font-weight:700;cursor:pointer;background:${i===0?'var(--graphite)':'var(--card)'};color:${i===0?'#fff':'var(--muted)'};transition:all .2s;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">${sp.icon} ${sp.name}</button>`).join('');
 }
 
-let activeSphereTab=0;let sphereLineInst=null;let _dynDaysCache=null;
+
 function renderSphereDetail(idx){
   activeSphereTab=idx;
   SPHERES.forEach((_,i)=>{const btn=document.getElementById('sdt-'+i);if(!btn)return;btn.style.background=i===idx?'var(--graphite)':'var(--card)';btn.style.color=i===idx?'#fff':'var(--muted)';btn.style.borderColor=i===idx?'var(--graphite)':'var(--border)';});
@@ -1572,13 +1805,22 @@ function setupNotifications(){
 }
 
 function scheduleNotifications(){
-  const now=new Date();const morning=new Date();morning.setHours(8,0,0,0);if(morning<=now)morning.setDate(morning.getDate()+1);
+  const mInp=document.getElementById('notif-morning');const eInp=document.getElementById('notif-evening');
+  const mTime=(mInp&&mInp.value)||localStorage.getItem('kodyNotifMorning')||'08:00';
+  const eTime=(eInp&&eInp.value)||localStorage.getItem('kodyNotifEvening')||'21:00';
+  localStorage.setItem('kodyNotifMorning',mTime);localStorage.setItem('kodyNotifEvening',eTime);
+  const [mH,mM]=mTime.split(':').map(Number);const [eH,eM]=eTime.split(':').map(Number);
+  const now=new Date();
+  const morning=new Date();morning.setHours(mH,mM,0,0);if(morning<=now)morning.setDate(morning.getDate()+1);
   setTimeout(()=>{new Notification('Перепрошивка · Утро',{body:'Время утренней практики. Произнеси аффирмации вслух.'});setInterval(()=>{new Notification('Перепрошивка · Утро',{body:'Время утренней практики. Произнеси аффирмации вслух.'});},86400000);},morning-now);
-  const evening=new Date();evening.setHours(21,0,0,0);if(evening<=now)evening.setDate(evening.getDate()+1);
+  const evening=new Date();evening.setHours(eH,eM,0,0);if(evening<=now)evening.setDate(evening.getDate()+1);
   setTimeout(()=>{new Notification('Перепрошивка · Вечер',{body:'Заполни вечерний трекинг — поймала слово сегодня?'});setInterval(()=>{new Notification('Перепрошивка · Вечер',{body:'Заполни вечерний трекинг — поймала слово сегодня?'});},86400000);},evening-now);
 }
 
 if(localStorage.getItem('kodyNotif')==='on'&&Notification.permission==='granted'){
+  const savedM=localStorage.getItem('kodyNotifMorning');const savedE=localStorage.getItem('kodyNotifEvening');
+  if(savedM){const mi=document.getElementById('notif-morning');if(mi)mi.value=savedM;}
+  if(savedE){const ei=document.getElementById('notif-evening');if(ei)ei.value=savedE;}
   scheduleNotifications();
   const nb=document.getElementById('notif-btn');const ns=document.getElementById('notif-status');
   if(nb){nb.textContent='Включено';nb.disabled=true;}
