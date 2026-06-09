@@ -230,6 +230,22 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
 .sub-section{display:none;}
 .sub-section.active{display:block;}
 
+/* ─── ТЕЛО ─── */
+.activity-btn{
+  padding:8px 14px;border:1.5px solid var(--border);border-radius:20px;
+  background:var(--card);color:var(--muted);font-size:.75rem;font-weight:600;
+  cursor:pointer;transition:all .2s;font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+}
+.activity-btn.active{background:#6A7A3E;border-color:#6A7A3E;color:#fff;}
+.energy-star{font-size:1.5rem;cursor:pointer;transition:all .2s;opacity:.25;filter:grayscale(1);}
+.feelings-group{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:4px;}
+.feeling-btn{
+  padding:7px 13px;border:1.5px solid var(--border);border-radius:20px;
+  background:var(--card);color:var(--muted);font-size:.75rem;font-weight:600;
+  cursor:pointer;transition:all .2s;font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+}
+.feeling-btn.active{background:#6A7A3E;border-color:#6A7A3E;color:#fff;}
+
 /* ─── QUOTE OF DAY ─── */
 .quote-card{
   background:linear-gradient(135deg,#2C2825 0%,#3d2a2a 100%);
@@ -704,6 +720,7 @@ canvas{max-width:100%;}
   <button class="tab" onclick="go('dynamic')">Динамика</button>
   <button class="tab" onclick="go('patterns')">Паттерны</button>
   <button class="tab" onclick="go('archive')">Архив</button>
+  <button class="tab tab-body" onclick="go('body')" style="background:var(--accent2);color:#fff;font-weight:800;">Тело</button>
 </div>
 
 <!-- ══════════ WEEK ══════════ -->
@@ -1212,6 +1229,117 @@ canvas{max-width:100%;}
   </div>
 </div><!-- /s-patterns -->
 
+<!-- ══════════ ТЕЛО ══════════ -->
+<div id="s-body" class="section">
+  <!-- День -->
+  <div class="sub-tabs" style="margin-bottom:14px;">
+    <button class="sub-tab active" onclick="goBodyDay(0)">Пн</button>
+    <button class="sub-tab" onclick="goBodyDay(1)">Вт</button>
+    <button class="sub-tab" onclick="goBodyDay(2)">Ср</button>
+    <button class="sub-tab" onclick="goBodyDay(3)">Чт</button>
+    <button class="sub-tab" onclick="goBodyDay(4)">Пт</button>
+    <button class="sub-tab" onclick="goBodyDay(5)">Сб</button>
+    <button class="sub-tab" onclick="goBodyDay(6)">Вс</button>
+  </div>
+
+  <!-- Физические показатели -->
+  <div class="card">
+    <div class="card-lbl" style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);">— Физические показатели дня</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px;">
+      <div style="text-align:center;">
+        <div style="font-size:1.4rem;">😴</div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:6px;">Сон (ч)</div>
+        <input type="number" id="b-sleep" placeholder="8" min="0" max="24" step="0.5"
+          style="width:100%;padding:10px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:1rem;text-align:center;font-family:inherit;"
+          onchange="saveBody()">
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:1.4rem;">💧</div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:6px;">Вода (л)</div>
+        <input type="number" id="b-water" placeholder="1.5" min="0" max="10" step="0.5"
+          style="width:100%;padding:10px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:1rem;text-align:center;font-family:inherit;"
+          onchange="saveBody()">
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:1.4rem;">🏃‍♀️</div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:6px;">Движение (мин)</div>
+        <input type="number" id="b-movement" placeholder="30" min="0" max="600" step="5"
+          style="width:100%;padding:10px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:1rem;text-align:center;font-family:inherit;"
+          onchange="saveBody()">
+      </div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <div style="font-size:.72rem;color:rgba(255,255,255,.6);margin-bottom:8px;font-weight:600;">Тип активности</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;" id="b-activity-btns">
+        <button class="activity-btn" onclick="toggleActivity('ходьба')" data-act="ходьба">🚶 Ходьба</button>
+        <button class="activity-btn" onclick="toggleActivity('бег')" data-act="бег">🏃 Бег</button>
+        <button class="activity-btn" onclick="toggleActivity('тренировка')" data-act="тренировка">💪 Тренировка</button>
+        <button class="activity-btn" onclick="toggleActivity('йога')" data-act="йога">🧘 Йога</button>
+        <button class="activity-btn" onclick="toggleActivity('другое')" data-act="другое">✨ Другое</button>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;">
+      <div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:6px;">🌙 Отход ко сну</div>
+        <input type="time" id="b-bedtime"
+          style="width:100%;padding:10px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:.95rem;font-family:inherit;"
+          onchange="saveBody()">
+      </div>
+      <div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:6px;">☀️ Подъём</div>
+        <input type="time" id="b-waketime"
+          style="width:100%;padding:10px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:.95rem;font-family:inherit;"
+          onchange="saveBody()">
+      </div>
+    </div>
+  </div>
+
+  <!-- Самочувствие и энергия -->
+  <div class="card">
+    <div class="card-lbl" style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);">— Самочувствие и энергия</div>
+    <p style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.55;margin-top:8px;">Тело — зеркало состояния. Отмечай уровень заряда и то, что чувствуешь прямо сейчас — это помогает отслеживать связь между внутренним и внешним.</p>
+
+    <div style="margin-top:14px;">
+      <div style="font-size:.72rem;color:rgba(255,255,255,.7);margin-bottom:10px;font-weight:600;">Уровень энергии</div>
+      <div style="display:flex;gap:8px;" id="b-energy-stars">
+        <span class="energy-star" onclick="setEnergy(1)" data-e="1">⚡</span>
+        <span class="energy-star" onclick="setEnergy(2)" data-e="2">⚡</span>
+        <span class="energy-star" onclick="setEnergy(3)" data-e="3">⚡</span>
+        <span class="energy-star" onclick="setEnergy(4)" data-e="4">⚡</span>
+        <span class="energy-star" onclick="setEnergy(5)" data-e="5">⚡</span>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <div style="font-size:.72rem;color:rgba(255,255,255,.7);margin-bottom:4px;font-weight:600;">Карта чувств — что сейчас внутри?</div>
+      <div style="font-size:.65rem;color:rgba(255,255,255,.4);margin-bottom:12px;">Можно выбрать несколько — тело знает правду</div>
+
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--mint);margin-bottom:8px;">Ресурсные</div>
+      <div class="feelings-group" id="fg-resource"></div>
+
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin:14px 0 8px;">Нейтральные</div>
+      <div class="feelings-group" id="fg-neutral"></div>
+
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin:14px 0 8px;">Требуют внимания</div>
+      <div class="feelings-group" id="fg-difficult"></div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <div style="font-size:.72rem;color:rgba(255,255,255,.6);margin-bottom:8px;font-weight:600;">Заметка о теле</div>
+      <textarea id="b-note" placeholder="Как тело сегодня? Что заметила?"
+        style="width:100%;padding:12px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:.82rem;font-family:inherit;resize:vertical;min-height:80px;line-height:1.5;"
+        onblur="saveBody()"></textarea>
+    </div>
+  </div>
+
+  <!-- Динамика за неделю -->
+  <div class="card">
+    <div class="card-lbl" style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);">— Динамика за неделю</div>
+    <div id="body-dynamic-charts" style="margin-top:14px;"></div>
+  </div>
+</div><!-- /s-body -->
 
 </div><!-- /main-app -->
 
@@ -1260,7 +1388,7 @@ let calMonth=new Date().getMonth();
 function save(){localStorage.setItem('kodyYazyka_v4',JSON.stringify(S));}
 
 function go(tab){
-  ['week','days','calendar','dynamic','patterns','archive'].forEach((t,i)=>{
+  ['week','days','calendar','dynamic','patterns','archive','body'].forEach((t,i)=>{
     const sec=document.getElementById('s-'+t);
     if(sec)sec.classList.toggle('active',t===tab);
     const tabs=document.querySelectorAll('.tab');
@@ -1273,6 +1401,7 @@ function go(tab){
   if(tab==='dynamic')renderDynamic();
   if(tab==='archive')renderArchive();
   if(tab==='patterns')renderPatterns();
+  if(tab==='body')renderBody();
 }
 
 let patternState=JSON.parse(localStorage.getItem('kodyPatterns')||'{}');
@@ -1751,6 +1880,159 @@ function archiveWeek(){
   ['f-word','f-replace','f-context','f-belief'].forEach(id=>document.getElementById(id).value='');
   go('week');
 }
+
+// ══════════ ТЕЛО ══════════
+const FEELINGS_RESOURCE=['😊 радость','✨ вдохновение','🙏 благодарность','❤️ любовь','💪 сила','🌿 спокойствие','😊 уверенность','🌸 лёгкость','🌹 нежность','☀️ принятие','🔥 азарт','🌊 восторг','😌 удовлетворение','🦋 открытость','🎮 игривость'];
+const FEELINGS_NEUTRAL=['😴 усталость','⬜ пустота','🔄 растерянность','😶 скука','⏳ ожидание','😔 задумчивость','😐 безразличие','⚡ напряжение','❓ сомнение','😅 неловкость'];
+const FEELINGS_DIFFICULT=['😰 тревога','😨 страх','😤 раздражение','😢 грусть','❤️ обида','😠 злость','😭 отчаяние','👤 одиночество','😳 стыд','😔 вина','🖤 подавленность','⊗ ревность','👁️ зависть','😶 беспощность','🔒 оцепенение'];
+
+let bodyData=JSON.parse(localStorage.getItem('kodyBody_v1')||'{}');
+let curBodyDay=new Date().getDay();curBodyDay=curBodyDay===0?6:curBodyDay-1;
+
+function saveBodyData(){localStorage.setItem('kodyBody_v1',JSON.stringify(bodyData));}
+
+function blankBodyDay(){return{sleep:'',water:'',movement:'',activity:[],bedtime:'',waketime:'',energy:0,feelings:[],note:''};}
+
+function getBodyDay(d){
+  if(!bodyData['w'+curWeekKey()])bodyData['w'+curWeekKey()]=Array.from({length:7},blankBodyDay);
+  const arr=bodyData['w'+curWeekKey()];
+  if(!arr[d])arr[d]=blankBodyDay();
+  return arr[d];
+}
+
+function curWeekKey(){
+  const t=new Date();const dow=t.getDay()===0?6:t.getDay()-1;
+  const mon=new Date(t);mon.setDate(t.getDate()-dow);
+  return mon.toISOString().slice(0,10);
+}
+
+function renderBody(){
+  // Подсветить текущий день
+  document.querySelectorAll('#s-body .sub-tab').forEach((b,i)=>{
+    b.classList.toggle('active',i===curBodyDay);
+  });
+  loadBodyDay(curBodyDay);
+  renderBodyDynamic();
+  renderFeelingGroups();
+}
+
+function goBodyDay(d){
+  curBodyDay=d;
+  document.querySelectorAll('#s-body .sub-tab').forEach((b,i)=>b.classList.toggle('active',i===d));
+  loadBodyDay(d);
+}
+
+function loadBodyDay(d){
+  const bd=getBodyDay(d);
+  document.getElementById('b-sleep').value=bd.sleep||'';
+  document.getElementById('b-water').value=bd.water||'';
+  document.getElementById('b-movement').value=bd.movement||'';
+  document.getElementById('b-bedtime').value=bd.bedtime||'';
+  document.getElementById('b-waketime').value=bd.waketime||'';
+  // активности
+  document.querySelectorAll('.activity-btn').forEach(btn=>{
+    btn.classList.toggle('active',(bd.activity||[]).includes(btn.dataset.act));
+  });
+  // энергия
+  setEnergyDisplay(bd.energy||0);
+  // чувства
+  renderFeelingGroups();
+  document.getElementById('b-note').value=bd.note||'';
+}
+
+function saveBody(){
+  const bd=getBodyDay(curBodyDay);
+  bd.sleep=document.getElementById('b-sleep').value;
+  bd.water=document.getElementById('b-water').value;
+  bd.movement=document.getElementById('b-movement').value;
+  bd.bedtime=document.getElementById('b-bedtime').value;
+  bd.waketime=document.getElementById('b-waketime').value;
+  bd.note=document.getElementById('b-note').value;
+  saveBodyData();
+  renderBodyDynamic();
+}
+
+function toggleActivity(act){
+  const bd=getBodyDay(curBodyDay);
+  if(!bd.activity)bd.activity=[];
+  const idx=bd.activity.indexOf(act);
+  if(idx>=0)bd.activity.splice(idx,1);
+  else bd.activity.push(act);
+  saveBodyData();
+  document.querySelectorAll('.activity-btn').forEach(btn=>{
+    btn.classList.toggle('active',bd.activity.includes(btn.dataset.act));
+  });
+}
+
+function setEnergy(n){
+  const bd=getBodyDay(curBodyDay);
+  bd.energy=n;
+  saveBodyData();
+  setEnergyDisplay(n);
+}
+
+function setEnergyDisplay(n){
+  document.querySelectorAll('.energy-star').forEach((s,i)=>{
+    s.style.opacity=i<n?'1':'0.25';
+    s.style.filter=i<n?'none':'grayscale(1)';
+  });
+}
+
+function toggleFeeling(feeling){
+  const bd=getBodyDay(curBodyDay);
+  if(!bd.feelings)bd.feelings=[];
+  const idx=bd.feelings.indexOf(feeling);
+  if(idx>=0)bd.feelings.splice(idx,1);
+  else bd.feelings.push(feeling);
+  saveBodyData();
+  renderFeelingGroups();
+}
+
+function renderFeelingGroups(){
+  const bd=getBodyDay(curBodyDay);
+  const sel=bd.feelings||[];
+  const render=(containerId,list)=>{
+    const el=document.getElementById(containerId);
+    if(!el)return;
+    el.innerHTML=list.map(f=>`<button class="feeling-btn${sel.includes(f)?' active':''}" onclick="toggleFeeling('${f}')">${f}</button>`).join('');
+  };
+  render('fg-resource',FEELINGS_RESOURCE);
+  render('fg-neutral',FEELINGS_NEUTRAL);
+  render('fg-difficult',FEELINGS_DIFFICULT);
+}
+
+function renderBodyDynamic(){
+  const el=document.getElementById('body-dynamic-charts');
+  if(!el)return;
+  const wk=bodyData['w'+curWeekKey()]||Array.from({length:7},blankBodyDay);
+  const days=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+  const colors=['#6A93C3','#5BA5A0','#6A7A3E','#D4899A'];
+  const metrics=[
+    {label:'Сон (ч)',key:'sleep',max:12,color:colors[0]},
+    {label:'Вода (л)',key:'water',max:3,color:colors[1]},
+    {label:'Движение (мин)',key:'movement',max:180,color:colors[2]},
+    {label:'Энергия',key:'energy',max:5,color:colors[3]},
+  ];
+  el.innerHTML=metrics.map(m=>{
+    const vals=wk.map(d=>parseFloat(d[m.key])||0);
+    const maxV=Math.max(...vals,m.max*0.1)||1;
+    const bars=vals.map((v,i)=>{
+      const h=Math.round(v/maxV*60);
+      return`<div style="display:flex;flex-direction:column;align-items:center;flex:1;gap:4px;">
+        <div style="font-size:.6rem;color:rgba(255,255,255,.5);">${v||''}</div>
+        <div style="width:100%;height:60px;display:flex;align-items:flex-end;">
+          <div style="width:100%;height:${h}px;background:${i===curBodyDay?m.color:m.color+'88'};border-radius:4px 4px 0 0;transition:.3s;"></div>
+        </div>
+        <div style="font-size:.6rem;color:rgba(255,255,255,.4);">${days[i]}</div>
+      </div>`;
+    }).join('');
+    return`<div style="margin-bottom:20px;">
+      <div style="font-size:.72rem;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:10px;">${m.label}</div>
+      <div style="display:flex;gap:4px;align-items:flex-end;">${bars}</div>
+    </div>`;
+  }).join('');
+}
+// ══════════ /ТЕЛО ══════════
 
 function renderArchive(){
   const el=document.getElementById('arch-list');const sc=document.getElementById('stats-card');
