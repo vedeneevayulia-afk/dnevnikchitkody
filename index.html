@@ -558,12 +558,73 @@ canvas{max-width:100%;}
 <meta name="apple-mobile-web-app-title" content="Чит-коды">
 </head>
 <body>
+
+<!-- ══════════ ЗАЩИТА — ПРОВЕРКА КЛЮЧА ══════════ -->
+<div id="access-gate" style="display:none;min-height:100vh;background:#FDF6F0;display:flex;align-items:center;justify-content:center;padding:24px;">
+  <div style="max-width:400px;width:100%;text-align:center;">
+    <div style="background:#2C2825;border-radius:20px;padding:40px 28px 36px;box-shadow:0 8px 40px rgba(0,0,0,.18);">
+      <div style="width:64px;height:64px;border-radius:16px;background:#D4899A;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 20px;">🔒</div>
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:#D4899A;margin-bottom:10px;">Тело как состояние · Юлия Веденеева</div>
+      <h2 style="font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:12px;line-height:1.3;">Дневник трансформации</h2>
+      <p style="font-size:.85rem;color:#9A918A;line-height:1.6;margin-bottom:28px;">Доступ к дневнику открывается после получения личной ссылки.<br>Если у тебя есть ссылка — открывай её напрямую.</p>
+      <div style="border-top:1px solid #3a3530;padding-top:22px;">
+        <p style="font-size:.8rem;color:#9A918A;margin-bottom:12px;">Хочешь получить доступ?</p>
+        <a href="https://instagram.com/meta_ulia" target="_blank" style="display:inline-block;background:#D4899A;color:#fff;font-size:.85rem;font-weight:700;padding:12px 28px;border-radius:12px;text-decoration:none;letter-spacing:.04em;">Написать @meta_ulia</a>
+      </div>
+    </div>
+    <p style="font-size:.7rem;color:#B0A898;margin-top:16px;">© Юлия Веденеева · Тело как состояние</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ── СПИСОК ВАЛИДНЫХ КЛЮЧЕЙ ──────────────────────────────────────
+  // Добавляй новые ключи сюда. Деактивировать — удали из списка.
+  var VALID_KEYS = [
+    "tks-2024-a7f3",
+    "tks-2024-b2e8",
+    "tks-2024-c5k1",
+    "tks-2024-d9m4",
+    "tks-2024-e3p7",
+    "tks-2024-f6r2",
+    "tks-2024-g1w9",
+    "tks-2024-h8x5",
+    "tks-2024-i4z6",
+    "tks-2024-j7n3"
+  ];
+  // ───────────────────────────────────────────────────────────────
+
+  var params = new URLSearchParams(window.location.search);
+  var key = params.get('key');
+
+  // Если ключ валидный — сохраняем в sessionStorage и пускаем
+  if(key && VALID_KEYS.indexOf(key) !== -1){
+    sessionStorage.setItem('dnevnik_access', key);
+  }
+
+  // Проверяем sessionStorage (чтобы не слетало при навигации)
+  var saved = sessionStorage.getItem('dnevnik_access');
+  if(!saved || VALID_KEYS.indexOf(saved) === -1){
+    // Показываем заглушку, скрываем всё остальное
+    document.getElementById('access-gate').style.display = 'flex';
+    document.addEventListener('DOMContentLoaded', function(){
+      var all = document.querySelectorAll('body > *:not(#access-gate):not(script)');
+      all.forEach(function(el){ el.style.display = 'none'; });
+    });
+    // Останавливаем выполнение остального JS
+    throw new Error('ACCESS_DENIED');
+  }
+})();
+</script>
+
+<!-- ══════════ ONBOARDING ══════════ -->
 <div id="onboarding" style="display:none;min-height:100vh;background:var(--bg);padding:0 0 40px;max-width:520px;margin:0 auto;">
   <div style="background:var(--graphite);padding:40px 22px 32px;position:relative;overflow:hidden;">
     <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
     <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:var(--accent2);margin-bottom:12px;opacity:.9;">Тело как состояние · Юлия Веденеева</div>
     <h1 style="font-size:1.5rem;font-weight:800;color:#fff;line-height:1.2;letter-spacing:-.03em;">Дневник трансформации</h1>
-    <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.95rem;color:#FAF8F5;margin-top:10px;line-height:1.55;"><span style="color:#A8BC8A;font-weight:700;">Сознание программирует тело.</span> <span style="color:var(--accent2);font-weight:700;">Тело держит программу.</span> Дневник поможет тебе поменять код на обоих уровнях — не по очереди, а одновременно.</p>
+    <p style="font-size:.85rem;color:#A8BC8A;letter-spacing:.08em;text-transform:uppercase;margin-top:.35rem;font-weight:500;">Чит-коды сознания</p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.95rem;color:#FAF8F5;margin-top:10px;line-height:1.55;">Чит-коды сознания: меняя мысли — меняются слова и действия — меняется реальность</p>
   </div>
   <div style="padding:20px 18px 0;">
     <div style="background:#fff;border-radius:var(--radius);padding:22px;margin-bottom:14px;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
@@ -589,53 +650,12 @@ canvas{max-width:100%;}
           <div style="width:36px;height:36px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">📈</div>
           <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Динамика и календарь</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Видишь как меняется твоё поле неделя за неделей</div></div>
         </div>
-        <div style="display:flex;align-items:flex-start;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:#3d2a2a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🫀</div>
-          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Трекер тела</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Сон, вода, движение, энергия — каждый день видишь как живёт твоё тело</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:#2a2d3a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🧭</div>
-          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Карта чувств</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Называешь — значит замечаешь. Замечаешь — значит управляешь</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:#1a2a1a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🌊</div>
-          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Динамика состояния</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">График по дням — видишь паттерны в теле и настроении за неделю</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:#2a1a2a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🎯</div>
-          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Реализация целей и потенциала</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Цели на год, месяц, неделю — в одном месте, с отслеживанием прогресса</div></div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:12px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:#2C2825;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🗺️</div>
-          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Карта паттернов</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Речевые репликаторы и чит-коды сознания — меняя мысли, меняются слова и действия, меняется реальность</div></div>
-        </div>
       </div>
     </div>
-    <div style="background:linear-gradient(135deg,#4a5e2a,#6A7A3E);border-radius:var(--radius-sm);padding:18px 20px;margin-bottom:12px;position:relative;overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#4a5e2a,#6A7A3E);border-radius:var(--radius-sm);padding:18px 20px;margin-bottom:18px;position:relative;overflow:hidden;">
       <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
-      <div style="font-size:.78rem;font-weight:800;color:var(--accent2);margin-bottom:12px;">Рекомендация</div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;gap:10px;align-items:flex-start;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.88rem;color:#FAF8F5;line-height:1.55;">
-          <span style="color:var(--accent2);font-style:normal;font-weight:800;flex-shrink:0;">✓</span>
-          <span><strong style="color:#fff;font-style:normal;">Дневник бессрочный</strong> — ты начнёшь видеть результат уже через <strong style="color:#fff;font-style:normal;">21 день.</strong> Именно столько нужно мозгу, чтобы новый код стал автоматическим.</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:flex-start;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.88rem;color:#FAF8F5;line-height:1.55;">
-          <span style="color:var(--accent2);font-style:normal;font-weight:800;flex-shrink:0;">✓</span>
-          <span><strong style="color:#fff;font-style:normal;">Чем больше работаешь с дневником</strong> — тем глубже идут изменения. Это не курс с дедлайном, это твой новый способ жить.</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:flex-start;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.88rem;color:#FAF8F5;line-height:1.55;">
-          <span style="color:var(--accent2);font-style:normal;font-weight:800;flex-shrink:0;">✓</span>
-          <span><strong style="color:#fff;font-style:normal;">Сознание запускает тело, тело закрепляет сознание.</strong> Когда работаешь на обоих уровнях — химия мозга меняется быстрее. Тело становится союзником, а не сопротивлением.</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:flex-start;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.88rem;color:#FAF8F5;line-height:1.55;">
-          <span style="color:var(--accent2);font-style:normal;font-weight:800;flex-shrink:0;">✓</span>
-          <span><strong style="color:#fff;font-style:normal;">Один чит-код в неделю.</strong> Вся жизнь — по-другому.</span>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;padding:14px 20px;margin-bottom:18px;">
-      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.95rem;color:var(--text);font-weight:600;">Добро пожаловать в новую себя.</div>
-      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.88rem;color:var(--muted);margin-top:4px;">Этот дневник — твой первый шаг.</div>
+      <div style="font-size:.78rem;font-weight:800;color:var(--accent2);margin-bottom:6px;">Рекомендация</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.92rem;color:#FAF8F5;line-height:1.55;">Дневник без срока. Минимум <strong style="color:#fff;font-style:normal;">21 день</strong> — столько нужно мозгу чтобы новый код стал автоматическим. Один чит-код в неделю. Вся жизнь — по-другому.</div>
     </div>
     <div style="background:#fff;border-radius:var(--radius-sm);padding:18px 20px;margin-bottom:16px;border:1px solid var(--border);box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:14px;">
       <div style="width:48px;height:48px;border-radius:50%;background:var(--graphite);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.4rem;position:relative;overflow:hidden;">
@@ -651,36 +671,15 @@ canvas{max-width:100%;}
     <div style="background:linear-gradient(135deg,#1a2410 0%,#2C2825 60%,#3d2a2a 100%);border-radius:var(--radius);padding:26px 22px;margin-bottom:16px;position:relative;overflow:hidden;">
       <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
       <div style="font-size:.52rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--accent2);margin-bottom:8px;opacity:.9;">Следующий уровень</div>
-      <div style="font-size:1.3rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:5px;">Лаборатория тела как состояние</div>
-      <div style="font-size:.8rem;color:var(--accent2);font-weight:700;margin-bottom:2px;">Групповая программа · 28 дней</div>
-      <div style="font-size:.72rem;color:rgba(255,255,255,.55);font-style:italic;margin-bottom:16px;">Авторская программа на стыке психологии, нейробиологии, нейролингвистики и законов сознания</div>
-      <div style="margin-bottom:16px;font-size:.82rem;color:rgba(255,255,255,.85);line-height:1.65;">
-        <p style="margin:0 0 11px"><strong style="color:#fff;">Этот дневник — твой навсегда.</strong> Работаешь сама, в своём темпе, без ограничений по времени. Каждую неделю убираешь один ограничивающий репликатор и вшиваешь новый чит-код.</p>
-        <p style="margin:0 0 11px"><span style="color:var(--accent2);font-weight:700;">Лаборатория тела как состояния</span> — групповая работа со мной. 28 дней, чат с поддержкой и ежедневными вопрос-ответ, 2 живые онлайн встречи в неделю, личные живые разборы и практики для перепрошивки сознания на двух уровнях сразу.</p>
-        <p style="margin:0 0 11px">Мы работаем на двух уровнях одновременно. <strong style="color:#fff;">Внутренний — непроявленный:</strong> твои мысли, там живёт твоё внимание. Куда внимание — туда энергия. Большинство годами меняют поведение снаружи, но внутренняя программа остаётся нетронутой — и жизнь возвращает тот же сценарий. <strong style="color:#fff;">Внешний — проявленный:</strong> слова и действия, то что создаёт реальность. Между ними — состояние. Именно оно определяет всё: слова, решения, деньги, тело. Просто осознать недостаточно — осознание в коре мозга, а старая программа глубже. В теле. В автоматических реакциях. Без перепрошивки самого кода осознание остаётся красивой идеей. В Лаборатории мы меняем код на обоих уровнях сразу.</p>
-        <p style="margin:0 0 11px">Результат — в теле, деньгах и отношениях.</p>
-        <p style="margin:0 0 8px"><span style="color:var(--accent2);font-weight:700;">Гарантия — 100% возврат денег</span> если не будет результата, при условии что вы выполните все задания и упражнения на программе.</p>
-        <p style="margin:0">Открывается <strong style="color:var(--accent2);">2 раза в год. 10 мест.</strong></p>
+      <div style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:10px;">Лаборатория<br>тела как состояние</div>
+      <div style="font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.5;margin-bottom:14px;">Дневник — твой ежедневный инструмент.<br>Лаборатория — 4 недели где меняем оба уровня сразу.</div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:9px;font-size:.73rem;color:rgba(255,255,255,.8);"><span style="color:var(--accent2);font-size:.9rem;">◆</span>8 живых встреч в группе</div>
+        <div style="display:flex;align-items:center;gap:9px;font-size:.73rem;color:rgba(255,255,255,.8);"><span style="color:var(--accent2);font-size:.9rem;">◆</span>28 дней с протоколом участника</div>
+        <div style="display:flex;align-items:center;gap:9px;font-size:.73rem;color:rgba(255,255,255,.8);"><span style="color:var(--accent2);font-size:.9rem;">◆</span>Личный разбор 1:1</div>
+        <div style="display:flex;align-items:center;gap:9px;font-size:.73rem;color:rgba(255,255,255,.8);"><span style="color:var(--accent2);font-size:.9rem;">◆</span>Только 10 мест</div>
       </div>
-      <div style="display:flex;flex-direction:column;margin-bottom:18px;">
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);">
-          <div style="min-width:38px;height:38px;border-radius:10px;background:#3d5c2a;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:900;color:#A8D070;flex-shrink:0;">8</div>
-          <div style="font-size:.88rem;color:rgba(255,255,255,.9);"><span style="color:#fff;font-weight:700;">Живых встреч</span> в Zoom — <span style="color:#A8BC8A;font-weight:700;">2 раза в неделю</span></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);">
-          <div style="min-width:38px;height:38px;border-radius:10px;background:#3d5c2a;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:900;color:#A8D070;flex-shrink:0;">28</div>
-          <div style="font-size:.88rem;color:rgba(255,255,255,.9);"><span style="color:#fff;font-weight:700;">Дней</span> в закрытом чате с разборами</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);">
-          <div style="min-width:38px;height:38px;border-radius:10px;background:#5c2a3a;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:900;color:#D4899A;flex-shrink:0;">1:1</div>
-          <div style="font-size:.88rem;color:rgba(255,255,255,.9);"><span style="color:var(--accent2);font-weight:700;">Индивидуальный разбор</span> твоей ситуации</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 0;">
-          <div style="min-width:38px;height:38px;border-radius:10px;background:#5c2a3a;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:900;color:#D4899A;flex-shrink:0;">10</div>
-          <div style="font-size:.88rem;color:rgba(255,255,255,.9);">Только <span style="color:var(--accent2);font-weight:700;">10 мест</span> · небольшая группа</div>
-        </div>
-      </div>
-      <a href="https://t.me/meta_ulia" target="_blank" style="display:block;text-align:center;background:var(--accent2);color:#fff;text-decoration:none;border-radius:12px;padding:14px 20px;font-size:.9rem;font-weight:800;letter-spacing:.01em;box-shadow:0 4px 16px rgba(212,137,154,.35);">Оставить заявку и узнать подробнее →</a>
+      <a href="https://t.me/meta_ulia" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:10px;padding:11px 20px;font-size:.8rem;font-weight:800;letter-spacing:.01em;box-shadow:0 4px 16px rgba(212,137,154,.35);">Написать ЛАБОРАТОРИЯ →</a>
     </div>
     <button id="start-btn" onclick="startApp()" style="width:100%;padding:16px;background:var(--graphite);color:#fff;border:none;border-radius:var(--radius-sm);font-size:.95rem;font-weight:800;cursor:pointer;letter-spacing:-.01em;margin-bottom:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;position:relative;overflow:hidden;">
       <span style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></span>
@@ -694,7 +693,7 @@ canvas{max-width:100%;}
 <div class="top-bar">
   <div class="top-bar-eyebrow">Тело как состояние · Юлия Веденеева</div>
   <h1>Дневник трансформации</h1>
-  <p><span style="color:#A8BC8A;font-weight:700;">Сознание программирует тело.</span> <span style="color:var(--accent2);font-weight:700;">Тело держит программу.</span> Дневник поможет тебе поменять код на обоих уровнях — не по очереди, а одновременно.</p>
+  <p>Чит-коды сознания: меняя мысли — меняются слова и действия — меняется реальность</p>
 </div>
 
 <div class="tabs">
@@ -756,7 +755,6 @@ canvas{max-width:100%;}
     <button class="sub-tab active" onclick="goSub('morning')">Утро</button>
     <button class="sub-tab" onclick="goSub('evening')">Вечер</button>
     <button class="sub-tab" onclick="goSub('spheres')">Сферы</button>
-    <button class="sub-tab" onclick="goSub('body')">Тело</button>
   </div>
 
   <!-- УТРО -->
@@ -868,159 +866,6 @@ canvas{max-width:100%;}
   </div>
 </div>
 
-<!-- ══════════ ТЕЛО ══════════ -->
-<div id="ss-body" class="sub-section">
-  <div class="card" style="margin-bottom:12px">
-    <!-- Сон и вода -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
-      <div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px">Сон (ч)</div>
-        <input id="body-sleep" type="number" step="0.5" min="0" max="24" placeholder="8"
-          style="width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px"
-          oninput="saveBody()">
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px">Вода (л)</div>
-        <input id="body-water" type="number" step="0.1" min="0" max="10" placeholder="2"
-          style="width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px"
-          oninput="saveBody()">
-      </div>
-    </div>
-
-    <!-- Время сна -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;position:relative">
-      <div style="position:relative">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px">Отход ко сну</div>
-        <input id="body-sleep-time" type="text" placeholder="22:30"
-          style="width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px"
-          onfocus="showTimePicker('sleep')" oninput="saveBody()">
-        <div id="time-picker-sleep" style="display:none;position:absolute;top:100%;left:0;z-index:100;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:8px;display:none;flex-wrap:wrap;gap:6px;margin-top:4px;width:220px;box-shadow:0 4px 16px rgba(0,0,0,0.15)">
-          <div style="display:flex;flex-wrap:wrap;gap:5px">
-            <button onclick="pickTime('sleep','21:00')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">21:00</button>
-            <button onclick="pickTime('sleep','21:30')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">21:30</button>
-            <button onclick="pickTime('sleep','22:00')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">22:00</button>
-            <button onclick="pickTime('sleep','22:30')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">22:30</button>
-            <button onclick="pickTime('sleep','23:00')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">23:00</button>
-            <button onclick="pickTime('sleep','23:30')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">23:30</button>
-            <button onclick="pickTime('sleep','00:00')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">00:00</button>
-            <button onclick="pickTime('sleep','00:30')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">00:30</button>
-            <button onclick="pickTime('sleep','01:00')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">01:00</button>
-          </div>
-        </div>
-      </div>
-      <div style="position:relative">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px">Подъём</div>
-        <input id="body-wake-time" type="text" placeholder="06:30"
-          style="width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px"
-          onfocus="showTimePicker('wake')" oninput="saveBody()">
-        <div id="time-picker-wake" style="display:none;position:absolute;top:100%;left:0;z-index:100;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:8px;flex-wrap:wrap;gap:6px;margin-top:4px;width:220px;box-shadow:0 4px 16px rgba(0,0,0,0.15)">
-          <div style="display:flex;flex-wrap:wrap;gap:5px">
-            <button onclick="pickTime('wake','05:00')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">05:00</button>
-            <button onclick="pickTime('wake','05:30')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">05:30</button>
-            <button onclick="pickTime('wake','06:00')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">06:00</button>
-            <button onclick="pickTime('wake','06:30')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">06:30</button>
-            <button onclick="pickTime('wake','07:00')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">07:00</button>
-            <button onclick="pickTime('wake','07:30')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">07:30</button>
-            <button onclick="pickTime('wake','08:00')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">08:00</button>
-            <button onclick="pickTime('wake','08:30')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">08:30</button>
-            <button onclick="pickTime('wake','09:00')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">09:00</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Движение -->
-    <div style="margin-bottom:14px">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px">Движение</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
-        <button id="mt-ходьба" onclick="toggleMoveType('ходьба')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">ходьба</button>
-        <button id="mt-бег" onclick="toggleMoveType('бег')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">бег</button>
-        <button id="mt-тренировка" onclick="toggleMoveType('тренировка')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">тренировка</button>
-        <button id="mt-йога" onclick="toggleMoveType('йога')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">йога</button>
-        <button id="mt-растяжка" onclick="toggleMoveType('растяжка')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">растяжка</button>
-        <button id="mt-другое" onclick="toggleMoveType('другое')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">другое</button>
-      </div>
-      <div id="move-inputs" style="display:flex;flex-direction:column;gap:6px"></div>
-      <div id="move-total" style="font-size:12px;color:var(--muted);margin-top:6px"></div>
-    </div>
-
-    <!-- Карта чувств -->
-    <div style="margin-bottom:14px">
-      <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-.01em">Карта чувств</div>
-      <div style="font-size:11px;color:#A8BC8A;margin-bottom:5px;font-weight:600">РЕСУРСНЫЕ</div>
-      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px">
-        <button id="feel-радость" onclick="toggleFeeling('радость')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">радость</button>
-        <button id="feel-вдохновение" onclick="toggleFeeling('вдохновение')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">вдохновение</button>
-        <button id="feel-благодарность" onclick="toggleFeeling('благодарность')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">благодарность</button>
-        <button id="feel-любовь" onclick="toggleFeeling('любовь')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">любовь</button>
-        <button id="feel-сила" onclick="toggleFeeling('сила')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">сила</button>
-        <button id="feel-спокойствие" onclick="toggleFeeling('спокойствие')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">спокойствие</button>
-        <button id="feel-уверенность" onclick="toggleFeeling('уверенность')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">уверенность</button>
-        <button id="feel-лёгкость" onclick="toggleFeeling('лёгкость')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">лёгкость</button>
-        <button id="feel-восторг" onclick="toggleFeeling('восторг')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">восторг</button>
-        <button id="feel-азарт" onclick="toggleFeeling('азарт')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">азарт</button>
-        <button id="feel-интерес" onclick="toggleFeeling('интерес')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">интерес</button>
-        <button id="feel-нежность" onclick="toggleFeeling('нежность')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">нежность</button>
-        <button id="feel-принятие" onclick="toggleFeeling('принятие')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">принятие</button>
-        <button id="feel-доверие" onclick="toggleFeeling('доверие')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">доверие</button>
-        <button id="feel-открытость" onclick="toggleFeeling('открытость')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">открытость</button>
-      </div>
-      <div style="font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:600">НЕЙТРАЛЬНЫЕ</div>
-      <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px">
-        <button id="feel-усталость" onclick="toggleFeeling('усталость')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">усталость</button>
-        <button id="feel-пустота" onclick="toggleFeeling('пустота')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">пустота</button>
-        <button id="feel-растерянность" onclick="toggleFeeling('растерянность')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">растерянность</button>
-        <button id="feel-напряжение" onclick="toggleFeeling('напряжение')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">напряжение</button>
-        <button id="feel-задумчивость" onclick="toggleFeeling('задумчивость')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">задумчивость</button>
-        <button id="feel-скука" onclick="toggleFeeling('скука')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">скука</button>
-        <button id="feel-растекаемость" onclick="toggleFeeling('растекаемость')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">рассеянность</button>
-      </div>
-      <div style="font-size:11px;color:#D4899A;margin-bottom:5px;font-weight:600">НЕГАТИВНЫЕ</div>
-      <div style="display:flex;flex-wrap:wrap;gap:5px">
-        <button id="feel-тревога" onclick="toggleFeeling('тревога')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">тревога</button>
-        <button id="feel-страх" onclick="toggleFeeling('страх')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">страх</button>
-        <button id="feel-раздражение" onclick="toggleFeeling('раздражение')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">раздражение</button>
-        <button id="feel-грусть" onclick="toggleFeeling('грусть')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">грусть</button>
-        <button id="feel-обида" onclick="toggleFeeling('обида')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">обида</button>
-        <button id="feel-злость" onclick="toggleFeeling('злость')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">злость</button>
-        <button id="feel-стыд" onclick="toggleFeeling('стыд')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">стыд</button>
-        <button id="feel-одиночество" onclick="toggleFeeling('одиночество')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">одиночество</button>
-        <button id="feel-оцепенение" onclick="toggleFeeling('оцепенение')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">оцепенение</button>
-        <button id="feel-беспомощность" onclick="toggleFeeling('беспомощность')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">беспомощность</button>
-        <button id="feel-вина" onclick="toggleFeeling('вина')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">вина</button>
-        <button id="feel-отчаяние" onclick="toggleFeeling('отчаяние')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">отчаяние</button>
-        <button id="feel-разочарование" onclick="toggleFeeling('разочарование')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">разочарование</button>
-        <button id="feel-ревность" onclick="toggleFeeling('ревность')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">ревность</button>
-        <button id="feel-зависть" onclick="toggleFeeling('зависть')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">зависть</button>
-        <button id="feel-подавленность" onclick="toggleFeeling('подавленность')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">подавленность</button>
-        <button id="feel-апатия" onclick="toggleFeeling('апатия')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">апатия</button>
-        <button id="feel-агрессия" onclick="toggleFeeling('агрессия')" style="padding:4px 10px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:12px;cursor:pointer">агрессия</button>
-      </div>
-    </div>
-
-    <!-- Состояние из чувств -->
-    <div style="margin-bottom:14px;padding:14px 16px;background:linear-gradient(135deg,rgba(168,188,138,.12),rgba(212,137,154,.08));border-radius:14px;border:1px solid var(--border)">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px">Состояние сегодня</div>
-      <div id="mood-lotuses" style="font-size:26px;letter-spacing:3px">🪷</div>
-      <div id="mood-label" style="font-size:13px;font-weight:700;color:var(--text);margin-top:6px"></div>
-    </div>
-
-    <!-- Инсайт -->
-    <div>
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px">Заметка о теле</div>
-      <textarea id="body-insight" rows="2" placeholder="Что замечаю о своём теле сегодня..."
-        style="width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:14px;resize:vertical"
-        oninput="saveBody()"></textarea>
-    </div>
-  </div>
-
-  <!-- График динамики тела -->
-  <div class="card">
-    <div style="font-size:13px;font-weight:600;margin-bottom:10px">Динамика за неделю</div>
-    <div id="body-charts"></div>
-  </div>
-</div>
-
 <!-- ══════════ RESULT ══════════ -->
 
 <!-- ══════════ CALENDAR ══════════ -->
@@ -1101,8 +946,6 @@ canvas{max-width:100%;}
   <div id="dyn-content" style="display:none;">
   <div class="card" id="week-header-card">
     <div class="card-lbl" id="dynamic-week-label">Неделя</div>
-    <div class="card-sub" style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;">Колесо баланса — средние за неделю</div>
-    <div id="balance-radar" style="margin-bottom:16px;"></div>
     <div id="balance-bars"></div>
   </div>
   <div class="card">
@@ -1388,7 +1231,7 @@ const SPHERES=[
 ];
 
 function blankSph(){const o={};SPHERES.forEach(s=>o[s.key]={score:0,gives:[],takes:[]});return o;}
-function blankDay(){return{affirm:false,thought:'',caught:false,replaced:false,reflection:'',conflict:'',action:'',spheres:blankSph(),body:{sleep:0,water:0,move:0,sleepTime:'',wakeTime:'',energy:0,moveType:'',feelings:[],insight:''}};}
+function blankDay(){return{affirm:false,thought:'',caught:false,replaced:false,reflection:'',conflict:'',action:'',spheres:blankSph()};}
 function blank7(){return Array.from({length:7},blankDay);}
 
 function migrateDay(d){
@@ -1398,7 +1241,6 @@ function migrateDay(d){
     d.spheres=sph;
   }
   if(!d.thought)d.thought='';
-  if(!d.body)d.body={sleep:0,water:0,move:0,sleepTime:'',wakeTime:'',energy:0,moveType:'',feelings:[],insight:''};
   return d;
 }
 
@@ -1411,10 +1253,6 @@ if(!S)S={word:null,replace:null,context:null,belief:null,weekNum:0,days:blank7()
 
 let curDay=new Date().getDay();curDay=curDay===0?6:curDay-1;
 let curSub='morning';
-let activeSphereTab=0;
-let _dynDaysCache=null;
-let calYear=new Date().getFullYear();
-let calMonth=new Date().getMonth();
 let openSpheres={};
 let calYear=new Date().getFullYear();
 let calMonth=new Date().getMonth();
@@ -1451,18 +1289,13 @@ function renderPatterns(){
 
 function goSub(sub){
   curSub=sub;
-  ['morning','evening','spheres','body'].forEach(function(s){
-    var sec=document.getElementById('ss-'+s);
-    if(sec)sec.classList.toggle('active',s===sub);
-  });
-  document.querySelectorAll('.sub-tab').forEach(function(btn){
-    var m=btn.getAttribute('onclick')||'';
-    btn.classList.toggle('active',m.indexOf("'"+sub+"'")>=0);
+  ['morning','evening','spheres'].forEach((s,i)=>{
+    document.getElementById('ss-'+s).classList.toggle('active',s===sub);
+    document.querySelectorAll('.sub-tab')[i].classList.toggle('active',s===sub);
   });
   if(sub==='morning'){loadMorning();renderQuoteOfDay();}
   if(sub==='evening')loadEvening();
   if(sub==='spheres')renderSpheres();
-  if(sub==='body'){loadBody();renderBodyCharts();}
 }
 
 function renderWeek(){
@@ -1782,16 +1615,19 @@ function svgRadar(avgs){
 }
 
 function svgLine(data,labels,maxY,color){
-  const W=300,H=130,pL=28,pR=8,pT=10,pB=28,iW=(W-pL-pR)/(data.length-1),iH=H-pT-pB;
+  const W=300,H=130,pL=28,pR=8,pT=10,pB=28;
+  const iW=data.length>1?(W-pL-pR)/(data.length-1):(W-pL-pR);
+  const iH=H-pT-pB;
   let out='';
   for(let y=0;y<=maxY;y+=maxY<=10?2:10){const yy=pT+iH*(1-y/maxY);out+=`<line x1="${pL}" y1="${yy}" x2="${W-pR}" y2="${yy}" stroke="#f0e8e0" stroke-width=".7"/>`;out+=`<text x="${pL-3}" y="${yy+4}" text-anchor="end" font-size="9" fill="#bbb">${y}</text>`;}
   const pts=data.map((v,i)=>({x:pL+i*iW,y:pT+iH*(1-Math.min(Math.max(v,0),maxY)/maxY),v}));
-  out+=`<polyline points="${pts.map(p=>p.x+','+p.y).join(' ')}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round"/>`;
-  pts.forEach((p,i)=>{const prev=i>0?pts[i-1].v:null;const col=prev===null?color:p.v>prev?'#6A7A3E':p.v<prev?'#c07888':color;out+=`<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="${col}" stroke="#fff" stroke-width="1.5"/>`;out+=`<text x="${p.x}" y="${H-4}" text-anchor="middle" font-size="9" fill="#bbb">${labels[i]}</text>`;});
+  if(pts.length>1){out+=`<polyline points="${pts.map(p=>p.x+','+p.y).join(' ')}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round"/>`;}
+  pts.forEach((p,i)=>{const prev=i>0?pts[i-1].v:null;const col=prev===null?color:p.v>prev?'#6A7A3E':p.v<prev?'#c07888':color;out+=`<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="${col}" stroke="#fff" stroke-width="1.5"/>`;out+=`<text x="${p.x}" y="${H-4}" text-anchor="middle" font-size="9" fill="#bbb">${labels[i]||''}</text>`;});
   return`<svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block;">${out}</svg>`;
 }
 
 function renderDynamic(){
+  try{
   const el=document.getElementById('s-dynamic');if(!el)return;
   // Show content always
   const dynEmpty=document.getElementById('dyn-empty');
@@ -1808,13 +1644,11 @@ function renderDynamic(){
   const wlbl=document.getElementById('dynamic-week-label');
   if(wlbl)wlbl.textContent=(S.weekNum?'Неделя '+S.weekNum+' · ':'')+fmt(mon)+' — '+fmt(sun);
 
-  // Balance radar + bars
+  // Balance bars (replaces radar)
   const avgs=SPHERES.map(sp=>{
     const vals=S.days.map(d=>d.spheres[sp.key]?.score||0).filter(v=>v>0);
     return{...sp,avg:vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length):0};
   });
-  const radarEl=document.getElementById('balance-radar');
-  if(radarEl)radarEl.innerHTML=svgRadar(avgs.map(s=>s.avg));
   const maxAvg=Math.max(...avgs.map(s=>s.avg),1);
   const barsEl=document.getElementById('balance-bars');
   if(barsEl){
@@ -1843,8 +1677,9 @@ function renderDynamic(){
     // Simple SVG line chart
     const W=lCtx.offsetWidth||300;const H=140;const pad=30;
     const maxV=Math.max(...totals,10);
+    const denom=totals.length>1?totals.length-1:1;
     const pts=totals.map((v,i)=>({
-      x:pad+(i/(totals.length-1))*(W-pad*2),
+      x:pad+(i/denom)*(W-pad*2),
       y:H-pad-(v/maxV)*(H-pad*2)
     }));
     const pathD=pts.map((p,i)=>i===0?`M${p.x},${p.y}`:`L${p.x},${p.y}`).join(' ');
@@ -1892,6 +1727,7 @@ function renderDynamic(){
   renderSphereDetail(activeSphereTab||0);
   const tabsEl=document.getElementById('sphere-detail-tabs');
   if(tabsEl)tabsEl.innerHTML=SPHERES.map((sp,i)=>`<button onclick="renderSphereDetail(${i})" id="sdt-${i}" style="flex-shrink:0;padding:6px 10px;border:1.5px solid var(--border);border-radius:9px;font-size:.68rem;font-weight:700;cursor:pointer;background:${i===0?'var(--graphite)':'var(--card)'};color:${i===0?'#fff':'var(--muted)'};transition:all .2s;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">${sp.icon} ${sp.name}</button>`).join('');
+  }catch(e){console.error('renderDynamic error:',e);const dc=document.getElementById('dyn-content');if(dc)dc.style.display='block';}
 }
 
 
@@ -2053,179 +1889,6 @@ function importData(event){
   reader.readAsText(file);
   event.target.value='';
 }
-
-// ═══════ ТЕЛО ═══════
-function loadBody(){
-  var d=S.days[curDay],b=d.body||{};
-  var sl=document.getElementById('body-sleep'),wa=document.getElementById('body-water'),
-      ins=document.getElementById('body-insight'),
-      st=document.getElementById('body-sleep-time'),wt=document.getElementById('body-wake-time');
-  if(sl)sl.value=b.sleep||'';if(wa)wa.value=b.water||'';
-  if(ins)ins.value=b.insight||'';if(st)st.value=b.sleepTime||'';if(wt)wt.value=b.wakeTime||'';
-  var total=document.getElementById('move-total');if(total&&b.move>0)total.textContent='Итого: '+b.move+' мин';else if(total)total.textContent='';
-  renderMoveType(b.moveItems||[]);renderFeelings(b.feelings||[]);renderMoodBlock(b.feelings||[]);
-  renderBodyCharts();
-}
-function saveBody(){
-  var d=S.days[curDay];if(!d.body)d.body={};
-  var sl=document.getElementById('body-sleep'),wa=document.getElementById('body-water'),
-      mo=document.getElementById('body-move'),ins=document.getElementById('body-insight'),
-      st=document.getElementById('body-sleep-time'),wt=document.getElementById('body-wake-time');
-  if(wa)d.body.water=parseFloat(wa.value)||0;
-  if(mo)d.body.move=parseFloat(mo.value)||0;
-  if(ins)d.body.insight=ins.value;
-  if(st)d.body.sleepTime=st.value;if(wt)d.body.wakeTime=wt.value;
-  var stv=(st&&st.value||'').trim(),wtv=(wt&&wt.value||'').trim();
-  var stM=stv.match(/^(\d{1,2}):(\d{2})$/),wtM=wtv.match(/^(\d{1,2}):(\d{2})$/);
-  if(stM&&wtM&&sl){
-    var sh=+stM[1],sm=+stM[2],wh=+wtM[1],wm=+wtM[2];
-    var mins=(wh*60+wm)-(sh*60+sm);if(mins<0)mins+=1440;
-    var hrs=Math.round(mins/60*10)/10;sl.value=hrs;d.body.sleep=hrs;
-  } else if(sl){d.body.sleep=parseFloat(sl.value)||0;}
-  save();renderBodyCharts();
-}
-var RESOURCE_F=['радость','вдохновение','благодарность','любовь','сила','спокойствие','уверенность','лёгкость','восторг','азарт','интерес','нежность','принятие','доверие','открытость'];
-var NEGATIVE_F=['тревога','страх','раздражение','грусть','обида','злость','стыд','одиночество','оцепенение','беспомощность','вина','отчаяние','разочарование','ревность','зависть','подавленность','апатия','агрессия'];
-function calcMoodFromFeelings(feelings){
-  if(!feelings||feelings.length===0)return 0;
-  var pos=feelings.filter(function(f){return RESOURCE_F.indexOf(f)>=0;}).length;
-  var neg=feelings.filter(function(f){return NEGATIVE_F.indexOf(f)>=0;}).length;
-  var score=pos-neg;
-  if(score>=4)return 5;
-  if(score>=2)return 4;
-  if(score>=0&&pos>0)return 3;
-  if(score===-1)return 2;
-  return 1;
-}
-function renderMoodBlock(feelings){
-  var lotuses=document.getElementById('mood-lotuses');
-  var label=document.getElementById('mood-label');
-  if(!lotuses||!label)return;
-  if(!feelings||feelings.length===0){
-    lotuses.textContent='—';label.textContent='Отметь чувства выше';return;
-  }
-  var level=calcMoodFromFeelings(feelings);
-  var labels=['','Тяжело','Непросто','Нейтрально','Хорошо','Ресурсно'];
-  lotuses.textContent='🪷'.repeat(level);
-  label.textContent=labels[level];
-}
-function toggleMoveType(type){
-  var d=S.days[curDay];if(!d.body)d.body={};
-  if(!d.body.moveItems)d.body.moveItems=[];
-  var idx=d.body.moveItems.findIndex(function(x){return x.type===type;});
-  if(idx>=0){d.body.moveItems.splice(idx,1);}
-  else{d.body.moveItems.push({type:type,mins:0});}
-  calcTotalMove();save();renderMoveType(d.body.moveItems);
-}
-function setMoveMins(type,val){
-  var d=S.days[curDay];if(!d.body)d.body={};if(!d.body.moveItems)d.body.moveItems=[];
-  var item=d.body.moveItems.find(function(x){return x.type===type;});
-  if(item){item.mins=parseInt(val)||0;}
-  calcTotalMove();save();renderBodyCharts();
-}
-function calcTotalMove(){
-  var d=S.days[curDay];if(!d.body||!d.body.moveItems)return;
-  var total=d.body.moveItems.reduce(function(s,x){return s+(x.mins||0);},0);
-  d.body.move=total;
-  var el=document.getElementById('move-total');
-  if(el)el.textContent=total>0?'Итого: '+total+' мин':'';
-}
-function renderMoveType(items){
-  ['ходьба','бег','тренировка','йога','растяжка','другое'].forEach(function(t){
-    var btn=document.getElementById('mt-'+t);if(!btn)return;
-    var active=items&&items.some(function(x){return x.type===t;});
-    if(active){btn.style.background='var(--accent2)';btn.style.borderColor='var(--accent2)';btn.style.color='#fff';}
-    else{btn.style.background='var(--bg)';btn.style.borderColor='var(--border)';btn.style.color='var(--muted)';}
-  });
-  var inp=document.getElementById('move-inputs');if(!inp)return;
-  if(!items||items.length===0){inp.innerHTML='';return;}
-  inp.innerHTML=items.map(function(item){
-    return '<div style="display:flex;align-items:center;gap:8px">'
-      +'<span style="font-size:12px;color:var(--text);min-width:70px">'+item.type+'</span>'
-      +'<input type="number" min="0" placeholder="мин" value="'+(item.mins||'')+'"'
-      +' onchange="setMoveMins(\''+item.type+'\',this.value)"'
-      +' style="width:80px;padding:5px 8px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:13px">'
-      +'<span style="font-size:11px;color:var(--muted)">мин</span>'
-      +'</div>';
-  }).join('');
-}
-function toggleFeeling(f){
-  var d=S.days[curDay];if(!d.body)d.body={};if(!d.body.feelings)d.body.feelings=[];
-  var i=d.body.feelings.indexOf(f);if(i>=0)d.body.feelings.splice(i,1);else d.body.feelings.push(f);
-  save();renderFeelings(d.body.feelings);renderMoodBlock(d.body.feelings);renderBodyCharts();
-}
-function renderFeelings(active){
-  var resource=['радость','вдохновение','благодарность','любовь','сила','спокойствие','уверенность','лёгкость','восторг','азарт','интерес','нежность','принятие','доверие','открытость'];
-  var neutral=['усталость','пустота','растерянность','напряжение','задумчивость','скука','растекаемость'];
-  var negative=['тревога','страх','раздражение','грусть','обида','злость','стыд','одиночество','оцепенение','беспомощность','вина','отчаяние'];
-  var all=resource.concat(neutral,negative);
-  all.forEach(function(f){
-    var btn=document.getElementById('feel-'+f);if(!btn)return;
-    var c=resource.indexOf(f)>=0?'#A8BC8A':neutral.indexOf(f)>=0?'#C4A882':'#D4899A';
-    if(active&&active.indexOf(f)>=0){btn.style.background=c;btn.style.borderColor=c;btn.style.color='#fff';}
-    else{btn.style.background='var(--bg)';btn.style.borderColor='var(--border)';btn.style.color='var(--muted)';}
-  });
-}
-function showTimePicker(type){
-  var p=document.getElementById('time-picker-'+type);
-  if(p){p.style.display='flex';}
-}
-function pickTime(type,val){
-  var key=(type==='sleep'?'body-sleep-time':'body-wake-time');
-  var field=document.getElementById(key);
-  if(field){field.value=val;saveBody();}
-  var p=document.getElementById('time-picker-'+type);if(p)p.style.display='none';
-}
-document.addEventListener('click',function(e){
-  ['sleep','wake'].forEach(function(t){
-    var p=document.getElementById('time-picker-'+t);
-    var inp=document.getElementById(t==='sleep'?'body-sleep-time':'body-wake-time');
-    if(p&&inp&&!p.contains(e.target)&&e.target!==inp)p.style.display='none';
-  });
-});
-function getDayDate(i){
-  var now=new Date();
-  var dow=now.getDay();
-  var monday=new Date(now);
-  monday.setDate(now.getDate()-(dow===0?6:dow-1));
-  var d=new Date(monday);d.setDate(monday.getDate()+i);
-  return d;
-}
-function renderBodyCharts(){
-  var container=document.getElementById('body-charts');if(!container)return;
-  var days=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
-  var metrics=[
-    {key:'sleep',label:'Сон (ч)',max:10,color:'#8BA7D4'},
-    {key:'water',label:'Вода (л)',max:3,color:'#7BC4C4'},
-    {key:'move',label:'Движение (мин)',max:90,color:'#A8BC8A'},
-    {key:'energy',label:'Состояние',max:5,color:'#E8C97A',fromFeelings:true}
-  ];
-  var html='';
-  metrics.forEach(function(m){
-    html+='<div style="margin-bottom:24px">';
-    html+='<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px">'+m.label+'</div>';
-    html+='<div style="display:flex;align-items:flex-end;gap:4px;height:80px">';
-    for(var i=0;i<7;i++){
-      var b=S.days[i].body||{};
-      var val=m.fromFeelings?calcMoodFromFeelings(b.feelings||[]):parseFloat(b[m.key])||0;
-      var pct=Math.min(val/m.max,1);
-      var h=Math.round(pct*54)+4;
-      var isToday=i===curDay;
-      var valStr=val>0?String(val):'';
-      html+='<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:1px">';
-      html+='<div style="font-size:'+(isToday?'12':'10')+'px;font-weight:'+(isToday?'700':'400')+';color:'+(isToday?'var(--text)':'var(--muted)')+';height:16px;line-height:16px">'+valStr+'</div>';
-      html+='<div style="width:100%;flex:1;display:flex;align-items:flex-end">';
-      html+='<div style="width:100%;height:'+h+'px;background:'+(isToday?m.color:m.color+'66')+';border-radius:5px 5px 0 0;min-height:4px"></div>';
-      html+='</div>';
-      html+='<div style="font-size:11px;font-weight:'+(isToday?'700':'400')+';color:'+(isToday?'var(--text)':'var(--muted)')+'">'+days[i]+'</div>';
-      html+='</div>';
-    }
-    html+='</div></div>';
-  });
-  container.innerHTML=html;
-}
-// ═══════ КОНЕЦ ТЕЛО ═══════
-
 </script>
 
 <!-- ── FOOTER ── -->
