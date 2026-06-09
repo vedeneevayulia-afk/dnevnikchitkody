@@ -68,9 +68,9 @@ body{
   opacity:1;
 }
 .top-bar h1{
-  font-size:1.35rem;font-weight:800;color:#fff;
-  letter-spacing:-.03em;line-height:1.2;
-  position:relative;
+  font-size:1.7rem;font-weight:800;color:#fff;
+  letter-spacing:-.03em;line-height:1.15;
+  position:relative;margin-bottom:10px;
 }
 .top-bar p{
   font-family:Georgia,'Times New Roman',serif;
@@ -231,17 +231,22 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
 .sub-section.active{display:block;}
 
 /* ─── ТЕЛО ─── */
+.body-input{
+  width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;
+  background:rgba(255,255,255,.04);color:var(--text);font-size:.95rem;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;box-sizing:border-box;
+}
 .activity-btn{
-  padding:8px 14px;border:1.5px solid var(--border);border-radius:20px;
-  background:var(--card);color:var(--muted);font-size:.75rem;font-weight:600;
+  padding:8px 16px;border:1.5px solid var(--border);border-radius:20px;
+  background:transparent;color:var(--muted);font-size:.8rem;font-weight:600;
   cursor:pointer;transition:all .2s;font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
-.activity-btn.active{background:#6A7A3E;border-color:#6A7A3E;color:#fff;}
-.energy-star{font-size:1.5rem;cursor:pointer;transition:all .2s;opacity:.25;filter:grayscale(1);}
+.activity-btn.active{background:#D4899A;border-color:#D4899A;color:#fff;}
+.energy-star{font-size:1.8rem;cursor:pointer;transition:all .2s;opacity:.25;filter:grayscale(60%);}
 .feelings-group{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:4px;}
 .feeling-btn{
-  padding:7px 13px;border:1.5px solid var(--border);border-radius:20px;
-  background:var(--card);color:var(--muted);font-size:.75rem;font-weight:600;
+  padding:7px 14px;border:1.5px solid var(--border);border-radius:20px;
+  background:transparent;color:var(--muted);font-size:.8rem;font-weight:600;
   cursor:pointer;transition:all .2s;font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
 .feeling-btn.active{background:#6A7A3E;border-color:#6A7A3E;color:#fff;}
@@ -635,14 +640,28 @@ canvas{max-width:100%;}
 
 <!-- ══════════ ONBOARDING ══════════ -->
 <div id="onboarding" style="display:none;min-height:100vh;background:var(--bg);padding:0 0 40px;max-width:520px;margin:0 auto;">
-  <div style="background:var(--graphite);padding:40px 22px 32px;position:relative;overflow:hidden;">
-    <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
-    <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:var(--accent2);margin-bottom:12px;opacity:.9;">Тело как состояние · Юлия Веденеева</div>
-    <h1 style="font-size:1.5rem;font-weight:800;color:#fff;line-height:1.2;letter-spacing:-.03em;">Дневник трансформации</h1>
-    <p style="font-size:.85rem;color:#A8BC8A;letter-spacing:.08em;text-transform:uppercase;margin-top:.35rem;font-weight:500;">Чит-коды сознания</p>
-    <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.95rem;color:#FAF8F5;margin-top:10px;line-height:1.55;">Чит-коды сознания: меняя мысли — меняются слова и действия — меняется реальность</p>
+  <!-- ШАПКА -->
+  <div class="top-bar">
+    <div class="top-bar-eyebrow">Тело как состояние · Юлия Веденеева</div>
+    <h1>Дневник трансформации</h1>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.82rem;line-height:1.4;margin-bottom:6px;white-space:nowrap;"><span style="color:#A8BC8A;font-weight:700;">Сознание программирует тело.</span> <span style="color:var(--accent2);font-weight:700;">Тело держит программу.</span></p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.5;margin:0;">Дневник поможет тебе <strong style="color:#fff;font-style:normal;">поменять код на обоих уровнях</strong> — не по очереди, а одновременно.</p>
   </div>
   <div style="padding:20px 18px 0;">
+
+    <!-- Напоминания -->
+    <div style="background:var(--graphite);border-radius:var(--radius);padding:20px;margin-bottom:14px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);margin-bottom:6px;">Напоминания</div>
+      <div style="font-size:.78rem;color:rgba(255,255,255,.55);margin-bottom:14px;line-height:1.5;">Выбери время — браузер пришлёт уведомление чтобы не забыть заполнить дневник.</div>
+      <div style="display:flex;gap:10px;margin-bottom:14px;">
+        <div style="flex:1"><div style="font-size:.62rem;font-weight:700;color:rgba(255,255,255,.4);margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;">Утро</div><input type="time" id="notif-morning" value="08:00" style="width:100%;padding:9px 12px;border:1px solid rgba(255,255,255,.12);border-radius:10px;font-size:.85rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;background:rgba(255,255,255,.08);"></div>
+        <div style="flex:1"><div style="font-size:.62rem;font-weight:700;color:rgba(255,255,255,.4);margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;">Вечер</div><input type="time" id="notif-evening" value="21:00" style="width:100%;padding:9px 12px;border:1px solid rgba(255,255,255,.12);border-radius:10px;font-size:.85rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;background:rgba(255,255,255,.08);"></div>
+      </div>
+      <div id="notif-status" style="font-size:.75rem;font-weight:700;margin-bottom:10px;"></div>
+      <button onclick="setupNotifications()" id="notif-btn" style="width:100%;padding:12px;background:linear-gradient(135deg,#D4899A,#c4748a);color:#fff;border:none;border-radius:10px;font-size:.85rem;font-weight:800;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.01em;">Включить напоминания</button>
+    </div>
+
     <div style="background:#fff;border-radius:var(--radius);padding:22px;margin-bottom:14px;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
       <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:7px;"><span style="display:inline-block;width:16px;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;"></span>Что тебя ждёт внутри</div>
       <div style="display:flex;flex-direction:column;gap:14px;">
@@ -666,12 +685,78 @@ canvas{max-width:100%;}
           <div style="width:36px;height:36px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">📈</div>
           <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Динамика и календарь</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Видишь как меняется твоё поле неделя за неделей</div></div>
         </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#3d1f1f;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🫀</div>
+          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Трекер тела</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Сон, вода, движение, энергия — каждый день видишь как живёт твоё тело</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#1f2a3d;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🧭</div>
+          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Карта чувств</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Называешь — значит замечаешь. Замечаешь — значит управляешь</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#1a2a3a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🌊</div>
+          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Динамика состояния</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">График по дням — видишь паттерны в теле и настроении за неделю</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#3d1a1a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🎯</div>
+          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Реализация целей и потенциала</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Цели на год, месяц, неделю — в одном месте, с отслеживанием прогресса</div></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;background:linear-gradient(135deg,rgba(212,137,154,.08),rgba(106,122,62,.08));border-radius:14px;padding:12px;border:1px solid rgba(212,137,154,.15);">
+          <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#3d1a2a,#2C2825);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🧬</div>
+          <div>
+            <div style="font-size:.85rem;font-weight:800;color:var(--text);margin-bottom:4px;">Карта паттернов — речевые репликаторы</div>
+            <div style="font-size:.73rem;color:var(--muted);line-height:1.5;margin-bottom:8px;">Это ядро трансформации. <strong style="color:var(--text);">Речевой репликатор</strong> — это фраза которую ты повторяешь автоматически. Ты её уже не думаешь — она просто срабатывает. И каждый раз перезаписывает программу в мозге.</div>
+            <div style="font-size:.73rem;color:var(--muted);line-height:1.5;margin-bottom:8px;">«Нет денег», «Не сейчас», «Все так живут», «Я не умею», «Наверное не получится» — это не слова. Это коды, которые управляют твоими решениями, телом и тем что притягивается в жизнь.</div>
+            <div style="font-size:.73rem;color:var(--muted);line-height:1.5;margin-bottom:10px;">В карте <strong style="color:var(--text);">7 программ-репликаторов</strong>: нехватки, чужого сценария, заморозки, жертвы, самосаботажа, сравнения и обесценивания. К каждому — что убрать из речи и чем заменить. Работаешь с <strong style="color:var(--text);">одним паттерном в неделю</strong>. Поймала — заменила вслух — закрепила телесно.</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(212,137,154,.15);color:#D4899A;">Программа нехватки</span>
+              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(212,137,154,.15);color:#D4899A;">Чужой сценарий</span>
+              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(212,137,154,.15);color:#D4899A;">Заморозка</span>
+              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(168,188,138,.15);color:#A8BC8A;">Жертва</span>
+              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(168,188,138,.15);color:#A8BC8A;">Самосаботаж</span>
+              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(168,188,138,.15);color:#A8BC8A;">Сравнение</span>
+              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(168,188,138,.15);color:#A8BC8A;">Обесценивание</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div style="background:linear-gradient(135deg,#4a5e2a,#6A7A3E);border-radius:var(--radius-sm);padding:18px 20px;margin-bottom:18px;position:relative;overflow:hidden;">
-      <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
-      <div style="font-size:.78rem;font-weight:800;color:var(--accent2);margin-bottom:6px;">Рекомендация</div>
-      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.92rem;color:#FAF8F5;line-height:1.55;">Дневник без срока. Минимум <strong style="color:#fff;font-style:normal;">21 день</strong> — столько нужно мозгу чтобы новый код стал автоматическим. Один чит-код в неделю. Вся жизнь — по-другому.</div>
+    <div style="background:#1C1C1E;border-radius:16px;padding:24px 22px;margin-bottom:18px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#A8BC8A,#D4899A);"></div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
+        <div style="width:3px;height:16px;background:linear-gradient(180deg,#A8BC8A,#D4899A);border-radius:2px;"></div>
+        <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.4);">Как работает дневник</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:24px;height:24px;border-radius:50%;background:rgba(168,188,138,.15);border:1px solid rgba(168,188,138,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#A8BC8A;"></div>
+          </div>
+          <div><div style="font-size:.85rem;font-weight:700;color:#A8BC8A;margin-bottom:3px;">Дневник бессрочный</div><div style="font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.55;">Ты начнёшь видеть результат уже через <span style="color:#A8BC8A;font-weight:700;">21 день</span> — именно столько нужно мозгу, чтобы новый код стал автоматическим.</div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:24px;height:24px;border-radius:50%;background:rgba(168,188,138,.15);border:1px solid rgba(168,188,138,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#A8BC8A;"></div>
+          </div>
+          <div><div style="font-size:.85rem;font-weight:700;color:#A8BC8A;margin-bottom:3px;">Чем больше работаешь</div><div style="font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.55;">Тем глубже идут изменения. Это твой новый способ жить, а не курс с дедлайном.</div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:24px;height:24px;border-radius:50%;background:rgba(212,137,154,.15);border:1px solid rgba(212,137,154,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#D4899A;"></div>
+          </div>
+          <div><div style="font-size:.85rem;font-weight:700;color:#D4899A;margin-bottom:3px;">Сознание запускает тело, тело закрепляет сознание</div><div style="font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.55;">Когда работаешь на обоих уровнях — химия мозга меняется быстрее. Тело становится союзником.</div></div>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:24px;height:24px;border-radius:50%;background:rgba(212,137,154,.15);border:1px solid rgba(212,137,154,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#D4899A;"></div>
+          </div>
+          <div><div style="font-size:.85rem;font-weight:700;color:#D4899A;margin-bottom:3px;">Один чит-код в неделю</div><div style="font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.55;">Вся жизнь — по-другому.</div></div>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);text-align:center;">
+        <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.2rem;font-weight:700;color:#fff;line-height:1.4;margin-bottom:6px;">Добро пожаловать в новую себя.</div>
+        <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.5;letter-spacing:.02em;">Этот дневник — твой первый шаг.</div>
+      </div>
     </div>
     <div style="background:#fff;border-radius:var(--radius-sm);padding:18px 20px;margin-bottom:16px;border:1px solid var(--border);box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:14px;">
       <div style="width:48px;height:48px;border-radius:50%;background:var(--graphite);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.4rem;position:relative;overflow:hidden;">
@@ -684,19 +769,42 @@ canvas{max-width:100%;}
         <a href="https://calendly.com/vedeneevayulia/30min" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:8px;padding:6px 14px;font-size:.72rem;font-weight:700;box-shadow:0 2px 10px rgba(212,137,154,.3);">Разбор 15 мин · вопрос-ответ</a>
       </div>
     </div>
-    <div style="background:linear-gradient(135deg,#1a2410 0%,#2C2825 60%,#3d2a2a 100%);border-radius:var(--radius);padding:26px 22px;margin-bottom:16px;position:relative;overflow:hidden;">
-      <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
-      <div style="font-size:.52rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--accent2);margin-bottom:8px;opacity:.9;">Следующий уровень</div>
-      <div style="font-size:1.15rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:10px;">Лаборатория<br>тела как состояние</div>
-      <div style="font-size:.72rem;color:rgba(255,255,255,.65);line-height:1.5;margin-bottom:14px;">Дневник — твой ежедневный инструмент.<br>Лаборатория — 4 недели где меняем оба уровня сразу.</div>
-      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:16px;">
-        <div style="display:flex;align-items:center;gap:9px;font-size:.73rem;color:rgba(255,255,255,.8);"><span style="color:var(--accent2);font-size:.9rem;">◆</span>8 живых встреч в группе</div>
-        <div style="display:flex;align-items:center;gap:9px;font-size:.73rem;color:rgba(255,255,255,.8);"><span style="color:var(--accent2);font-size:.9rem;">◆</span>28 дней с протоколом участника</div>
-        <div style="display:flex;align-items:center;gap:9px;font-size:.73rem;color:rgba(255,255,255,.8);"><span style="color:var(--accent2);font-size:.9rem;">◆</span>Личный разбор 1:1</div>
-        <div style="display:flex;align-items:center;gap:9px;font-size:.73rem;color:rgba(255,255,255,.8);"><span style="color:var(--accent2);font-size:.9rem;">◆</span>Только 10 мест</div>
+    <!-- БЛОК ЛАБОРАТОРИЯ ПОЛНЫЙ -->
+    <div style="background:var(--graphite);border-radius:var(--radius);padding:24px 20px 20px;margin-bottom:14px;position:relative;overflow:hidden;">
+      <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
+      <div style="font-size:.52rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:var(--accent2);margin-bottom:8px;">Следующий уровень</div>
+      <h2 style="font-size:1.3rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:4px;">Лаборатория тела как состояние</h2>
+      <div style="font-size:.8rem;color:#D4899A;font-weight:600;margin-bottom:4px;">Групповая программа · 28 дней</div>
+      <div style="font-family:Georgia,serif;font-style:italic;font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:14px;line-height:1.5;">Авторская программа на стыке психологии, нейробиологии,<br>нейролингвистики и законов сознания</div>
+      <div style="background:rgba(255,255,255,.07);border-radius:12px;padding:14px;margin-bottom:14px;border:1px solid rgba(255,255,255,.1);">
+        <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;margin-bottom:8px;"><strong>Этот дневник — твой навсегда.</strong> Работаешь сама, в своём темпе, без ограничений по времени. Каждую неделю убираешь один ограничивающий репликатор и вшиваешь новый чит-код.</p>
+        <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;margin-bottom:8px;"><span style="color:#D4899A;font-weight:700;">Лаборатория тела как состояния</span> — групповая работа со мной. 28 дней, чат с поддержкой и ежедневными вопрос-ответ, 2 живые онлайн встречи в неделю, личные живые разборы и практики для перепрошивки сознания на двух уровнях сразу.</p>
+        <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;margin-bottom:8px;">Мы работаем на двух уровнях одновременно. <strong style="color:#A8BC8A;">Внутренний — непроявленный:</strong> твои мысли, там живёт твоё внимание. Куда внимание — туда энергия. Большинство годами меняют поведение снаружи, но внутренняя программа остаётся нетронутой — и жизнь возвращает тот же сценарий. <strong style="color:#A8BC8A;">Внешний — проявленный:</strong> слова и действия, то что создаёт реальность. Между ними — состояние. Именно оно определяет всё: слова, решения, деньги, тело. Просто осознать недостаточно — осознание в коре мозга, а старая программа глубже. В теле. В автоматических реакциях. Без перепрошивки самого кода осознание остаётся красивой идеей. В Лаборатории мы меняем код на обоих уровнях сразу.</p>
+        <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;margin-bottom:8px;">Результат — в теле, деньгах и отношениях.</p>
+        <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;"><span style="color:#D4899A;font-weight:700;">Гарантия — 100% возврат денег</span> если не будет результата, при условии что вы выполните все задания и упражнения на программе.</p>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.45);margin-top:8px;">Открывается <strong style="color:#D4899A;">2 раза в год. 10 мест.</strong></p>
       </div>
-      <a href="https://t.me/meta_ulia" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:10px;padding:11px 20px;font-size:.8rem;font-weight:800;letter-spacing:.01em;box-shadow:0 4px 16px rgba(212,137,154,.35);">Написать ЛАБОРАТОРИЯ →</a>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:#D4899A;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;">8</div>
+          <span style="font-size:.8rem;color:#FAF8F5;">Живых встреч в Zoom — 2 раза в неделю</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:#D4899A;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;">28</div>
+          <span style="font-size:.8rem;color:#FAF8F5;">Дней в закрытом чате с разборами</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:#6A7A3E;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:800;color:#fff;flex-shrink:0;">1:1</div>
+          <span style="font-size:.8rem;color:#FAF8F5;">Индивидуальный разбор твоей ситуации</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:#6A7A3E;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;">10</div>
+          <span style="font-size:.8rem;color:#FAF8F5;"><span style="color:#D4899A;font-weight:700;">10 мест</span> · небольшая группа</span>
+        </div>
+      </div>
+      <a href="https://t.me/meta_ulia" target="_blank" style="display:block;text-align:center;background:linear-gradient(135deg,#D4899A,#c4748a);color:#fff;font-size:.88rem;font-weight:700;padding:14px;border-radius:12px;text-decoration:none;letter-spacing:.02em;">Оставить заявку и узнать подробнее →</a>
     </div>
+
     <button id="start-btn" onclick="startApp()" style="width:100%;padding:16px;background:var(--graphite);color:#fff;border:none;border-radius:var(--radius-sm);font-size:.95rem;font-weight:800;cursor:pointer;letter-spacing:-.01em;margin-bottom:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;position:relative;overflow:hidden;">
       <span style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></span>
       Начать перепрошивку →
@@ -709,7 +817,8 @@ canvas{max-width:100%;}
 <div class="top-bar">
   <div class="top-bar-eyebrow">Тело как состояние · Юлия Веденеева</div>
   <h1>Дневник трансформации</h1>
-  <p>Чит-коды сознания: меняя мысли — меняются слова и действия — меняется реальность</p>
+  <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.82rem;line-height:1.4;margin-bottom:6px;white-space:nowrap;"><span style="color:#A8BC8A;font-weight:700;">Сознание программирует тело.</span> <span style="color:var(--accent2);font-weight:700;">Тело держит программу.</span></p>
+  <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.5;margin:0;">Дневник поможет тебе <strong style="color:#fff;font-style:normal;">поменять код на обоих уровнях</strong> — не по очереди, а одновременно.</p>
 </div>
 
 <div class="tabs">
@@ -720,7 +829,6 @@ canvas{max-width:100%;}
   <button class="tab" onclick="go('dynamic')">Динамика</button>
   <button class="tab" onclick="go('patterns')">Паттерны</button>
   <button class="tab" onclick="go('archive')">Архив</button>
-  <button class="tab tab-body" onclick="go('body')" style="background:var(--accent2);color:#fff;font-weight:800;">Тело</button>
 </div>
 
 <!-- ══════════ WEEK ══════════ -->
@@ -772,6 +880,7 @@ canvas{max-width:100%;}
     <button class="sub-tab active" onclick="goSub('morning')">Утро</button>
     <button class="sub-tab" onclick="goSub('evening')">Вечер</button>
     <button class="sub-tab" onclick="goSub('spheres')">Сферы</button>
+    <button class="sub-tab" onclick="goSub('body')">Тело</button>
   </div>
 
   <!-- УТРО -->
@@ -782,51 +891,155 @@ canvas{max-width:100%;}
       <div class="quote-author" id="qod-author"></div>
     </div>
     <div class="affirm-card">
-      <div class="affirm-title">Утренняя практика — произнести вслух</div>
+      <div class="affirm-title">Утренняя практика — произнести вслух минимум 3 раза</div>
+      <div style="font-size:.72rem;color:var(--muted);margin-bottom:14px;line-height:1.5;">Выбери один чит-код — это мета-смысл твоего дня. Произноси вслух: тело слышит и перезаписывает программу. Нажми на чит-код чтобы узнать как он работает.</div>
+
+      <!-- ТЕЛО -->
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#A8BC8A;margin-bottom:8px;margin-top:4px;">Тело</div>
       <div class="affirm-list" id="affirm-list-base">
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">1</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Мир хочет меня</div><div class="affirm-item-hint" style="display:none">Ты не борешься с миром. Мир разворачивается навстречу — когда ты перестаёшь сопротивляться.</div></div>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Моё тело знает путь</div><div class="affirm-item-hint" style="display:none">Тело — не враг и не объект контроля. Оно накапливает мудрость каждого твоего опыта. Когда ты перестаёшь бороться с ним — оно начинает вести.</div></div>
         </div>
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">2</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Сейчас я вижу возможным и свидетельствую</div><div class="affirm-item-hint" style="display:none">Видеть — значит уже создавать. Свидетель не ждёт, он замечает то, что уже происходит.</div></div>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я слышу своё тело и доверяю этому</div><div class="affirm-item-hint" style="display:none">Тело говорит сигналами: усталость, напряжение, лёгкость, расширение. Доверие к этим сигналам — это прямой канал к своей правде.</div></div>
         </div>
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">3</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Моё состояние соответствует реальности</div><div class="affirm-item-hint" style="display:none">Тело не врёт. Если внутри расширение — снаружи возможности. Настрой состояние — реальность подтянется.</div></div>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Моё тело меняется вместе со мной</div><div class="affirm-item-hint" style="display:none">Сознание и тело — единая система. Когда меняется внутренняя программа, тело перестраивается вслед. Химия мозга, гормоны, осанка — всё это следует за кодом внутри.</div></div>
         </div>
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">4</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Мои декорации отражают мой внутренний мир</div><div class="affirm-item-hint" style="display:none">Всё что вокруг — зеркало. Хочешь изменить декорации — меняй программу внутри.</div></div>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Моё тело в порядке прямо сейчас</div><div class="affirm-item-hint" style="display:none">Мозг живёт в постоянном режиме угрозы, если не получает сигнал безопасности. Эта фраза — тот самый сигнал. Тело расслабляется и начинает восстанавливаться.</div></div>
         </div>
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">5</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Иду и делаю что вижу</div><div class="affirm-item-hint" style="display:none">Действие из состояния, а не из страха. Вижу следующий шаг — делаю его. Без лишних объяснений.</div></div>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я живу в своём ритме</div><div class="affirm-item-hint" style="display:none">Сравнение с чужим ритмом — один из главных источников хронического стресса. Свой ритм — это не лень. Это биология и честность с собой.</div></div>
         </div>
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">6</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Я выбираю и меня это меняет</div><div class="affirm-item-hint" style="display:none">Каждый выбор — это перезапись кода. Маленький выбор из силы меняет больше, чем большое усилие из страха.</div></div>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Иду и делаю что вижу</div><div class="affirm-item-hint" style="display:none">Действие из состояния, а не из страха. Вижу следующий шаг — делаю его. Тело включается когда есть ясность направления.</div></div>
+        </div>
+      </div>
+
+      <!-- СОСТОЯНИЕ -->
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#A8BC8A;margin-bottom:8px;margin-top:16px;">Состояние</div>
+      <div class="affirm-list">
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">1</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Состояние внутри строит жизнь снаружи</div><div class="affirm-item-hint" style="display:none">Декорации снаружи — отражение программы внутри. Хочешь изменить реальность — начни с состояния. Это закон, а не метафора.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">2</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я возвращаюсь к себе каждый раз</div><div class="affirm-item-hint" style="display:none">Срыв — не провал. Уход в реакцию — не поражение. Трансформация — это способность возвращаться. Каждый раз быстрее.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">3</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я выбираю из силы</div><div class="affirm-item-hint" style="display:none">Два источника решений: страх или сила. Страх сжимает и закрывает. Сила расширяет и открывает. Прежде чем действовать — почувствуй откуда идёшь.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">4</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Достаточно просто быть собой</div><div class="affirm-item-hint" style="display:none">Большинство усилий — это попытка доказать что ты достаточно хороша. Когда ты это уже знаешь — энергия перестаёт утекать. Она остаётся тебе.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">5</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Сила уже здесь, внутри меня</div><div class="affirm-item-hint" style="display:none">Сила не приходит когда похудеешь, заработаешь или достигнешь. Она уже есть. Этот код переключает мозг с режима поиска на режим присутствия.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">6</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я в потоке своей настоящей жизни</div><div class="affirm-item-hint" style="display:none">Поток — это не случайность. Это состояние когда внутренняя программа совпадает с действием. Ты не плывёшь против себя.</div></div>
         </div>
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">7</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Вижу возможности</div><div class="affirm-item-hint" style="display:none">Мозг находит то, на что настроен. Настройся на возможности — и он начнёт их замечать везде.</div></div>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я есть и моя сила в настоящем</div><div class="affirm-item-hint" style="display:none">Прошлое забирает вину. Будущее забирает тревогу. Настоящее — единственное место где есть реальная сила для действия.</div></div>
+        </div>
+      </div>
+
+      <!-- РЕАЛИЗАЦИЯ -->
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#D4899A;margin-bottom:8px;margin-top:16px;">Реализация</div>
+      <div class="affirm-list">
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">1</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я иду туда, куда смотрю</div><div class="affirm-item-hint" style="display:none">Фокус внимания = направление движения. Мозг буквально строит реальность вокруг того, на что смотрит. Смотри на цель, а не на препятствие.</div></div>
         </div>
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
-          <span class="a-num">8</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Я есть то что есть</div><div class="affirm-item-hint" style="display:none">Принятие — не слабость. Это точка опоры. Отсюда можно двигаться.</div></div>
+          <span class="a-num">2</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я позволяю себе получать</div><div class="affirm-item-hint" style="display:none">Многие умеют давать, но блокируют получение. Это тоже программа. Позволить себе получать — значит убрать внутренний запрет на изобилие.</div></div>
         </div>
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
-          <span class="a-num">9</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Всё, что не происходит сейчас — это всё для меня</div><div class="affirm-item-hint" style="display:none">Задержка — не отказ. Всё приходит в нужное время. Твоя задача — оставаться открытой.</div></div>
+          <span class="a-num">3</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Мир отвечает на моё состояние</div><div class="affirm-item-hint" style="display:none">Люди, ситуации, возможности — всё это резонирует с твоим внутренним полем. Меняешь поле — меняется то, что приходит.</div></div>
         </div>
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
-          <span class="a-num">10</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Весь мир разворачивается для меня</div><div class="affirm-item-hint" style="display:none">Не против тебя — для тебя. Даже трудное — для тебя. Эта позиция меняет восприятие любой ситуации.</div></div>
+          <span class="a-num">4</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я вижу возможности</div><div class="affirm-item-hint" style="display:none">Мозг находит то, на что настроен — это ретикулярная активирующая система. Настрой на возможности — и он начнёт их замечать везде где раньше видел тупик.</div></div>
         </div>
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
-          <span class="a-num">11</span>
-          <div class="affirm-item-inner"><div class="affirm-item-text">Я выбираю то, что меня расширяет и даёт мне энергию</div><div class="affirm-item-hint" style="display:none">Каждое решение можно проверить телом: расширяет или сжимает? Выбирай расширение.</div></div>
+          <span class="a-num">5</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я создаю из внутреннего, а внешнее следует</div><div class="affirm-item-hint" style="display:none">Большинство пытается строить снаружи внутрь. Но устойчивый результат идёт изнутри наружу. Состояние первично. Действие — следствие.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">6</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я знаю, куда иду</div><div class="affirm-item-hint" style="display:none">Ясность направления — это не план на 5 лет. Это внутренняя уверенность в следующем шаге. Мозг не тратит энергию на тревогу когда есть ориентир.</div></div>
+        </div>
+      </div>
+
+      <!-- ОТНОШЕНИЯ -->
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#D4899A;margin-bottom:8px;margin-top:16px;">Отношения</div>
+      <div class="affirm-list">
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">1</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я выбираю близость без страха</div><div class="affirm-item-hint" style="display:none">Страх близости — одна из самых частых скрытых программ. Она заставляет держать дистанцию даже с теми, кого любишь. Этот код начинает её переписывать.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">2</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я есть то, что притягивает нужное</div><div class="affirm-item-hint" style="display:none">Отношения — зеркало твоего внутреннего поля. Когда ты в своей силе — притягиваются люди из силы. Меняешь себя — меняется круг.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">3</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я открыта тому, что приходит</div><div class="affirm-item-hint" style="display:none">Контроль закрывает. Открытость впускает. Это не про пассивность — это про доверие к тому, что жизнь знает куда тебя вести.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">4</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Мой партнёр видит меня и я вижу его</div><div class="affirm-item-hint" style="display:none">Видеть — значит быть присутствующей, а не реагирующей. Этот код создаёт пространство для настоящего контакта, а не ролевого взаимодействия.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">5</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Мы растём вместе и это нас сближает</div><div class="affirm-item-hint" style="display:none">Рост часто пугает партнёров — кажется что ты уходишь. Этот код переписывает сценарий: трансформация как точка сближения, а не отдаления.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">6</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я открыта партнёру и он открыт мне</div><div class="affirm-item-hint" style="display:none">Взаимная открытость — это не данность, это состояние. Когда ты создаёшь его внутри — оно отражается снаружи.</div></div>
+        </div>
+      </div>
+
+      <!-- МИР И РЕАЛЬНОСТЬ -->
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#A8BC8A;margin-bottom:8px;margin-top:16px;">Мир и реальность</div>
+      <div class="affirm-list">
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">1</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Мир хочет меня</div><div class="affirm-item-hint" style="display:none">Большинство живут в фоновом убеждении что мир равнодушен или враждебен. Этот код переключает нейронную сеть: мир — союзник, а не препятствие.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">2</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Мир отражает мой потенциал</div><div class="affirm-item-hint" style="display:none">То, что ты видишь снаружи — это потолок твоих внутренних убеждений о себе. Подними потолок внутри — реальность расширится вслед.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">3</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Весь мир разворачивается для меня</div><div class="affirm-item-hint" style="display:none">Не против тебя — для тебя. Даже трудное — для тебя. Эта позиция меняет восприятие любой ситуации и открывает то, что раньше казалось закрытым.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">4</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Моя реальность растёт из моего состояния</div><div class="affirm-item-hint" style="display:none">Реальность не случается с тобой. Она вырастает из твоего внутреннего поля. Это не магия — это нейробиология и закон резонанса.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">5</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Мои декорации отражают мой внутренний мир</div><div class="affirm-item-hint" style="display:none">Всё что вокруг — зеркало. Отношения, деньги, здоровье, среда. Хочешь изменить декорации — меняй программу внутри.</div></div>
+        </div>
+        <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
+          <span class="a-num">6</span>
+          <div class="affirm-item-inner"><div class="affirm-item-text">Я притягиваю людей, которые меня видят</div><div class="affirm-item-hint" style="display:none">Когда ты сама себя видишь и принимаешь — ты начинаешь притягивать тех, кто видит тебя по-настоящему. Это работает через поле, не через усилие.</div></div>
         </div>
       </div>
 
@@ -840,8 +1053,8 @@ canvas{max-width:100%;}
       <button class="affirm-btn" id="affirm-btn" onclick="toggleAffirm()" style="margin-top:14px;">Практику выполнила</button>
     </div>
     <div class="card">
-      <div class="card-lbl">Мысль дня</div>
-      <textarea id="d-thought" placeholder="Что замечаю в себе прямо сейчас..." onblur="saveMorning()"></textarea>
+      <div class="card-lbl">Мой чит-код дня</div>
+      <textarea id="d-thought" placeholder="Один чит-код который беру в этот день..." onblur="saveMorning()"></textarea>
     </div>
   </div>
 
@@ -880,6 +1093,158 @@ canvas{max-width:100%;}
       </div>
     </div>
     <div id="spheres-list"></div>
+  </div>
+
+  <!-- ТЕЛО -->
+  <div id="ss-body" class="sub-section">
+
+    <!-- ФИЗИЧЕСКИЕ ПОКАЗАТЕЛИ -->
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div style="background:linear-gradient(135deg,#2C2C2C 0%,#3a3535 100%);padding:16px 20px 14px;">
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Физические показатели</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Тело начинается с базы</div>
+      </div>
+      <div style="padding:20px;">
+
+        <!-- Сон -->
+        <div style="margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <span style="font-size:1.1rem;">🌙</span>
+            <span style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Сон</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div>
+              <div style="font-size:.7rem;color:var(--muted);margin-bottom:5px;">Отход ко сну</div>
+              <input type="time" id="b-bedtime" class="body-input" oninput="calcSleep()" style="text-align:center;font-size:.95rem;font-weight:600;">
+            </div>
+            <div>
+              <div style="font-size:.7rem;color:var(--muted);margin-bottom:5px;">Подъём</div>
+              <input type="time" id="b-waketime" class="body-input" oninput="calcSleep()" style="text-align:center;font-size:.95rem;font-weight:600;">
+            </div>
+          </div>
+          <div id="b-sleep-display" style="display:none;margin-top:10px;padding:10px 14px;background:linear-gradient(135deg,rgba(106,147,195,.12),rgba(106,147,195,.06));border-radius:10px;border-left:3px solid #6A93C3;">
+            <span style="font-size:.75rem;color:var(--muted);">Итого сна: </span>
+            <span id="b-sleep-hours" style="font-size:1rem;font-weight:800;color:#6A93C3;"></span>
+          </div>
+        </div>
+
+        <div style="height:1px;background:var(--border);margin-bottom:20px;"></div>
+
+        <!-- Вода -->
+        <div style="margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <span style="font-size:1.1rem;">💧</span>
+            <span style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Вода</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0;background:rgba(0,0,0,.04);border-radius:12px;border:1.5px solid var(--border);overflow:hidden;">
+            <button onclick="changeWater(-0.5)" style="width:44px;height:44px;border:none;background:transparent;color:var(--text);font-size:1.3rem;cursor:pointer;border-right:1px solid var(--border);">−</button>
+            <div style="flex:1;text-align:center;">
+              <span id="b-water-display" style="font-size:1.4rem;font-weight:800;color:#5BA5A0;">0</span>
+              <span style="font-size:.75rem;color:var(--muted);margin-left:4px;">л</span>
+            </div>
+            <button onclick="changeWater(0.5)" style="width:44px;height:44px;border:none;background:transparent;color:var(--text);font-size:1.3rem;cursor:pointer;border-left:1px solid var(--border);">+</button>
+          </div>
+          <input type="hidden" id="b-water" value="0">
+        </div>
+
+        <div style="height:1px;background:var(--border);margin-bottom:20px;"></div>
+
+        <!-- Движение -->
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <span style="font-size:1.1rem;">⚡</span>
+            <span style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Движение</span>
+          </div>
+          <div id="activity-rows" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;"></div>
+          <div id="activity-mins-rows" style="display:flex;flex-direction:column;gap:6px;"></div>
+          <div id="b-movement-summary" style="display:none;margin-top:10px;padding:10px 14px;background:linear-gradient(135deg,rgba(106,122,62,.12),rgba(106,122,62,.06));border-radius:10px;border-left:3px solid #6A7A3E;">
+            <span style="font-size:.75rem;color:var(--muted);">Итого: </span>
+            <span id="b-movement-total" style="font-size:1rem;font-weight:800;color:#6A7A3E;">0</span>
+            <span style="font-size:.75rem;color:var(--muted);"> мин</span>
+          </div>
+          <input type="hidden" id="b-movement" value="0">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- КАРТА ЧУВСТВ -->
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div style="background:linear-gradient(135deg,#2C2C2C 0%,#3a3535 100%);padding:16px 20px 14px;">
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Карта чувств</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Что живёт внутри сегодня</div>
+      </div>
+      <div style="padding:16px 20px;background:#1C1C1E;border-bottom:1px solid rgba(255,255,255,.06);">
+        <div style="font-size:.82rem;font-weight:700;color:#A8BC8A;margin-bottom:8px;">Куда внимание — туда энергия.</div>
+        <div style="font-size:.74rem;color:rgba(255,255,255,.8);line-height:1.65;">Твои мысли и чувства — это не просто эмоции. Это <span style="color:#A8BC8A;font-weight:700;">поле</span>, в котором ты живёшь. Оно формирует твои слова, решения, состояние тела и то, что притягивается в жизнь.</div>
+        <div style="font-size:.74rem;color:rgba(255,255,255,.8);line-height:1.65;margin-top:7px;">Большинство состояний живут фоном — неосознанно. <span style="color:#D4899A;font-weight:700;">Тревога в поле</span> — тело напряжено, решения осторожные. <span style="color:#D4899A;font-weight:700;">Обида в поле</span> — слова колючие, люди отдаляются. <span style="color:#A8BC8A;font-weight:700;">Радость в поле</span> — всё идёт легче, возможности открываются сами.</div>
+        <div style="font-size:.74rem;color:rgba(255,255,255,.8);line-height:1.65;margin-top:7px;">Первый шаг к изменению поля — <span style="color:#A8BC8A;font-weight:700;">увидеть что в нём сейчас.</span> Когда называешь чувство, мозг выходит из автопилота. Ты уже не внутри состояния — ты его наблюдаешь. Значит можешь выбрать куда направить энергию дальше.</div>
+        <div style="font-size:.74rem;color:rgba(255,255,255,.4);line-height:1.65;margin-top:7px;font-style:italic;">Отмечай честно. Даже если сегодня всё тёмное — это точка отсчёта для изменения поля.</div>
+      </div>
+      <div style="padding:20px;">
+
+        <div style="margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#6A7A3E;"></div>
+            <span style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#6A7A3E;">Ресурсные</span>
+          </div>
+          <div class="feelings-group" id="fg-resource"></div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#8A8A7A;"></div>
+            <span style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);">Нейтральные</span>
+          </div>
+          <div class="feelings-group" id="fg-neutral"></div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#D4899A;"></div>
+            <span style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#D4899A;">Негативные</span>
+          </div>
+          <div class="feelings-group" id="fg-difficult"></div>
+        </div>
+
+        <!-- Счётчик чувств -->
+        <div id="feelings-counter" style="display:none;display:flex;gap:8px;margin-bottom:14px;"></div>
+
+        <!-- Состояние итог -->
+        <div style="background:linear-gradient(135deg,rgba(212,137,154,.08),rgba(106,122,62,.08));border-radius:14px;padding:16px 18px;border:1.5px solid rgba(212,137,154,.2);">
+          <div style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:10px;">Состояние сегодня</div>
+          <div style="display:flex;gap:6px;margin-bottom:10px;" id="b-energy-stars">
+            <span class="energy-star" onclick="setEnergy(1)">🪷</span>
+            <span class="energy-star" onclick="setEnergy(2)">🪷</span>
+            <span class="energy-star" onclick="setEnergy(3)">🪷</span>
+            <span class="energy-star" onclick="setEnergy(4)">🪷</span>
+            <span class="energy-star" onclick="setEnergy(5)">🪷</span>
+          </div>
+          <div style="font-size:.95rem;font-weight:700;color:var(--text);" id="b-state-label">—</div>
+        </div>
+
+        <!-- Заметка -->
+        <div style="margin-top:16px;">
+          <div style="font-size:.7rem;color:var(--muted);margin-bottom:6px;font-weight:600;">Заметка о теле</div>
+          <textarea id="b-note" placeholder="Как тело сегодня? Что заметила?"
+            style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;background:rgba(0,0,0,.03);color:var(--text);font-size:.85rem;font-family:inherit;resize:vertical;min-height:90px;line-height:1.6;box-sizing:border-box;outline:none;"
+            oninput="saveBody()"></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ДИНАМИКА -->
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div style="background:linear-gradient(135deg,#2C2C2C 0%,#3a3535 100%);padding:16px 20px 14px;">
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Динамика за неделю</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Нажми на день чтобы перейти</div>
+      </div>
+      <div style="padding:20px;">
+        <div id="body-dynamic-charts"></div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -925,16 +1290,6 @@ canvas{max-width:100%;}
       <textarea id="r-reality" placeholder="Деньги, клиенты, запросы, энергия..." onblur="saveResult()"></textarea>
       <button class="btn" onclick="archiveWeek()">В архив + новое слово</button>
       <button class="btn btn-ghost" onclick="exportWeek()" style="margin-top:8px">Скачать итог недели</button>
-    </div>
-    <div class="card">
-      <div class="card-lbl">Напоминания</div>
-      <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;line-height:1.5;">Выбери время — браузер пришлёт уведомление чтобы не забыть заполнить дневник.</div>
-      <div style="display:flex;gap:10px;margin-bottom:12px;">
-        <div style="flex:1"><div style="font-size:.65rem;font-weight:700;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;">Утро</div><input type="time" id="notif-morning" value="08:00" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:.85rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:#fefefe;"></div>
-        <div style="flex:1"><div style="font-size:.65rem;font-weight:700;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;">Вечер</div><input type="time" id="notif-evening" value="21:00" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:.85rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:#fefefe;"></div>
-      </div>
-      <div id="notif-status" style="font-size:.75rem;font-weight:700;margin-bottom:10px;"></div>
-      <button class="btn btn-ghost" onclick="setupNotifications()" id="notif-btn">Включить напоминания</button>
     </div>
   </div>
 </div>
@@ -1229,117 +1584,6 @@ canvas{max-width:100%;}
   </div>
 </div><!-- /s-patterns -->
 
-<!-- ══════════ ТЕЛО ══════════ -->
-<div id="s-body" class="section">
-  <!-- День -->
-  <div class="sub-tabs" style="margin-bottom:14px;">
-    <button class="sub-tab active" onclick="goBodyDay(0)">Пн</button>
-    <button class="sub-tab" onclick="goBodyDay(1)">Вт</button>
-    <button class="sub-tab" onclick="goBodyDay(2)">Ср</button>
-    <button class="sub-tab" onclick="goBodyDay(3)">Чт</button>
-    <button class="sub-tab" onclick="goBodyDay(4)">Пт</button>
-    <button class="sub-tab" onclick="goBodyDay(5)">Сб</button>
-    <button class="sub-tab" onclick="goBodyDay(6)">Вс</button>
-  </div>
-
-  <!-- Физические показатели -->
-  <div class="card">
-    <div class="card-lbl" style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);">— Физические показатели дня</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px;">
-      <div style="text-align:center;">
-        <div style="font-size:1.4rem;">😴</div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:6px;">Сон (ч)</div>
-        <input type="number" id="b-sleep" placeholder="8" min="0" max="24" step="0.5"
-          style="width:100%;padding:10px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:1rem;text-align:center;font-family:inherit;"
-          onchange="saveBody()">
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size:1.4rem;">💧</div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:6px;">Вода (л)</div>
-        <input type="number" id="b-water" placeholder="1.5" min="0" max="10" step="0.5"
-          style="width:100%;padding:10px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:1rem;text-align:center;font-family:inherit;"
-          onchange="saveBody()">
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size:1.4rem;">🏃‍♀️</div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:6px;">Движение (мин)</div>
-        <input type="number" id="b-movement" placeholder="30" min="0" max="600" step="5"
-          style="width:100%;padding:10px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:1rem;text-align:center;font-family:inherit;"
-          onchange="saveBody()">
-      </div>
-    </div>
-
-    <div style="margin-top:16px;">
-      <div style="font-size:.72rem;color:rgba(255,255,255,.6);margin-bottom:8px;font-weight:600;">Тип активности</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;" id="b-activity-btns">
-        <button class="activity-btn" onclick="toggleActivity('ходьба')" data-act="ходьба">🚶 Ходьба</button>
-        <button class="activity-btn" onclick="toggleActivity('бег')" data-act="бег">🏃 Бег</button>
-        <button class="activity-btn" onclick="toggleActivity('тренировка')" data-act="тренировка">💪 Тренировка</button>
-        <button class="activity-btn" onclick="toggleActivity('йога')" data-act="йога">🧘 Йога</button>
-        <button class="activity-btn" onclick="toggleActivity('другое')" data-act="другое">✨ Другое</button>
-      </div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;">
-      <div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:6px;">🌙 Отход ко сну</div>
-        <input type="time" id="b-bedtime"
-          style="width:100%;padding:10px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:.95rem;font-family:inherit;"
-          onchange="saveBody()">
-      </div>
-      <div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:6px;">☀️ Подъём</div>
-        <input type="time" id="b-waketime"
-          style="width:100%;padding:10px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:.95rem;font-family:inherit;"
-          onchange="saveBody()">
-      </div>
-    </div>
-  </div>
-
-  <!-- Самочувствие и энергия -->
-  <div class="card">
-    <div class="card-lbl" style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);">— Самочувствие и энергия</div>
-    <p style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.55;margin-top:8px;">Тело — зеркало состояния. Отмечай уровень заряда и то, что чувствуешь прямо сейчас — это помогает отслеживать связь между внутренним и внешним.</p>
-
-    <div style="margin-top:14px;">
-      <div style="font-size:.72rem;color:rgba(255,255,255,.7);margin-bottom:10px;font-weight:600;">Уровень энергии</div>
-      <div style="display:flex;gap:8px;" id="b-energy-stars">
-        <span class="energy-star" onclick="setEnergy(1)" data-e="1">⚡</span>
-        <span class="energy-star" onclick="setEnergy(2)" data-e="2">⚡</span>
-        <span class="energy-star" onclick="setEnergy(3)" data-e="3">⚡</span>
-        <span class="energy-star" onclick="setEnergy(4)" data-e="4">⚡</span>
-        <span class="energy-star" onclick="setEnergy(5)" data-e="5">⚡</span>
-      </div>
-    </div>
-
-    <div style="margin-top:18px;">
-      <div style="font-size:.72rem;color:rgba(255,255,255,.7);margin-bottom:4px;font-weight:600;">Карта чувств — что сейчас внутри?</div>
-      <div style="font-size:.65rem;color:rgba(255,255,255,.4);margin-bottom:12px;">Можно выбрать несколько — тело знает правду</div>
-
-      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--mint);margin-bottom:8px;">Ресурсные</div>
-      <div class="feelings-group" id="fg-resource"></div>
-
-      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);margin:14px 0 8px;">Нейтральные</div>
-      <div class="feelings-group" id="fg-neutral"></div>
-
-      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin:14px 0 8px;">Требуют внимания</div>
-      <div class="feelings-group" id="fg-difficult"></div>
-    </div>
-
-    <div style="margin-top:18px;">
-      <div style="font-size:.72rem;color:rgba(255,255,255,.6);margin-bottom:8px;font-weight:600;">Заметка о теле</div>
-      <textarea id="b-note" placeholder="Как тело сегодня? Что заметила?"
-        style="width:100%;padding:12px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:.82rem;font-family:inherit;resize:vertical;min-height:80px;line-height:1.5;"
-        onblur="saveBody()"></textarea>
-    </div>
-  </div>
-
-  <!-- Динамика за неделю -->
-  <div class="card">
-    <div class="card-lbl" style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);">— Динамика за неделю</div>
-    <div id="body-dynamic-charts" style="margin-top:14px;"></div>
-  </div>
-</div><!-- /s-body -->
 
 </div><!-- /main-app -->
 
@@ -1388,7 +1632,7 @@ let calMonth=new Date().getMonth();
 function save(){localStorage.setItem('kodyYazyka_v4',JSON.stringify(S));}
 
 function go(tab){
-  ['week','days','calendar','dynamic','patterns','archive','body'].forEach((t,i)=>{
+  ['week','days','calendar','dynamic','patterns','archive'].forEach((t,i)=>{
     const sec=document.getElementById('s-'+t);
     if(sec)sec.classList.toggle('active',t===tab);
     const tabs=document.querySelectorAll('.tab');
@@ -1401,7 +1645,6 @@ function go(tab){
   if(tab==='dynamic')renderDynamic();
   if(tab==='archive')renderArchive();
   if(tab==='patterns')renderPatterns();
-  if(tab==='body')renderBody();
 }
 
 let patternState=JSON.parse(localStorage.getItem('kodyPatterns')||'{}');
@@ -1418,13 +1661,16 @@ function renderPatterns(){
 
 function goSub(sub){
   curSub=sub;
-  ['morning','evening','spheres'].forEach((s,i)=>{
-    document.getElementById('ss-'+s).classList.toggle('active',s===sub);
-    document.querySelectorAll('.sub-tab')[i].classList.toggle('active',s===sub);
+  ['morning','evening','spheres','body'].forEach((s,i)=>{
+    const el=document.getElementById('ss-'+s);
+    if(el)el.classList.toggle('active',s===sub);
+    const stabs=document.querySelectorAll('#s-days .sub-tab');
+    if(stabs[i])stabs[i].classList.toggle('active',s===sub);
   });
   if(sub==='morning'){loadMorning();renderQuoteOfDay();}
   if(sub==='evening')loadEvening();
   if(sub==='spheres')renderSpheres();
+  if(sub==='body')renderBodyTab();
 }
 
 function renderWeek(){
@@ -1882,16 +2128,16 @@ function archiveWeek(){
 }
 
 // ══════════ ТЕЛО ══════════
-const FEELINGS_RESOURCE=['😊 радость','✨ вдохновение','🙏 благодарность','❤️ любовь','💪 сила','🌿 спокойствие','😊 уверенность','🌸 лёгкость','🌹 нежность','☀️ принятие','🔥 азарт','🌊 восторг','😌 удовлетворение','🦋 открытость','🎮 игривость'];
-const FEELINGS_NEUTRAL=['😴 усталость','⬜ пустота','🔄 растерянность','😶 скука','⏳ ожидание','😔 задумчивость','😐 безразличие','⚡ напряжение','❓ сомнение','😅 неловкость'];
-const FEELINGS_DIFFICULT=['😰 тревога','😨 страх','😤 раздражение','😢 грусть','❤️ обида','😠 злость','😭 отчаяние','👤 одиночество','😳 стыд','😔 вина','🖤 подавленность','⊗ ревность','👁️ зависть','😶 беспощность','🔒 оцепенение'];
+const FEELINGS_RESOURCE=['😊 радость','✨ вдохновение','🙏 благодарность','❤️ любовь','💪 сила','🌿 спокойствие','😊 уверенность','🌸 лёгкость','🌹 нежность','☀️ принятие','🌊 восторг','🔥 азарт','😌 удовлетворение','🦋 открытость','🎯 игривость'];
+const FEELINGS_NEUTRAL=['😴 усталость','⬜ пустота','🔄 растерянность','💤 скука','⏳ ожидание','😔 задумчивость','😐 безразличие','⚡ напряжение','❓ сомнение','😅 неловкость'];
+const FEELINGS_DIFFICULT=['😰 тревога','😨 страх','😤 раздражение','😢 грусть','❤️ обида','😠 злость','😭 отчаяние','👤 одиночество','😳 стыд','😔 вина','🖤 подавленность','⊗ ревность','👁️ зависть','😶 беспомощность','🔒 оцепенение'];
 
 let bodyData=JSON.parse(localStorage.getItem('kodyBody_v1')||'{}');
 let curBodyDay=new Date().getDay();curBodyDay=curBodyDay===0?6:curBodyDay-1;
 
 function saveBodyData(){localStorage.setItem('kodyBody_v1',JSON.stringify(bodyData));}
 
-function blankBodyDay(){return{sleep:'',water:'',movement:'',activity:[],bedtime:'',waketime:'',energy:0,feelings:[],note:''};}
+function blankBodyDay(){return{sleep:0,water:0,movement:0,activity:[],activityMins:{},bedtime:'',waketime:'',energy:0,feelings:[],note:''};}
 
 function getBodyDay(d){
   if(!bodyData['w'+curWeekKey()])bodyData['w'+curWeekKey()]=Array.from({length:7},blankBodyDay);
@@ -1906,11 +2152,7 @@ function curWeekKey(){
   return mon.toISOString().slice(0,10);
 }
 
-function renderBody(){
-  // Подсветить текущий день
-  document.querySelectorAll('#s-body .sub-tab').forEach((b,i)=>{
-    b.classList.toggle('active',i===curBodyDay);
-  });
+function renderBodyTab(){
   loadBodyDay(curBodyDay);
   renderBodyDynamic();
   renderFeelingGroups();
@@ -1918,64 +2160,172 @@ function renderBody(){
 
 function goBodyDay(d){
   curBodyDay=d;
-  document.querySelectorAll('#s-body .sub-tab').forEach((b,i)=>b.classList.toggle('active',i===d));
   loadBodyDay(d);
+  renderBodyDynamic();
 }
+
+const ACTIVITY_TYPES=['ходьба','бег','тренировка','йога','другое'];
 
 function loadBodyDay(d){
   const bd=getBodyDay(d);
-  document.getElementById('b-sleep').value=bd.sleep||'';
-  document.getElementById('b-water').value=bd.water||'';
-  document.getElementById('b-movement').value=bd.movement||'';
   document.getElementById('b-bedtime').value=bd.bedtime||'';
   document.getElementById('b-waketime').value=bd.waketime||'';
-  // активности
-  document.querySelectorAll('.activity-btn').forEach(btn=>{
-    btn.classList.toggle('active',(bd.activity||[]).includes(btn.dataset.act));
-  });
-  // энергия
-  setEnergyDisplay(bd.energy||0);
-  // чувства
+  // сон — показываем если есть оба времени
+  updateSleepDisplay(bd.sleep||0,bd.bedtime||'',bd.waketime||'');
+  // вода
+  const w=parseFloat(bd.water)||0;
+  document.getElementById('b-water').value=w;
+  document.getElementById('b-water-display').textContent=w%1===0?w:w.toFixed(1);
+  // движение — рендерим строки
+  renderActivityRows(bd.activityMins||{});
+  // чувства и состояние
   renderFeelingGroups();
+  renderFeelingsCounter(bd.feelings||[]);
+  setEnergyDisplay(bd.energy||0);
   document.getElementById('b-note').value=bd.note||'';
 }
 
 function saveBody(){
   const bd=getBodyDay(curBodyDay);
-  bd.sleep=document.getElementById('b-sleep').value;
-  bd.water=document.getElementById('b-water').value;
-  bd.movement=document.getElementById('b-movement').value;
-  bd.bedtime=document.getElementById('b-bedtime').value;
-  bd.waketime=document.getElementById('b-waketime').value;
   bd.note=document.getElementById('b-note').value;
   saveBodyData();
   renderBodyDynamic();
 }
 
-function toggleActivity(act){
+function calcSleep(){
+  const bt=document.getElementById('b-bedtime').value;
+  const wt=document.getElementById('b-waketime').value;
   const bd=getBodyDay(curBodyDay);
-  if(!bd.activity)bd.activity=[];
-  const idx=bd.activity.indexOf(act);
-  if(idx>=0)bd.activity.splice(idx,1);
-  else bd.activity.push(act);
+  bd.bedtime=bt; bd.waketime=wt;
+  let hours=0;
+  if(bt&&wt){
+    const [bh,bm]=bt.split(':').map(Number);
+    const [wh,wm]=wt.split(':').map(Number);
+    let mins=wh*60+wm-(bh*60+bm);
+    if(mins<0)mins+=24*60;
+    hours=Math.round(mins/60*10)/10;
+  }
+  bd.sleep=hours;
+  updateSleepDisplay(hours,bt,wt);
   saveBodyData();
-  document.querySelectorAll('.activity-btn').forEach(btn=>{
-    btn.classList.toggle('active',bd.activity.includes(btn.dataset.act));
-  });
+  renderBodyDynamic();
 }
+
+function updateSleepDisplay(hours,bt,wt){
+  const disp=document.getElementById('b-sleep-display');
+  const span=document.getElementById('b-sleep-hours');
+  if(bt&&wt&&hours>0){
+    disp.style.display='block';
+    span.textContent=hours+' ч';
+  } else {
+    disp.style.display='none';
+  }
+}
+
+function changeWater(delta){
+  const bd=getBodyDay(curBodyDay);
+  let v=parseFloat(bd.water||0)+delta;
+  if(v<0)v=0; if(v>10)v=10;
+  v=Math.round(v*10)/10;
+  bd.water=v;
+  document.getElementById('b-water').value=v;
+  document.getElementById('b-water-display').textContent=v%1===0?v:v.toFixed(1);
+  saveBodyData();
+  renderBodyDynamic();
+}
+
+function renderActivityRows(actMins){
+  const btns=document.getElementById('activity-rows');
+  const minsRows=document.getElementById('activity-mins-rows');
+  if(!btns)return;
+  // кнопки
+  btns.innerHTML=ACTIVITY_TYPES.map(act=>{
+    const active=(actMins[act]||0)>0;
+    return`<button class="activity-btn${active?' active':''}" onclick="toggleActivityCheck('${act}')" data-act="${act}">${act}</button>`;
+  }).join('');
+  // строки с минутами для активных
+  renderMinRows(actMins);
+}
+
+function renderMinRows(actMins){
+  const minsRows=document.getElementById('activity-mins-rows');
+  if(!minsRows)return;
+  const active=ACTIVITY_TYPES.filter(act=>(actMins[act]||0)>0);
+  if(active.length===0){minsRows.innerHTML='';return;}
+  minsRows.innerHTML=active.map(act=>{
+    const mins=actMins[act]||30;
+    return`<div style="display:flex;align-items:center;gap:10px;">
+      <span style="font-size:.82rem;color:var(--text);min-width:80px;">${act}</span>
+      <button onclick="changeActivityMin('${act}',-5)" style="width:28px;height:28px;border:1.5px solid var(--border);border-radius:50%;background:transparent;color:var(--text);cursor:pointer;font-size:.9rem;line-height:1;">−</button>
+      <span id="amin-${act}" style="font-size:.9rem;font-weight:700;min-width:32px;text-align:center;">${mins}</span>
+      <button onclick="changeActivityMin('${act}',5)" style="width:28px;height:28px;border:1.5px solid var(--border);border-radius:50%;background:transparent;color:var(--text);cursor:pointer;font-size:.9rem;line-height:1;">+</button>
+      <span style="font-size:.75rem;color:var(--muted);">мин</span>
+    </div>`;
+  }).join('');
+}
+
+function toggleActivityCheck(act){
+  const bd=getBodyDay(curBodyDay);
+  if(!bd.activityMins)bd.activityMins={};
+  if((bd.activityMins[act]||0)>0){
+    bd.activityMins[act]=0;
+  } else {
+    bd.activityMins[act]=30;
+  }
+  // обновить кнопку
+  document.querySelectorAll('#activity-rows .activity-btn').forEach(btn=>{
+    if(btn.dataset.act===act)btn.classList.toggle('active',(bd.activityMins[act]||0)>0);
+  });
+  renderMinRows(bd.activityMins);
+  updateMovementTotal();
+  saveBodyData();
+  renderBodyDynamic();
+}
+
+function changeActivityMin(act,delta){
+  const bd=getBodyDay(curBodyDay);
+  if(!bd.activityMins)bd.activityMins={};
+  let v=(bd.activityMins[act]||0)+delta;
+  if(v<5)v=5; if(v>600)v=600;
+  bd.activityMins[act]=v;
+  const span=document.getElementById(`amin-${act}`);
+  if(span)span.textContent=v;
+  updateMovementTotal();
+  saveBodyData();
+  renderBodyDynamic();
+}
+
+function updateMovementTotal(){
+  const bd=getBodyDay(curBodyDay);
+  const total=Object.values(bd.activityMins||{}).reduce((a,b)=>a+(b||0),0);
+  bd.movement=total;
+  const hiddenEl=document.getElementById('b-movement');
+  if(hiddenEl)hiddenEl.value=total;
+  const el=document.getElementById('b-movement-total');
+  if(el)el.textContent=total;
+  // показываем/скрываем блок итого
+  const summary=document.getElementById('b-movement-summary');
+  if(summary)summary.style.display=total>0?'block':'none';
+}
+
+const ENERGY_LABELS=['—','Истощена','Устала','Нейтрально','Ресурсно','Заряжена'];
 
 function setEnergy(n){
   const bd=getBodyDay(curBodyDay);
   bd.energy=n;
   saveBodyData();
   setEnergyDisplay(n);
+  renderBodyDynamic();
 }
 
 function setEnergyDisplay(n){
   document.querySelectorAll('.energy-star').forEach((s,i)=>{
     s.style.opacity=i<n?'1':'0.25';
-    s.style.filter=i<n?'none':'grayscale(1)';
+    s.style.filter=i<n?'none':'grayscale(60%)';
+    s.style.transform=i<n?'scale(1.1)':'scale(1)';
   });
+  const lbl=document.getElementById('b-state-label');
+  if(lbl)lbl.textContent=ENERGY_LABELS[n]||'—';
 }
 
 function toggleFeeling(feeling){
@@ -1986,6 +2336,56 @@ function toggleFeeling(feeling){
   else bd.feelings.push(feeling);
   saveBodyData();
   renderFeelingGroups();
+  renderFeelingsCounter(bd.feelings);
+  renderBodyDynamic();
+}
+
+function renderFeelingsCounter(feelings){
+  const el=document.getElementById('feelings-counter');
+  if(!el)return;
+  if(!feelings||feelings.length===0){el.style.display='none';return;}
+  let r=0,n=0,d=0;
+  feelings.forEach(f=>{
+    if(FEELINGS_RESOURCE.includes(f))r++;
+    else if(FEELINGS_NEUTRAL.includes(f))n++;
+    else if(FEELINGS_DIFFICULT.includes(f))d++;
+  });
+  el.style.display='flex';
+  el.innerHTML=[
+    r>0?`<div style="flex:1;text-align:center;padding:10px 6px;background:rgba(106,122,62,.1);border-radius:10px;border:1px solid rgba(106,122,62,.2);">
+      <div style="font-size:1.3rem;font-weight:800;color:#6A7A3E;">${r}</div>
+      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:#6A7A3E;margin-top:2px;">Ресурсных</div>
+    </div>`:'',
+    n>0?`<div style="flex:1;text-align:center;padding:10px 6px;background:rgba(0,0,0,.04);border-radius:10px;border:1px solid rgba(0,0,0,.08);">
+      <div style="font-size:1.3rem;font-weight:800;color:var(--muted);">${n}</div>
+      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:2px;">Нейтральных</div>
+    </div>`:'',
+    d>0?`<div style="flex:1;text-align:center;padding:10px 6px;background:rgba(212,137,154,.1);border-radius:10px;border:1px solid rgba(212,137,154,.2);">
+      <div style="font-size:1.3rem;font-weight:800;color:#D4899A;">${d}</div>
+      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:#D4899A;margin-top:2px;">Негативных</div>
+    </div>`:'',
+  ].join('');
+}
+
+function calcEnergyFromFeelings(feelings){
+  if(!feelings||feelings.length===0)return 0;
+  let r=0,n=0,d=0;
+  feelings.forEach(f=>{
+    if(FEELINGS_RESOURCE.includes(f))r++;
+    else if(FEELINGS_NEUTRAL.includes(f))n++;
+    else if(FEELINGS_DIFFICULT.includes(f))d++;
+  });
+  const total=r+n+d;
+  if(total===0)return 0;
+  const rRatio=r/total;
+  const dRatio=d/total;
+  // Ресурсные перевешивают — смотрим сначала на них
+  if(rRatio>=0.7)return 5;        // 70%+ ресурсных → Заряжена
+  if(rRatio>=0.5&&dRatio<0.3)return 4;  // больше половины ресурсных, мало негативных → Ресурсно
+  if(dRatio>=0.6)return 1;        // 60%+ негативных → Истощена
+  if(dRatio>=0.4)return 2;        // 40%+ негативных → Устала
+  if(rRatio>=0.3)return 3;        // смешанно с ресурсными → Нейтрально
+  return 2;                        // в основном нейтральные/негативные → Устала
 }
 
 function renderFeelingGroups(){
@@ -2004,30 +2404,39 @@ function renderFeelingGroups(){
 function renderBodyDynamic(){
   const el=document.getElementById('body-dynamic-charts');
   if(!el)return;
-  const wk=bodyData['w'+curWeekKey()]||Array.from({length:7},blankBodyDay);
+  // убедимся что неделя инициализирована
+  const wkey='w'+curWeekKey();
+  if(!bodyData[wkey])bodyData[wkey]=Array.from({length:7},blankBodyDay);
+  const wk=bodyData[wkey];
   const days=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
   const colors=['#6A93C3','#5BA5A0','#6A7A3E','#D4899A'];
   const metrics=[
     {label:'Сон (ч)',key:'sleep',max:12,color:colors[0]},
     {label:'Вода (л)',key:'water',max:3,color:colors[1]},
     {label:'Движение (мин)',key:'movement',max:180,color:colors[2]},
-    {label:'Энергия',key:'energy',max:5,color:colors[3]},
+    {label:'Состояние',key:'energy',max:5,color:colors[3]},
   ];
+  const hasAnyData=metrics.some(m=>wk.some(d=>parseFloat(d[m.key])>0));
+  if(!hasAnyData){
+    el.innerHTML='<div style="color:var(--muted);font-size:.85rem;text-align:center;padding:20px 0;">Данные появятся после заполнения дней</div>';
+    return;
+  }
   el.innerHTML=metrics.map(m=>{
     const vals=wk.map(d=>parseFloat(d[m.key])||0);
-    const maxV=Math.max(...vals,m.max*0.1)||1;
+    const maxV=Math.max(...vals,0.01);
     const bars=vals.map((v,i)=>{
-      const h=Math.round(v/maxV*60);
-      return`<div style="display:flex;flex-direction:column;align-items:center;flex:1;gap:4px;">
-        <div style="font-size:.6rem;color:rgba(255,255,255,.5);">${v||''}</div>
-        <div style="width:100%;height:60px;display:flex;align-items:flex-end;">
-          <div style="width:100%;height:${h}px;background:${i===curBodyDay?m.color:m.color+'88'};border-radius:4px 4px 0 0;transition:.3s;"></div>
+      const h=maxV>0?Math.max(Math.round(v/maxV*60),v>0?4:0):0;
+      const isActive=i===curBodyDay;
+      return`<div onclick="goBodyDay(${i})" style="display:flex;flex-direction:column;align-items:center;flex:1;gap:4px;cursor:pointer;opacity:${isActive?1:0.75};">
+        <div style="font-size:.6rem;color:var(--muted);min-height:14px;">${v>0?v:''}</div>
+        <div style="width:100%;height:60px;display:flex;align-items:flex-end;background:rgba(0,0,0,.04);border-radius:4px;outline:${isActive?'2px solid '+m.color:'none'};outline-offset:1px;">
+          <div style="width:100%;height:${h}px;background:${m.color};border-radius:4px 4px 0 0;transition:.3s;"></div>
         </div>
-        <div style="font-size:.6rem;color:rgba(255,255,255,.4);">${days[i]}</div>
+        <div style="font-size:.6rem;color:${isActive?m.color:'var(--muted)'};font-weight:${isActive?700:400};">${days[i]}</div>
       </div>`;
     }).join('');
     return`<div style="margin-bottom:20px;">
-      <div style="font-size:.72rem;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:10px;">${m.label}</div>
+      <div style="font-size:.72rem;font-weight:700;color:var(--text);opacity:.7;margin-bottom:8px;">${m.label}</div>
       <div style="display:flex;gap:4px;align-items:flex-end;">${bars}</div>
     </div>`;
   }).join('');
