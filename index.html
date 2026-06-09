@@ -744,10 +744,10 @@ canvas{max-width:100%;}
 
 <div class="tabs">
   <button class="tab" onclick="showOnboarding()">Главная</button>
+  <button class="tab" onclick="go('realize')">Намерение</button>
   <button class="tab active" onclick="go('week')">Неделя</button>
   <button class="tab" onclick="go('days')">Дни</button>
-    <button class="tab" onclick="go('calendar')">Календарь</button>
-  <button class="tab" onclick="go('dynamic')">Динамика</button>
+  <button class="tab" onclick="go('dynamic')">Аналитика</button>
   <button class="tab" onclick="go('patterns')">Паттерны</button>
   <button class="tab" onclick="go('archive')">Архив</button>
 </div>
@@ -801,6 +801,7 @@ canvas{max-width:100%;}
     <button class="sub-tab active" onclick="goSub('morning')">Утро</button>
     <button class="sub-tab" onclick="goSub('evening')">Вечер</button>
     <button class="sub-tab" onclick="goSub('spheres')">Сферы</button>
+    <button class="sub-tab" onclick="goSub('body')">Тело</button>
   </div>
 
   <!-- УТРО -->
@@ -977,7 +978,70 @@ canvas{max-width:100%;}
       </div>
     </div>
   </div>
-</div>
+
+  <!-- ТЕЛО -->
+  <div id="ss-body" class="sub-section">
+    <!-- Благодарность -->
+    <div class="card">
+      <div class="card-lbl">Благодарность дня</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.5;">Три вещи — большие и маленькие. Мозг ищет то, на что ты его настраиваешь.</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.7rem;font-weight:800;color:var(--accent2);width:18px;flex-shrink:0;">1</span>
+          <input type="text" id="body-thanks-1" placeholder="Сегодня я благодарна за..." oninput="saveBody()" style="flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:.85rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:#fefefe;">
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.7rem;font-weight:800;color:var(--accent2);width:18px;flex-shrink:0;">2</span>
+          <input type="text" id="body-thanks-2" placeholder="..." oninput="saveBody()" style="flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:.85rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:#fefefe;">
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.7rem;font-weight:800;color:var(--accent2);width:18px;flex-shrink:0;">3</span>
+          <input type="text" id="body-thanks-3" placeholder="..." oninput="saveBody()" style="flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:.85rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text);background:#fefefe;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Тело сегодня -->
+    <div class="card">
+      <div class="card-lbl">Тело сегодня</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:14px;line-height:1.5;">Три базы. Без них состояние не держится.</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border-radius:12px;border:1.5px solid var(--border);">
+          <span style="font-size:1.2rem;flex-shrink:0;">🌙</span>
+          <div style="flex:1;"><div style="font-size:.85rem;font-weight:700;color:var(--text);">Сон</div><div style="font-size:.72rem;color:var(--muted);margin-top:1px;">часов этой ночью</div></div>
+          <input type="number" id="body-sleep" min="0" max="24" step="0.5" placeholder="7" oninput="saveBody()" style="width:58px;padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:.95rem;font-weight:700;text-align:center;color:var(--text);background:#fefefe;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
+          <span style="font-size:.72rem;color:var(--muted);width:16px;">ч</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border-radius:12px;border:1.5px solid var(--border);">
+          <span style="font-size:1.2rem;flex-shrink:0;">💧</span>
+          <div style="flex:1;"><div style="font-size:.85rem;font-weight:700;color:var(--text);">Вода</div><div style="font-size:.72rem;color:var(--muted);margin-top:1px;">литров сегодня</div></div>
+          <input type="number" id="body-water" min="0" max="10" step="0.1" placeholder="1.5" oninput="saveBody()" style="width:58px;padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:.95rem;font-weight:700;text-align:center;color:var(--text);background:#fefefe;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
+          <span style="font-size:.72rem;color:var(--muted);width:16px;">л</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border-radius:12px;border:1.5px solid var(--border);">
+          <span style="font-size:1.2rem;flex-shrink:0;">🔥</span>
+          <div style="flex:1;"><div style="font-size:.85rem;font-weight:700;color:var(--text);">Движение</div><div style="font-size:.72rem;color:var(--muted);margin-top:1px;">минут активности</div></div>
+          <input type="number" id="body-move" min="0" max="600" step="5" placeholder="30" oninput="saveBody()" style="width:58px;padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;font-size:.95rem;font-weight:700;text-align:center;color:var(--text);background:#fefefe;font-family:-apple-system,BlinkMacSystemFont,sans-serif;">
+          <span style="font-size:.72rem;color:var(--muted);width:16px;">мин</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Инсайт -->
+    <div class="card">
+      <div class="card-lbl">Инсайт дня</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.5;">Одна фраза — что поняла сегодня.</div>
+      <textarea id="body-insight" placeholder="Сегодня я поняла, что..." oninput="saveBody()" style="min-height:70px;"></textarea>
+    </div>
+
+    <!-- Динамика тела -->
+    <div class="card" id="body-charts-card">
+      <div class="card-lbl">Динамика тела — неделя</div>
+      <div id="body-chart-sleep" style="margin-bottom:16px;"></div>
+      <div id="body-chart-water" style="margin-bottom:16px;"></div>
+      <div id="body-chart-move"></div>
+    </div>
+  </div>
 
 </div>
 
@@ -1030,6 +1094,91 @@ canvas{max-width:100%;}
     <div id="sphere-ranking"></div>
   </div>
   </div><!-- /dyn-content -->
+</div>
+
+<!-- ══════════ РЕАЛИЗАЦИЯ ══════════ -->
+<div id="s-realize" class="section">
+
+  <!-- Вкладки уровней -->
+  <div class="sub-tabs" style="margin-bottom:16px;">
+    <button class="sub-tab active" onclick="goRealize('year')">Год</button>
+    <button class="sub-tab" onclick="goRealize('month')">Месяц</button>
+    <button class="sub-tab" onclick="goRealize('week')">Неделя</button>
+    <button class="sub-tab" onclick="goRealize('day')">День</button>
+  </div>
+
+  <!-- ГОД -->
+  <div id="sr-year" class="sub-section active">
+    <div class="card">
+      <div class="card-lbl">Намерение года</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.5;">Одна главная тема — кем ты становишься в этом году.</div>
+      <textarea id="r-year-intent" placeholder="В этом году я..." oninput="saveRealize()" style="min-height:60px;"></textarea>
+    </div>
+    <div class="card" id="r-year-goals-card">
+      <div class="card-lbl" style="display:flex;align-items:center;justify-content:space-between;">
+        <span>Цели года</span>
+        <button onclick="addGoal('year')" style="background:var(--accent);color:white;border:none;border-radius:8px;padding:4px 12px;font-size:.75rem;font-weight:700;cursor:pointer;">+ Добавить</button>
+      </div>
+      <div id="r-year-goals" style="display:flex;flex-direction:column;gap:10px;margin-top:10px;"></div>
+    </div>
+  </div>
+
+  <!-- МЕСЯЦ -->
+  <div id="sr-month" class="sub-section">
+    <div class="card">
+      <div class="card-lbl">Фокус месяца</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.5;">Что самое важное сделать в этом месяце?</div>
+      <textarea id="r-month-intent" placeholder="В этом месяце я фокусируюсь на..." oninput="saveRealize()" style="min-height:60px;"></textarea>
+    </div>
+    <div class="card">
+      <div class="card-lbl" style="display:flex;align-items:center;justify-content:space-between;">
+        <span>Цели месяца</span>
+        <button onclick="addGoal('month')" style="background:var(--accent);color:white;border:none;border-radius:8px;padding:4px 12px;font-size:.75rem;font-weight:700;cursor:pointer;">+ Добавить</button>
+      </div>
+      <div id="r-month-goals" style="display:flex;flex-direction:column;gap:10px;margin-top:10px;"></div>
+    </div>
+  </div>
+
+  <!-- НЕДЕЛЯ -->
+  <div id="sr-week" class="sub-section">
+    <div class="card">
+      <div class="card-lbl">Намерение недели</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.5;">Связь с твоим словом недели — что хочешь воплотить?</div>
+      <textarea id="r-week-intent" placeholder="На этой неделе я намерена..." oninput="saveRealize()" style="min-height:60px;"></textarea>
+    </div>
+    <div class="card">
+      <div class="card-lbl" style="display:flex;align-items:center;justify-content:space-between;">
+        <span>Шаги недели</span>
+        <button onclick="addGoal('week')" style="background:var(--accent);color:white;border:none;border-radius:8px;padding:4px 12px;font-size:.75rem;font-weight:700;cursor:pointer;">+ Добавить</button>
+      </div>
+      <div id="r-week-goals" style="display:flex;flex-direction:column;gap:10px;margin-top:10px;"></div>
+    </div>
+  </div>
+
+  <!-- ДЕНЬ -->
+  <div id="sr-day" class="sub-section">
+    <div class="card">
+      <div class="card-lbl">Намерение дня</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.5;">Одно намерение — что сегодня ты делаешь шаг к большому.</div>
+      <textarea id="r-day-intent" placeholder="Сегодня я намерена..." oninput="saveRealize()" style="min-height:60px;"></textarea>
+    </div>
+    <div class="card">
+      <div class="card-lbl" style="display:flex;align-items:center;justify-content:space-between;">
+        <span>Действия дня</span>
+        <button onclick="addGoal('day')" style="background:var(--accent);color:white;border:none;border-radius:8px;padding:4px 12px;font-size:.75rem;font-weight:700;cursor:pointer;">+ Добавить</button>
+      </div>
+      <div id="r-day-goals" style="display:flex;flex-direction:column;gap:10px;margin-top:10px;"></div>
+    </div>
+  </div>
+
+  <!-- Динамика реализации -->
+  <div class="card" style="margin-top:4px;">
+    <div class="card-lbl">Проводимость — реализация за неделю</div>
+    <div style="font-size:.75rem;color:var(--muted);margin-bottom:12px;line-height:1.5;">Сколько шагов сделано из запланированных.</div>
+    <div id="r-conductivity-chart"></div>
+    <div id="r-energy-warning" style="display:none;margin-top:12px;padding:10px 14px;background:linear-gradient(135deg,rgba(192,96,122,.08),rgba(212,137,154,.05));border-left:3px solid var(--accent);border-radius:0 10px 10px 0;font-size:.8rem;color:var(--text);line-height:1.5;"></div>
+  </div>
+
 </div>
 
 <!-- ══════════ ARCHIVE ══════════ -->
@@ -1295,10 +1444,11 @@ const SPHERES=[
 ];
 
 function blankSph(){const o={};SPHERES.forEach(s=>o[s.key]={score:0,gives:[],takes:[]});return o;}
-function blankDay(){return{affirm:false,thought:'',caught:false,replaced:false,reflection:'',conflict:'',action:'',spheres:blankSph()};}
+function blankDay(){return{affirm:false,thought:'',caught:false,replaced:false,reflection:'',conflict:'',action:'',spheres:blankSph(),body:{thanks1:'',thanks2:'',thanks3:'',sleep:false,water:false,move:false,insight:''}};}
 function blank7(){return Array.from({length:7},blankDay);}
 
 function migrateDay(d){
+  if(!d.body)d.body={thanks1:'',thanks2:'',thanks3:'',sleep:false,water:false,move:false,insight:''};
   if(!d.spheres||typeof Object.values(d.spheres)[0]==='number'){
     const sph=blankSph();
     if(d.spheres){SPHERES.forEach(s=>{const old=d.spheres[s.key];if(old)sph[s.key].score=old;});}
@@ -1324,11 +1474,13 @@ let calMonth=new Date().getMonth();
 function save(){localStorage.setItem('kodyYazyka_v4',JSON.stringify(S));}
 
 function go(tab){
-  ['week','days','calendar','dynamic','patterns','archive'].forEach((t,i)=>{
+  ['week','days','calendar','dynamic','patterns','realize','archive'].forEach(t=>{
     const sec=document.getElementById('s-'+t);
     if(sec)sec.classList.toggle('active',t===tab);
-    const tabs=document.querySelectorAll('.tab');
-    if(tabs[i+1])tabs[i+1].classList.toggle('active',t===tab);
+  });
+  document.querySelectorAll('.tab').forEach(btn=>{
+    const m=btn.getAttribute('onclick')||'';
+    btn.classList.toggle('active', m.includes("'"+tab+"'"));
   });
   if(tab==='week')renderWeek();
   if(tab==='days')renderDays();
@@ -1337,6 +1489,7 @@ function go(tab){
   if(tab==='dynamic')renderDynamic();
   if(tab==='archive')renderArchive();
   if(tab==='patterns')renderPatterns();
+  if(tab==='realize'){goRealize(curRLevel);}
 }
 
 let patternState=JSON.parse(localStorage.getItem('kodyPatterns')||'{}');
@@ -1351,15 +1504,205 @@ function renderPatterns(){
   for(let n=1;n<=7;n++){if(patternState['week_'+n]){const card=document.getElementById('patt-'+n);if(card&&!card.classList.contains('open'))card.classList.add('open');}}
 }
 
+// ══════════ РЕАЛИЗАЦИЯ ══════════
+let R_DATA = JSON.parse(localStorage.getItem('kodyRealize')||'null');
+if(!R_DATA) R_DATA = {
+  year:{intent:'', goals:[]},
+  month:{intent:'', goals:[]},
+  week:{intent:'', goals:[]},
+  day:{intent:'', goals:[]}
+};
+let curRLevel='year';
+
+function saveRealize(){
+  ['year','month','week','day'].forEach(lv=>{
+    const el=document.getElementById('r-'+lv+'-intent');
+    if(el) R_DATA[lv].intent=el.value;
+  });
+  localStorage.setItem('kodyRealize', JSON.stringify(R_DATA));
+  renderConductivity();
+}
+
+function goRealize(lv){
+  curRLevel=lv;
+  ['year','month','week','day'].forEach(l=>{
+    const sec=document.getElementById('sr-'+l);
+    if(sec) sec.classList.toggle('active',l===lv);
+  });
+  document.querySelectorAll('#s-realize .sub-tab').forEach(btn=>{
+    const m=btn.getAttribute('onclick')||'';
+    btn.classList.toggle('active', m.includes("'"+lv+"'"));
+  });
+  loadRealizeLevel(lv);
+}
+
+function loadRealizeLevel(lv){
+  const el=document.getElementById('r-'+lv+'-intent');
+  if(el) el.value=R_DATA[lv].intent||'';
+  renderGoals(lv);
+  renderConductivity();
+}
+
+function addGoal(lv){
+  R_DATA[lv].goals.push({text:'', steps:[], progress:0, done:false});
+  localStorage.setItem('kodyRealize', JSON.stringify(R_DATA));
+  renderGoals(lv);
+}
+
+function renderGoals(lv){
+  const container=document.getElementById('r-'+lv+'-goals');
+  if(!container) return;
+  const goals=R_DATA[lv].goals||[];
+  if(goals.length===0){
+    container.innerHTML='<div style="font-size:.78rem;color:var(--muted);text-align:center;padding:12px 0;opacity:.7;">Нажми + чтобы добавить цель</div>';
+    return;
+  }
+  container.innerHTML=goals.map((g,gi)=>{
+    const pct=g.progress||0;
+    const steps=(g.steps||[]);
+    const stepsHTML=steps.map((s,si)=>`
+      <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+        <input type="checkbox" ${s.done?'checked':''} onchange="toggleStep('${lv}',${gi},${si})" style="width:16px;height:16px;accent-color:var(--accent);flex-shrink:0;cursor:pointer;">
+        <input type="text" value="${s.text||''}" placeholder="Шаг..." oninput="updateStep('${lv}',${gi},${si},this.value)"
+          style="flex:1;border:none;border-bottom:1px solid var(--border);padding:3px 0;font-size:.8rem;color:var(--text);background:transparent;outline:none;">
+        <button onclick="removeStep('${lv}',${gi},${si})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;padding:0 2px;">×</button>
+      </div>`).join('');
+    const doneSteps=steps.filter(s=>s.done).length;
+    const autoPct=steps.length>0?Math.round((doneSteps/steps.length)*100):pct;
+    return `
+    <div style="background:var(--bg);border-radius:12px;border:1.5px solid var(--border);padding:12px 14px;">
+      <div style="display:flex;align-items:flex-start;gap:8px;">
+        <div style="flex:1;">
+          <input type="text" value="${g.text||''}" placeholder="Цель..." oninput="updateGoalText('${lv}',${gi},this.value)"
+            style="width:100%;border:none;font-size:.88rem;font-weight:700;color:var(--text);background:transparent;outline:none;padding:0;">
+        </div>
+        <button onclick="removeGoal('${lv}',${gi})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.95rem;padding:0 2px;flex-shrink:0;">×</button>
+      </div>
+      <div style="margin:8px 0 4px;display:flex;align-items:center;gap:8px;">
+        <div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:${autoPct}%;background:var(--accent);border-radius:3px;transition:width .3s;"></div>
+        </div>
+        <span style="font-size:.72rem;font-weight:700;color:var(--accent);width:28px;text-align:right;">${autoPct}%</span>
+      </div>
+      <div style="margin-top:8px;">${stepsHTML}</div>
+      <button onclick="addStep('${lv}',${gi})" style="margin-top:8px;background:none;border:1px dashed var(--border);border-radius:6px;padding:4px 10px;font-size:.75rem;color:var(--muted);cursor:pointer;width:100%;">+ шаг</button>
+    </div>`;
+  }).join('');
+}
+
+function updateGoalText(lv,gi,val){R_DATA[lv].goals[gi].text=val;localStorage.setItem('kodyRealize',JSON.stringify(R_DATA));}
+function removeGoal(lv,gi){R_DATA[lv].goals.splice(gi,1);localStorage.setItem('kodyRealize',JSON.stringify(R_DATA));renderGoals(lv);renderConductivity();}
+function addStep(lv,gi){R_DATA[lv].goals[gi].steps=R_DATA[lv].goals[gi].steps||[];R_DATA[lv].goals[gi].steps.push({text:'',done:false});localStorage.setItem('kodyRealize',JSON.stringify(R_DATA));renderGoals(lv);}
+function removeStep(lv,gi,si){R_DATA[lv].goals[gi].steps.splice(si,1);localStorage.setItem('kodyRealize',JSON.stringify(R_DATA));renderGoals(lv);renderConductivity();}
+function updateStep(lv,gi,si,val){R_DATA[lv].goals[gi].steps[si].text=val;localStorage.setItem('kodyRealize',JSON.stringify(R_DATA));}
+function toggleStep(lv,gi,si){
+  R_DATA[lv].goals[gi].steps[si].done=!R_DATA[lv].goals[gi].steps[si].done;
+  localStorage.setItem('kodyRealize',JSON.stringify(R_DATA));
+  renderGoals(lv);
+  renderConductivity();
+}
+
+function renderConductivity(){
+  const el=document.getElementById('r-conductivity-chart');
+  if(!el) return;
+  const levels=['year','month','week','day'];
+  const labels=['Год','Месяц','Неделя','День'];
+  const colors=['#7A5FA0','#C0607A','#4A8A6A','#E8A030'];
+
+  let totalSteps=0, doneSteps=0;
+  const bars=levels.map((lv,i)=>{
+    const goals=R_DATA[lv].goals||[];
+    let t=0,d=0;
+    goals.forEach(g=>{(g.steps||[]).forEach(s=>{t++;if(s.done)d++;});});
+    totalSteps+=t;doneSteps+=d;
+    const pct=t>0?Math.round((d/t)*100):0;
+    return `<div style="margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:3px;">
+        <span style="font-size:.75rem;font-weight:700;color:${colors[i]};">${labels[i]}</span>
+        <span style="font-size:.72rem;color:var(--muted);">${d}/${t} шагов · ${pct}%</span>
+      </div>
+      <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden;">
+        <div style="height:100%;width:${pct}%;background:${colors[i]};border-radius:4px;transition:width .4s;"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  el.innerHTML=bars;
+
+  // Предупреждение о потере энергии
+  const warn=document.getElementById('r-energy-warning');
+  if(warn){
+    const totalPct=totalSteps>0?Math.round((doneSteps/totalSteps)*100):0;
+    if(totalSteps>0 && totalPct<30){
+      warn.style.display='block';
+      warn.textContent='Проводимость низкая — '+totalPct+'% шагов выполнено. Нереализованный потенциал забирает энергию. Выбери один шаг и сделай его сегодня.';
+    } else if(totalSteps>0 && totalPct>=80){
+      warn.style.display='block';
+      warn.style.borderLeftColor='var(--accent2)';
+      warn.textContent='Проводимость '+totalPct+'% — энергия движется. Так держать.';
+    } else {
+      warn.style.display='none';
+    }
+  }
+}
+
 function goSub(sub){
   curSub=sub;
-  ['morning','evening','spheres'].forEach((s,i)=>{
-    document.getElementById('ss-'+s).classList.toggle('active',s===sub);
-    document.querySelectorAll('.sub-tab')[i].classList.toggle('active',s===sub);
+  ['morning','evening','spheres','body'].forEach(s=>{
+    const sec=document.getElementById('ss-'+s);
+    if(sec)sec.classList.toggle('active',s===sub);
+  });
+  document.querySelectorAll('.sub-tab').forEach(btn=>{
+    const m=btn.getAttribute('onclick')||'';
+    btn.classList.toggle('active',m.includes("'"+sub+"'"));
   });
   if(sub==='morning'){loadMorning();renderQuoteOfDay();}
   if(sub==='evening')loadEvening();
   if(sub==='spheres')renderSpheres();
+  if(sub==='body')loadBody();
+}
+
+function loadBody(){
+  const d=S.days[curDay];
+  const b=d.body||{};
+  ['1','2','3'].forEach(n=>{const el=document.getElementById('body-thanks-'+n);if(el)el.value=b['thanks'+n]||'';});
+  ['sleep','water','move'].forEach(k=>{const el=document.getElementById('body-'+k);if(el)el.value=b[k]||'';});
+  const ins=document.getElementById('body-insight');
+  if(ins)ins.value=b.insight||'';
+  renderBodyCharts();
+}
+
+function saveBody(){
+  const d=S.days[curDay];
+  if(!d.body)d.body={};
+  ['1','2','3'].forEach(n=>{const el=document.getElementById('body-thanks-'+n);if(el)d.body['thanks'+n]=el.value;});
+  ['sleep','water','move'].forEach(k=>{const el=document.getElementById('body-'+k);if(el)d.body[k]=parseFloat(el.value)||0;});
+  const ins=document.getElementById('body-insight');
+  if(ins)d.body.insight=ins.value;
+  save();
+}
+
+function renderBodyCharts(){
+  const days=S.days;
+  const labels=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+  function miniChart(containerId,data,color,label,unit,maxVal){
+    const el=document.getElementById(containerId);
+    if(!el)return;
+    const W=el.offsetWidth||280,H=72;
+    const pad={l:28,r:8,t:20,b:16};
+    const cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
+    const max=maxVal||Math.max(...data.filter(v=>v>0),1);
+    const pts=data.map((v,i)=>({x:pad.l+i*(cW/6),y:pad.t+cH-(v/max)*cH,v}));
+    let path='',area=`M${pts[0].x},${pad.t+cH}`;
+    pts.forEach((p,i)=>{path+=(i===0?`M${p.x},${p.y}`:`L${p.x},${p.y}`);area+=` L${p.x},${p.y}`;});
+    area+=` L${pts[pts.length-1].x},${pad.t+cH} Z`;
+    const dots=pts.map((p,i)=>p.v>0?`<circle cx="${p.x}" cy="${p.y}" r="3.5" fill="${color}" stroke="white" stroke-width="1.5"/><text x="${p.x}" y="${p.y-7}" text-anchor="middle" font-size="8" fill="${color}" font-weight="700">${p.v}${unit}</text>`:'').join('');
+    const xLbls=labels.map((l,i)=>`<text x="${pad.l+i*(cW/6)}" y="${H-2}" text-anchor="middle" font-size="8" fill="#9A918A">${l}</text>`).join('');
+    el.innerHTML=`<div style="font-size:.72rem;font-weight:800;color:${color};text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">${label}</div><svg width="100%" height="${H}" viewBox="0 0 ${W} ${H}" style="overflow:visible"><defs><linearGradient id="g-${containerId}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${color}" stop-opacity=".18"/><stop offset="100%" stop-color="${color}" stop-opacity="0"/></linearGradient></defs><path d="${area}" fill="url(#g-${containerId})"/><path d="${path}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>${dots}${xLbls}</svg>`;
+  }
+  miniChart('body-chart-sleep',days.map(d=>(d.body&&d.body.sleep)||0),'#7A5FA0','Сон','ч',12);
+  miniChart('body-chart-water',days.map(d=>(d.body&&d.body.water)||0),'#5588AA','Вода','л',4);
+  miniChart('body-chart-move',days.map(d=>(d.body&&d.body.move)||0),'#C0607A','Движение','мин',120);
 }
 
 function renderWeek(){
