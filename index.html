@@ -51,7 +51,7 @@
 body{
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;
   background:var(--bg);color:var(--text);
-  min-height:100vh;padding:0 0 115px;max-width:520px;margin:0 auto;
+  min-height:100vh;padding:0 0 130px;max-width:520px;margin:0 auto;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -438,19 +438,22 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
   box-shadow:0 0 8px rgba(168,188,138,.3);
 }
 .author-footer-top{
-  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  display:flex;flex-direction:column;align-items:stretch;gap:6px;
 }
 .author-footer-left{
-  display:flex;flex-direction:column;justify-content:center;min-width:0;
+  display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;
 }
 .author-footer-name{
   font-size:.64rem;font-weight:700;color:#fff;
   white-space:nowrap;letter-spacing:.02em;
 }
 .author-footer-sub{
-  font-size:.62rem;color:rgba(255,255,255,.75);margin-top:2px;
+  font-size:.62rem;color:rgba(255,255,255,.75);
   font-family:Georgia,'Times New Roman',serif;font-style:italic;
   white-space:nowrap;letter-spacing:.03em;
+}
+.author-footer-btns{
+  display:flex;align-items:center;gap:5px;flex-wrap:nowrap;
 }
 .author-footer-copy{
   font-size:.52rem;color:rgba(255,255,255,.35);
@@ -3355,16 +3358,16 @@ function renderRealization(){
       <div class="author-footer-name">Юлия Веденеева · Авторский метод</div>
       <div class="author-footer-sub">Тело как состояние</div>
     </div>
-    <div style="display:flex;gap:5px;align-items:center;flex-shrink:0;">
-    <button onclick="exportData()" title="Сохранить данные" style="height:30px;padding:0 10px;background:rgba(106,122,62,.25);border:1px solid rgba(106,122,62,.4);border-radius:8px;color:#A8BC8A;font-size:.65rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.02em;">↓ Бэкап</button>
-    <a class="author-footer-link" style="background:rgba(42,171,238,.2);border:1px solid rgba(42,171,238,.3);" href="https://t.me/meta_ulia" target="_blank">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-      @meta_ulia
-    </a>
-    <a class="author-footer-link" style="background:rgba(212,137,154,.2);border:1px solid rgba(212,137,154,.3);" href="https://www.instagram.com/meta_ulia" target="_blank">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-      @meta_ulia
-    </a>
+    <div class="author-footer-btns">
+      <button onclick="exportData()" title="Сохранить данные" style="height:28px;padding:0 9px;background:rgba(106,122,62,.25);border:1px solid rgba(106,122,62,.4);border-radius:8px;color:#A8BC8A;font-size:.62rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.02em;">↓ Бэкап</button>
+      <a class="author-footer-link" style="background:rgba(42,171,238,.2);border:1px solid rgba(42,171,238,.3);" href="https://t.me/meta_ulia" target="_blank">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        @meta_ulia
+      </a>
+      <a class="author-footer-link" style="background:rgba(212,137,154,.2);border:1px solid rgba(212,137,154,.3);" href="https://www.instagram.com/meta_ulia" target="_blank">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        @meta_ulia
+      </a>
     </div>
   </div>
   <div class="author-footer-copy">© 2026 Юлия Веденеева. Все права защищены. Копирование и использование материалов без письменного разрешения автора запрещено.</div>
@@ -3697,8 +3700,10 @@ function renderDynChartOnCanvas(canvas, emptyEl, avgEl){
   } else if(avgEl){ avgEl.textContent = ''; }
 
   var dpr = window.devicePixelRatio || 1;
-  var W = canvas.offsetWidth || 300;
+  var W = canvas.offsetWidth || canvas.parentElement && canvas.parentElement.offsetWidth || Math.min(window.innerWidth, 520) - 40;
+  if(W < 100) W = Math.min(window.innerWidth, 520) - 40;
   var H = 200;
+  canvas.style.width = '100%';
   canvas.width = W * dpr;
   canvas.height = H * dpr;
   canvas.style.height = H + 'px';
@@ -3906,6 +3911,11 @@ document.addEventListener('DOMContentLoaded', function(){
   setTimeout(function(){ renderDynChart(); }, 400);
 });
 window.addEventListener('resize', function(){ setTimeout(renderDynChart, 50); setTimeout(renderWheelChart, 50); });
+// На телефоне перерисовываем колесо после первого скролла/касания — когда секция точно видима
+var _chartsRedrawn = false;
+document.addEventListener('touchstart', function(){
+  if(!_chartsRedrawn){ _chartsRedrawn=true; setTimeout(function(){ renderDynChart(); renderWheelChart(); }, 200); }
+}, {once:true});
 
 // ─── КОЛЕСО БАЛАНСА ───
 function collectAllScores(){
@@ -3947,8 +3957,10 @@ function renderWheelOnCanvas(canvas){
   });
 
   var dpr = window.devicePixelRatio || 1;
-  var size = canvas.offsetWidth || 300;
-  var h = size * 1.1; // чуть выше для подписей сверху/снизу
+  var size = canvas.offsetWidth || canvas.parentElement && canvas.parentElement.offsetWidth || Math.min(window.innerWidth, 520) - 40;
+  if(size < 100) size = Math.min(window.innerWidth, 520) - 40;
+  var h = size * 1.1;
+  canvas.style.width = '100%';
   canvas.width = size * dpr;
   canvas.height = h * dpr;
   canvas.style.height = h + 'px';
