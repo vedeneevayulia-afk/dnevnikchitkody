@@ -22,28 +22,28 @@
 :root {
   color-scheme: light;
   /* ─── Палитра бренд-бука ─── */
-  --bg: #FDF6F0;
+  --bg: #F5EDE4;
   --card: #ffffff;
-  --graphite: #2C2825;
-  --graphite-mid: #2C2825;
-  --accent: #6A7A3E;        /* олива */
-  --accent2: #D4899A;       /* розовый */
-  --accent-light: #EEF1E6;
-  --accent2-light: #F0D8D8;
+  --graphite: #2A2A2F;
+  --graphite-mid: #232328;
+  --accent: #6A7A3E;
+  --accent2: #D4899A;
+  --accent-light: #E8EDD8;
+  --accent2-light: #F0D0D8;
   --mint: #A8BC8A;
   --sage: #8A9A72;
   --bordeaux: #8A4A4A;
   --powder: #F0D8D8;
-  --text: #2C2825;
-  --muted: #9A918A;
-  --muted-lt: #B0A898;
-  --border: #E2DDD8;
+  --text: #1A1A1E;
+  --muted: #8A8178;
+  --muted-lt: #A89E95;
+  --border: #DDD5CC;
   --green: #6A7A3E;
-  --green-bg: #EEF1E6;
+  --green-bg: #E4EBD2;
   --red: #8A4A4A;
   --red-bg: #F0D8D8;
-  --shadow: 0 4px 24px rgba(14,14,14,.08);
-  --shadow-sm: 0 1px 8px rgba(14,14,14,.05);
+  --shadow: 0 4px 28px rgba(0,0,0,.12);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,.07);
   --radius: 18px;
   --radius-sm: 12px;
 }
@@ -51,7 +51,7 @@
 body{
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;
   background:var(--bg);color:var(--text);
-  min-height:100vh;padding:0 0 80px;max-width:520px;margin:0 auto;
+  min-height:100vh;padding:0 0 115px;max-width:520px;margin:0 auto;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -85,22 +85,22 @@ body{
 /* ─── TABS ─── */
 .tabs{
   display:flex;gap:0;padding:0;
-  background:#fff;border-bottom:2px solid var(--border);
+  background:#1A1A1E;border-bottom:1px solid rgba(255,255,255,.08);
   position:sticky;top:0;z-index:10;
-  box-shadow:0 2px 12px rgba(14,14,14,.07);
+  box-shadow:0 4px 20px rgba(0,0,0,.25);
   overflow-x:auto;
 }
 .tabs::-webkit-scrollbar{display:none;}
 .tab{
-  flex:1;min-width:44px;padding:10px 4px;border:none;background:transparent;
-  border-bottom:2.5px solid transparent;margin-bottom:-2px;
+  flex:1;min-width:44px;padding:11px 4px;border:none;background:transparent;
+  border-bottom:2.5px solid transparent;margin-bottom:-1px;
   font-size:.6rem;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
-  color:var(--muted);cursor:pointer;transition:all .2s;
+  color:rgba(255,255,255,.35);cursor:pointer;transition:all .2s;
   letter-spacing:.01em;white-space:nowrap;
 }
 .tab.active{
-  color:var(--accent2);
-  border-bottom-color:var(--accent2);
+  color:#D4899A;
+  border-bottom-color:#D4899A;
 }
 
 .section{display:none;padding:16px 16px 0;}
@@ -108,9 +108,10 @@ body{
 
 /* ─── CARDS ─── */
 .card{
-  background:var(--card);border-radius:var(--radius);
+  background:#fff;border-radius:var(--radius);
   padding:20px;margin-bottom:14px;
-  border:1px solid var(--border);box-shadow:var(--shadow-sm);
+  border:1px solid rgba(168,188,138,.2);
+  box-shadow:0 2px 16px rgba(0,0,0,.08),0 0 0 0px rgba(168,188,138,0);
 }
 .card-lbl{
   font-size:.58rem;font-weight:800;text-transform:uppercase;
@@ -166,25 +167,32 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
 
 /* ─── WORD HERO ─── */
 .word-hero{
-  background:linear-gradient(135deg,#F0D8D8 0%,#fce8ee 50%,#EEF1E6 100%);
-  border-radius:var(--radius);padding:22px 20px;
+  background:linear-gradient(150deg,#2A2A2F 0%,#32303A 60%,#2E2C34 100%);
+  border-radius:var(--radius);padding:26px 20px 22px;
   text-align:center;margin-bottom:14px;
   position:relative;overflow:hidden;
+  box-shadow:0 6px 28px rgba(0,0,0,.22);
+}
+.word-hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,#6A7A3E,#A8BC8A 40%,#D4899A);
 }
 .word-hero::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--accent2),var(--accent));
+  content:'';position:absolute;top:-40px;right:-30px;
+  width:140px;height:140px;
+  background:radial-gradient(circle,rgba(212,137,154,.12) 0%,transparent 70%);
+  pointer-events:none;
 }
 .word-old{
-  font-size:1.6rem;font-weight:800;color:rgba(138,74,74,.4);
+  font-size:1.6rem;font-weight:800;color:rgba(212,137,154,.35);
   letter-spacing:-.04em;line-height:1;
   text-decoration:line-through;
-  text-decoration-color:var(--accent2);
+  text-decoration-color:rgba(212,137,154,.5);
   text-decoration-thickness:2px;
 }
-.word-arrow{color:#D4899A;font-size:.9rem;margin:8px 0 6px;}
-.word-new{font-size:1.6rem;font-weight:800;color:#2C2825;letter-spacing:-.04em;line-height:1;}
-.word-new span{color:var(--accent2);}
+.word-arrow{color:#D4899A;font-size:.9rem;margin:10px 0 8px;opacity:.7;}
+.word-new{font-size:1.8rem;font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1;}
+.word-new span{color:#A8BC8A;}
 
 .prog-wrap{margin-top:18px;}
 .prog-bar{height:4px;background:rgba(138,74,74,.15);border-radius:2px;overflow:hidden;}
@@ -256,7 +264,7 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
 
 /* ─── QUOTE OF DAY ─── */
 .quote-card{
-  background:linear-gradient(135deg,#2C2825 0%,#3d2a2a 100%);
+  background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);
   border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;
   position:relative;overflow:hidden;
 }
@@ -305,7 +313,7 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
   transition:all .2s;
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 }
-.affirm-btn:hover{background:#1a1a1a;}
+.affirm-btn:hover{background:#32303A;}
 .affirm-btn.done{background:var(--accent);border-color:var(--accent);}
 
 /* ─── COLLAPSIBLE AFFIRM ─── */
@@ -416,30 +424,50 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
 .author-footer{
   position:fixed;bottom:0;left:50%;transform:translateX(-50%);
   width:100%;max-width:520px;
-  background:#2C2825;
+  background:linear-gradient(90deg,#2A2A2F,#32303A);
   border-top:none;
-  padding:10px 18px 14px;
-  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 16px 10px;
+  display:flex;flex-direction:column;align-items:stretch;
+  gap:6px;
   z-index:20;
+  box-shadow:0 -4px 20px rgba(0,0,0,.3);
 }
 .author-footer::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--accent2),var(--accent));
+  background:linear-gradient(90deg,#6A7A3E,#A8BC8A 40%,#D4899A);
+  box-shadow:0 0 8px rgba(168,188,138,.3);
 }
-.author-footer-name{font-size:.68rem;font-weight:700;color:#fff;}
+.author-footer-top{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.author-footer-left{
+  display:flex;flex-direction:column;justify-content:center;min-width:0;
+}
+.author-footer-name{
+  font-size:.64rem;font-weight:700;color:#fff;
+  white-space:nowrap;letter-spacing:.02em;
+}
 .author-footer-sub{
-  font-size:.6rem;color:rgba(255,255,255,.4);margin-top:1px;
+  font-size:.62rem;color:rgba(255,255,255,.75);margin-top:2px;
   font-family:Georgia,'Times New Roman',serif;font-style:italic;
+  white-space:nowrap;letter-spacing:.03em;
+}
+.author-footer-copy{
+  font-size:.52rem;color:rgba(255,255,255,.35);
+  text-align:center;line-height:1.4;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:5px;
 }
 .author-footer-link{
-  font-size:.65rem;font-weight:700;color:#fff;
-  border-radius:8px;padding:5px 10px;text-decoration:none;
-  white-space:nowrap;display:flex;align-items:center;gap:5px;
+  font-size:.62rem;font-weight:700;color:#fff;
+  border-radius:8px;padding:5px 9px;text-decoration:none;
+  white-space:nowrap;display:flex;align-items:center;gap:4px;
+  flex-shrink:0;
 }
 
 /* ─── FUNNEL ─── */
 .funnel-card{
-  background:linear-gradient(135deg,#2C2825 0%,#4a2a30 100%);
+  background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);
   border-radius:var(--radius);
   text-align:center;padding:28px 22px;
   position:relative;overflow:hidden;
@@ -527,7 +555,7 @@ canvas{max-width:100%;}
 
 /* ─── КАРТА ПАТТЕРНОВ ─── */
 .pattern-intro{
-  background:linear-gradient(135deg,#2C2825 0%,#3d2020 100%);
+  background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);
   border-radius:var(--radius);padding:22px 20px;margin-bottom:14px;
   position:relative;overflow:hidden;
 }
@@ -671,48 +699,65 @@ canvas{max-width:100%;}
   box-shadow: 0 10px 30px rgba(201,123,143,.45);
 }
 
-/* Ghost button */
+/* Ghost button — pink accent */
 #s-week .btn-ghost {
-  border-color: rgba(106,122,62,.35);
-  color: #6A7A3E;
-  font-weight: 700;
+  border-color: #C97B8F;
+  color: #C97B8F;
+  font-weight: 800;
+  background: rgba(201,123,143,.06);
 }
 
-/* Word hero — darker, more contrast */
+/* Word hero — lighter, rose-green */
 #s-week .word-hero {
   background: linear-gradient(145deg, #F2E4E9 0%, #faedf2 40%, #EBF0E2 100%);
-  border: 1px solid rgba(201,123,143,.2);
-  box-shadow: 0 4px 28px rgba(201,123,143,.15), 0 1px 0 rgba(106,122,62,.08);
+  border: 1.5px solid rgba(201,123,143,.35);
+  box-shadow: 0 6px 32px rgba(201,123,143,.25), 0 1px 0 rgba(106,122,62,.08);
+}
+#s-week .word-hero::before {
+  background: linear-gradient(90deg, #C97B8F, #6A7A3E);
+  height: 4px;
 }
 #s-week .word-hero::after {
-  height: 3px;
-  background: linear-gradient(90deg, #C97B8F, #6A7A3E);
+  background: radial-gradient(circle, rgba(201,123,143,.18) 0%, transparent 70%);
+  top: -40px; right: -30px; width: 160px; height: 160px;
 }
 #s-week .word-old {
-  color: rgba(122,58,74,.32);
-  text-decoration-color: rgba(201,123,143,.55);
+  color: rgba(122,58,74,.38);
+  text-decoration-color: rgba(201,123,143,.6);
 }
-#s-week .word-arrow { color: #C97B8F; }
-#s-week .word-new { color: #1E1C1A; font-weight: 900; }
+#s-week .word-arrow { color: #C97B8F; opacity: 1; font-size: 1.1rem; }
+/* Главный акцент — новое слово */
+#s-week .word-new { color: #C97B8F; font-weight: 900; font-size: 2rem; }
 
 /* Progress bar sharper */
 #s-week .prog-bar { background: rgba(201,123,143,.15); }
 #s-week .prog-fill { background: linear-gradient(90deg, #C97B8F, #6A7A3E); }
 #s-week .prog-meta { color: #9A918A; font-weight: 700; }
 
-/* Chain card */
-#s-week #chain-card {
-  box-shadow: 0 2px 16px rgba(30,28,26,.07);
-  border-color: #E8E2DC;
+/* Заголовки карточек — ярче */
+#s-week .card-lbl {
+  color: #7A3A4A;
+  font-size: .6rem;
 }
+#s-week .card-lbl::before {
+  width: 20px;
+  height: 2.5px;
+  background: linear-gradient(90deg, #C97B8F, #6A7A3E);
+}
+
+/* Chain card cells */
 #s-week .cn {
   background: #F1F5EA;
   border-color: #D8E2C4;
   border-radius: 12px;
 }
+#s-week .cn:has(.cnv:not(:empty)) {
+  background: linear-gradient(135deg, #faedf2, #F2E4E9);
+  border-color: rgba(201,123,143,.45);
+}
 #s-week .cnl { color: #9A918A; font-weight: 800; }
-#s-week .cnv { font-weight: 800; }
-#s-week .ca { color: #A8BC8A; font-weight: 300; }
+#s-week .cnv { font-weight: 800; color: #7A3A4A; }
+#s-week .ca { color: #C97B8F; font-weight: 400; font-size: 1rem; }
 
 /* Итог недели */
 #result-in-calendar .card {
@@ -907,6 +952,8 @@ canvas{max-width:100%;}
       <div id="notif-status" style="font-size:.75rem;font-weight:700;margin-bottom:10px;"></div>
       <button onclick="setupNotifications()" id="notif-btn" style="width:100%;padding:12px;background:linear-gradient(135deg,#D4899A,#c4748a);color:#fff;border:none;border-radius:10px;font-size:.85rem;font-weight:800;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.01em;">Включить напоминания</button>
     </div>
+
+    <button id="back-btn-top" onclick="startApp()" style="display:none;width:100%;padding:12px;background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.82rem;font-weight:700;cursor:pointer;margin-bottom:14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">← Вернуться в дневник</button>
 
     <div style="background:#fff;border-radius:var(--radius);padding:22px;margin-bottom:14px;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
       <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:7px;"><span style="display:inline-block;width:16px;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;"></span>Что тебя ждёт внутри</div>
@@ -1105,23 +1152,28 @@ canvas{max-width:100%;}
     <button class="btn btn-ghost" onclick="editWord()" style="margin-top:0">Изменить слово</button>
   </div>
 
-  <div id="chain-card" class="card" style="display:none;margin-top:12px;">
-    <div class="card-lbl">Мысль → Результат</div>
-    <div class="chain-wrap">
-      <div class="cn"><div class="cnl">Мысль</div><div class="cnv" id="cn-belief">—</div></div>
-      <div class="ca">›</div>
-      <div class="cn"><div class="cnl">Слово</div><div class="cnv" id="cn-word">—</div></div>
-      <div class="ca">›</div>
-      <div class="cn"><div class="cnl">Действие</div><div class="cnv" id="cn-action">—</div></div>
-      <div class="ca">›</div>
-      <div class="cn"><div class="cnl">Результат</div><div class="cnv" id="cn-result">—</div></div>
+  <div id="chain-card" style="display:none;margin-top:12px;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);">
+    <div style="background:linear-gradient(135deg,#2A2A2F,#32303A);padding:14px 18px 12px;position:relative;">
+      <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:7px;">Мысль → Результат</div>
+    </div>
+    <div style="background:#fff;padding:16px 18px;">
+      <div class="chain-wrap">
+        <div class="cn"><div class="cnl">Мысль</div><div class="cnv" id="cn-belief">—</div></div>
+        <div class="ca">›</div>
+        <div class="cn"><div class="cnl">Слово</div><div class="cnv" id="cn-word">—</div></div>
+        <div class="ca">›</div>
+        <div class="cn"><div class="cnl">Действие</div><div class="cnv" id="cn-action">—</div></div>
+        <div class="ca">›</div>
+        <div class="cn"><div class="cnl">Результат</div><div class="cnv" id="cn-result">—</div></div>
+      </div>
     </div>
   </div>
 
 
 <!-- ══════════ ИТОГ (внутри Календаря) ══════════ -->
 <div id="result-in-calendar" style="padding:0 16px 14px;">
-  <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:18px 0 10px;display:flex;align-items:center;gap:7px;"><span style="display:inline-block;width:16px;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;"></span>Итог недели</div>
+  <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#C97B8F;margin:18px 0 10px;display:flex;align-items:center;gap:7px;"><span style="display:inline-block;width:20px;height:2.5px;background:linear-gradient(90deg,#C97B8F,#6A7A3E);border-radius:2px;"></span>Итог недели</div>
   <div id="result-no-word-cal" class="card" style="display:none"><div class="empty">Сначала задай слово недели</div></div>
   <div id="result-content-cal">
     <div class="word-hero" id="result-word-hero-cal" style="margin-bottom:14px">
@@ -1130,8 +1182,12 @@ canvas{max-width:100%;}
       <div class="word-new" id="res-replace-cal"></div>
       <div style="font-size:.72rem;color:var(--muted);margin-top:10px;font-weight:600;" id="res-dates-cal"></div>
     </div>
-    <div class="card">
-      <div class="card-lbl">Итог недели — заполни в воскресенье</div>
+    <div style="border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);">
+      <div style="background:linear-gradient(135deg,#2A2A2F,#32303A);padding:14px 18px 12px;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5);">Итог недели — заполни в воскресенье</div>
+      </div>
+      <div style="background:#fff;padding:18px 18px 20px;">
       <label>Что изменилось в речи?</label>
       <textarea id="r-speech" placeholder="Реже использую, замечаю сразу..." onblur="saveResult()"></textarea>
       <label>Что изменилось в мышлении?</label>
@@ -1142,7 +1198,8 @@ canvas{max-width:100%;}
       <textarea id="r-reality" placeholder="Деньги, клиенты, запросы, энергия..." onblur="saveResult()"></textarea>
       <button class="btn" onclick="archiveWeek()">В архив + новое слово</button>
       <button class="btn btn-ghost" onclick="exportWeek()" style="margin-top:8px">Скачать итог недели</button>
-    </div>
+      </div><!-- /белое тело -->
+    </div><!-- /карточка итог -->
   </div>
 </div>
 </div>
@@ -1352,6 +1409,7 @@ canvas{max-width:100%;}
 
   <!-- СФЕРЫ -->
   <div id="ss-spheres" class="sub-section">
+    <div id="spheres-week-info" style="display:none;"></div>
     <div style="background:var(--graphite);border-radius:var(--radius);padding:16px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
       <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
       <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);margin-bottom:8px;">Как работать с сферами</div>
@@ -1368,14 +1426,79 @@ canvas{max-width:100%;}
       </div>
     </div>
     <div id="spheres-list"></div>
+
+    <!-- КАЛЕНДАРЬ в разделе Сферы -->
+    <div class="card" style="margin-top:14px;">
+      <div class="card-lbl">Календарь</div>
+      <div class="cal-nav">
+        <button class="cal-nav-btn" onclick="calPrev();renderSpheresCal()">‹</button>
+        <span class="cal-month-lbl" id="cal-month-lbl-sp"></span>
+        <button class="cal-nav-btn" onclick="calNext();renderSpheresCal()">›</button>
+      </div>
+      <div class="cal-grid" id="cal-grid-sp"></div>
+      <div class="cal-legend">
+        <div class="cal-leg-item"><div class="leg-dot" style="background:var(--graphite)"></div>День заполнен</div>
+        <div class="cal-leg-item"><div class="leg-dot" style="background:var(--accent-light);border:1.5px solid #c8d4a8"></div>Частично</div>
+        <div class="cal-leg-item"><div class="cal-dot dot-affirm" style="border-radius:50%;width:8px;height:8px;"></div>Практика</div>
+        <div class="cal-leg-item"><div class="cal-dot dot-replaced" style="border-radius:50%;width:8px;height:8px;"></div>Замена слова</div>
+      </div>
+    </div>
+
+    <!-- БАЛАНС СФЕР в разделе Сферы -->
+    <div class="card" style="margin-top:14px;">
+      <div class="card-lbl" id="spheres-balance-week-label">Неделя</div>
+      <div id="balance-bars-sp"></div>
+    </div>
+
+    <!-- КОЛЕСО БАЛАНСА в разделе Сферы -->
+    <div class="card" style="padding:0;overflow:hidden;margin-top:14px;">
+      <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:16px 20px 14px;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.35);margin-bottom:3px;">Колесо баланса</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.5);">Средние оценки за все записи</div>
+      </div>
+      <div style="padding:16px 20px 20px;background:#fff;">
+        <canvas id="wheel-canvas-sp" style="width:100%;display:block;"></canvas>
+      </div>
+    </div>
   </div>
 
   <!-- ТЕЛО -->
   <div id="ss-body" class="sub-section">
 
+    <!-- ОПИСАНИЕ РАЗДЕЛА -->
+    <div style="background:linear-gradient(160deg,#2A2A2F 0%,#32303A 100%);border-radius:20px;padding:22px 20px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+      <div style="position:absolute;top:0;right:0;width:160px;height:160px;background:radial-gradient(circle at 100% 0%,rgba(212,137,154,.08) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:8px;">Тело и состояние</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.35;">Тело — это отражение твоего внутреннего состояния.</div>
+      <div style="font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:16px;">Каждый день фиксируй базу: сон, вода, движение. Отмечай активности и чувства. За неделю увидишь паттерн — что даёт тебе энергию, а что забирает.</div>
+      <div style="display:flex;gap:8px;">
+        <div style="flex:1;background:rgba(168,188,138,.12);border-radius:12px;padding:10px 12px;border-left:2px solid #A8BC8A;">
+          <div style="font-size:.58rem;font-weight:800;color:#A8BC8A;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Физическое</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.55);line-height:1.45;">Сон · вода · движение · питание</div>
+        </div>
+        <div style="flex:1;background:rgba(212,137,154,.12);border-radius:12px;padding:10px 12px;border-left:2px solid #D4899A;">
+          <div style="font-size:.58rem;font-weight:800;color:#D4899A;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Эмоциональное</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.55);line-height:1.45;">Энергия · чувства · состояние</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ТРЕКЕР ПРИВЫЧЕК вверху -->
+    <div class="card" style="padding:0;overflow:hidden;margin-bottom:14px;">
+      <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:14px 20px 12px;">
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Трекер привычек</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Нажми на день чтобы перейти</div>
+      </div>
+      <div style="padding:20px;">
+        <div id="body-dynamic-charts-top"></div>
+      </div>
+    </div>
+
     <!-- ФИЗИЧЕСКИЕ ПОКАЗАТЕЛИ -->
     <div class="card" style="padding:0;overflow:hidden;">
-      <div style="background:linear-gradient(135deg,#2C2C2C 0%,#3a3535 100%);padding:16px 20px 14px;">
+      <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:16px 20px 14px;">
         <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Физические показатели</div>
         <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Тело начинается с базы</div>
       </div>
@@ -1445,7 +1568,7 @@ canvas{max-width:100%;}
 
     <!-- КАРТА ЧУВСТВ -->
     <div class="card" style="padding:0;overflow:hidden;">
-      <div style="background:linear-gradient(135deg,#2C2C2C 0%,#3a3535 100%);padding:16px 20px 14px;">
+      <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:16px 20px 14px;">
         <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Карта чувств</div>
         <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Что живёт внутри сегодня</div>
       </div>
@@ -1509,16 +1632,8 @@ canvas{max-width:100%;}
       </div>
     </div>
 
-    <!-- ДИНАМИКА -->
-    <div class="card" style="padding:0;overflow:hidden;">
-      <div style="background:linear-gradient(135deg,#2C2C2C 0%,#3a3535 100%);padding:16px 20px 14px;">
-        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Динамика за неделю</div>
-        <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Нажми на день чтобы перейти</div>
-      </div>
-      <div style="padding:20px;">
-        <div id="body-dynamic-charts"></div>
-      </div>
-    </div>
+    <!-- скрытый контейнер для совместимости с renderBodyDynamic -->
+    <div style="display:none;"><div id="body-dynamic-charts"></div></div>
 
   </div>
 </div>
@@ -1554,7 +1669,6 @@ canvas{max-width:100%;}
       <div class="cal-leg-item"><div class="cal-dot dot-replaced" style="border-radius:50%;width:8px;height:8px;"></div>Замена слова</div>
     </div>
   </div>
-  <div id="cal-week-info"></div>
   <div id="dyn-empty" style="display:none;text-align:center;padding:40px 20px;">
     <div style="font-size:2rem;margin-bottom:12px;">📊</div>
     <div style="font-size:.9rem;font-weight:800;color:var(--text);margin-bottom:6px;">Данных пока нет</div>
@@ -1566,33 +1680,83 @@ canvas{max-width:100%;}
     <div id="balance-bars"></div>
   </div>
   <div class="card">
-    <div class="card-lbl">Динамика по дням</div>
-    <div id="line-chart"></div>
-  </div>
-  <div class="card">
     <div class="card-lbl">Дисциплина недели</div>
     <div class="stat-row" id="disc-stats"></div>
   </div>
+  <div id="cal-week-info"></div>
   <div class="card" id="dynamic-summary-card">
     <div class="card-lbl">Итог недели</div>
     <div id="dynamic-summary"></div>
   </div>
-  <div class="card">
-    <div class="card-lbl">Сферы жизни по датам</div>
-    <div id="sphere-detail-tabs" style="display:flex;gap:4px;margin-bottom:12px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch;"></div>
-    <div id="sphere-line-chart" style="margin-bottom:12px"></div>
+  <!-- скрытые контейнеры для JS-совместимости -->
+  <div style="display:none;">
+    <div id="line-chart"></div>
+    <div id="sphere-detail-tabs"></div>
+    <div id="sphere-line-chart"></div>
     <div id="sphere-detail-content"></div>
-  </div>
-  <div class="card">
-    <div class="card-lbl">Рейтинг сфер за неделю</div>
     <div id="sphere-ranking"></div>
+  </div>
+  <!-- ТРЕКЕР ПРИВЫЧЕК в Динамике -->
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:16px 20px 14px;">
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Трекер привычек</div>
+      <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Сон, вода, движение, состояние за неделю</div>
+    </div>
+    <div style="padding:20px;">
+      <div id="body-dynamic-charts-dyn"></div>
+    </div>
+  </div>
+
+  <!-- ДИНАМИКА РЕАЛИЗАЦИИ в Динамике -->
+  <div style="margin-top:14px;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.2);">
+    <!-- Тёмная шапка -->
+    <div style="background:linear-gradient(160deg,#2A2A2F 0%,#32303A 100%);padding:24px 22px 20px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#D4899A,#A8BC8A 40%,#6A7A3E);"></div>
+      <div style="position:absolute;top:0;right:0;width:180px;height:180px;background:radial-gradient(circle at 100% 0%,rgba(212,137,154,.09) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:8px;">Динамика реализации</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.3;">Потенциал реализуется в движении.</div>
+      <div style="font-size:.73rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:16px;">Каждая выполненная задача — шаг из потенциала в реальность. Оценивай прогресс по каждой цели — здесь видна твоя динамика.</div>
+      <div style="display:flex;gap:4px;background:rgba(255,255,255,.06);border-radius:12px;padding:3px;">
+        <button onclick="switchDynView('wk')" id="dyn-btn-wk2" style="flex:1;padding:8px 0;border-radius:10px;border:none;font-size:.73rem;font-weight:700;cursor:pointer;background:#A8BC8A;color:#fff;transition:all .2s;letter-spacing:.02em;">По неделям</button>
+        <button onclick="switchDynView('mo')" id="dyn-btn-mo2" style="flex:1;padding:8px 0;border-radius:10px;border:none;font-size:.73rem;font-weight:700;cursor:pointer;background:transparent;color:rgba(255,255,255,.35);transition:all .2s;letter-spacing:.02em;">По месяцам</button>
+      </div>
+    </div>
+    <!-- Светлая область графика -->
+    <div style="background:linear-gradient(160deg,#F2E4E9 0%,#faedf2 40%,#EBF0E2 100%);padding:20px 22px 0;">
+      <div style="position:relative;">
+        <canvas id="dyn-chart2" style="width:100%;display:block;border-radius:10px;"></canvas>
+        <div id="dyn-empty2" style="display:none;position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+          <div style="font-size:1.8rem;opacity:.4;">📈</div>
+          <div style="font-size:.75rem;color:var(--muted);text-align:center;line-height:1.6;max-width:220px;">Добавь задачи в разделе Цели и отмечай выполненные — здесь появится твой прогресс</div>
+        </div>
+      </div>
+    </div>
+    <!-- Футер -->
+    <div id="dyn-stats2" style="background:linear-gradient(135deg,#EBF0E2,#F2E4E9);display:flex;justify-content:space-between;align-items:center;padding:14px 22px 20px;border-top:1px solid #DDD5CC;">
+      <div style="display:flex;align-items:center;gap:6px;font-size:.68rem;color:var(--muted);">
+        <div id="dyn-legend-dot2" style="width:10px;height:3px;border-radius:2px;background:#6A7A3E;"></div>
+        <span>Выполнено %</span>
+      </div>
+      <div id="dyn-avg2" style="font-size:.68rem;color:var(--muted);"></div>
+    </div>
+  </div>
+  <!-- КОЛЕСО БАЛАНСА в Динамике -->
+  <div class="card" style="padding:0;overflow:hidden;margin-top:14px;">
+    <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:16px 20px 14px;position:relative;">
+      <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.35);margin-bottom:3px;">Колесо баланса</div>
+      <div style="font-size:.75rem;color:rgba(255,255,255,.5);">Средние оценки за все записи</div>
+    </div>
+    <div style="padding:16px 20px 20px;background:#fff;">
+      <canvas id="wheel-canvas" style="width:100%;display:block;"></canvas>
+    </div>
   </div>
   </div><!-- /dyn-content -->
 </div>
 
 <!-- ══════════ ARCHIVE ══════════ -->
 <div id="s-archive" class="section">
-  <div class="card" style="background:linear-gradient(135deg,#1a2410,#2C2825);border:1px solid #3a3f2a;">
+  <div class="card" style="background:linear-gradient(135deg,#2A2A2F,#32303A);border:1px solid #3a3f2a;">
     <div class="card-lbl" style="color:#A8BC8A;">Резервная копия данных</div>
     <div style="font-size:.78rem;color:#8a8478;line-height:1.5;margin-bottom:14px;">Сохрани данные в файл — и восстанови в любой момент даже после очистки браузера.</div>
     <div style="display:flex;gap:8px;">
@@ -1617,7 +1781,7 @@ canvas{max-width:100%;}
 
 <!-- ══════════ КАРТА ПАТТЕРНОВ ══════════ -->
 <div id="s-patterns" class="section">
-  <div style="background:linear-gradient(135deg,#1a2410,#2C2825);border-radius:var(--radius);padding:18px 20px;margin-bottom:14px;position:relative;overflow:hidden;">
+  <div style="background:linear-gradient(135deg,#2A2A2F,#32303A);border-radius:var(--radius);padding:18px 20px;margin-bottom:14px;position:relative;overflow:hidden;">
     <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
     <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:6px;">Карта паттернов — речевые репликаторы</div>
     <div style="font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.55;margin-bottom:14px;">Полная интерактивная карта всех речевых кодов которые программируют бедность, остановку и жертву. Открой — найди своё, выбери один паттерн на неделю и работай только с ним в дневнике.</div>
@@ -1760,7 +1924,7 @@ canvas{max-width:100%;}
   </div>
 
   <!-- Итоговая формула -->
-  <div style="background:linear-gradient(135deg,#1a3a1a,#2C2825);border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
+  <div style="background:linear-gradient(135deg,#2A2A2F,#32303A);border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
     <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div>
     <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--mint);margin-bottom:14px;">Итоговая формула</div>
     <div style="display:flex;align-items:center;gap:0;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;">
@@ -1796,7 +1960,7 @@ canvas{max-width:100%;}
 
   <!-- ══════ ЛАБОРАТОРИЯ ══════ -->
   <div style="margin-top:20px;margin-bottom:6px;">
-    <div style="background:linear-gradient(135deg,#1a2410 0%,#2C2825 60%,#3d2a2a 100%);border-radius:var(--radius);padding:28px 22px;position:relative;overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 60%,#2E2C34 100%);border-radius:var(--radius);padding:28px 22px;position:relative;overflow:hidden;">
       <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
       <div style="font-size:.55rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:var(--accent2);margin-bottom:14px;">Следующий уровень</div>
       <div style="font-size:1.2rem;font-weight:800;color:#fff;line-height:1.25;letter-spacing:-.02em;margin-bottom:10px;">Лаборатория<br>тела как состояние</div>
@@ -1889,7 +2053,7 @@ function go(tab){
   if(tab==='week')renderWeek();
   if(tab==='days')renderDays();
   if(tab==='result')renderResult();
-  if(tab==='dynamic'){renderDynamic();renderCalendar();}
+  if(tab==='dynamic'){renderDynamic();renderCalendar();renderBodyDynamic();setTimeout(renderDynChart,100);setTimeout(renderWheelChart,150);}
   if(tab==='archive')renderArchive();
   if(tab==='patterns')renderPatterns();
   if(tab==='realization')renderRealization();
@@ -1917,8 +2081,8 @@ function goSub(sub){
   });
   if(sub==='morning'){loadMorning();renderQuoteOfDay();}
   if(sub==='evening')loadEvening();
-  if(sub==='spheres')renderSpheres();
-  if(sub==='body')renderBodyTab();
+  if(sub==='spheres'){renderSpheres();renderSpheresCal();renderDynamic();setTimeout(renderWheelChart,100);}
+  if(sub==='body'){renderBodyTab();renderBodyDynamic();}
 }
 
 function renderWeek(){
@@ -2167,6 +2331,48 @@ function renderCalendar(){
   } else {infoEl.innerHTML='<div class="empty">Начни неделю, чтобы видеть прогресс</div>';}
 }
 
+function renderSpheresCal(){
+  const lblEl=document.getElementById('cal-month-lbl-sp');
+  const gridEl=document.getElementById('cal-grid-sp');
+  if(!lblEl||!gridEl)return;
+  // week info block
+  const weekInfoEl=document.getElementById('spheres-week-info');
+  if(weekInfoEl){
+    if(S.word){
+      const affirmed=S.days.filter(d=>d.affirm).length;
+      const replaced=S.days.filter(d=>d.replaced).length;
+      const filled=S.days.filter(d=>d.reflection.length>0||d.action.length>0).length;
+      weekInfoEl.innerHTML=`<div class="cal-week-info"><div class="cal-week-word">${S.word} → ${S.replace}</div><div class="cal-week-meta">Неделя ${S.weekNum} · Практик: ${affirmed}/7 · Замен: ${replaced}/7 · Дней: ${filled}/7</div></div>`;
+    } else {
+      weekInfoEl.innerHTML='';
+    }
+  }
+  const map=buildCalMap();
+  const today=new Date();
+  const todayKey=dateKey(today);
+  const todayDow2=today.getDay()===0?6:today.getDay()-1;
+  lblEl.textContent=MONTHS_RU[calMonth]+' '+calYear;
+  const first=new Date(calYear,calMonth,1);
+  const firstDow=first.getDay()===0?6:first.getDay()-1;
+  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+  const dow_labels=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+  let html=dow_labels.map(d=>`<div class="cal-dow">${d}</div>`).join('');
+  for(let i=0;i<firstDow;i++){const prevDate=new Date(calYear,calMonth,1-firstDow+i);html+=`<div class="cal-cell other-month"><span>${prevDate.getDate()}</span></div>`;}
+  for(let day=1;day<=daysInMonth;day++){
+    const d=new Date(calYear,calMonth,day);const key=dateKey(d);const info=map[key];const isToday=key===todayKey;
+    let cls='cal-cell';
+    if(isToday)cls+=' today';else if(info&&info.full)cls+=' full';else if(info&&info.filled)cls+=' filled';
+    let dots='';
+    if(info){const dotArr=[];if(info.affirm)dotArr.push(`<span class="cal-dot dot-affirm"></span>`);if(info.replaced)dotArr.push(`<span class="cal-dot dot-replaced"></span>`);if(dotArr.length)dots=`<div class="cal-dots">${dotArr.join('')}</div>`;}
+    const wStart2=new Date(today);wStart2.setDate(today.getDate()-todayDow2);const wEnd2=new Date(wStart2);wEnd2.setDate(wStart2.getDate()+6);const thisDay2=new Date(calYear,calMonth,day);const inCurWeek=S.word&&thisDay2>=wStart2&&thisDay2<=wEnd2;
+    const clickable=(info||inCurWeek)?`onclick="openDayDetail('${key}',${calYear},${calMonth},${day})" style="cursor:pointer"`:'';
+    html+=`<div class="${cls}" ${clickable}><span>${day}</span>${dots}</div>`;
+  }
+  const totalCells=firstDow+daysInMonth;const remaining=(7-totalCells%7)%7;
+  for(let i=1;i<=remaining;i++){html+=`<div class="cal-cell other-month"><span>${i}</span></div>`;}
+  gridEl.innerHTML=html;
+}
+
 function openDayDetail(key,year,month,day){
   const today=new Date();
   const todayDow=today.getDay()===0?6:today.getDay()-1;
@@ -2267,31 +2473,35 @@ function renderDynamic(){
   const wlbl=document.getElementById('dynamic-week-label');
   if(wlbl)wlbl.textContent=(S.weekNum?'Неделя '+S.weekNum+' · ':'')+fmt(mon)+' — '+fmt(sun);
 
-  // Balance bars (replaces radar)
+  // Balance bars — среднее за весь период (текущая неделя + архив)
+  const allScores=collectAllScores();
   const avgs=SPHERES.map(sp=>{
-    const vals=S.days.map(d=>d.spheres[sp.key]?.score||0).filter(v=>v>0);
+    const vals=allScores[sp.key]||[];
     return{...sp,avg:vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length):0};
   });
   const maxAvg=Math.max(...avgs.map(s=>s.avg),1);
+  const barsHtml=avgs.map(s=>{
+    const pct=(s.avg/10*100).toFixed(0);
+    const color=s.avg>=7?'var(--green)':s.avg>=4?'var(--accent)':'var(--accent2)';
+    const label=s.avg>=7?'сильно':s.avg>=4?'средне':s.avg>0?'слабо':'';
+    return`<div style="margin-bottom:10px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+        <span style="font-size:.95rem;width:22px;text-align:center;">${s.icon}</span>
+        <span style="font-size:.78rem;font-weight:700;flex:1;color:var(--text);">${s.name}</span>
+        <span style="font-size:.75rem;font-weight:900;color:${color};min-width:26px;text-align:right;">${s.avg>0?s.avg.toFixed(1):'—'}</span>
+        ${label?`<span style="font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:20px;background:${s.avg>=7?'var(--green-bg)':s.avg>=4?'var(--accent-light)':'var(--red-bg)'};color:${color};">${label}</span>`:''}
+      </div>
+      <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+        <div style="height:100%;width:${pct}%;background:${color};border-radius:3px;transition:width .5s ease;"></div>
+      </div>
+    </div>`;
+  }).join('');
   const barsEl=document.getElementById('balance-bars');
-  if(barsEl){
-    barsEl.innerHTML=avgs.map(s=>{
-      const pct=(s.avg/10*100).toFixed(0);
-      const color=s.avg>=7?'var(--green)':s.avg>=4?'var(--accent)':'var(--accent2)';
-      const label=s.avg>=7?'сильно':s.avg>=4?'средне':s.avg>0?'слабо':'';
-      return`<div style="margin-bottom:10px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-          <span style="font-size:.95rem;width:22px;text-align:center;">${s.icon}</span>
-          <span style="font-size:.78rem;font-weight:700;flex:1;color:var(--text);">${s.name}</span>
-          <span style="font-size:.75rem;font-weight:900;color:${color};min-width:26px;text-align:right;">${s.avg>0?s.avg.toFixed(1):'—'}</span>
-          ${label?`<span style="font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:20px;background:${s.avg>=7?'var(--green-bg)':s.avg>=4?'var(--accent-light)':'var(--red-bg)'};color:${color};">${label}</span>`:''}
-        </div>
-        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
-          <div style="height:100%;width:${pct}%;background:${color};border-radius:3px;transition:width .5s ease;"></div>
-        </div>
-      </div>`;
-    }).join('');
-  }
+  if(barsEl) barsEl.innerHTML=barsHtml;
+  const barsElSp=document.getElementById('balance-bars-sp');
+  if(barsElSp) barsElSp.innerHTML=barsHtml;
+  const wlblSp=document.getElementById('spheres-balance-week-label');
+  if(wlblSp) wlblSp.textContent=(S.weekNum?'Неделя '+S.weekNum+' · ':'')+fmt(mon)+' — '+fmt(sun);
 
   // Line chart
   const totals=S.days.map(d=>SPHERES.reduce((sum,sp)=>sum+(d.spheres[sp.key]?.score||0),0));
@@ -2651,7 +2861,9 @@ function renderFeelingGroups(){
 
 function renderBodyDynamic(){
   const el=document.getElementById('body-dynamic-charts');
-  if(!el)return;
+  const el2=document.getElementById('body-dynamic-charts-dyn');
+  const el3=document.getElementById('body-dynamic-charts-top');
+  if(!el&&!el2&&!el3)return;
   // убедимся что неделя инициализирована
   const wkey='w'+curWeekKey();
   if(!bodyData[wkey])bodyData[wkey]=Array.from({length:7},blankBodyDay);
@@ -2665,11 +2877,14 @@ function renderBodyDynamic(){
     {label:'Состояние',key:'energy',max:5,color:colors[3]},
   ];
   const hasAnyData=metrics.some(m=>wk.some(d=>parseFloat(d[m.key])>0));
+  const emptyHTML='<div style="color:var(--muted);font-size:.85rem;text-align:center;padding:20px 0;">Данные появятся после заполнения дней</div>';
   if(!hasAnyData){
-    el.innerHTML='<div style="color:var(--muted);font-size:.85rem;text-align:center;padding:20px 0;">Данные появятся после заполнения дней</div>';
+    if(el)el.innerHTML=emptyHTML;
+    if(el2)el2.innerHTML=emptyHTML;
+    if(el3)el3.innerHTML=emptyHTML;
     return;
   }
-  el.innerHTML=metrics.map(m=>{
+  const html=metrics.map(m=>{
     const vals=wk.map(d=>parseFloat(d[m.key])||0);
     const maxV=Math.max(...vals,0.01);
     const bars=vals.map((v,i)=>{
@@ -2688,6 +2903,9 @@ function renderBodyDynamic(){
       <div style="display:flex;gap:4px;align-items:flex-end;">${bars}</div>
     </div>`;
   }).join('');
+  if(el)el.innerHTML=html;
+  if(el2)el2.innerHTML=html;
+  if(el3)el3.innerHTML=html;
 }
 // ══════════ /ТЕЛО ══════════
 
@@ -2711,7 +2929,7 @@ const QUOTES=[
   {text:'Состояние — это не настроение. Это позиция, которую ты выбираешь.',author:'Юлия · Лаборатория тела и состояния'},
   {text:'Один код в неделю — и через три месяца ты говоришь на другом языке.',author:'Юлия · Лаборатория тела и состояния'},
   {text:'Сила не появляется снаружи. Она включается когда ты перестаёшь ждать разрешения.',author:'Юлия · Лаборатория тела и состояния'},
-  {text:'После 40 тело не сдаётся — оно ждёт когда ты начнёшь с ним разговаривать.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Тело помнит всё. И оно готово меняться — когда ты готова слышать его.',author:'Юлия · Лаборатория тела и состояния'},
   {text:'Не хватает энергии? Посмотри не на питание — посмотри на слова которые ты говоришь себе.',author:'Юлия · Лаборатория тела и состояния'},
   {text:'Всё, что не происходит сейчас — это всё для меня.',author:'Утренняя практика'},
   {text:'Я выбираю то, что меня расширяет и даёт мне энергию.',author:'Утренняя практика'},
@@ -2719,6 +2937,22 @@ const QUOTES=[
   {text:'Декорации снаружи меняются только тогда, когда меняется программа внутри.',author:'Юлия · Лаборатория тела и состояния'},
   {text:'Код жертвы всегда убедителен. Но он дорого стоит.',author:'Юлия · Лаборатория тела и состояния'},
   {text:'«Потом» — это не время. Это программа отказа от себя.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Тело — это не враг. Это самый честный союзник, который у тебя есть.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Каждое утро — это новая точка входа в себя.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Внутреннее состояние — это не следствие жизни. Это её причина.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Ты не начинаешь с нуля. Ты начинаешь с опытом.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Тело реагирует не на события — на смысл, который ты им даёшь.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Трансформация начинается не с диеты и не с тренировки. С решения видеть себя иначе.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Каждый раз когда ты выбираешь себя — ты перезаписываешь старый код.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Тишина внутри — это не пустота. Это пространство для нового.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Твоё тело знает путь. Твоя задача — перестать ему мешать.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Энергия следует за вниманием. Куда смотришь — туда и течёт жизнь.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Граница — это не стена. Это уважение к себе, выраженное вслух.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Самое смелое что ты можешь сделать — поверить себе раньше чем появятся доказательства.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Тело меняется вслед за убеждением. Измени убеждение — тело услышит.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Не жди идеального момента. Идеальный момент — это сейчас, в том теле, которое есть.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Женщина в ресурсе меняет пространство вокруг — без усилий, просто своим присутствием.',author:'Юлия · Лаборатория тела и состояния'},
+  {text:'Всё начинается с одного слова, которое ты говоришь себе утром.',author:'Юлия · Лаборатория тела и состояния'},
 ];
 
 function renderQuoteOfDay(){
@@ -2774,19 +3008,43 @@ if(localStorage.getItem('kodyNotif')==='on'&&Notification.permission==='granted'
   if(ns)ns.innerHTML='<span style="color:var(--green)">✓ Напоминания включены</span>';
 }
 
-function startApp(){
-  localStorage.setItem('kodyOnboarded','1');
-  document.getElementById('onboarding').style.display='none';
-  document.getElementById('main-app').style.display='block';
-  renderWeek();renderQuoteOfDay();
-}
 
 function showOnboarding(){
-  document.getElementById('onboarding').style.display='block';
-  document.getElementById('main-app').style.display='none';
+  var mainApp = document.getElementById('main-app');
+  var ob = document.getElementById('onboarding');
+  mainApp.style.display='none';
+  ob.style.display='block';
   document.getElementById('back-btn').style.display='block';
+  document.getElementById('back-btn-top').style.display='block';
   document.getElementById('start-btn').style.display='none';
-  window.scrollTo(0,0);
+  document.body.style.overflow='hidden';
+  ob.style.position='fixed';
+  ob.style.top='0';
+  ob.style.left='0';
+  ob.style.right='0';
+  ob.style.bottom='0';
+  ob.style.overflowY='auto';
+  ob.style.maxWidth='520px';
+  ob.style.margin='0 auto';
+  ob.style.zIndex='9999';
+  ob.scrollTop=0;
+}
+
+function startApp(){
+  localStorage.setItem('kodyOnboarded','1');
+  var mainApp = document.getElementById('main-app');
+  var ob = document.getElementById('onboarding');
+  ob.style.display='none';
+  ob.style.position='';
+  ob.style.top='';
+  ob.style.left='';
+  ob.style.right='';
+  ob.style.bottom='';
+  ob.style.overflowY='';
+  ob.style.zIndex='';
+  document.body.style.overflow='';
+  mainApp.style.display='block';
+  go('realization');
 }
 
 // onboarding skipped
@@ -2945,28 +3203,113 @@ function renderGoals(tab){
   }
   el.innerHTML = '';
   for(var i=0; i<list.length; i++){
-    var g = list[i];
-    var row = document.createElement('div');
-    row.className = 'goal-item';
-    var chk = document.createElement('div');
-    chk.className = 'goal-check' + (g.done ? ' done' : '');
-    chk.textContent = g.done ? '✓' : '';
-    chk.setAttribute('data-tab', tab);
-    chk.setAttribute('data-idx', i);
-    chk.onclick = function(){ toggleGoal(this.getAttribute('data-tab'), parseInt(this.getAttribute('data-idx'))); };
-    var txt = document.createElement('div');
-    txt.className = 'goal-text' + (g.done ? ' done-text' : '');
-    txt.textContent = g.text;
-    var del = document.createElement('button');
-    del.className = 'goal-del';
-    del.textContent = '✕';
-    del.setAttribute('data-tab', tab);
-    del.setAttribute('data-idx', i);
-    del.onclick = function(){ deleteGoal(this.getAttribute('data-tab'), parseInt(this.getAttribute('data-idx'))); };
-    row.appendChild(chk);
-    row.appendChild(txt);
-    row.appendChild(del);
-    el.appendChild(row);
+    (function(g, idx){
+      var score = typeof g.score === 'number' ? g.score : null;
+      var accentColor = g.done ? '#A8BC8A' : (score !== null && score >= 7 ? '#A8BC8A' : score !== null && score >= 4 ? '#D4B96A' : score !== null ? '#D4899A' : 'var(--muted)');
+
+      var card = document.createElement('div');
+      card.style.cssText = 'border-radius:14px;border:1.5px solid ' + (g.done ? 'rgba(168,188,138,.4)' : 'rgba(212,137,154,.2)') + ';padding:14px 14px 10px;margin-bottom:10px;background:' + (g.done ? 'rgba(168,188,138,.05)' : 'linear-gradient(135deg,rgba(212,137,154,.06),rgba(106,122,62,.03))') + ';transition:all .2s;';
+
+      // Верхняя строка: чекбокс + текст + удалить
+      var topRow = document.createElement('div');
+      topRow.style.cssText = 'display:flex;align-items:flex-start;gap:10px;margin-bottom:' + (g.done ? '0' : '12px') + ';';
+
+      var chk = document.createElement('div');
+      chk.style.cssText = 'width:22px;height:22px;border-radius:6px;border:2px solid ' + (g.done ? '#A8BC8A' : 'var(--border)') + ';background:' + (g.done ? '#A8BC8A' : 'transparent') + ';display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;margin-top:1px;transition:all .2s;';
+      chk.innerHTML = g.done ? '<svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' : '';
+      chk.setAttribute('data-tab', tab);
+      chk.setAttribute('data-idx', idx);
+      chk.onclick = function(){ toggleGoal(this.getAttribute('data-tab'), parseInt(this.getAttribute('data-idx'))); };
+
+      var txt = document.createElement('div');
+      txt.style.cssText = 'flex:1;font-size:.85rem;font-weight:600;color:' + (g.done ? 'var(--muted)' : 'var(--text)') + ';line-height:1.4;' + (g.done ? 'text-decoration:line-through;' : '');
+      txt.textContent = g.text;
+
+      var del = document.createElement('button');
+      del.style.cssText = 'background:none;border:none;cursor:pointer;color:var(--muted);font-size:.7rem;padding:2px 4px;opacity:.4;flex-shrink:0;';
+      del.textContent = '✕';
+      del.setAttribute('data-tab', tab);
+      del.setAttribute('data-idx', idx);
+      del.onclick = function(){ deleteGoal(this.getAttribute('data-tab'), parseInt(this.getAttribute('data-idx'))); };
+
+      topRow.appendChild(chk);
+      topRow.appendChild(txt);
+      topRow.appendChild(del);
+      card.appendChild(topRow);
+
+      if(!g.done){
+        // Шкала 0–10
+        var scaleWrap = document.createElement('div');
+        scaleWrap.style.cssText = 'margin-bottom:8px;';
+
+        var scaleHeader = document.createElement('div');
+        scaleHeader.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;';
+        scaleHeader.innerHTML = '<span style="font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Где ты сейчас</span>' +
+          '<span id="sc-val-'+tab+'-'+idx+'" style="font-size:.95rem;font-weight:800;color:'+accentColor+';">' + (score !== null ? score : '—') + '</span>';
+
+        var btns = document.createElement('div');
+        btns.style.cssText = 'display:flex;gap:3px;';
+        for(var n=0; n<=10; n++){
+          (function(nn){
+            var b = document.createElement('button');
+            b.textContent = nn;
+            b.style.cssText = 'flex:1;padding:5px 0;border-radius:5px;border:none;cursor:pointer;font-size:.65rem;font-weight:700;transition:all .15s;' +
+              (score === nn ? 'background:'+accentColor+';color:#fff;' : 'background:rgba(0,0,0,.06);color:rgba(0,0,0,.35);');
+            b.setAttribute('data-tab', tab);
+            b.setAttribute('data-idx', idx);
+            b.setAttribute('data-score', nn);
+            b.onclick = function(){
+              var t = this.getAttribute('data-tab');
+              var ix = parseInt(this.getAttribute('data-idx'));
+              var sc = parseInt(this.getAttribute('data-score'));
+              var k = getRSKey(t);
+              var sl = getSlot(k);
+              if(sl.goals[ix]){ sl.goals[ix].score = sc; saveRS(); renderGoals(t); renderDynChart(); }
+            };
+            btns.appendChild(b);
+          })(n);
+        }
+
+        var scaleLabels = document.createElement('div');
+        scaleLabels.style.cssText = 'display:flex;justify-content:space-between;margin-top:4px;font-size:.6rem;color:var(--muted);';
+        scaleLabels.innerHTML = '<span>Не начато</span><span>Сделано на 100%</span>';
+
+        scaleWrap.appendChild(scaleHeader);
+        scaleWrap.appendChild(btns);
+        scaleWrap.appendChild(scaleLabels);
+        card.appendChild(scaleWrap);
+
+        // Поле "что сделать до 10"
+        if(score !== null && score < 10){
+          var nextWrap = document.createElement('div');
+          nextWrap.style.cssText = 'border-top:1px solid var(--border);padding-top:8px;';
+
+          var nextLabel = document.createElement('div');
+          nextLabel.style.cssText = 'font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:5px;';
+          nextLabel.textContent = 'Что сделать чтобы дойти до 10';
+
+          var nextInp = document.createElement('textarea');
+          nextInp.style.cssText = 'width:100%;min-height:44px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:.78rem;color:var(--text);resize:none;background:transparent;box-sizing:border-box;font-family:inherit;line-height:1.5;';
+          nextInp.placeholder = 'Следующий конкретный шаг...';
+          nextInp.value = g.next || '';
+          nextInp.setAttribute('data-tab', tab);
+          nextInp.setAttribute('data-idx', idx);
+          nextInp.oninput = function(){
+            var t = this.getAttribute('data-tab');
+            var ix = parseInt(this.getAttribute('data-idx'));
+            var k = getRSKey(t);
+            var sl = getSlot(k);
+            if(sl.goals[ix]){ sl.goals[ix].next = this.value; saveRS(); }
+          };
+
+          nextWrap.appendChild(nextLabel);
+          nextWrap.appendChild(nextInp);
+          card.appendChild(nextWrap);
+        }
+      }
+
+      el.appendChild(card);
+    })(list[i], i);
   }
 }
 
@@ -2977,7 +3320,7 @@ function addGoal(tab){
   if(!text) return;
   var key = getRSKey(tab);
   var slot = getSlot(key);
-  slot.goals.push({text:text, done:false});
+  slot.goals.push({text:text, done:false, score:null, next:''});
   inp.value = '';
   saveRS(); renderGoals(tab);
 }
@@ -2987,14 +3330,14 @@ function toggleGoal(tab, idx){
   var slot = getSlot(key);
   if(!slot.goals[idx]) return;
   slot.goals[idx].done = !slot.goals[idx].done;
-  saveRS(); renderGoals(tab);
+  saveRS(); renderGoals(tab); renderDynChart();
 }
 
 function deleteGoal(tab, idx){
   var key = getRSKey(tab);
   var slot = getSlot(key);
   slot.goals.splice(idx,1);
-  saveRS(); renderGoals(tab);
+  saveRS(); renderGoals(tab); renderDynChart();
 }
 
 function renderRealization(){
@@ -3007,11 +3350,12 @@ function renderRealization(){
 
 <!-- ── FOOTER ── -->
 <div class="author-footer">
-  <div>
-    <div class="author-footer-name">Юлия Веденеева · Авторский метод</div>
-    <div class="author-footer-sub">Тело как состояние</div>
-  </div>
-  <div style="display:flex;gap:5px;align-items:center;">
+  <div class="author-footer-top">
+    <div class="author-footer-left">
+      <div class="author-footer-name">Юлия Веденеева · Авторский метод</div>
+      <div class="author-footer-sub">Тело как состояние</div>
+    </div>
+    <div style="display:flex;gap:5px;align-items:center;flex-shrink:0;">
     <button onclick="exportData()" title="Сохранить данные" style="height:30px;padding:0 10px;background:rgba(106,122,62,.25);border:1px solid rgba(106,122,62,.4);border-radius:8px;color:#A8BC8A;font-size:.65rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.02em;">↓ Бэкап</button>
     <a class="author-footer-link" style="background:rgba(42,171,238,.2);border:1px solid rgba(42,171,238,.3);" href="https://t.me/meta_ulia" target="_blank">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
@@ -3021,7 +3365,9 @@ function renderRealization(){
       <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
       @meta_ulia
     </a>
+    </div>
   </div>
+  <div class="author-footer-copy">© 2026 Юлия Веденеева. Все права защищены. Копирование и использование материалов без письменного разрешения автора запрещено.</div>
 </div>
 
 
@@ -3034,6 +3380,84 @@ function renderRealization(){
     <div class="real-hero-sub">Год даёт направление. Месяц — шаги. Неделя — фокус.</div>
   </div>
 
+  <!-- ИНСТРУКЦИЯ — всегда видна -->
+  <div style="margin-bottom:20px;background:linear-gradient(135deg,#2A2A2F,#32303A);border-radius:18px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.2);position:relative;">
+    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6A7A3E,#A8BC8A 40%,#D4899A);"></div>
+    <div style="padding:18px 18px 6px;">
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:10px;">Как работать с разделом</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+
+        <div style="background:linear-gradient(135deg,rgba(168,188,138,.12),rgba(168,188,138,.04));border:1px solid rgba(168,188,138,.25);border-radius:12px;padding:12px 14px;">
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px;">
+            <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#6A7A3E,#A8BC8A);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;">1</div>
+            <div style="font-size:.68rem;font-weight:800;color:#A8BC8A;text-transform:uppercase;letter-spacing:.08em;">Намерение</div>
+          </div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.55;">Внутренний вектор — куда и зачем. Пиши от состояния, 1–2 предложения.</div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,rgba(168,188,138,.12),rgba(168,188,138,.04));border:1px solid rgba(168,188,138,.25);border-radius:12px;padding:12px 14px;">
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px;">
+            <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#6A7A3E,#A8BC8A);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;">2</div>
+            <div style="font-size:.68rem;font-weight:800;color:#A8BC8A;text-transform:uppercase;letter-spacing:.08em;">Цели</div>
+          </div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.55;">Год: 3–7 результатов. Месяц: 3–5 шагов. Неделя: 3–5 действий. Конкретно.</div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,rgba(212,137,154,.12),rgba(212,137,154,.04));border:1px solid rgba(212,137,154,.25);border-radius:12px;padding:12px 14px;">
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px;">
+            <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#C0697A,#D4899A);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;">3</div>
+            <div style="font-size:.68rem;font-weight:800;color:#D4899A;text-transform:uppercase;letter-spacing:.08em;">Шкала 0–10</div>
+          </div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.55;">На каждой задаче — где ты сейчас. Мозг видит разрыв и начинает искать путь.</div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,rgba(212,137,154,.12),rgba(212,137,154,.04));border:1px solid rgba(212,137,154,.25);border-radius:12px;padding:12px 14px;">
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px;">
+            <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#C0697A,#D4899A);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;">4</div>
+            <div style="font-size:.68rem;font-weight:800;color:#D4899A;text-transform:uppercase;letter-spacing:.08em;">Шаг до 10</div>
+          </div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.55;">Одно действие сегодня. Маленький шаг снимает тревогу и запускает движение.</div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;gap:8px;margin-bottom:18px;">
+        <div style="flex:1;background:linear-gradient(135deg,rgba(168,188,138,.1),rgba(168,188,138,.03));border:1px solid rgba(168,188,138,.2);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
+          <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#6A7A3E,#A8BC8A);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;">5</div>
+          <div>
+            <div style="font-size:.68rem;font-weight:800;color:#A8BC8A;text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;">Галочка = дофамин</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.5;">Сделано — отмечай. Мозг получает сигнал завершения. Карточка зеленеет. Отмечай даже маленькое.</div>
+          </div>
+        </div>
+        <div style="flex:1;background:linear-gradient(135deg,rgba(168,188,138,.1),rgba(168,188,138,.03));border:1px solid rgba(168,188,138,.2);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
+          <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#6A7A3E,#A8BC8A);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;">6</div>
+          <div>
+            <div style="font-size:.68rem;font-weight:800;color:#A8BC8A;text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;">График роста</div>
+            <div style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.5;">Внизу — твоя динамика по неделям и месяцам. Рост на графике = потенциал стал реальностью.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,rgba(212,137,154,.32),rgba(168,188,138,.2));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #D4899A;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;">
+            <span style="font-family:Georgia,serif;font-style:italic;font-size:1rem;font-weight:700;color:#D4899A;letter-spacing:.01em;">Намерение</span>
+            <span style="font-family:Georgia,serif;font-style:italic;font-size:.82rem;color:rgba(255,255,255,.65);">без движения —</span>
+            <span style="font-family:Georgia,serif;font-style:italic;font-size:.95rem;font-weight:700;color:#D4899A;letter-spacing:.03em;">мечта.</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;">
+            <span style="font-family:Georgia,serif;font-style:italic;font-size:1rem;font-weight:700;color:#A8BC8A;letter-spacing:.01em;">Движение</span>
+            <span style="font-family:Georgia,serif;font-style:italic;font-size:.82rem;color:rgba(255,255,255,.65);">без намерения —</span>
+            <span style="font-family:Georgia,serif;font-style:italic;font-size:.95rem;font-weight:700;color:#A8BC8A;letter-spacing:.03em;">суета.</span>
+          </div>
+          <div style="margin-top:6px;padding-top:10px;border-top:1px solid rgba(212,137,154,.25);font-family:Georgia,serif;font-style:italic;font-size:.8rem;color:rgba(255,255,255,.55);letter-spacing:.02em;line-height:1.65;">
+            Реализация — это связка между тем, что <span style="color:#D4899A;">хочешь</span>, и тем, что реально <span style="color:#A8BC8A;">делаешь.</span> Ставишь цель, разбиваешь на задачи, отмечаешь выполненное — и видишь на графике как <span style="color:#D4899A;">намерение</span> превращается в <span style="color:#A8BC8A;">результат.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Навигация по горизонтам -->
   <div class="real-tabs">
     <button class="real-tab active" id="rtab-yr" onclick="goReal('yr')">2026</button>
@@ -3044,12 +3468,20 @@ function renderRealization(){
   <!-- ГОД -->
   <div id="rp-yr" class="real-panel active">
     <div class="card">
+      <!-- Описание блока -->
+      <div style="background:linear-gradient(135deg,rgba(106,122,62,.08),rgba(212,137,154,.05));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #A8BC8A;">
+        <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#6A7A3E;margin-bottom:6px;">Намерение</div>
+        <div style="font-size:.78rem;color:var(--muted);line-height:1.6;">Намерение — это не список задач. Это внутренний вектор: ощущение того, куда ты движешься и зачем. Когда намерение ясно — мозг начинает замечать всё что ведёт к нему. Пиши от состояния, а не от страха.</div>
+      </div>
       <div class="real-section-lbl" id="lbl-yr">Намерение 2026</div>
       <textarea id="inp-yr-intent" class="intent-textarea"
         placeholder="Каким будет этот год для меня..."
         oninput="saveRealIntent('yr');"
         style="width:100%;min-height:72px;padding:12px 14px;border:1.5px solid rgba(212,137,154,.3);border-radius:var(--radius-sm);font-size:.9rem;font-family:Georgia,serif;font-style:italic;color:var(--text);resize:none;background:linear-gradient(135deg,rgba(212,137,154,.06),rgba(106,122,62,.03));box-sizing:border-box;"></textarea>
+
+
       <div class="real-section-lbl" style="margin-top:16px;">Цели на год</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.55;">Цели — конкретные результаты которые сделают намерение реальным. Отмечай выполненные — дневник покажет твой прогресс на графике.</div>
       <div id="goals-yr"></div>
       <div class="add-goal-row">
         <input class="add-goal-input" id="new-goal-yr" type="text" placeholder="Добавить цель на год..." onkeydown="if(event.key==='Enter')addGoal('yr')">
@@ -3061,18 +3493,27 @@ function renderRealization(){
   <!-- МЕСЯЦ -->
   <div id="rp-mo" class="real-panel">
     <div class="card">
-      <!-- Навигация по месяцам -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
         <button onclick="shiftMo(-1)" style="width:32px;height:32px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;font-size:.9rem;font-weight:800;color:var(--graphite);">‹</button>
         <div id="mo-title" style="font-size:.9rem;font-weight:800;color:var(--text);"></div>
         <button onclick="shiftMo(1)" id="mo-next-btn" style="width:32px;height:32px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;font-size:.9rem;font-weight:800;color:var(--graphite);">›</button>
       </div>
+
+      <!-- Описание + шкала месяца -->
+      <div style="background:linear-gradient(135deg,rgba(106,122,62,.08),rgba(212,137,154,.05));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #A8BC8A;">
+        <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#6A7A3E;margin-bottom:6px;">Как работает месяц</div>
+        <div style="font-size:.78rem;color:var(--muted);line-height:1.6;">Месяц — это горизонт конкретных шагов. Напиши намерение месяца (куда ты направляешь энергию) и 3–5 целей которые двигают тебя вперёд. В конце месяца оцени состояние по шкале — это твой КПТ-трекер реализации.</div>
+      </div>
+
       <div class="real-section-lbl">Намерение месяца</div>
       <textarea id="inp-mo-intent" class="intent-textarea"
         placeholder="На что я направляю этот месяц..."
         oninput="saveRealIntent('mo');"
         style="width:100%;min-height:72px;padding:12px 14px;border:1.5px solid rgba(212,137,154,.3);border-radius:var(--radius-sm);font-size:.9rem;font-family:Georgia,serif;font-style:italic;color:var(--text);resize:none;background:linear-gradient(135deg,rgba(212,137,154,.06),rgba(106,122,62,.03));box-sizing:border-box;"></textarea>
+
+
       <div class="real-section-lbl" style="margin-top:16px;">Цели месяца</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.55;">Ставь конкретные, измеримые цели. Отмечай выполненные — это строит динамику на графике.</div>
       <div id="goals-mo"></div>
       <div class="add-goal-row">
         <input class="add-goal-input" id="new-goal-mo" type="text" placeholder="Добавить цель на месяц..." onkeydown="if(event.key==='Enter')addGoal('mo')">
@@ -3084,18 +3525,27 @@ function renderRealization(){
   <!-- НЕДЕЛЯ -->
   <div id="rp-wk" class="real-panel">
     <div class="card">
-      <!-- Навигация по неделям -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
         <button onclick="shiftWk(-1)" style="width:32px;height:32px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;font-size:.9rem;font-weight:800;color:var(--graphite);">‹</button>
         <div id="wk-title" style="font-size:.9rem;font-weight:800;color:var(--text);"></div>
         <button onclick="shiftWk(1)" id="wk-next-btn" style="width:32px;height:32px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);cursor:pointer;font-size:.9rem;font-weight:800;color:var(--graphite);">›</button>
       </div>
+
+      <!-- Описание недели -->
+      <div style="background:linear-gradient(135deg,rgba(212,137,154,.08),rgba(106,122,62,.05));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #D4899A;">
+        <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#D4899A;margin-bottom:6px;">Фокус недели</div>
+        <div style="font-size:.78rem;color:var(--muted);line-height:1.6;">Неделя — минимальная единица движения. Одно намерение + 3–5 конкретных задач. Не больше. Мозг лучше выполняет короткие чёткие команды. В конце недели отметь что сделано — это строит твой паттерн реализации.</div>
+      </div>
+
       <div class="real-section-lbl">Намерение недели</div>
       <textarea id="inp-wk-intent" class="intent-textarea"
         placeholder="Что важно сделать на этой неделе..."
         oninput="saveRealIntent('wk');"
         style="width:100%;min-height:72px;padding:12px 14px;border:1.5px solid rgba(212,137,154,.3);border-radius:var(--radius-sm);font-size:.9rem;font-family:Georgia,serif;font-style:italic;color:var(--text);resize:none;background:linear-gradient(135deg,rgba(212,137,154,.06),rgba(106,122,62,.03));box-sizing:border-box;"></textarea>
+
+
       <div class="real-section-lbl" style="margin-top:16px;">Задачи недели</div>
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.55;">Конкретные действия на эту неделю. Отмечай по мере выполнения — это покажет твой % реализации на графике.</div>
       <div id="goals-wk"></div>
       <div class="add-goal-row">
         <input class="add-goal-input" id="new-goal-wk" type="text" placeholder="Добавить задачу на неделю..." onkeydown="if(event.key==='Enter')addGoal('wk')">
@@ -3104,7 +3554,515 @@ function renderRealization(){
     </div>
   </div>
 
+  <!-- ДИНАМИКА ЦЕЛЕЙ -->
+  <div style="margin-top:28px;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.2);">
+
+    <!-- Тёмная шапка -->
+    <div style="background:linear-gradient(160deg,#2A2A2F 0%,#32303A 100%);padding:24px 22px 20px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#D4899A,#A8BC8A 40%,#6A7A3E);"></div>
+      <div style="position:absolute;top:0;right:0;width:180px;height:180px;background:radial-gradient(circle at 100% 0%,rgba(212,137,154,.09) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:8px;">Динамика реализации</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.3;">Потенциал реализуется в движении.</div>
+      <div style="font-size:.73rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:16px;">Каждая выполненная задача — шаг из потенциала в реальность. Оценивай прогресс по каждой цели — здесь видна твоя динамика.</div>
+      <!-- Переключатель -->
+      <div style="display:flex;gap:4px;background:rgba(255,255,255,.06);border-radius:12px;padding:3px;">
+        <button onclick="switchDynView('wk')" id="dyn-btn-wk" style="flex:1;padding:8px 0;border-radius:10px;border:none;font-size:.73rem;font-weight:700;cursor:pointer;background:#A8BC8A;color:#fff;transition:all .2s;letter-spacing:.02em;">По неделям</button>
+        <button onclick="switchDynView('mo')" id="dyn-btn-mo" style="flex:1;padding:8px 0;border-radius:10px;border:none;font-size:.73rem;font-weight:700;cursor:pointer;background:transparent;color:rgba(255,255,255,.35);transition:all .2s;letter-spacing:.02em;">По месяцам</button>
+      </div>
+    </div>
+
+    <!-- Светлая область графика -->
+    <div style="background:linear-gradient(160deg,#F2E4E9 0%,#faedf2 40%,#EBF0E2 100%);padding:20px 22px 0;">
+      <div style="position:relative;">
+        <canvas id="dyn-chart" style="width:100%;display:block;border-radius:10px;"></canvas>
+        <div id="dyn-empty" style="display:none;position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+          <div style="font-size:1.8rem;opacity:.4;">📈</div>
+          <div style="font-size:.75rem;color:var(--muted);text-align:center;line-height:1.6;max-width:220px;">Добавь задачи в разделе Цели и отмечай выполненные — здесь появится твой прогресс</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Светлый футер с легендой -->
+    <div id="dyn-stats" style="background:linear-gradient(135deg,#EBF0E2,#F2E4E9);display:flex;justify-content:space-between;align-items:center;padding:14px 22px 20px;border-top:1px solid #DDD5CC;">
+      <div style="display:flex;align-items:center;gap:6px;font-size:.68rem;color:var(--muted);">
+        <div id="dyn-legend-dot" style="width:10px;height:3px;border-radius:2px;background:#6A7A3E;"></div>
+        <span>Выполнено %</span>
+      </div>
+      <div id="dyn-avg" style="font-size:.68rem;color:var(--muted);"></div>
+    </div>
+
+  </div>
+
 </div>
+
+<script>
+// ─── ДИНАМИКА ЦЕЛЕЙ ───
+var dynView = 'wk';
+
+function switchDynView(v){
+  dynView = v;
+  ['','2'].forEach(function(sfx){
+    var bwk = document.getElementById('dyn-btn-wk'+sfx);
+    var bmo = document.getElementById('dyn-btn-mo'+sfx);
+    if(bwk && bmo){
+      if(v === 'wk'){
+        bwk.style.background='#A8BC8A'; bwk.style.color='#fff';
+        bmo.style.background='transparent'; bmo.style.color='rgba(255,255,255,.35)';
+      } else {
+        bmo.style.background='#D4899A'; bmo.style.color='#fff';
+        bwk.style.background='transparent'; bwk.style.color='rgba(255,255,255,.35)';
+      }
+    }
+    var dot = document.getElementById('dyn-legend-dot'+sfx);
+    if(dot) dot.style.background = v === 'wk' ? '#A8BC8A' : '#D4899A';
+  });
+  renderDynChart();
+}
+
+function getDynData(){
+  var RS = JSON.parse(localStorage.getItem('kodyRealization2') || '{}');
+  var now = new Date();
+  var labels = [], values = [];
+
+  if(dynView === 'wk'){
+    for(var i = 7; i >= 0; i--){
+      var d = new Date(now);
+      var dow = d.getDay() === 0 ? 6 : d.getDay() - 1;
+      d.setDate(d.getDate() - dow - i * 7);
+      var startOfYear = new Date(d.getFullYear(), 0, 1);
+      var wn = Math.ceil(((d - startOfYear) / 86400000 + startOfYear.getDay() + 1) / 7);
+      var key = 'wk_' + d.getFullYear() + '_' + String(wn).padStart(2,'0');
+      var slot = RS[key];
+      var goals = slot ? (slot.goals || []) : [];
+      var total = goals.length;
+      var pct = null;
+      if(total > 0){
+        // Среднее score задач (score 0-10 → 0-100), если score не выставлен — считаем как 0 если не done, 10 если done
+        var sum = 0;
+        goals.forEach(function(g){
+          if(g.done) sum += 100;
+          else if(typeof g.score === 'number' && g.score !== null) sum += g.score * 10;
+        });
+        pct = Math.round(sum / total);
+      }
+      labels.push('Нед ' + wn);
+      values.push(pct);
+    }
+  } else {
+    var months = ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
+    for(var j = 5; j >= 0; j--){
+      var md = new Date(now.getFullYear(), now.getMonth() - j, 1);
+      var mkey = 'mo_' + md.getFullYear() + '_' + String(md.getMonth()+1).padStart(2,'0');
+      var mslot = RS[mkey];
+      var mg = mslot ? (mslot.goals || []) : [];
+      var mt = mg.length;
+      var mpct = null;
+      if(mt > 0){
+        var msum = 0;
+        mg.forEach(function(g){
+          if(g.done) msum += 100;
+          else if(typeof g.score === 'number' && g.score !== null) msum += g.score * 10;
+        });
+        mpct = Math.round(msum / mt);
+      }
+      labels.push(months[md.getMonth()]);
+      values.push(mpct);
+    }
+  }
+  return {labels: labels, values: values};
+}
+
+function renderDynChartOnCanvas(canvas, emptyEl, avgEl){
+  if(!canvas) return;
+
+  var data = getDynData();
+  var validPts = data.values.filter(function(v){ return v !== null; });
+
+  // Show/hide empty state
+  if(emptyEl){
+    if(validPts.length === 0){
+      emptyEl.style.display = 'flex';
+      canvas.style.opacity = '0.15';
+    } else {
+      emptyEl.style.display = 'none';
+      emptyEl.style.pointerEvents = 'none';
+      canvas.style.opacity = '1';
+    }
+  }
+
+  // Avg stat
+  if(avgEl && validPts.length > 0){
+    var avg = Math.round(validPts.reduce(function(a,b){ return a+b; },0) / validPts.length);
+    avgEl.textContent = 'Среднее: ' + avg + '%';
+  } else if(avgEl){ avgEl.textContent = ''; }
+
+  var dpr = window.devicePixelRatio || 1;
+  var W = canvas.offsetWidth || 300;
+  var H = 200;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.height = H + 'px';
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, W, H);
+
+  var pad = {top: 24, right: 20, bottom: 36, left: 42};
+  var cw = W - pad.left - pad.right;
+  var ch = H - pad.top - pad.bottom;
+  var n = data.labels.length;
+  var color = dynView === 'wk' ? '#A8BC8A' : '#D4899A';
+  var colorRgb = dynView === 'wk' ? '168,188,138' : '212,137,154';
+
+  // Background — розово-зелёный градиент
+  var bgGrad = ctx.createLinearGradient(0, 0, W, H);
+  bgGrad.addColorStop(0, '#F2E4E9');
+  bgGrad.addColorStop(0.4, '#faedf2');
+  bgGrad.addColorStop(1, '#EBF0E2');
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Subtle grid
+  [0, 25, 50, 75, 100].forEach(function(v){
+    var y = pad.top + ch - (v / 100 * ch);
+    ctx.strokeStyle = v === 0 ? 'rgba(0,0,0,.15)' : 'rgba(0,0,0,.06)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash(v === 0 ? [] : [4, 4]);
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + cw, y); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(0,0,0,.35)';
+    ctx.font = '600 9px -apple-system, Arial';
+    ctx.textAlign = 'right';
+    ctx.fillText(v + '%', pad.left - 8, y + 3.5);
+  });
+
+  // Build all x positions
+  var xs = data.labels.map(function(_, i){
+    return pad.left + (n > 1 ? (i / (n-1)) * cw : cw/2);
+  });
+
+  // Collect valid points
+  var pts = [];
+  data.values.forEach(function(v, i){
+    if(v !== null){
+      var y = pad.top + ch - (v / 100 * ch);
+      pts.push({x: xs[i], y: y, v: v, i: i});
+    }
+  });
+
+  if(pts.length >= 2){
+    // Gradient fill
+    var grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + ch);
+    grad.addColorStop(0, 'rgba(' + colorRgb + ',.3)');
+    grad.addColorStop(0.6, 'rgba(' + colorRgb + ',.08)');
+    grad.addColorStop(1, 'rgba(' + colorRgb + ',0)');
+
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pad.top + ch);
+    ctx.lineTo(pts[0].x, pts[0].y);
+    for(var k = 1; k < pts.length; k++){
+      var cpx = (pts[k-1].x + pts[k].x) / 2;
+      ctx.bezierCurveTo(cpx, pts[k-1].y, cpx, pts[k].y, pts[k].x, pts[k].y);
+    }
+    ctx.lineTo(pts[pts.length-1].x, pad.top + ch);
+    ctx.closePath();
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // Glow line
+    ctx.save();
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for(var m = 1; m < pts.length; m++){
+      var cx2 = (pts[m-1].x + pts[m].x) / 2;
+      ctx.bezierCurveTo(cx2, pts[m-1].y, cx2, pts[m].y, pts[m].x, pts[m].y);
+    }
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+    ctx.restore();
+  } else if(pts.length === 1){
+    // Single point bar
+    var bx = pts[0].x;
+    var by = pts[0].y;
+    var grad2 = ctx.createLinearGradient(0, by, 0, pad.top + ch);
+    grad2.addColorStop(0, 'rgba(' + colorRgb + ',.5)');
+    grad2.addColorStop(1, 'rgba(' + colorRgb + ',0)');
+    ctx.fillStyle = grad2;
+    ctx.beginPath();
+    ctx.roundRect ? ctx.roundRect(bx-8, by, 16, pad.top+ch-by, 4) : ctx.rect(bx-8, by, 16, pad.top+ch-by);
+    ctx.fill();
+  }
+
+  // Dots
+  pts.forEach(function(p, idx){
+    // Outer glow
+    ctx.save();
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 10;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 5, 0, Math.PI*2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.restore();
+    // Inner dot
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2.5, 0, Math.PI*2);
+    ctx.fillStyle = '#fff';
+    ctx.fill();
+
+    // Value label
+    var labelY = p.y - 12;
+    if(labelY < pad.top + 4) labelY = p.y + 18;
+    ctx.fillStyle = '#3A3530';
+    ctx.font = 'bold 10px -apple-system, Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText(p.v + '%', p.x, labelY);
+  });
+
+  // X labels
+  ctx.fillStyle = 'rgba(0,0,0,.35)';
+  ctx.font = '9px -apple-system, Arial';
+  ctx.textAlign = 'center';
+  data.labels.forEach(function(lbl, i){
+    ctx.fillText(lbl, xs[i], H - 8);
+  });
+
+  // Vertical guide lines (subtle)
+  data.labels.forEach(function(_, i){
+    ctx.strokeStyle = 'rgba(0,0,0,.04)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(xs[i], pad.top);
+    ctx.lineTo(xs[i], pad.top + ch);
+    ctx.stroke();
+  });
+}
+
+function renderDynChart(){
+  renderDynChartOnCanvas(
+    document.getElementById('dyn-chart'),
+    document.getElementById('dyn-empty'),
+    document.getElementById('dyn-avg')
+  );
+  renderDynChartOnCanvas(
+    document.getElementById('dyn-chart2'),
+    document.getElementById('dyn-empty2'),
+    document.getElementById('dyn-avg2')
+  );
+}
+
+// ─── КПТ ШКАЛЫ ───
+function buildScaleBtns(containerId, valId, storageKey, color){
+  var c = document.getElementById(containerId);
+  var v = document.getElementById(valId);
+  if(!c) return;
+  var saved = parseInt(localStorage.getItem(storageKey) || '-1');
+  c.innerHTML = '';
+  for(var i = 0; i <= 10; i++){
+    (function(n){
+      var btn = document.createElement('button');
+      btn.textContent = n;
+      btn.style.cssText = 'flex:1;padding:6px 0;border-radius:6px;border:none;cursor:pointer;font-size:.72rem;font-weight:700;transition:all .15s;' +
+        (saved === n
+          ? 'background:' + color + ';color:#fff;'
+          : 'background:rgba(255,255,255,.06);color:rgba(0,0,0,.35);');
+      btn.onclick = function(){
+        localStorage.setItem(storageKey, n);
+        if(v) v.textContent = n;
+        buildScaleBtns(containerId, valId, storageKey, color);
+        renderDynChart();
+      };
+      c.appendChild(btn);
+    })(i);
+  }
+  if(saved >= 0 && v) v.textContent = saved;
+}
+
+function initScales(){
+  buildScaleBtns('yr-scale-btns', 'yr-scale-val', 'scale_yr_' + new Date().getFullYear(), '#A8BC8A');
+  var now = new Date();
+  var moKey = 'scale_mo_' + now.getFullYear() + '_' + (now.getMonth()+1);
+  buildScaleBtns('mo-scale-btns', 'mo-scale-val', moKey, '#A8BC8A');
+  var dow = now.getDay() === 0 ? 6 : now.getDay() - 1;
+  var mon = new Date(now); mon.setDate(now.getDate() - dow);
+  var startOfYear = new Date(mon.getFullYear(), 0, 1);
+  var wn = Math.ceil(((mon - startOfYear) / 86400000 + startOfYear.getDay() + 1) / 7);
+  var wkKey = 'scale_wk_' + mon.getFullYear() + '_' + String(wn).padStart(2,'0');
+  buildScaleBtns('wk-scale-btns', 'wk-scale-val', wkKey, '#D4899A');
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  initScales();
+  var tabs = document.querySelectorAll('.tab-btn');
+  tabs.forEach(function(btn){
+    if(btn.getAttribute('onclick') && btn.getAttribute('onclick').includes('realization')){
+      var orig = btn.getAttribute('onclick');
+      btn.setAttribute('onclick', orig + '; setTimeout(function(){ renderDynChart(); initScales(); }, 120);');
+    }
+  });
+  setTimeout(function(){ renderDynChart(); }, 400);
+});
+window.addEventListener('resize', function(){ setTimeout(renderDynChart, 50); setTimeout(renderWheelChart, 50); });
+
+// ─── КОЛЕСО БАЛАНСА ───
+function collectAllScores(){
+  // Собираем оценки из текущей недели + всех архивных недель
+  var allData = {};
+  SPHERES.forEach(function(sp){ allData[sp.key] = []; });
+
+  function addDays(days){
+    if(!Array.isArray(days)) return;
+    days.forEach(function(day){
+      if(day && day.spheres){
+        SPHERES.forEach(function(sp){
+          var sc = day.spheres[sp.key] && day.spheres[sp.key].score;
+          if(sc && sc > 0) allData[sp.key].push(sc);
+        });
+      }
+    });
+  }
+
+  if(typeof S !== 'undefined'){
+    addDays(S.days); // текущая неделя
+    if(S.archive && Array.isArray(S.archive)){
+      S.archive.forEach(function(a){ addDays(a.days); }); // все архивные
+    }
+  }
+  return allData;
+}
+
+function renderWheelOnCanvas(canvas){
+  if(!canvas) return;
+
+  var allData = collectAllScores();
+
+  // Вычисляем средние
+  var avgs = SPHERES.map(function(sp){
+    var arr = allData[sp.key];
+    if(!arr.length) return 0;
+    return arr.reduce(function(a,b){return a+b;},0) / arr.length;
+  });
+
+  var dpr = window.devicePixelRatio || 1;
+  var size = canvas.offsetWidth || 300;
+  var h = size * 1.1; // чуть выше для подписей сверху/снизу
+  canvas.width = size * dpr;
+  canvas.height = h * dpr;
+  canvas.style.height = h + 'px';
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, size, h);
+
+  var cx = size / 2;
+  var cy = h / 2;
+  var maxR = Math.min(size, h) / 2 - 58; // большой отступ под подписи
+  var n = SPHERES.length;
+
+  // Фон
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, size, h);
+
+  // Концентрические кольца
+  [2,4,6,8,10].forEach(function(v){
+    var r = maxR * v / 10;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = v === 10 ? 'rgba(0,0,0,.12)' : 'rgba(0,0,0,.06)';
+    ctx.lineWidth = v === 10 ? 1.5 : 1;
+    ctx.stroke();
+    // Метка
+    if(v % 4 === 0 || v === 2){
+      ctx.fillStyle = 'rgba(0,0,0,.25)';
+      ctx.font = '600 8px -apple-system, Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText(v, cx + 4, cy - r + 10);
+    }
+  });
+
+  // Оси
+  for(var i = 0; i < n; i++){
+    var angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(angle) * maxR, cy + Math.sin(angle) * maxR);
+    ctx.strokeStyle = 'rgba(0,0,0,.07)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Заливка колеса
+  var pts = avgs.map(function(v, i){
+    var angle = (i / n) * Math.PI * 2 - Math.PI / 2;
+    var r = maxR * Math.max(v, 0) / 10;
+    return { x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r };
+  });
+
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, pts[0].y);
+  for(var j = 1; j < pts.length; j++) ctx.lineTo(pts[j].x, pts[j].y);
+  ctx.closePath();
+
+  var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR);
+  grad.addColorStop(0, 'rgba(212,137,154,.55)');
+  grad.addColorStop(0.5, 'rgba(168,188,138,.4)');
+  grad.addColorStop(1, 'rgba(106,122,62,.3)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  ctx.strokeStyle = '#D4899A';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Точки на колесе
+  pts.forEach(function(p, i){
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = avgs[i] >= 7 ? '#6A7A3E' : avgs[i] >= 4 ? '#A8BC8A' : '#D4899A';
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  });
+
+  // Подписи сфер
+  for(var k = 0; k < n; k++){
+    var ang = (k / n) * Math.PI * 2 - Math.PI / 2;
+    var labelDist = maxR + 22;
+    var lx = cx + Math.cos(ang) * labelDist;
+    var ly = cy + Math.sin(ang) * labelDist;
+    var sp = SPHERES[k];
+    var avg = avgs[k];
+
+    // textAlign по горизонтальной позиции
+    var cosA = Math.cos(ang);
+    ctx.textAlign = cosA > 0.15 ? 'left' : cosA < -0.15 ? 'right' : 'center';
+    ctx.textBaseline = 'middle';
+
+    // Иконка
+    ctx.font = '12px -apple-system, Arial';
+    ctx.fillStyle = 'rgba(0,0,0,.8)';
+    ctx.fillText(sp.icon, lx, ly - 9);
+
+    // Название
+    ctx.fillStyle = 'rgba(0,0,0,.55)';
+    ctx.font = '600 9px -apple-system, Arial';
+    ctx.fillText(sp.name, lx, ly + 4);
+
+    // Значение
+    ctx.fillStyle = avg >= 7 ? '#6A7A3E' : avg >= 4 ? '#A8BC8A' : avg > 0 ? '#D4899A' : 'rgba(0,0,0,.25)';
+    ctx.font = 'bold 9px -apple-system, Arial';
+    ctx.fillText(avg > 0 ? avg.toFixed(1) : '—', lx, ly + 15);
+  }
+}
+
+function renderWheelChart(){
+  renderWheelOnCanvas(document.getElementById('wheel-canvas'));
+  renderWheelOnCanvas(document.getElementById('wheel-canvas-sp'));
+}
+</script>
 
 </body>
 </html>
