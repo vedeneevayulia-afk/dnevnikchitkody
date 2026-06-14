@@ -1411,6 +1411,27 @@ canvas{max-width:100%;}
       <textarea id="d-conflict" placeholder="Где состояние и реальность совпали / разошлись сегодня?" onblur="saveEvening()"></textarea>
       <label>Действие дня (мысль → слово → что сделала)</label>
       <textarea id="d-action" placeholder="Назвала цену без просто / написала пост от силы..." onblur="saveEvening()"></textarea>
+      <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--border);">
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);margin-bottom:10px;">Осознанность</div>
+        <div style="background:linear-gradient(135deg,rgba(212,137,154,.07),rgba(106,122,62,.07));border-radius:12px;padding:14px 16px;margin-bottom:14px;border-left:3px solid var(--accent2);">
+          <div style="font-size:.78rem;color:var(--text);line-height:1.65;">Чтобы увидеть где находится фокус внимания (энергия) — ответь на вопросы ниже. Это поможет увидеть где есть конфликт: внутреннее сопротивление и несогласие с реальностью — тому, что уже есть. Оно живёт в теле как напряжение, тревога, раздражение. Бороться с этим не нужно. <strong>Важно — увидеть.</strong></div>
+        </div>
+
+        <label style="margin-bottom:6px;display:block;">1. Что сегодня я не принимаю таким, как оно есть?</label>
+        <div style="font-size:.68rem;color:var(--muted);margin-bottom:6px;line-height:1.5;">Какая ситуация, человек или я сама вызвала несогласие? Подсказка: посмотри на негативные чувства которые отметила в карте чувств.</div>
+        <div style="font-size:.65rem;color:var(--muted);font-style:italic;margin-bottom:8px;">Пример: разговор с мужем вызвал раздражение и обиду</div>
+        <textarea id="d-aware1" placeholder="Опиши ситуацию..." onblur="saveEvening()" style="margin-bottom:14px;"></textarea>
+
+        <label style="margin-bottom:6px;display:block;">2. Какое ожидание или оценка стоит за этой реакцией?</label>
+        <div style="font-size:.68rem;color:var(--muted);margin-bottom:6px;line-height:1.5;">Что должно было быть по-другому — в ситуации, в человеке, в себе? Что именно нарушилось?</div>
+        <div style="font-size:.65rem;color:var(--muted);font-style:italic;margin-bottom:8px;">Пример: я ожидала поддержки, а получила критику. Моя реакция — закрылась и ушла в обиду</div>
+        <textarea id="d-aware2" placeholder="Моя реакция и ожидание..." onblur="saveEvening()" style="margin-bottom:14px;"></textarea>
+
+        <label style="margin-bottom:6px;display:block;">3. Что будет, если я просто позволю этому быть?</label>
+        <div style="font-size:.68rem;color:var(--muted);margin-bottom:10px;line-height:1.6;">Большинство страданий рождается не из самой ситуации — а из сопротивления ей. Ум создаёт историю: <em>«это не должно было случиться»</em>, <em>«он не должен был так говорить»</em>. Это и есть несогласие с реальностью.<br><br>Позволить ситуации быть — не значит согласиться с ней. Это значит убрать дополнительный слой страдания — борьбу с тем, что уже случилось. Реальность всегда побеждает. Вопрос только — сколько энергии ты тратишь на эту борьбу.</div>
+        <textarea id="d-aware3" placeholder="Что меняется когда перестаю сопротивляться..." onblur="saveEvening()"></textarea>
+      </div>
+
       <button id="eve-done-btn" onclick="toggleSectionDone('evening')" style="width:100%;padding:14px;border-radius:14px;border:none;font-size:.9rem;font-weight:800;cursor:pointer;margin-top:16px;transition:all .3s;font-family:-apple-system,sans-serif;background:#e8f0d8;color:#6A7A3E;">Отметить вечер выполненным</button>
     </div>
   </div>
@@ -2261,6 +2282,8 @@ function loadEvening(){
   document.getElementById('d-reflection').value=d.reflection;
   document.getElementById('d-conflict').value=d.conflict;
   document.getElementById('d-action').value=d.action;
+  const a1=document.getElementById('d-aware1');const a2=document.getElementById('d-aware2');const a3=document.getElementById('d-aware3');
+  if(a1)a1.value=d.aware1||'';if(a2)a2.value=d.aware2||'';if(a3)a3.value=d.aware3||'';
 }
 
 function saveEvening(){
@@ -2270,6 +2293,8 @@ function saveEvening(){
   d.reflection=document.getElementById('d-reflection').value;
   d.conflict=document.getElementById('d-conflict').value;
   d.action=document.getElementById('d-action').value;
+  const a1=document.getElementById('d-aware1');const a2=document.getElementById('d-aware2');const a3=document.getElementById('d-aware3');
+  if(a1)d.aware1=a1.value;if(a2)d.aware2=a2.value;if(a3)d.aware3=a3.value;
   save();
 }
 
