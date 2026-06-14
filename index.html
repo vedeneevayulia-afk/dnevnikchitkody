@@ -1229,7 +1229,11 @@ canvas{max-width:100%;}
       <div class="affirm-title">Утренняя практика — произнести вслух минимум 3 раза</div>
       <div style="font-size:.72rem;color:var(--muted);margin-bottom:14px;line-height:1.5;">Выбери один чит-код — это мета-смысл твоего дня. Произноси вслух: тело слышит и перезаписывает программу. Нажми на чит-код чтобы узнать как он работает.</div>
 
-      <!-- ТЕЛО -->
+      <div style="padding:0 0 8px;">
+    <button id="sph-done-btn" onclick="toggleSectionDone('spheres')" style="width:100%;padding:14px;border-radius:14px;border:none;font-size:.9rem;font-weight:800;cursor:pointer;margin-top:4px;transition:all .3s;font-family:-apple-system,sans-serif;background:#e8f0d8;color:#6A7A3E;">Отметить сферы выполненными</button>
+  </div>
+
+  <!-- ТЕЛО -->
       <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#A8BC8A;margin-bottom:8px;margin-top:4px;">Тело</div>
       <div class="affirm-list" id="affirm-list-base">
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
@@ -1407,6 +1411,7 @@ canvas{max-width:100%;}
       <textarea id="d-conflict" placeholder="Где состояние и реальность совпали / разошлись сегодня?" onblur="saveEvening()"></textarea>
       <label>Действие дня (мысль → слово → что сделала)</label>
       <textarea id="d-action" placeholder="Назвала цену без просто / написала пост от силы..." onblur="saveEvening()"></textarea>
+      <button id="eve-done-btn" onclick="toggleSectionDone('evening')" style="width:100%;padding:14px;border-radius:14px;border:none;font-size:.9rem;font-weight:800;cursor:pointer;margin-top:16px;transition:all .3s;font-family:-apple-system,sans-serif;background:#e8f0d8;color:#6A7A3E;">Отметить вечер выполненным</button>
     </div>
   </div>
 
@@ -1633,6 +1638,10 @@ canvas{max-width:100%;}
         </div>
 
       </div>
+    </div>
+
+    <div style="padding:0 16px 16px;">
+      <button id="body-done-btn" onclick="toggleSectionDone('body')" style="width:100%;padding:14px;border-radius:14px;border:none;font-size:.9rem;font-weight:800;cursor:pointer;margin-top:8px;transition:all .3s;font-family:-apple-system,sans-serif;background:#e8f0d8;color:#6A7A3E;">Отметить тело выполненным</button>
     </div>
 
     <!-- скрытый контейнер для совместимости с renderBodyDynamic -->
@@ -2134,9 +2143,14 @@ function editWord(){
 
 function renderDays(){
   if(!S.word){document.getElementById('day-tabs').innerHTML='<div class="empty" style="padding:8px 0">Сначала задай слово недели</div>';return;}
+  const today=new Date();
+  const dow=today.getDay()===0?6:today.getDay()-1;
+  const mon=new Date(today);mon.setDate(today.getDate()-dow);
   document.getElementById('day-tabs').innerHTML=S.days.map((d,i)=>{
     const hasDot=d.reflection.length>0||d.action.length>0;
-    return`<button class="day-btn${i===curDay?' active':''}" onclick="selDay(${i})">${SHORT[i]}${hasDot?'<span class="day-dot"></span>':''}</button>`;
+    const dayDate=new Date(mon);dayDate.setDate(mon.getDate()+i);
+    const dateNum=dayDate.getDate();
+    return`<button class="day-btn${i===curDay?' active':''}" onclick="selDay(${i})" style="display:flex;flex-direction:column;align-items:center;gap:1px;">${SHORT[i]}<span style="font-size:.6rem;opacity:.65;font-weight:600;">${dateNum}</span>${hasDot?'<span class="day-dot"></span>':''}</button>`;
   }).join('');
   goSub(curSub);
 }
@@ -2146,6 +2160,7 @@ function selDay(i){
   curBodyDay=i;
   document.querySelectorAll('.day-btn').forEach((el,idx)=>el.classList.toggle('active',idx===i));
   goSub(curSub);
+  if(curSub==='body'){renderBodyDynamic();loadBodyDay(i);}
 }
 
 function loadMorning(){
@@ -2203,7 +2218,39 @@ function renderMyAffirms(){
 }
 function saveMorning(){S.days[curDay].thought=document.getElementById('d-thought').value;save();}
 
+
+function toggleSectionDone(section){
+  const d=S.days[curDay];
+  if(!d.done)d.done={};
+  d.done[section]=!d.done[section];
+  save();
+  updateSectionDoneBtns();
+}
+
+function updateSectionDoneBtns(){
+  const d=S.days[curDay];
+  const done=d.done||{};
+  const btns={
+    evening:{id:'eve-done-btn',label:'Отметить вечер выполненным'},
+    spheres:{id:'sph-done-btn',label:'Отметить сферы выполненными'},
+    body:{id:'body-done-btn',label:'Отметить тело выполненным'}
+  };
+  Object.entries(btns).forEach(([key,cfg])=>{
+    const btn=document.getElementById(cfg.id);
+    if(!btn)return;
+    if(done[key]){
+      btn.textContent='✓ Выполнено';
+      btn.style.background='#6A7A3E';
+      btn.style.color='#fff';
+    } else {
+      btn.textContent=cfg.label;
+      btn.style.background='#e8f0d8';
+      btn.style.color='#6A7A3E';
+    }
+  });
+}
 function loadEvening(){
+  updateSectionDoneBtns();
   const d=S.days[curDay];
   document.getElementById('d-caught').checked=d.caught;
   document.getElementById('d-replaced').checked=d.replaced;
@@ -2590,7 +2637,7 @@ function archiveWeek(){
 // ══════════ ТЕЛО ══════════
 const FEELINGS_RESOURCE=['😊 радость','✨ вдохновение','🙏 благодарность','❤️ любовь','💪 сила','🌿 спокойствие','😊 уверенность','🌸 лёгкость','🌹 нежность','☀️ принятие','🌊 восторг','🔥 азарт','😌 удовлетворение','🦋 открытость','🎯 игривость'];
 const FEELINGS_NEUTRAL=['😴 усталость','⬜ пустота','🔄 растерянность','💤 скука','⏳ ожидание','😔 задумчивость','😐 безразличие','⚡ напряжение','❓ сомнение','😅 неловкость','🌀 волнение'];
-const FEELINGS_DIFFICULT=['😰 тревога','😨 страх','😤 раздражение','😢 грусть','❤️ обида','😠 злость','😭 отчаяние','👤 одиночество','😳 стыд','😔 вина','🖤 подавленность','⊗ ревность','👁️ зависть','😶 беспомощность','🔒 оцепенение'];
+const FEELINGS_DIFFICULT=['😰 тревога','😨 страх','😤 раздражение','😢 грусть','❤️ обида','😠 злость','😭 отчаяние','👤 одиночество','😳 стыд','😔 вина','🖤 подавленность','⊗ ревность','👁️ зависть','😶 беспомощность','🔒 оцепенение','💔 разочарование'];
 
 let bodyData=JSON.parse(localStorage.getItem('kodyBody_v1')||'{}');
 let curBodyDay=new Date().getDay();curBodyDay=curBodyDay===0?6:curBodyDay-1;
@@ -2620,8 +2667,8 @@ function renderBodyTab(){
 
 function goBodyDay(d){
   curBodyDay=d;
-  loadBodyDay(d);
   renderBodyDynamic();
+  loadBodyDay(d);
 }
 
 const ACTIVITY_TYPES=['ходьба','бег','тренировка','йога','другое'];
