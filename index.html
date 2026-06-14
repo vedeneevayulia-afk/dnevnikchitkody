@@ -4076,3 +4076,46 @@ function renderWheelChart(){
 
 </body>
 </html>
+<script>
+// Автоформат времени: 2230 → 22:30
+function setupTimeInput(id) {
+  var inp = document.getElementById(id);
+  if (!inp) return;
+  inp.setAttribute('inputmode', 'numeric');
+  inp.setAttribute('maxlength', '5');
+  inp.addEventListener('input', function(e) {
+    var v = this.value.replace(/[^0-9]/g, '');
+    if (v.length >= 3) {
+      v = v.slice(0,2) + ':' + v.slice(2,4);
+    }
+    // Валидация часов и минут
+    if (v.length >= 2) {
+      var h = parseInt(v.slice(0,2));
+      if (h > 23) v = '23' + v.slice(2);
+    }
+    if (v.length === 5) {
+      var m = parseInt(v.slice(3,5));
+      if (m > 59) v = v.slice(0,3) + '59';
+    }
+    this.value = v;
+    calcSleep();
+  });
+}
+
+// Инициализируем после загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+  setupTimeInput('b-bedtime');
+  setupTimeInput('b-waketime');
+});
+
+// Также вызываем при открытии раздела тела (на случай если DOM уже готов)
+var _origRenderBodyDay = window.renderBodyDay;
+if (typeof renderBodyDay === 'function') {
+  var _origRBD = renderBodyDay;
+  window.renderBodyDay = function() {
+    _origRBD.apply(this, arguments);
+    setupTimeInput('b-bedtime');
+    setupTimeInput('b-waketime');
+  };
+}
+</script>
