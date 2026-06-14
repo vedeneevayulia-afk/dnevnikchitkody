@@ -2092,8 +2092,8 @@ function goSub(sub){
     if(stabs[i])stabs[i].classList.toggle('active',s===sub);
   });
   if(sub==='morning'){loadMorning();renderQuoteOfDay();}
-  if(sub==='evening')loadEvening();
-  if(sub==='spheres'){renderSpheres();renderSpheresCal();renderDynamic();setTimeout(renderWheelChart,300);setTimeout(function(){renderWheelChart();renderSphereDetail(activeSphereTab||0);},800);}
+  if(sub==='evening'){loadEvening();updateSectionDoneBtns();}
+  if(sub==='spheres'){renderSpheres();renderSpheresCal();renderDynamic();updateSectionDoneBtns();setTimeout(renderWheelChart,300);setTimeout(function(){renderWheelChart();renderSphereDetail(activeSphereTab||0);},800);}
   if(sub==='body'){renderBodyTab();renderBodyDynamic();}
 }
 
@@ -2663,6 +2663,7 @@ function renderBodyTab(){
   loadBodyDay(curBodyDay);
   renderBodyDynamic();
   renderFeelingGroups();
+  updateSectionDoneBtns();
 }
 
 function goBodyDay(d){
@@ -2926,21 +2927,67 @@ function renderBodyDynamic(){
   const wk=bodyData[wkey];
   const days=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
   const colors=['#6A93C3','#5BA5A0','#6A7A3E','#D4899A'];
+  // Только физические метрики в трекере
   const metrics=[
     {label:'Сон (ч)',key:'sleep',max:12,color:colors[0]},
     {label:'Вода (л)',key:'water',max:3,color:colors[1]},
     {label:'Движение (мин)',key:'movement',max:180,color:colors[2]},
-    {label:'Состояние',key:'energy',max:5,color:colors[3]},
   ];
   const hasAnyData=metrics.some(m=>wk.some(d=>parseFloat(d[m.key])>0));
   const emptyHTML='<div style="color:var(--muted);font-size:.85rem;text-align:center;padding:20px 0;">Данные появятся после заполнения дней</div>';
-  if(!hasAnyData){
+
+  // Считаем эмоциональный фон из карты чувств
+  function calcFeelScore(feelings){
+    if(!feelings||!feelings.length)return null;
+    let score=0;
+    feelings.forEach(f=>{
+      if(FEELINGS_RESOURCE&&FEELINGS_RESOURCE.includes(f))score+=1;
+      else if(FEELINGS_DIFFICULT&&FEELINGS_DIFFICULT.includes(f))score-=1;
+    });
+    // нормируем в 1-10
+    const maxPossible=feelings.length||1;
+    return Math.round(((score/maxPossible)+1)/2*9+1);
+  }
+
+  // Блок состояния — две линии
+  const energyVals=wk.map(d=>d.energy||0); // ручная оценка (1-5 → *2 = 2-10)
+  const feelVals=wk.map(d=>calcFeelScore(d.feelings)); // авто из карты
+  const hasStateData=energyVals.some(v=>v>0)||feelVals.some(v=>v!==null);
+
+  function stateBarHTML(energyVals,feelVals,days){
+    const maxE=5,maxF=10;
+    const bars=days.map((day,i)=>{
+      const e=energyVals[i]||0;
+      const f=feelVals[i];
+      const isActive=i===curBodyDay;
+      const eH=e>0?Math.max(Math.round(e/maxE*55),4):0;
+      const fH=f!==null?Math.max(Math.round(f/maxF*55),4):0;
+      return`<div onclick="goBodyDay(${i})" style="display:flex;flex-direction:column;align-items:center;flex:1;gap:3px;cursor:pointer;">
+        <div style="font-size:.55rem;color:var(--muted);min-height:12px;text-align:center;">${e>0||f!==null?(e>0?e*2:''):''}${e>0&&f!==null?' / ':''}${f!==null?f:''}</div>
+        <div style="width:100%;height:60px;display:flex;align-items:flex-end;gap:2px;background:rgba(0,0,0,.04);border-radius:4px;padding:0 2px;outline:${isActive?'2px solid #D4899A':'none'};outline-offset:1px;">
+          <div style="flex:1;height:${eH}px;background:#D4899A;border-radius:3px 3px 0 0;transition:.3s;" title="Ощущение"></div>
+          <div style="flex:1;height:${fH}px;background:#6A7A3E;border-radius:3px 3px 0 0;transition:.3s;opacity:.75;" title="Эмоц. фон"></div>
+        </div>
+        <div style="font-size:.6rem;color:${isActive?'#D4899A':'var(--muted)'};font-weight:${isActive?700:400};">${day}</div>
+      </div>`;
+    }).join('');
+    return`<div style="margin-bottom:4px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <span style="font-size:.72rem;font-weight:700;color:var(--text);opacity:.7;">Состояние</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:.6rem;color:var(--muted);"><span style="width:10px;height:10px;background:#D4899A;border-radius:2px;display:inline-block;"></span>Ощущение</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:.6rem;color:var(--muted);"><span style="width:10px;height:10px;background:#6A7A3E;border-radius:2px;display:inline-block;opacity:.75;"></span>Эмоц. фон</span>
+      </div>
+      <div style="display:flex;gap:4px;align-items:flex-end;">${bars}</div>
+    </div>`;
+  }
+
+  if(!hasAnyData&&!hasStateData){
     if(el)el.innerHTML=emptyHTML;
     if(el2)el2.innerHTML=emptyHTML;
     if(el3)el3.innerHTML=emptyHTML;
     return;
   }
-  const html=metrics.map(m=>{
+  const habitsHtml=metrics.map(m=>{
     const vals=wk.map(d=>parseFloat(d[m.key])||0);
     const maxV=Math.max(...vals,0.01);
     const bars=vals.map((v,i)=>{
@@ -2959,6 +3006,10 @@ function renderBodyDynamic(){
       <div style="display:flex;gap:4px;align-items:flex-end;">${bars}</div>
     </div>`;
   }).join('');
+
+  const stateHtml=stateBarHTML(energyVals,feelVals,days);
+  const html=habitsHtml+'<div style="height:1px;background:var(--border);margin:8px 0 20px;"></div>'+stateHtml;
+
   if(el)el.innerHTML=html;
   if(el2)el2.innerHTML=html;
   if(el3)el3.innerHTML=html;
