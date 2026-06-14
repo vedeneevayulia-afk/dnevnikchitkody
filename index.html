@@ -1211,11 +1211,27 @@ canvas{max-width:100%;}
 <!-- ══════════ DAYS ══════════ -->
 <div id="s-days" class="section">
   <div class="day-scroll" id="day-tabs"></div>
+
+  <!-- Инструкция по дню -->
+  <div style="display:flex;gap:0;margin-bottom:12px;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+    <div style="flex:1;padding:10px 10px;background:linear-gradient(135deg,rgba(106,122,62,.08),rgba(106,122,62,.03));border-right:1px solid var(--border);text-align:center;">
+      <div style="font-size:.6rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;">Утро</div>
+      <div style="font-size:.65rem;color:var(--muted);line-height:1.4;">Намерение и практика</div>
+    </div>
+    <div style="flex:1;padding:10px 10px;background:rgba(0,0,0,.02);border-right:1px solid var(--border);text-align:center;">
+      <div style="font-size:.6rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;">День</div>
+      <div style="font-size:.65rem;color:var(--muted);line-height:1.4;">Сферы и тело</div>
+    </div>
+    <div style="flex:1;padding:10px 10px;background:linear-gradient(135deg,rgba(212,137,154,.08),rgba(212,137,154,.03));text-align:center;">
+      <div style="font-size:.6rem;font-weight:800;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;">Вечер</div>
+      <div style="font-size:.65rem;color:var(--muted);line-height:1.4;">Осознанность</div>
+    </div>
+  </div>
+
   <div class="sub-tabs" style="flex-wrap:wrap;gap:5px;">
     <button class="sub-tab active" onclick="goSub('morning')">Утро</button>
     <button class="sub-tab" onclick="goSub('spheres')">Сферы</button>
     <button class="sub-tab" onclick="goSub('body')">Тело</button>
-    <button class="sub-tab" onclick="goSub('evening')">Вечер</button>
     <button class="sub-tab" onclick="goSub('aware')">Осознанность</button>
   </div>
 
@@ -1399,22 +1415,7 @@ canvas{max-width:100%;}
   </div>
 
   <!-- ВЕЧЕР -->
-  <div id="ss-evening" class="sub-section">
-    <div class="card">
-      <div class="card-lbl">Трекинг слова</div>
-      <div class="checks">
-        <label class="ck"><input type="checkbox" id="d-caught" onchange="saveEvening()"> Поймала слово</label>
-        <label class="ck"><input type="checkbox" id="d-replaced" onchange="saveEvening()"> Заменила</label>
-      </div>
-      <label style="margin-top:16px">Что изменилось в состоянии?</label>
-      <textarea id="d-reflection" placeholder="Что почувствовала, как изменилось восприятие..." onblur="saveEvening()"></textarea>
-      <label>Моё состояние отражает объективную реальность?</label>
-      <textarea id="d-conflict" placeholder="Где состояние и реальность совпали / разошлись сегодня?" onblur="saveEvening()"></textarea>
-      <label>Действие дня (мысль → слово → что сделала)</label>
-      <textarea id="d-action" placeholder="Назвала цену без просто / написала пост от силы..." onblur="saveEvening()"></textarea>
-      <button id="eve-done-btn" onclick="toggleSectionDone('evening')" style="width:100%;padding:14px;border-radius:14px;border:none;font-size:.9rem;font-weight:800;cursor:pointer;margin-top:16px;transition:all .3s;font-family:-apple-system,sans-serif;background:#e8f0d8;color:#6A7A3E;">Отметить вечер выполненным</button>
-    </div>
-  </div>
+
 
   <!-- СФЕРЫ -->
   <div id="ss-spheres" class="sub-section">
@@ -1657,6 +1658,18 @@ canvas{max-width:100%;}
 
   <!-- ОСОЗНАННОСТЬ -->
   <div id="ss-aware" class="sub-section">
+    <!-- Трекинг слова (из вечернего блока) -->
+    <div class="card" style="margin-bottom:14px;">
+      <div class="card-lbl">Трекинг слова</div>
+      <div style="font-size:.7rem;color:var(--muted);margin-bottom:10px;line-height:1.5;">Сегодня ты поймала программную реакцию в действии?</div>
+      <div class="checks">
+        <label class="ck"><input type="checkbox" id="d-caught" onchange="saveEvening()"> Поймала слово / реакцию</label>
+        <label class="ck"><input type="checkbox" id="d-replaced" onchange="saveEvening()"> Заменила — выбрала другой ответ</label>
+      </div>
+      <label style="margin-top:14px">Что изменилось в состоянии?</label>
+      <textarea id="d-reflection" placeholder="Что почувствовала, как изменилось восприятие..." onblur="saveEvening()" style="margin-bottom:0;"></textarea>
+    </div>
+
     <div class="card">
       <div style="background:linear-gradient(135deg,var(--graphite) 0%,#3a3040 100%);border-radius:12px;padding:16px 18px;margin-bottom:18px;">
         <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);margin-bottom:8px;">Осознанность · Фокус внимания</div>
@@ -2121,17 +2134,16 @@ function renderPatterns(){
 
 function goSub(sub){
   curSub=sub;
-  ['morning','spheres','body','evening','aware'].forEach((s,i)=>{
+  ['morning','spheres','body','aware'].forEach((s,i)=>{
     const el=document.getElementById('ss-'+s);
     if(el)el.classList.toggle('active',s===sub);
     const stabs=document.querySelectorAll('#s-days .sub-tab');
     if(stabs[i])stabs[i].classList.toggle('active',s===sub);
   });
   if(sub==='morning'){loadMorning();renderQuoteOfDay();}
-  if(sub==='evening'){loadEvening();updateSectionDoneBtns();}
   if(sub==='spheres'){renderSpheres();renderSpheresCal();renderDynamic();updateSectionDoneBtns();setTimeout(renderWheelChart,300);setTimeout(function(){renderWheelChart();renderSphereDetail(activeSphereTab||0);},800);}
   if(sub==='body'){renderBodyTab();renderBodyDynamic();}
-  if(sub==='aware'){loadAware();updateSectionDoneBtns();}
+  if(sub==='aware'){loadEvening();loadAware();updateSectionDoneBtns();}
 }
 
 function renderWeek(){
@@ -2267,7 +2279,6 @@ function updateSectionDoneBtns(){
   const d=S.days[curDay];
   const done=d.done||{};
   const btns={
-    evening:{id:'eve-done-btn',label:'Отметить вечер выполненным'},
     aware:{id:'aware-done-btn',label:'Отметить выполненным'},
     spheres:{id:'sph-done-btn',label:'Отметить сферы выполненными'},
     body:{id:'body-done-btn',label:'Отметить тело выполненным'}
