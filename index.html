@@ -2160,7 +2160,6 @@ function selDay(i){
   curBodyDay=i;
   document.querySelectorAll('.day-btn').forEach((el,idx)=>el.classList.toggle('active',idx===i));
   goSub(curSub);
-  if(curSub==='body'){renderBodyDynamic();loadBodyDay(i);}
 }
 
 function loadMorning(){
@@ -2660,8 +2659,8 @@ function curWeekKey(){
 }
 
 function renderBodyTab(){
-  loadBodyDay(curBodyDay);
   renderBodyDynamic();
+  loadBodyDay(curBodyDay);
   renderFeelingGroups();
   updateSectionDoneBtns();
 }
