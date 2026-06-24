@@ -929,7 +929,22 @@ canvas{max-width:100%;}
 </div>
 
 <script>
-// access check disabled
+const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024-d9m4", "tks-2024-e3p7", "tks-2024-f6r2", "tks-2024-g1w9", "tks-2024-h8x5", "tks-2024-i4z6", "tks-2024-j7n3", "tks-2024-2w8g", "tks-2024-689d", "tks-2024-kvcy", "tks-2024-jwtj", "tks-2024-5f9k", "tks-2024-34k2", "tks-2024-53ud", "tks-2024-6r7m", "tks-2024-v9x5", "tks-2024-5p4y", "tks-2024-9bp9", "tks-2024-3c6m", "tks-2024-k8dg", "tks-2024-87xw", "tks-2024-fb4t", "tks-2024-6zyw", "tks-2024-j8q8", "tks-2024-etae", "tks-2024-f92x", "tks-2024-dqc3", "tks-2024-3h58", "tks-2024-h36w", "tks-2024-6yjb", "tks-2024-u2yg", "tks-2024-s5xx", "tks-2024-khp8", "tks-2024-kwmq", "tks-2024-8dp6", "tks-2024-ysfg", "tks-2024-rv6q", "tks-2024-37jj", "tks-2024-5rqp", "tks-2024-r5md", "tks-2024-gq7g", "tks-2024-28gk", "tks-2024-kue2", "tks-2024-fkum", "tks-2024-me65", "tks-2024-c32k", "tks-2024-wht6", "tks-2024-q3yz", "tks-2024-sgf3", "tks-2024-kw76", "tks-2024-49sh", "tks-2024-w9hn", "tks-2024-buwa", "tks-2024-p7sj", "tks-2024-hqbz", "tks-2024-s4n5", "tks-2024-97y9", "tks-2024-j3kc", "tks-2024-2rfw", "tks-2024-6x3x", "tks-2024-bj6k", "tks-2024-aynv", "tks-2024-guuk", "tks-2024-tqh3", "tks-2024-zvmc", "tks-2024-bcfh", "tks-2024-enaj", "tks-2024-wqf4", "tks-2024-c3uv", "tks-2024-g2xs", "tks-2024-cqmm", "tks-2024-uzdj", "tks-2024-pdbn", "tks-2024-t9q4", "tks-2024-3wjd", "tks-2024-zpxt", "tks-2024-hpap", "tks-2024-jsjk", "tks-2024-c5hu", "tks-2024-8has", "tks-2024-s9we", "tks-2024-kz3a", "tks-2024-fyvq", "tks-2024-cqpz", "tks-2024-6f8m", "tks-2024-nv4u", "tks-2024-c9jk", "tks-2024-8vrm", "tks-2024-3skn", "tks-2024-macw", "tks-2024-9tmg", "tks-2024-fjbz", "tks-2024-mwfj", "tks-2024-gbqp", "tks-2024-en3a", "tks-2024-y7k6", "tks-2024-scv6"];
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var key = params.get('key');
+  if(!key || !VALID_KEYS.includes(key)){
+    document.getElementById('access-gate').style.cssText = 'min-height:100vh;background:#FDF6F0;display:flex;align-items:center;justify-content:center;padding:24px;';
+    document.addEventListener('DOMContentLoaded', function(){
+      var app = document.getElementById('main-app');
+      if(app) app.style.display = 'none';
+      var ob = document.getElementById('onboarding');
+      if(ob) ob.style.display = 'none';
+    });
+  } else {
+    document.getElementById('access-gate').style.display = 'none';
+  }
+})();
 </script>
 
 <!-- ══════════ ONBOARDING ══════════ -->
@@ -1985,6 +2000,142 @@ canvas{max-width:100%;}
     <div class="patt-progress"><span class="patt-week-lbl">Работаю с этим паттерном</span><button class="patt-week-btn" id="pw-7" onclick="toggleWeek(7)">Неделя</button></div>
   </div>
 
+  <!-- 08 -->
+  <div class="patt-card" id="patt-8">
+    <div class="patt-header" onclick="togglePatt(8)">
+      <div class="patt-num" style="background:#7A6A5A">08</div>
+      <div class="patt-meta"><div class="patt-name">Программа стада</div><div class="patt-sub">Чужое мнение становится твоим решением</div></div>
+      <div class="patt-arrow">▼</div>
+    </div>
+    <div class="patt-body">
+      <div class="patt-brain"><div class="patt-brain-lbl">Что делает с мозгом</div>Мозг экономит энергию — берёт решение у большинства. Зеркальные нейроны подстраивают тело под окружение. Ты живёшь жизнью толпы — и называешь это своим выбором.</div>
+      <div class="patt-cols">
+        <div class="patt-col patt-col-stop"><div class="patt-col-lbl">Убрать из речи</div><div class="patt-col-item">— Все так делают</div><div class="patt-col-item">— Большинство так живёт</div><div class="patt-col-item">— Так делают успешные</div><div class="patt-col-item">— Нельзя выбиваться</div><div class="patt-col-item">— Как у людей</div><div class="patt-col-item">— Что скажут</div><div class="patt-col-item">— Так принято в нашем кругу</div><div class="patt-col-item">— Я не хочу выделяться</div><div class="patt-col-item">— Все так поступают</div><div class="patt-col-item">— Так надо</div><div class="patt-col-item">— Нормально же</div><div class="patt-col-item">— Это стандарт</div><div class="patt-col-item">— Так правильно по мнению других</div><div class="patt-col-item">— Все вокруг...</div><div class="patt-col-item">— Это общепринято</div></div>
+        <div class="patt-col patt-col-go"><div class="patt-col-lbl">Заменить на</div><div class="patt-col-item">+ Что выбираю я?</div><div class="patt-col-item">+ Мой путь — это...</div><div class="patt-col-item">+ Я решаю сама.</div><div class="patt-col-item">+ Моё мнение такое:</div><div class="patt-col-item">+ Для меня правильно...</div><div class="patt-col-item">+ Я выбираю осознанно.</div><div class="patt-col-item">+ Иду своим путём.</div><div class="patt-col-item">+ Мне важно то, что важно мне.</div><div class="patt-col-item">+ Это моё решение.</div></div>
+      </div>
+    </div>
+    <div class="patt-progress"><span class="patt-week-lbl">Работаю с этим паттерном</span><button class="patt-week-btn" id="pw-8" onclick="toggleWeek(8)">Неделя</button></div>
+  </div>
+
+  <!-- 09 -->
+  <div class="patt-card" id="patt-9">
+    <div class="patt-header" onclick="togglePatt(9)">
+      <div class="patt-num" style="background:#5A6A7A">09</div>
+      <div class="patt-meta"><div class="patt-name">Программа сравнения</div><div class="patt-sub">Ты всегда проигрываешь в чужой игре</div></div>
+      <div class="patt-arrow">▼</div>
+    </div>
+    <div class="patt-body">
+      <div class="patt-brain"><div class="patt-brain-lbl">Что делает с мозгом</div>Сравнение активирует кортизол и блокирует дофамин своих достижений. Мозг фокусируется на разрыве — не на движении. Ты всегда будешь в минусе, потому что сравниваешь своё «сейчас» с чужим «лучшим».</div>
+      <div class="patt-cols">
+        <div class="patt-col patt-col-stop"><div class="patt-col-lbl">Убрать из речи</div><div class="patt-col-item">— У неё получилось, у меня нет</div><div class="patt-col-item">— Она лучше меня</div><div class="patt-col-item">— Почему у них а не у меня</div><div class="patt-col-item">— Я не такая как...</div><div class="patt-col-item">— Вот она смогла</div><div class="patt-col-item">— Другие уже давно</div><div class="patt-col-item">— На её фоне я...</div><div class="patt-col-item">— Мне до неё далеко</div><div class="patt-col-item">— Я позади всех</div><div class="patt-col-item">— У всех есть а у меня нет</div><div class="patt-col-item">— Другие легче справляются</div><div class="patt-col-item">— Почему им даётся, мне нет</div><div class="patt-col-item">— Меня обгоняют</div><div class="patt-col-item">— Я отстаю</div><div class="patt-col-item">— Смотрю на неё и понимаю что я...</div></div>
+        <div class="patt-col patt-col-go"><div class="patt-col-lbl">Заменить на</div><div class="patt-col-item">+ Я иду своим темпом.</div><div class="patt-col-item">+ Моё движение — моё.</div><div class="patt-col-item">+ Сравниваю себя с собой вчерашней.</div><div class="patt-col-item">+ Вижу свой прогресс.</div><div class="patt-col-item">+ У меня свой путь и своё время.</div><div class="patt-col-item">+ Я расту.</div><div class="patt-col-item">+ Мой результат — мой.</div><div class="patt-col-item">+ Фокус на мне.</div><div class="patt-col-item">+ Я в своей гонке.</div></div>
+      </div>
+    </div>
+    <div class="patt-progress"><span class="patt-week-lbl">Работаю с этим паттерном</span><button class="patt-week-btn" id="pw-9" onclick="toggleWeek(9)">Неделя</button></div>
+  </div>
+
+  <!-- 10 -->
+  <div class="patt-card" id="patt-10">
+    <div class="patt-header" onclick="togglePatt(10)">
+      <div class="patt-num" style="background:#6A5A7A">10</div>
+      <div class="patt-meta"><div class="patt-name">Программа условия</div><div class="patt-sub">Счастье ждёт — пока ты выполняешь условие</div></div>
+      <div class="patt-arrow">▼</div>
+    </div>
+    <div class="patt-body">
+      <div class="patt-brain"><div class="patt-brain-lbl">Что делает с мозгом</div>Мозг постоянно откладывает «разрешение жить». Условие выполнено — появляется новое. Дофамин будущего блокирует удовлетворение настоящим. Ты всегда в «ещё не».</div>
+      <div class="patt-cols">
+        <div class="patt-col patt-col-stop"><div class="patt-col-lbl">Убрать из речи</div><div class="patt-col-item">— Вот похудею — тогда...</div><div class="patt-col-item">— Когда накоплю — начну</div><div class="patt-col-item">— Если похудею на 10 кг</div><div class="patt-col-item">— Когда куплю квартиру</div><div class="patt-col-item">— После того как...</div><div class="patt-col-item">— Сначала нужно...</div><div class="patt-col-item">— Вот решу эту проблему</div><div class="patt-col-item">— Когда дети вырастут</div><div class="patt-col-item">— Если всё сложится</div><div class="patt-col-item">— Заслужу — тогда</div><div class="patt-col-item">— Когда стану лучше</div><div class="patt-col-item">— Только при условии что...</div><div class="patt-col-item">— Если он изменится</div><div class="patt-col-item">— Когда буду готова</div><div class="patt-col-item">— Достигну — тогда позволю</div></div>
+        <div class="patt-col patt-col-go"><div class="patt-col-lbl">Заменить на</div><div class="patt-col-item">+ Уже сейчас.</div><div class="patt-col-item">+ Я достойна прямо сейчас.</div><div class="patt-col-item">+ Живу полно уже сегодня.</div><div class="patt-col-item">+ Начинаю с того что есть.</div><div class="patt-col-item">+ Я разрешаю себе сейчас.</div><div class="patt-col-item">+ Настоящее — это и есть моя жизнь.</div><div class="patt-col-item">+ Позволяю себе быть счастливой.</div><div class="patt-col-item">+ Моё время — сейчас.</div></div>
+      </div>
+    </div>
+    <div class="patt-progress"><span class="patt-week-lbl">Работаю с этим паттерном</span><button class="patt-week-btn" id="pw-10" onclick="toggleWeek(10)">Неделя</button></div>
+  </div>
+
+  <!-- 11 -->
+  <div class="patt-card" id="patt-11">
+    <div class="patt-header" onclick="togglePatt(11)">
+      <div class="patt-num" style="background:#8A6A4A">11</div>
+      <div class="patt-meta"><div class="patt-name">Программа кармы</div><div class="patt-sub">Заслуживание блокирует получение</div></div>
+      <div class="patt-arrow">▼</div>
+    </div>
+    <div class="patt-body">
+      <div class="patt-brain"><div class="patt-brain-lbl">Что делает с мозгом</div>Система «заслужи — получи» создаёт хроническое чувство долга и вины. Мозг ищет наказание как подтверждение своей «плохости». Получать без заслуги — ощущается как кража.</div>
+      <div class="patt-cols">
+        <div class="patt-col patt-col-stop"><div class="patt-col-lbl">Убрать из речи</div><div class="patt-col-item">— Я не заслуживаю</div><div class="patt-col-item">— Надо заработать право</div><div class="patt-col-item">— Это мне за то что...</div><div class="patt-col-item">— Бог наказывает</div><div class="patt-col-item">— Это карма</div><div class="patt-col-item">— Мне воздастся</div><div class="patt-col-item">— Не могу принять пока не отдам</div><div class="patt-col-item">— Сначала пострадать — потом получить</div><div class="patt-col-item">— За всё приходится платить</div><div class="patt-col-item">— Нельзя брать не давая</div><div class="patt-col-item">— Я ещё не готова получать</div><div class="patt-col-item">— Надо страдать чтобы достичь</div><div class="patt-col-item">— Хорошее не бывает просто так</div><div class="patt-col-item">— Слишком много прошу</div><div class="patt-col-item">— Недостойна такого</div></div>
+        <div class="patt-col patt-col-go"><div class="patt-col-lbl">Заменить на</div><div class="patt-col-item">+ Я достойна — по умолчанию.</div><div class="patt-col-item">+ Принимаю с благодарностью.</div><div class="patt-col-item">+ Хорошее — это моя норма.</div><div class="patt-col-item">+ Заслуживаю уже фактом своего существования.</div><div class="patt-col-item">+ Получаю легко.</div><div class="patt-col-item">+ Изобилие — моё естественное состояние.</div><div class="patt-col-item">+ Беру и отдаю свободно.</div><div class="patt-col-item">+ Жизнь даёт мне.</div></div>
+      </div>
+    </div>
+    <div class="patt-progress"><span class="patt-week-lbl">Работаю с этим паттерном</span><button class="patt-week-btn" id="pw-11" onclick="toggleWeek(11)">Неделя</button></div>
+  </div>
+
+  <!-- 12 -->
+  <div class="patt-card" id="patt-12">
+    <div class="patt-header" onclick="togglePatt(12)">
+      <div class="patt-num" style="background:#4A6A7A">12</div>
+      <div class="patt-meta"><div class="patt-name">Программа контроля</div><div class="patt-sub">Контроль — это страх, надетый как ответственность</div></div>
+      <div class="patt-arrow">▼</div>
+    </div>
+    <div class="patt-body">
+      <div class="patt-brain"><div class="patt-brain-lbl">Что делает с мозгом</div>Постоянный гипервигилантный режим держит кортизол на пике. Мозг не различает реальную угрозу и «что если». Тело живёт в режиме выживания — ресурса на рост не остаётся.</div>
+      <div class="patt-cols">
+        <div class="patt-col patt-col-stop"><div class="patt-col-lbl">Убрать из речи</div><div class="patt-col-item">— Мне надо всё контролировать</div><div class="patt-col-item">— Без меня всё развалится</div><div class="patt-col-item">— Никому нельзя доверять</div><div class="patt-col-item">— Я должна следить за всем</div><div class="patt-col-item">— Что если что-то пойдёт не так</div><div class="patt-col-item">— Нельзя расслабляться</div><div class="patt-col-item">— Всё держится на мне</div><div class="patt-col-item">— Лучше перепроверю</div><div class="patt-col-item">— Не могу отпустить</div><div class="patt-col-item">— Мне спокойнее когда я контролирую</div><div class="patt-col-item">— Опасно доверять</div><div class="patt-col-item">— Нужно всё предусмотреть</div><div class="patt-col-item">— Я не могу делегировать</div><div class="patt-col-item">— Без моего надзора — катастрофа</div><div class="patt-col-item">— Лучше сделаю сама</div></div>
+        <div class="patt-col patt-col-go"><div class="patt-col-lbl">Заменить на</div><div class="patt-col-item">+ Доверяю процессу.</div><div class="patt-col-item">+ Отпускаю — жизнь держит.</div><div class="patt-col-item">+ Доверяю людям рядом.</div><div class="patt-col-item">+ Делегирую с лёгкостью.</div><div class="patt-col-item">+ Я в безопасности.</div><div class="patt-col-item">+ Отдыхаю — мир не рушится.</div><div class="patt-col-item">+ Могу не знать что будет — и это ок.</div><div class="patt-col-item">+ Расслабленность — это сила.</div><div class="patt-col-item">+ Поддержка существует.</div></div>
+      </div>
+    </div>
+    <div class="patt-progress"><span class="patt-week-lbl">Работаю с этим паттерном</span><button class="patt-week-btn" id="pw-12" onclick="toggleWeek(12)">Неделя</button></div>
+  </div>
+
+  <!-- 13 -->
+  <div class="patt-card" id="patt-13">
+    <div class="patt-header" onclick="togglePatt(13)">
+      <div class="patt-num" style="background:#6A4A7A">13</div>
+      <div class="patt-meta"><div class="patt-name">Программа невидимости</div><div class="patt-sub">Проявляться — значит быть в опасности</div></div>
+      <div class="patt-arrow">▼</div>
+    </div>
+    <div class="patt-body">
+      <div class="patt-brain"><div class="patt-brain-lbl">Что делает с мозгом</div>Детский опыт «высунулся — получил» записался как правило. Видимость = угроза. Миндалина блокирует любое публичное действие. Ты прячешь экспертность — и удивляешься почему нет клиентов.</div>
+      <div class="patt-cols">
+        <div class="patt-col patt-col-stop"><div class="patt-col-lbl">Убрать из речи</div><div class="patt-col-item">— Не хочу лишнего внимания</div><div class="patt-col-item">— Зачем светиться</div><div class="patt-col-item">— Лучше тихо</div><div class="patt-col-item">— Не буду навязываться</div><div class="patt-col-item">— Меня осудят</div><div class="patt-col-item">— Кто я такая чтобы говорить</div><div class="patt-col-item">— Людям это не интересно</div><div class="patt-col-item">— Не хочу выглядеть выпендрёжницей</div><div class="patt-col-item">— Боюсь реакции</div><div class="patt-col-item">— Пусть другие говорят</div><div class="patt-col-item">— Лучше промолчу</div><div class="patt-col-item">— Меня высмеют</div><div class="patt-col-item">— Не хочу занимать место</div><div class="patt-col-item">— Ещё недостаточно опыта</div><div class="patt-col-item">— Пока подожду с публикацией</div></div>
+        <div class="patt-col patt-col-go"><div class="patt-col-lbl">Заменить на</div><div class="patt-col-item">+ Моё мнение нужно миру.</div><div class="patt-col-item">+ Говорю — помогаю.</div><div class="patt-col-item">+ Занимаю своё место.</div><div class="patt-col-item">+ Я в безопасности когда видна.</div><div class="patt-col-item">+ Публикую — и это нормально.</div><div class="patt-col-item">+ Моя экспертность видна.</div><div class="patt-col-item">+ Проявляюсь — меня замечают.</div><div class="patt-col-item">+ Я говорю и меня слышат.</div><div class="patt-col-item">+ Стою прямо и говорю громко.</div></div>
+      </div>
+    </div>
+    <div class="patt-progress"><span class="patt-week-lbl">Работаю с этим паттерном</span><button class="patt-week-btn" id="pw-13" onclick="toggleWeek(13)">Неделя</button></div>
+  </div>
+
+  <!-- 14 -->
+  <div class="patt-card" id="patt-14">
+    <div class="patt-header" onclick="togglePatt(14)">
+      <div class="patt-num" style="background:#7A4A4A">14</div>
+      <div class="patt-meta"><div class="patt-name">Программа усталость как норма</div><div class="patt-sub">Тело остановилось — голова придумала что так надо</div></div>
+      <div class="patt-arrow">▼</div>
+    </div>
+    <div class="patt-body">
+      <div class="patt-brain"><div class="patt-brain-lbl">Что делает с мозгом</div>Хроническая усталость переписывается как добродетель. «Я устала — значит я стараюсь». Адреналин и кортизол заменяют нормальный энергообмен. Тело предупреждает — ты называешь это слабостью.</div>
+      <div class="patt-cols">
+        <div class="patt-col patt-col-stop"><div class="patt-col-lbl">Убрать из речи</div><div class="patt-col-item">— Я всегда устала</div><div class="patt-col-item">— Отдыхать некогда</div><div class="patt-col-item">— Так у всех</div><div class="patt-col-item">— Терплю — значит сильная</div><div class="patt-col-item">— Не могу позволить себе болеть</div><div class="patt-col-item">— Слабаки отдыхают</div><div class="patt-col-item">— Устала — нормально</div><div class="patt-col-item">— Потерплю ещё немного</div><div class="patt-col-item">— Все устают — ничего страшного</div><div class="patt-col-item">— Отдых — это лень</div><div class="patt-col-item">— Сначала дела потом я</div><div class="patt-col-item">— Я не могу останавливаться</div><div class="patt-col-item">— Надо вытерпеть</div><div class="patt-col-item">— Отдохну потом</div><div class="patt-col-item">— Слабость — это плохо</div></div>
+        <div class="patt-col patt-col-go"><div class="patt-col-lbl">Заменить на</div><div class="patt-col-item">+ Отдых — это продуктивность.</div><div class="patt-col-item">+ Тело говорит — я слушаю.</div><div class="patt-col-item">+ Восстановление = результат.</div><div class="patt-col-item">+ Я выбираю энергию.</div><div class="patt-col-item">+ Сначала я — потом дела.</div><div class="patt-col-item">+ Заряженная — делаю в 3 раза больше.</div><div class="patt-col-item">+ Отдыхаю без вины.</div><div class="patt-col-item">+ Моё тело — мой ресурс.</div><div class="patt-col-item">+ Стоп — это тоже движение.</div></div>
+      </div>
+    </div>
+    <div class="patt-progress"><span class="patt-week-lbl">Работаю с этим паттерном</span><button class="patt-week-btn" id="pw-14" onclick="toggleWeek(14)">Неделя</button></div>
+  </div>
+
+  <!-- 15 -->
+  <div class="patt-card" id="patt-15">
+    <div class="patt-header" onclick="togglePatt(15)">
+      <div class="patt-num" style="background:#4A5A6A">15</div>
+      <div class="patt-meta"><div class="patt-name">Программа поздно</div><div class="patt-sub">Мозг убеждает что время ушло — чтобы не рисковать</div></div>
+      <div class="patt-arrow">▼</div>
+    </div>
+    <div class="patt-body">
+      <div class="patt-brain"><div class="patt-brain-lbl">Что делает с мозгом</div>«Поздно» — защитный механизм. Не начала — не провалилась. Мозг использует возраст и время как оправдание для бездействия. За этим всегда страх провала, а не реальный дедлайн.</div>
+      <div class="patt-cols">
+        <div class="patt-col patt-col-stop"><div class="patt-col-lbl">Убрать из речи</div><div class="patt-col-item">— Уже поздно</div><div class="patt-col-item">— В моём возрасте...</div><div class="patt-col-item">— Время ушло</div><div class="patt-col-item">— Надо было раньше</div><div class="patt-col-item">— Я слишком старая для этого</div><div class="patt-col-item">— Молодые успели а я нет</div><div class="patt-col-item">— Это не для моего возраста</div><div class="patt-col-item">— Поезд ушёл</div><div class="patt-col-item">— Раньше надо было думать</div><div class="patt-col-item">— Уже не изменить</div><div class="patt-col-item">— В 40+ уже не начинают</div><div class="patt-col-item">— Зачем начинать если поздно</div><div class="patt-col-item">— Это для молодых</div><div class="patt-col-item">— Я упустила момент</div><div class="patt-col-item">— Не успею</div></div>
+        <div class="patt-col patt-col-go"><div class="patt-col-lbl">Заменить на</div><div class="patt-col-item">+ Лучшее время — сейчас.</div><div class="patt-col-item">+ 40+ — это старт с опытом.</div><div class="patt-col-item">+ У меня есть всё что нужно.</div><div class="patt-col-item">+ Начинаю сегодня.</div><div class="patt-col-item">+ Мой возраст — моя сила.</div><div class="patt-col-item">+ Каждый день — возможность.</div><div class="patt-col-item">+ Я создаю свой момент.</div><div class="patt-col-item">+ Сейчас — мой лучший старт.</div><div class="patt-col-item">+ Время есть. Я начинаю.</div></div>
+      </div>
+    </div>
+    <div class="patt-progress"><span class="patt-week-lbl">Работаю с этим паттерном</span><button class="patt-week-btn" id="pw-15" onclick="toggleWeek(15)">Неделя</button></div>
+  </div>
+
   <!-- Итоговая формула -->
   <div style="background:linear-gradient(135deg,#2A2A2F,#32303A);border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
     <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div>
@@ -2126,11 +2277,11 @@ function savePatterns(){localStorage.setItem('kodyPatterns',JSON.stringify(patte
 function togglePatt(n){document.getElementById('patt-'+n).classList.toggle('open');}
 function toggleWeek(n){patternState['week_'+n]=!patternState['week_'+n];savePatterns();renderPatterns();}
 function renderPatterns(){
-  for(let n=1;n<=7;n++){
+  for(let n=1;n<=15;n++){
     const btn=document.getElementById('pw-'+n);
     if(btn){const active=!!patternState['week_'+n];btn.classList.toggle('active',active);btn.textContent=active?'✓ Работаю':'Неделя';}
   }
-  for(let n=1;n<=7;n++){if(patternState['week_'+n]){const card=document.getElementById('patt-'+n);if(card&&!card.classList.contains('open'))card.classList.add('open');}}
+  for(let n=1;n<=15;n++){if(patternState['week_'+n]){const card=document.getElementById('patt-'+n);if(card&&!card.classList.contains('open'))card.classList.add('open');}}
 }
 
 function goSub(sub){
@@ -3272,9 +3423,15 @@ function startApp(){
   go('realization');
 }
 
-// onboarding skipped
-document.getElementById('onboarding').style.display='none';
-document.getElementById('main-app').style.display='block';
+// onboarding skipped — only show if key is valid
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var key = params.get('key');
+  if(key && VALID_KEYS.includes(key)){
+    document.getElementById('onboarding').style.display='none';
+    document.getElementById('main-app').style.display='block';
+  }
+})();
 renderWeek();renderQuoteOfDay();
 
 function exportData(){
