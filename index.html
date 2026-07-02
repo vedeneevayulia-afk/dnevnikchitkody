@@ -1012,6 +1012,10 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
           <div style="width:36px;height:36px;border-radius:10px;background:#3d1a1a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🎯</div>
           <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Манифестация</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Задаёшь образ куда идёшь — год, месяц, неделя — и мозг начинает притягивать это в реальность</div></div>
         </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#1a3a2a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🙏</div>
+          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Практика благодарности</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">3–5 вещей каждый вечер — переключает мозг с режима угрозы в режим ресурса</div></div>
+        </div>
         <div style="display:flex;align-items:flex-start;gap:12px;background:linear-gradient(135deg,rgba(212,137,154,.08),rgba(106,122,62,.08));border-radius:14px;padding:12px;border:1px solid rgba(212,137,154,.15);">
           <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#3d1a2a,#2C2825);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🧬</div>
           <div>
@@ -1758,28 +1762,11 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 
       <div style="font-size:.75rem;color:var(--muted);margin-bottom:14px;line-height:1.55;">3–5 вещей за которые ты благодарна сегодня. Людям, ситуациям, телу, моментам. Маленькое считается так же как большое.</div>
 
-      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:22px;height:22px;border-radius:6px;background:rgba(168,188,138,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">1</div>
-          <input type="text" id="gratitude-1" placeholder="Благодарна за..." onblur="saveGratitude()" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:22px;height:22px;border-radius:6px;background:rgba(168,188,138,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">2</div>
-          <input type="text" id="gratitude-2" placeholder="Благодарна за..." onblur="saveGratitude()" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:22px;height:22px;border-radius:6px;background:rgba(168,188,138,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">3</div>
-          <input type="text" id="gratitude-3" placeholder="Благодарна за..." onblur="saveGratitude()" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:22px;height:22px;border-radius:6px;background:rgba(168,188,138,.15);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">4</div>
-          <input type="text" id="gratitude-4" placeholder="Необязательно..." onblur="saveGratitude()" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:22px;height:22px;border-radius:6px;background:rgba(168,188,138,.15);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">5</div>
-          <input type="text" id="gratitude-5" placeholder="Необязательно..." onblur="saveGratitude()" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">
-        </div>
-      </div>
+      <div id="gratitude-list" style="display:flex;flex-direction:column;gap:8px;margin-bottom:10px;"></div>
+      <button onclick="addGratitudeRow()" style="display:flex;align-items:center;gap:8px;background:rgba(168,188,138,.12);border:1.5px dashed rgba(106,122,62,.35);border-radius:10px;padding:9px 14px;font-size:.78rem;font-weight:700;color:var(--accent);cursor:pointer;width:100%;margin-bottom:14px;">
+        <span style="width:20px;height:20px;border-radius:6px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;flex-shrink:0;">+</span>
+        Добавить ещё
+      </button>
     </div>
 
     <!-- Трекинг слова (из вечернего блока) -->
@@ -2654,12 +2641,41 @@ function loadEvening(){
   document.getElementById('d-reflection').value=d.reflection;
   document.getElementById('d-conflict').value=d.conflict;
   document.getElementById('d-action').value=d.action;
-  if(d.gratitude){d.gratitude.forEach((v,i)=>{const el=document.getElementById('gratitude-'+(i+1));if(el)el.value=v||'';});}
+  renderGratitudeList(d.gratitude||[]);
+}
+
+let gratitudeCount=3;
+
+function renderGratitudeList(values){
+  const list=document.getElementById('gratitude-list');
+  if(!list)return;
+  list.innerHTML='';
+  gratitudeCount=Math.max(3,values?values.length:3);
+  for(let i=0;i<gratitudeCount;i++){
+    const row=document.createElement('div');
+    row.style.cssText='display:flex;align-items:center;gap:10px;';
+    const alpha=i<2?'rgba(168,188,138,.2)':'rgba(168,188,138,.12)';
+    row.innerHTML=`<div style="width:22px;height:22px;border-radius:6px;background:${alpha};display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">${i+1}</div><input type="text" id="gratitude-${i+1}" placeholder="${i<2?'Благодарна за...':'Ещё одна...'}" onblur="saveGratitude()" value="${(values&&values[i])||''}" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">`;
+    list.appendChild(row);
+  }
+}
+
+function addGratitudeRow(){
+  gratitudeCount++;
+  const d=S.days[curDay];
+  const vals=d.gratitude||[];
+  vals.push('');
+  d.gratitude=vals;
+  renderGratitudeList(vals);
+  const newInput=document.getElementById('gratitude-'+gratitudeCount);
+  if(newInput)newInput.focus();
 }
 
 function saveGratitude(){
   const d=S.days[curDay];
-  d.gratitude=[1,2,3,4,5].map(i=>(document.getElementById('gratitude-'+i)||{value:''}).value);
+  const vals=[];
+  for(let i=1;i<=gratitudeCount;i++){const el=document.getElementById('gratitude-'+i);if(el)vals.push(el.value);}
+  d.gratitude=vals;
   save();
 }
 
