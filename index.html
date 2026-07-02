@@ -1010,12 +1010,12 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px;">
           <div style="width:36px;height:36px;border-radius:10px;background:#3d1a1a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🎯</div>
-          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Реализация целей и потенциала</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Цели на год, месяц, неделю — в одном месте, с отслеживанием прогресса</div></div>
+          <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Манифестация</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">Задаёшь образ куда идёшь — год, месяц, неделя — и мозг начинает притягивать это в реальность</div></div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:12px;background:linear-gradient(135deg,rgba(212,137,154,.08),rgba(106,122,62,.08));border-radius:14px;padding:12px;border:1px solid rgba(212,137,154,.15);">
           <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#3d1a2a,#2C2825);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🧬</div>
           <div>
-            <div style="font-size:.85rem;font-weight:800;color:var(--text);margin-bottom:4px;">Карта паттернов — речевые репликаторы</div>
+            <div style="font-size:.85rem;font-weight:800;color:var(--text);margin-bottom:4px;">Перепрограммирование — речевые репликаторы</div>
             <div style="font-size:.73rem;color:var(--muted);line-height:1.5;margin-bottom:8px;">Это ядро трансформации. <strong style="color:var(--text);">Речевой репликатор</strong> — это фраза которую ты повторяешь автоматически. Ты её уже не думаешь — она просто срабатывает. И каждый раз перезаписывает программу в мозге.</div>
             <div style="font-size:.73rem;color:var(--muted);line-height:1.5;margin-bottom:8px;">«Нет денег», «Не сейчас», «Все так живут», «Я не умею», «Наверное не получится» — это не слова. Это коды, которые управляют твоими решениями, телом и тем что притягивается в жизнь.</div>
             <div style="font-size:.73rem;color:var(--muted);line-height:1.5;margin-bottom:10px;">В карте <strong style="color:var(--text);">15 программ-репликаторов</strong>. В каждой — 18 слов-кодов. Это <strong style="color:var(--text);">270 речевых паттернов</strong> которые прямо сейчас управляют твоими решениями, телом и деньгами. Работаешь с одним словом — минимум неделю, максимум пока оно не уходит из речи само. Пока слово больше не срабатывает как автомат — берёшь следующее. <strong style="color:var(--text);">Мысль → слово → тело → действие.</strong> Меняешь звено «слово» — рушится вся старая цепочка.</div>
@@ -1208,11 +1208,11 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 
 <div class="tabs">
   <button class="tab" onclick="showOnboarding()">Главная</button>
-  <button class="tab" onclick="go('realization')">Цели</button>
+  <button class="tab" onclick="go('realization')">Манифестация</button>
   <button class="tab active" onclick="go('week')">Неделя</button>
   <button class="tab" onclick="go('days')">Дни</button>
   <button class="tab" onclick="go('dynamic')">Динамика</button>
-  <button class="tab" onclick="go('patterns')">Паттерны</button>
+  <button class="tab" onclick="go('patterns')">Перепрограммирование</button>
   <button class="tab" onclick="go('archive')">Архив</button>
 </div>
 
@@ -1402,7 +1402,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       </div>
 
       <!-- РЕАЛИЗАЦИЯ -->
-      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#D4899A;margin-bottom:8px;margin-top:16px;">Реализация</div>
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#D4899A;margin-bottom:8px;margin-top:16px;">Манифестация</div>
       <div class="affirm-list">
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">1</span>
@@ -1747,6 +1747,41 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 
   <!-- ОСОЗНАННОСТЬ -->
   <div id="ss-aware" class="sub-section">
+
+    <!-- Практика благодарности -->
+    <div class="card" style="margin-bottom:14px;">
+      <div style="background:linear-gradient(135deg,#3a2a1a 0%,#4a3520 100%);border-radius:14px;padding:16px 18px;margin-bottom:16px;border:1px solid rgba(168,188,138,.25);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#A8BC8A,#6A7A3E);"></div>
+        <div style="font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:#A8BC8A;margin-bottom:8px;">Практика благодарности</div>
+        <div style="font-size:.82rem;color:rgba(255,255,255,.85);line-height:1.65;">Мозг по умолчанию ищет угрозы. Благодарность переключает его в режим ресурса — растёт серотонин, снижается кортизол. Чем конкретнее — тем сильнее работает.</div>
+      </div>
+
+      <div style="font-size:.75rem;color:var(--muted);margin-bottom:14px;line-height:1.55;">3–5 вещей за которые ты благодарна сегодня. Людям, ситуациям, телу, моментам. Маленькое считается так же как большое.</div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:22px;height:22px;border-radius:6px;background:rgba(168,188,138,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">1</div>
+          <input type="text" id="gratitude-1" placeholder="Благодарна за..." onblur="saveGratitude()" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:22px;height:22px;border-radius:6px;background:rgba(168,188,138,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">2</div>
+          <input type="text" id="gratitude-2" placeholder="Благодарна за..." onblur="saveGratitude()" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:22px;height:22px;border-radius:6px;background:rgba(168,188,138,.2);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">3</div>
+          <input type="text" id="gratitude-3" placeholder="Благодарна за..." onblur="saveGratitude()" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:22px;height:22px;border-radius:6px;background:rgba(168,188,138,.15);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">4</div>
+          <input type="text" id="gratitude-4" placeholder="Необязательно..." onblur="saveGratitude()" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:22px;height:22px;border-radius:6px;background:rgba(168,188,138,.15);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:var(--accent);flex-shrink:0;">5</div>
+          <input type="text" id="gratitude-5" placeholder="Необязательно..." onblur="saveGratitude()" style="flex:1;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-size:.82rem;font-family:-apple-system,sans-serif;color:var(--text);background:#fff;outline:none;">
+        </div>
+      </div>
+    </div>
+
     <!-- Трекинг слова (из вечернего блока) -->
     <div class="card" style="margin-bottom:14px;">
       <div class="card-lbl">Трекинг слова</div>
@@ -1932,11 +1967,31 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 
 <!-- ══════════ КАРТА ПАТТЕРНОВ ══════════ -->
 <div id="s-patterns" class="section">
-  <div style="background:linear-gradient(135deg,#2A2A2F,#32303A);border-radius:var(--radius);padding:18px 20px;margin-bottom:14px;position:relative;overflow:hidden;">
+
+  <!-- Что такое перепрограммирование -->
+  <div style="background:#fff;border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;border:1px solid var(--border);position:relative;overflow:hidden;">
     <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
-    <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:6px;">Карта паттернов — речевые репликаторы</div>
-    <div style="font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.55;margin-bottom:14px;">Полная интерактивная карта всех речевых кодов которые программируют бедность, остановку и жертву. Открой — найди своё, выбери один паттерн на неделю и работай только с ним в дневнике.</div>
-    <a href="https://app.xmind.com/share/mHBhtqJz" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:9px;padding:11px 20px;font-size:.85rem;font-weight:800;box-shadow:0 4px 14px rgba(212,137,154,.3);">Смотреть карту паттернов →</a>
+    <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent2);margin-bottom:4px;">Что это и как работает</div>
+    <div style="font-size:.88rem;font-weight:800;color:var(--text);margin-bottom:14px;line-height:1.3;">Перепрограммирование</div>
+
+    <div style="font-size:.78rem;color:var(--text);line-height:1.65;margin-bottom:14px;">Ты меняешь конкретные слова в речи. Нейронная цепочка которая срабатывает часто — становится автоматом. <span style="font-weight:700;">«Не могу» → «не выбираю».</span> Механизм: нейропластичность. Паттерны, репликаторы, чит-коды — всё это перепрограммирование.</div>
+
+    <div style="background:var(--bg);border-radius:12px;padding:14px 16px;margin-bottom:14px;">
+      <div style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);margin-bottom:10px;">Как это связано с манифестацией</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:22px;height:22px;border-radius:6px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;margin-top:1px;">1</div>
+          <div style="font-size:.75rem;color:var(--text);line-height:1.55;"><span style="font-weight:700;">Раздел Манифестация</span> — задаёшь образ куда идёшь. Мозг получает чёткую цель.</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <div style="width:22px;height:22px;border-radius:6px;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;margin-top:1px;">2</div>
+          <div style="font-size:.75rem;color:var(--text);line-height:1.55;"><span style="font-weight:700;">Этот раздел</span> — убираешь слова которые тянут назад. Старые коды рассыпаются, новые встают на место.</div>
+        </div>
+        <div style="margin-top:4px;padding-top:10px;border-top:1px solid var(--border);font-size:.73rem;color:var(--muted);line-height:1.55;font-style:italic;">Одно без другого работает хуже. Задала образ но говоришь «не могу» — репликатор перекрывает манифестацию. Убрала слова но нет образа — движение без направления.</div>
+      </div>
+    </div>
+
+    <a href="https://app.xmind.com/share/mHBhtqJz" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:9px;padding:11px 20px;font-size:.82rem;font-weight:800;box-shadow:0 4px 14px rgba(212,137,154,.2);">Смотреть карту паттернов →</a>
   </div>
   <!-- Что такое репликатор -->
   <div style="background:var(--graphite);border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
@@ -1950,7 +2005,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
   </div>
 
   <div class="pattern-intro">
-    <div class="pattern-intro-title">Карта паттернов</div>
+    <div class="pattern-intro-title">Перепрограммирование</div>
     <div class="pattern-intro-sub">15 речевых программ · Что убрать · Чем заменить · Как это работает в мозге</div>
     <div class="pattern-intro-rule">Одно слово в неделю — минимум. Максимум пока оно не уходит из речи само. Поймала — заменила вслух — закрепила телесно.</div>
   </div>
@@ -2358,7 +2413,7 @@ const MONTHS_RU=['Январь','Февраль','Март','Апрель','Ма
 
 const SPHERES=[
   {key:'relations',  name:'Отношения', icon:'💞', cls:'sc-relations'},
-  {key:'realization',name:'Реализация',icon:'🔥', cls:'sc-realization'},
+  {key:'realization',name:'Манифестация',icon:'🔥', cls:'sc-realization'},
   {key:'health',     name:'Здоровье',  icon:'🌿', cls:'sc-health'},
   {key:'appearance', name:'Внешность', icon:'✨', cls:'sc-appearance'},
   {key:'finance',    name:'Финансы',   icon:'💎', cls:'sc-finance'},
@@ -2599,7 +2654,13 @@ function loadEvening(){
   document.getElementById('d-reflection').value=d.reflection;
   document.getElementById('d-conflict').value=d.conflict;
   document.getElementById('d-action').value=d.action;
+  if(d.gratitude){d.gratitude.forEach((v,i)=>{const el=document.getElementById('gratitude-'+(i+1));if(el)el.value=v||'';});}
+}
 
+function saveGratitude(){
+  const d=S.days[curDay];
+  d.gratitude=[1,2,3,4,5].map(i=>(document.getElementById('gratitude-'+i)||{value:''}).value);
+  save();
 }
 
 function saveEvening(){
@@ -3899,9 +3960,43 @@ function renderRealization(){
 <div id="s-realization" class="section">
 
   <div class="real-hero">
-    <div class="real-hero-eyebrow">Потенциал · Намерение · Движение</div>
-    <div class="real-hero-title">Реализация</div>
-    <div class="real-hero-sub">Год даёт направление. Месяц — шаги. Неделя — фокус.</div>
+    <div class="real-hero-eyebrow">Шаг 1 — задай образ · Шаг 2 — войди в состояние · Шаг 3 — действуй оттуда</div>
+    <div class="real-hero-title">Манифестация</div>
+    <div class="real-hero-sub">Здесь ты ставишь цели и разбиваешь их на шаги. Не просто список желаний — а конкретный образ результата, который мозг начинает притягивать в реальность через ретикулярную систему.</div>
+  </div>
+
+  <!-- Три слоя манифестации -->
+  <div style="background:#fff;border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;border:1px solid var(--border);position:relative;overflow:hidden;">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div>
+    <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:4px;">Как это работает</div>
+    <div style="font-size:.82rem;font-weight:800;color:var(--text);margin-bottom:16px;">Манифестация — три слоя</div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+
+      <div style="background:var(--bg);border-radius:12px;padding:14px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:26px;height:26px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;color:#fff;flex-shrink:0;">1</div>
+          <div style="font-size:.82rem;font-weight:800;color:var(--text);">Образ — что именно ты хочешь</div>
+        </div>
+        <div style="font-size:.73rem;color:var(--muted);line-height:1.6;">Конкретная картинка результата. Мозгу нужна чёткая цель — иначе ретикулярная система не знает что искать. «Хочу лучше жить» — не работает. «100 000 долларов в год, свобода времени, академия» — работает.</div>
+      </div>
+
+      <div style="background:var(--bg);border-radius:12px;padding:14px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:26px;height:26px;border-radius:8px;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;color:#fff;flex-shrink:0;">2</div>
+          <div style="font-size:.82rem;font-weight:800;color:var(--text);">Состояние — как ты себя чувствуешь когда это уже есть</div>
+        </div>
+        <div style="font-size:.73rem;color:var(--muted);line-height:1.6;">Это ключевое. Мозг не различает реальное и воображаемое если ощущение достаточно сильное. Когда ты входишь в состояние «это уже моё» — тело ведёт себя иначе, решения принимаются иначе, люди притягиваются другие.</div>
+      </div>
+
+      <div style="background:var(--bg);border-radius:12px;padding:14px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div style="width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;color:#fff;flex-shrink:0;">3</div>
+          <div style="font-size:.82rem;font-weight:800;color:var(--text);">Действие из этого состояния</div>
+        </div>
+        <div style="font-size:.73rem;color:var(--muted);line-height:1.6;">Манифестация без действия — это мечтание. Работает когда действуешь из состояния «я уже там», а не «мне ещё далеко». Разные действия, разная энергия, разный результат.</div>
+      </div>
+
+    </div>
   </div>
 
   <!-- ИНСТРУКЦИЯ — всегда видна -->
@@ -3975,7 +4070,7 @@ function renderRealization(){
             <span style="font-family:Georgia,serif;font-style:italic;font-size:.95rem;font-weight:700;color:#A8BC8A;letter-spacing:.03em;">суета.</span>
           </div>
           <div style="margin-top:6px;padding-top:10px;border-top:1px solid rgba(212,137,154,.25);font-family:Georgia,serif;font-style:italic;font-size:.8rem;color:rgba(255,255,255,.55);letter-spacing:.02em;line-height:1.65;">
-            Реализация — это связка между тем, что <span style="color:#D4899A;">хочешь</span>, и тем, что реально <span style="color:#A8BC8A;">делаешь.</span> Ставишь цель, разбиваешь на задачи, отмечаешь выполненное — и видишь на графике как <span style="color:#D4899A;">намерение</span> превращается в <span style="color:#A8BC8A;">результат.</span>
+            Манифестация работает через конкретный образ, а не общие желания. Задаёшь цель, разбиваешь на шаги, отмечаешь выполненное — и мозг через ретикулярную систему начинает притягивать нужных людей, ситуации и решения. Ты не ждёшь — ты двигаешься <span style="color:#D4899A;">из состояния</span> «это уже моё».
           </div>
         </div>
       </div>
