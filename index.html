@@ -953,7 +953,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
   <div class="top-bar">
     <div class="top-bar-eyebrow">Тело как состояние · Юлия Веденеева</div>
     <h1>Дневник трансформации</h1>
-    <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.82rem;line-height:1.4;margin-bottom:6px;white-space:nowrap;"><span style="color:#A8BC8A;font-weight:700;">Сознание программирует тело.</span> <span style="color:var(--accent2);font-weight:700;">Тело держит программу.</span></p>
+    <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.82rem;line-height:1.4;margin-bottom:6px;"><span style="color:#A8BC8A;font-weight:700;">Сознание программирует тело.</span> <span style="color:var(--accent2);font-weight:700;">Тело держит программу.</span></p>
     <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.5;margin:0;">Дневник поможет тебе <strong style="color:#fff;font-style:normal;">поменять код на обоих уровнях</strong> — не по очереди, а одновременно.</p>
   </div>
   <div style="padding:20px 18px 0;">
@@ -1164,22 +1164,21 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 <div class="top-bar">
   <div class="top-bar-eyebrow">Тело как состояние · Юлия Веденеева</div>
   <h1>Дневник трансформации</h1>
-  <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.82rem;line-height:1.4;margin-bottom:6px;white-space:nowrap;"><span style="color:#A8BC8A;font-weight:700;">Сознание программирует тело.</span> <span style="color:var(--accent2);font-weight:700;">Тело держит программу.</span></p>
+  <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.82rem;line-height:1.4;margin-bottom:6px;"><span style="color:#A8BC8A;font-weight:700;">Сознание программирует тело.</span> <span style="color:var(--accent2);font-weight:700;">Тело держит программу.</span></p>
   <p style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.5;margin:0;">Дневник поможет тебе <strong style="color:#fff;font-style:normal;">поменять код на обоих уровнях</strong> — не по очереди, а одновременно.</p>
 </div>
 
 <div class="tabs">
   <button class="tab" onclick="showOnboarding()">Главная</button>
   <button class="tab" onclick="go('realization')">Манифестация</button>
-  <button class="tab active" onclick="go('week')">Неделя</button>
-  <button class="tab" onclick="go('days')">Дни</button>
+  <button class="tab active" onclick="go('days')">Практика</button>
   <button class="tab" onclick="go('dynamic')">Динамика</button>
-  <button class="tab" onclick="go('patterns')">Перепрограммирование</button>
+  <button class="tab" onclick="go('patterns')">Паттерны</button>
   <button class="tab" onclick="go('archive')">Архив</button>
 </div>
 
-<!-- ══════════ WEEK ══════════ -->
-<div id="s-week" class="section active">
+<!-- ══════════ WEEK (merged into Практика) ══════════ -->
+<div id="s-week" class="section">
   <div id="form-card" class="card">
     <div class="card-lbl">Слово недели</div>
     <label>Слово которое убираем</label>
@@ -1259,8 +1258,8 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 </div>
 
 
-<!-- ══════════ DAYS ══════════ -->
-<div id="s-days" class="section">
+<!-- ══════════ ПРАКТИКА (Дни + Неделя) ══════════ -->
+<div id="s-days" class="section active">
   <div class="day-scroll" id="day-tabs"></div>
 
   <!-- Инструкция по дню -->
@@ -1280,10 +1279,91 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
   </div>
 
   <div class="sub-tabs" style="flex-wrap:wrap;gap:5px;">
-    <button class="sub-tab active" onclick="goSub('morning')">Утро</button>
+    <button class="sub-tab" onclick="goSub('week')">Неделя</button>
+    <button class="sub-tab active" onclick="goSub('morning')">Коды</button>
     <button class="sub-tab" onclick="goSub('spheres')">Сферы</button>
     <button class="sub-tab" onclick="goSub('body')">Тело</button>
     <button class="sub-tab" onclick="goSub('aware')">Осознанность</button>
+  </div>
+
+  <!-- ══════════ НЕДЕЛЯ (sub-section) ══════════ -->
+  <div id="ss-week" class="sub-section">
+    <div id="form-card" class="card">
+    <div class="card-lbl">Слово недели</div>
+    <label>Слово которое убираем</label>
+    <input type="text" id="f-word" placeholder="просто, хочу, стараюсь...">
+    <label>Замена — новая формулировка</label>
+    <input type="text" id="f-replace" placeholder="делаю, выбираю, знаю...">
+    <label>Где чаще всего звучит?</label>
+    <textarea id="f-context" placeholder="когда называю цену, когда представляюсь..."></textarea>
+    <label>Что стоит за этим словом?</label>
+    <textarea id="f-belief" placeholder="страх показаться самонадеянной..."></textarea>
+    <button class="btn" onclick="startWeek()">Начать неделю</button>
+  </div>
+
+  <div id="view-card" style="display:none">
+    <div class="word-hero">
+      <div class="word-old" id="v-word"></div>
+      <div class="word-arrow">↓</div>
+      <div class="word-new" id="v-replace"></div>
+      <div class="prog-wrap">
+        <div class="prog-bar"><div class="prog-fill" id="v-prog" style="width:0%"></div></div>
+        <div class="prog-meta"><span id="v-days">0 из 7 дней</span><span id="v-wnum"></span></div>
+      </div>
+    </div>
+    <button class="btn btn-ghost" onclick="editWord()" style="margin-top:0">Изменить слово</button>
+  </div>
+
+  <div id="chain-card" style="display:none;margin-top:12px;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);">
+    <div style="background:linear-gradient(135deg,#2A2A2F,#32303A);padding:14px 18px 12px;position:relative;">
+      <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:7px;">Мысль → Результат</div>
+    </div>
+    <div style="background:#fff;padding:16px 18px;">
+      <div class="chain-wrap">
+        <div class="cn"><div class="cnl">Мысль</div><div class="cnv" id="cn-belief">—</div></div>
+        <div class="ca">›</div>
+        <div class="cn"><div class="cnl">Слово</div><div class="cnv" id="cn-word">—</div></div>
+        <div class="ca">›</div>
+        <div class="cn"><div class="cnl">Действие</div><div class="cnv" id="cn-action">—</div></div>
+        <div class="ca">›</div>
+        <div class="cn"><div class="cnl">Результат</div><div class="cnv" id="cn-result">—</div></div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- ══════════ ИТОГ (внутри Календаря) ══════════ -->
+<div id="result-in-calendar" style="padding:0 16px 14px;">
+  <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#C97B8F;margin:18px 0 10px;display:flex;align-items:center;gap:7px;"><span style="display:inline-block;width:20px;height:2.5px;background:linear-gradient(90deg,#C97B8F,#6A7A3E);border-radius:2px;"></span>Итог недели</div>
+  <div id="result-no-word-cal" class="card" style="display:none"><div class="empty">Сначала задай слово недели</div></div>
+  <div id="result-content-cal">
+    <div class="word-hero" id="result-word-hero-cal" style="margin-bottom:14px">
+      <div class="word-old" id="res-word-cal"></div>
+      <div class="word-arrow">↓</div>
+      <div class="word-new" id="res-replace-cal"></div>
+      <div style="font-size:.72rem;color:var(--muted);margin-top:10px;font-weight:600;" id="res-dates-cal"></div>
+    </div>
+    <div style="border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);">
+      <div style="background:linear-gradient(135deg,#2A2A2F,#32303A);padding:14px 18px 12px;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5);">Итог недели — заполни в воскресенье</div>
+      </div>
+      <div style="background:#fff;padding:18px 18px 20px;">
+      <label>Что изменилось в речи?</label>
+      <textarea id="r-speech" placeholder="Реже использую, замечаю сразу..." onblur="saveResult()"></textarea>
+      <label>Что изменилось в мышлении?</label>
+      <textarea id="r-thinking" placeholder="Меньше сомневаюсь..." onblur="saveResult()"></textarea>
+      <label>Что изменилось в действиях?</label>
+      <textarea id="r-actions" placeholder="Назвала стоимость, написала пост..." onblur="saveResult()"></textarea>
+      <label>Что пришло в реальность?</label>
+      <textarea id="r-reality" placeholder="Деньги, клиенты, запросы, энергия..." onblur="saveResult()"></textarea>
+      <button class="btn" onclick="archiveWeek()">В архив + новое слово</button>
+      <button class="btn btn-ghost" onclick="exportWeek()" style="margin-top:8px">Скачать итог недели</button>
+      </div><!-- /белое тело -->
+    </div><!-- /карточка итог -->
+  </div>
+</div>
   </div>
 
   <!-- УТРО -->
@@ -2406,7 +2486,7 @@ function go(tab){
     btn.classList.toggle('active', fn.includes("'"+tab+"'"));
   });
   if(tab==='week')renderWeek();
-  if(tab==='days')renderDays();
+  if(tab==='days'){renderDays();goSub(curSub||'morning');}
   if(tab==='result')renderResult();
   if(tab==='dynamic'){renderDynamic();renderCalendar();renderBodyDynamic();setTimeout(renderDynChart,300);setTimeout(renderWheelChart,400);setTimeout(function(){renderDynChart();renderWheelChart();},800);}
   if(tab==='archive')renderArchive();
@@ -2428,12 +2508,13 @@ function renderPatterns(){
 
 function goSub(sub){
   curSub=sub;
-  ['morning','spheres','body','aware'].forEach((s,i)=>{
+  ['week','morning','spheres','body','aware'].forEach((s,i)=>{
     const el=document.getElementById('ss-'+s);
     if(el)el.classList.toggle('active',s===sub);
     const stabs=document.querySelectorAll('#s-days .sub-tab');
     if(stabs[i])stabs[i].classList.toggle('active',s===sub);
   });
+  if(sub==='week'){renderWeek();}
   if(sub==='morning'){loadMorning();renderQuoteOfDay();}
   if(sub==='spheres'){renderSpheres();renderSpheresCal();renderDynamic();updateSectionDoneBtns();setTimeout(renderWheelChart,300);setTimeout(function(){renderWheelChart();renderSphereDetail(activeSphereTab||0);},800);}
   if(sub==='body'){renderBodyTab();renderBodyDynamic();}
@@ -3010,7 +3091,7 @@ function archiveWeek(){
   S.archive.unshift({word:S.word,replace:S.replace,result:S.result,week:S.weekNum,caught,replaced,status,date:new Date().toLocaleDateString('ru'),days:JSON.parse(JSON.stringify(S.days))});
   S.word=null;S.replace=null;S.context=null;S.belief=null;S.days=blank7();S.result=null;save();
   ['f-word','f-replace','f-context','f-belief'].forEach(id=>document.getElementById(id).value='');
-  go('week');
+  go('days');goSub('week');
 }
 
 // ══════════ ТЕЛО ══════════
