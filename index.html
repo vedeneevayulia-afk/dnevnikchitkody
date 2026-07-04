@@ -945,6 +945,9 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
     });
   } else {
     document.getElementById('access-gate').style.display = 'none';
+    document.addEventListener('DOMContentLoaded', function(){
+      document.getElementById('onboarding').style.display = 'block';
+    });
   }
 })();
 </script>
