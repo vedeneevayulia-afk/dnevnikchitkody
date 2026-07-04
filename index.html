@@ -977,6 +977,10 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       <button onclick="setupNotifications()" id="notif-btn" style="width:100%;padding:12px;background:linear-gradient(135deg,#D4899A,#c4748a);color:#fff;border:none;border-radius:10px;font-size:.85rem;font-weight:800;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.01em;">Включить напоминания</button>
     </div>
 
+    <button id="start-btn-top" onclick="startApp()" style="width:100%;padding:16px;background:var(--graphite);color:#fff;border:none;border-radius:var(--radius-sm);font-size:.95rem;font-weight:800;cursor:pointer;letter-spacing:-.01em;margin-bottom:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;position:relative;overflow:hidden;">
+      <span style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></span>
+      Открыть дневник →
+    </button>
     <button id="back-btn-top" onclick="startApp()" style="display:none;width:100%;padding:12px;background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.82rem;font-weight:700;cursor:pointer;margin-bottom:14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">← Вернуться в дневник</button>
 
     <div style="background:#fff;border-radius:var(--radius);padding:22px;margin-bottom:14px;border:1px solid var(--border);box-shadow:var(--shadow-sm);">
@@ -1160,7 +1164,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 
     <button id="start-btn" onclick="startApp()" style="width:100%;padding:16px;background:var(--graphite);color:#fff;border:none;border-radius:var(--radius-sm);font-size:.95rem;font-weight:800;cursor:pointer;letter-spacing:-.01em;margin-bottom:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;position:relative;overflow:hidden;">
       <span style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></span>
-      Начать перепрошивку →
+      Открыть дневник →
     </button>
     <button id="back-btn" onclick="startApp()" style="display:none;width:100%;padding:12px;background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:.82rem;font-weight:700;cursor:pointer;margin-bottom:14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">← Вернуться в дневник</button>
   </div>
