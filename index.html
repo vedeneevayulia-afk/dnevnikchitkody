@@ -631,6 +631,7 @@ canvas{max-width:100%;}
 .add-goal-input:focus{outline:none;border-color:var(--accent);}
 .add-goal-btn{width:36px;height:36px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:1.2rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;}
 .add-goal-btn:hover{background:var(--sage);}
+.add-goal-btn:disabled{opacity:.35;cursor:not-allowed;}
 .progress-ring{display:flex;align-items:center;gap:14px;padding:14px;background:var(--bg);border-radius:var(--radius-sm);margin-bottom:8px;border:1px solid var(--border);cursor:pointer;transition:all .15s;}
 .progress-ring:hover{border-color:var(--accent2);}
 .ring-wrap{position:relative;width:52px;height:52px;flex-shrink:0;}
@@ -945,10 +946,6 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
     });
   } else {
     document.getElementById('access-gate').style.display = 'none';
-    document.addEventListener('DOMContentLoaded', function(){
-      document.getElementById('main-app').style.display = 'none';
-      document.getElementById('onboarding').style.display = 'block';
-    });
   }
 })();
 </script>
@@ -3895,6 +3892,7 @@ function addGoal(tab){
   var slot = getSlot(key);
   slot.goals.push({text:text, done:false, score:null, next:''});
   inp.value = '';
+  if(inp.nextElementSibling) inp.nextElementSibling.disabled = true;
   saveRS(); renderGoals(tab);
 }
 
@@ -4091,8 +4089,8 @@ function renderRealization(){
       <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.55;">Цели — конкретные результаты которые сделают намерение реальным. Отмечай выполненные — дневник покажет твой прогресс на графике.</div>
       <div id="goals-yr"></div>
       <div class="add-goal-row">
-        <input class="add-goal-input" id="new-goal-yr" type="text" placeholder="Добавить цель на год..." onkeydown="if(event.key==='Enter')addGoal('yr')">
-        <button class="add-goal-btn" onclick="addGoal('yr')">+</button>
+        <input class="add-goal-input" id="new-goal-yr" type="text" placeholder="Добавить цель на год..." oninput="this.nextElementSibling.disabled=!this.value.trim()" onkeydown="if(event.key==='Enter')addGoal('yr')">
+        <button class="add-goal-btn" onclick="addGoal('yr')" disabled>+</button>
       </div>
     </div>
   </div>
@@ -4123,8 +4121,8 @@ function renderRealization(){
       <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.55;">Ставь конкретные, измеримые цели. Отмечай выполненные — это строит динамику на графике.</div>
       <div id="goals-mo"></div>
       <div class="add-goal-row">
-        <input class="add-goal-input" id="new-goal-mo" type="text" placeholder="Добавить цель на месяц..." onkeydown="if(event.key==='Enter')addGoal('mo')">
-        <button class="add-goal-btn" onclick="addGoal('mo')">+</button>
+        <input class="add-goal-input" id="new-goal-mo" type="text" placeholder="Добавить цель на месяц..." oninput="this.nextElementSibling.disabled=!this.value.trim()" onkeydown="if(event.key==='Enter')addGoal('mo')">
+        <button class="add-goal-btn" onclick="addGoal('mo')" disabled>+</button>
       </div>
     </div>
   </div>
@@ -4155,8 +4153,8 @@ function renderRealization(){
       <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.55;">Конкретные действия на эту неделю. Отмечай по мере выполнения — это покажет твой % реализации на графике.</div>
       <div id="goals-wk"></div>
       <div class="add-goal-row">
-        <input class="add-goal-input" id="new-goal-wk" type="text" placeholder="Добавить задачу на неделю..." onkeydown="if(event.key==='Enter')addGoal('wk')">
-        <button class="add-goal-btn" onclick="addGoal('wk')">+</button>
+        <input class="add-goal-input" id="new-goal-wk" type="text" placeholder="Добавить задачу на неделю..." oninput="this.nextElementSibling.disabled=!this.value.trim()" onkeydown="if(event.key==='Enter')addGoal('wk')">
+        <button class="add-goal-btn" onclick="addGoal('wk')" disabled>+</button>
       </div>
     </div>
   </div>
