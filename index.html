@@ -27,9 +27,9 @@
   --graphite: #2A2A2F;
   --graphite-mid: #232328;
   --accent: #6A7A3E;
-  --accent2: #D4899A;
+  --accent2: #F3BAA7;
   --accent-light: #E8EDD8;
-  --accent2-light: #F0D0D8;
+  --accent2-light: #F0D7D0;
   --mint: #A8BC8A;
   --sage: #8A9A72;
   --bordeaux: #8A4A4A;
@@ -101,8 +101,8 @@ body{
 }
 .tab:last-child{border-right:none;}
 .tab.active{
-  color:#D4899A;
-  border-bottom-color:#D4899A;
+  color:#F3BAA7;
+  border-bottom-color:#F3BAA7;
 }
 
 .section{display:none;padding:16px 16px 0;}
@@ -122,7 +122,7 @@ body{
 }
 .card-lbl::before{
   content:'';display:inline-block;width:16px;height:2px;
-  background:linear-gradient(90deg,#D4899A,#6A7A3E);
+  background:linear-gradient(90deg,#F3BAA7,#6A7A3E);
   border-radius:2px;flex-shrink:0;
 }
 
@@ -145,17 +145,17 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
 /* ─── BUTTONS ─── */
 .btn{
   width:100%;padding:14px;
-  background:#D4899A;
+  background:#F3BAA7;
   color:#fff;border:none;border-radius:var(--radius-sm);
   font-size:.85rem;font-weight:700;cursor:pointer;
   transition:all .2s;margin-top:14px;
   letter-spacing:.01em;
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 }
-.btn:hover{background:#c07888;transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,137,154,.3);}
+.btn:hover{background:#C08A78;transform:translateY(-1px);box-shadow:0 6px 20px rgba(243,186,167,.3);}
 .btn:active{transform:translateY(0);}
-.btn-pink{background:var(--accent2);box-shadow:0 4px 16px rgba(212,137,154,.3);}
-.btn-pink:hover{background:#c07888;box-shadow:0 6px 20px rgba(212,137,154,.4);}
+.btn-pink{background:var(--accent2);box-shadow:0 4px 16px rgba(243,186,167,.3);}
+.btn-pink:hover{background:#C08A78;box-shadow:0 6px 20px rgba(243,186,167,.4);}
 .btn-ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);box-shadow:none;}
 .btn-ghost:hover{background:var(--accent-light);transform:none;box-shadow:none;}
 
@@ -177,22 +177,22 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
 }
 .word-hero::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,#6A7A3E,#A8BC8A 40%,#D4899A);
+  background:linear-gradient(90deg,#6A7A3E,#A8BC8A 40%,#F3BAA7);
 }
 .word-hero::after{
   content:'';position:absolute;top:-40px;right:-30px;
   width:140px;height:140px;
-  background:radial-gradient(circle,rgba(212,137,154,.12) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(243,186,167,.12) 0%,transparent 70%);
   pointer-events:none;
 }
 .word-old{
-  font-size:1.6rem;font-weight:800;color:rgba(212,137,154,.35);
+  font-size:1.6rem;font-weight:800;color:rgba(243,186,167,.35);
   letter-spacing:-.04em;line-height:1;
   text-decoration:line-through;
-  text-decoration-color:rgba(212,137,154,.5);
+  text-decoration-color:rgba(243,186,167,.5);
   text-decoration-thickness:2px;
 }
-.word-arrow{color:#D4899A;font-size:.9rem;margin:10px 0 8px;opacity:.7;}
+.word-arrow{color:#F3BAA7;font-size:.9rem;margin:10px 0 8px;opacity:.7;}
 .word-new{font-size:1.8rem;font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1;}
 .word-new span{color:#A8BC8A;}
 
@@ -236,7 +236,7 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
   font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 }
 .sub-tab.active{
-  background:#D4899A;border-color:#D4899A;
+  background:#F3BAA7;border-color:#F3BAA7;
   color:#fff;
 }
 
@@ -254,7 +254,7 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
   background:transparent;color:var(--muted);font-size:.8rem;font-weight:600;
   cursor:pointer;transition:all .2s;font-family:-apple-system,BlinkMacSystemFont,sans-serif;
 }
-.activity-btn.active{background:#D4899A;border-color:#D4899A;color:#fff;}
+.activity-btn.active{background:#F3BAA7;border-color:#F3BAA7;color:#fff;}
 .energy-star{font-size:1.8rem;cursor:pointer;transition:all .2s;opacity:.25;filter:grayscale(60%);}
 .feelings-group{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:4px;}
 .feeling-btn{
@@ -285,10 +285,10 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
 
 /* ─── AFFIRMATIONS ─── */
 .affirm-card{
-  background:#FDF0F3;
+  background:#FDF3F0;
   border-radius:var(--radius);padding:20px;margin-bottom:14px;
-  border:1px solid #f0c8d0;box-shadow:var(--shadow-sm);
-  border-top:3px solid #D4899A;
+  border:1px solid #F0D3C8;box-shadow:var(--shadow-sm);
+  border-top:3px solid #F3BAA7;
 }
 .affirm-title{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:7px;}
 .affirm-title::before{content:'';display:inline-block;width:16px;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:2px;}
@@ -404,7 +404,7 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
   padding:14px 8px;text-align:center;border:1px solid #d0dab8;
 }
 .stat-box:nth-child(2){
-  background:#FDF0F3;border-color:#f0c8d0;
+  background:#FDF3F0;border-color:#F0D3C8;
 }
 .stat-num{font-size:1.5rem;font-weight:900;color:var(--accent);letter-spacing:-.04em;}
 .stat-txt{font-size:.6rem;color:var(--muted);margin-top:3px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
@@ -436,7 +436,7 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
 }
 .author-footer::before{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,#6A7A3E,#A8BC8A 40%,#D4899A);
+  background:linear-gradient(90deg,#6A7A3E,#A8BC8A 40%,#F3BAA7);
   box-shadow:0 0 8px rgba(168,188,138,.3);
 }
 .author-footer-top{
@@ -495,7 +495,7 @@ textarea{resize:vertical;min-height:58px;line-height:1.55;}
   background:var(--accent2);
   color:#fff;border:none;border-radius:var(--radius-sm);padding:14px 28px;
   font-size:.9rem;font-weight:700;cursor:pointer;text-decoration:none;
-  display:inline-block;box-shadow:0 4px 20px rgba(212,137,154,.4);
+  display:inline-block;box-shadow:0 4px 20px rgba(243,186,167,.4);
   transition:all .2s;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
 }
 .funnel-btn:hover{opacity:.88;transform:translateY(-1px);}
@@ -616,7 +616,7 @@ canvas{max-width:100%;}
 .rp-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
 .rp-nav-btn{width:32px;height:32px;border:1.5px solid var(--border);background:var(--card);border-radius:8px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);}
 .rp-period-lbl{font-size:.72rem;font-weight:700;color:var(--text);}
-.intent-block{background:var(--accent2-light);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:12px;border:1px solid rgba(212,137,154,.2);}
+.intent-block{background:var(--accent2-light);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:12px;border:1px solid rgba(243,186,167,.2);}
 .intent-block textarea{background:transparent;border:none;padding:0;font-size:.85rem;resize:none;min-height:44px;}
 .intent-block textarea:focus{box-shadow:none;border:none;}
 .goal-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
@@ -637,13 +637,13 @@ canvas{max-width:100%;}
 .ring-wrap{position:relative;width:52px;height:52px;flex-shrink:0;}
 .ring-svg{transform:rotate(-90deg);}
 .ring-track{fill:none;stroke:var(--border);stroke-width:5;}
-.ring-fill{fill:none;stroke:#D4899A;stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .6s ease;}
+.ring-fill{fill:none;stroke:#F3BAA7;stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .6s ease;}
 .ring-fill.full{stroke:#6A7A3E;}
 .ring-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:900;color:var(--accent);}
 .ring-title{font-size:.85rem;font-weight:800;color:var(--text);margin-bottom:2px;}
 .ring-sub{font-size:.65rem;color:var(--muted);}
 .real-section-lbl{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:7px;}
-.real-section-lbl::before{content:'';display:inline-block;width:14px;height:2px;background:linear-gradient(90deg,#D4899A,#6A7A3E);border-radius:2px;flex-shrink:0;}
+.real-section-lbl::before{content:'';display:inline-block;width:14px;height:2px;background:linear-gradient(90deg,#F3BAA7,#6A7A3E);border-radius:2px;flex-shrink:0;}
 
 /* ─── ДИНАМИКА / АРХИВ ─── */
 .nav-week{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
@@ -693,62 +693,62 @@ canvas{max-width:100%;}
 
 /* Main button — stronger colour + shadow */
 #s-week .btn:not(.btn-ghost) {
-  background: #C97B8F;
-  box-shadow: 0 6px 24px rgba(201,123,143,.38);
+  background: #C98C7B;
+  box-shadow: 0 6px 24px rgba(201,140,123,.38);
   letter-spacing: .02em;
   font-weight: 800;
   transition: all .2s;
 }
 #s-week .btn:not(.btn-ghost):hover {
-  background: #b56b7d;
+  background: #B57C6B;
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(201,123,143,.45);
+  box-shadow: 0 10px 30px rgba(201,140,123,.45);
 }
 
 /* Ghost button — pink accent */
 #s-week .btn-ghost {
-  border-color: #C97B8F;
-  color: #C97B8F;
+  border-color: #C98C7B;
+  color: #C98C7B;
   font-weight: 800;
-  background: rgba(201,123,143,.06);
+  background: rgba(201,140,123,.06);
 }
 
 /* Word hero — lighter, rose-green */
 #s-week .word-hero {
-  background: linear-gradient(145deg, #F2E4E9 0%, #faedf2 40%, #EBF0E2 100%);
-  border: 1.5px solid rgba(201,123,143,.35);
-  box-shadow: 0 6px 32px rgba(201,123,143,.25), 0 1px 0 rgba(106,122,62,.08);
+  background: linear-gradient(145deg, #F2E6E4 0%, #FAEEED 40%, #EBF0E2 100%);
+  border: 1.5px solid rgba(201,140,123,.35);
+  box-shadow: 0 6px 32px rgba(201,140,123,.25), 0 1px 0 rgba(106,122,62,.08);
 }
 #s-week .word-hero::before {
-  background: linear-gradient(90deg, #C97B8F, #6A7A3E);
+  background: linear-gradient(90deg, #C98C7B, #6A7A3E);
   height: 4px;
 }
 #s-week .word-hero::after {
-  background: radial-gradient(circle, rgba(201,123,143,.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201,140,123,.18) 0%, transparent 70%);
   top: -40px; right: -30px; width: 160px; height: 160px;
 }
 #s-week .word-old {
   color: rgba(122,58,74,.38);
-  text-decoration-color: rgba(201,123,143,.6);
+  text-decoration-color: rgba(201,140,123,.6);
 }
-#s-week .word-arrow { color: #C97B8F; opacity: 1; font-size: 1.1rem; }
+#s-week .word-arrow { color: #C98C7B; opacity: 1; font-size: 1.1rem; }
 /* Главный акцент — новое слово */
-#s-week .word-new { color: #C97B8F; font-weight: 900; font-size: 2rem; }
+#s-week .word-new { color: #C98C7B; font-weight: 900; font-size: 2rem; }
 
 /* Progress bar sharper */
-#s-week .prog-bar { background: rgba(201,123,143,.15); }
-#s-week .prog-fill { background: linear-gradient(90deg, #C97B8F, #6A7A3E); }
+#s-week .prog-bar { background: rgba(201,140,123,.15); }
+#s-week .prog-fill { background: linear-gradient(90deg, #C98C7B, #6A7A3E); }
 #s-week .prog-meta { color: #9A918A; font-weight: 700; }
 
 /* Заголовки карточек — ярче */
 #s-week .card-lbl {
-  color: #7A3A4A;
+  color: #7A493A;
   font-size: .6rem;
 }
 #s-week .card-lbl::before {
   width: 20px;
   height: 2.5px;
-  background: linear-gradient(90deg, #C97B8F, #6A7A3E);
+  background: linear-gradient(90deg, #C98C7B, #6A7A3E);
 }
 
 /* Chain card cells */
@@ -758,12 +758,12 @@ canvas{max-width:100%;}
   border-radius: 12px;
 }
 #s-week .cn:has(.cnv:not(:empty)) {
-  background: linear-gradient(135deg, #faedf2, #F2E4E9);
-  border-color: rgba(201,123,143,.45);
+  background: linear-gradient(135deg, #FAEEED, #F2E6E4);
+  border-color: rgba(201,140,123,.45);
 }
 #s-week .cnl { color: #9A918A; font-weight: 800; }
-#s-week .cnv { font-weight: 800; color: #7A3A4A; }
-#s-week .ca { color: #C97B8F; font-weight: 400; font-size: 1rem; }
+#s-week .cnv { font-weight: 800; color: #7A493A; }
+#s-week .ca { color: #C98C7B; font-weight: 400; font-size: 1rem; }
 
 /* Итог недели */
 #result-in-calendar .card {
@@ -788,15 +788,15 @@ canvas{max-width:100%;}
   box-shadow: 0 0 0 4px rgba(106,122,62,.10);
 }
 #result-in-calendar .btn:not(.btn-ghost) {
-  background: #C97B8F;
-  box-shadow: 0 6px 24px rgba(201,123,143,.35);
+  background: #C98C7B;
+  box-shadow: 0 6px 24px rgba(201,140,123,.35);
   font-weight: 800;
   transition: all .2s;
 }
 #result-in-calendar .btn:not(.btn-ghost):hover {
-  background: #b56b7d;
+  background: #B57C6B;
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(201,123,143,.42);
+  box-shadow: 0 10px 30px rgba(201,140,123,.42);
 }
 #result-in-calendar .btn-ghost {
   border-color: rgba(106,122,62,.35);
@@ -863,7 +863,7 @@ canvas{max-width:100%;}
   width: 100%;
   min-height: 72px;
   padding: 12px 14px;
-  border: 1.5px solid rgba(212,137,154,.3);
+  border: 1.5px solid rgba(243,186,167,.3);
   border-radius: 12px;
   background: linear-gradient(135deg, rgba(240,216,216,.18), rgba(238,241,230,.18));
   font-size: .88rem;
@@ -877,7 +877,7 @@ canvas{max-width:100%;}
 .intent-textarea:focus {
   outline: none;
   border-color: var(--accent2);
-  box-shadow: 0 0 0 3px rgba(212,137,154,.10);
+  box-shadow: 0 0 0 3px rgba(243,186,167,.10);
 }
 
 .rp-nav {
@@ -918,13 +918,13 @@ canvas{max-width:100%;}
 <div id="access-gate" style="display:none !important;min-height:100vh;background:#FDF6F0;display:flex;align-items:center;justify-content:center;padding:24px;">
   <div style="max-width:400px;width:100%;text-align:center;">
     <div style="background:#2C2825;border-radius:20px;padding:40px 28px 36px;box-shadow:0 8px 40px rgba(0,0,0,.18);">
-      <div style="width:64px;height:64px;border-radius:16px;background:#D4899A;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 20px;">🔒</div>
-      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:#D4899A;margin-bottom:10px;">Тело как состояние · Юлия Веденеева</div>
+      <div style="width:64px;height:64px;border-radius:16px;background:#F3BAA7;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 20px;">🔒</div>
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:#F3BAA7;margin-bottom:10px;">Тело как состояние · Юлия Веденеева</div>
       <h2 style="font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:12px;line-height:1.3;">Дневник трансформации</h2>
       <p style="font-size:.85rem;color:#9A918A;line-height:1.6;margin-bottom:28px;">Доступ к дневнику открывается после получения личной ссылки.<br>Если у тебя есть ссылка — открывай её напрямую.</p>
       <div style="border-top:1px solid #3a3530;padding-top:22px;">
         <p style="font-size:.8rem;color:#9A918A;margin-bottom:12px;">Хочешь получить доступ?</p>
-        <a href="https://instagram.com/meta_ulia" target="_blank" style="display:inline-block;background:#D4899A;color:#fff;font-size:.85rem;font-weight:700;padding:12px 28px;border-radius:12px;text-decoration:none;letter-spacing:.04em;">Написать @meta_ulia</a>
+        <a href="https://instagram.com/meta_ulia" target="_blank" style="display:inline-block;background:#F3BAA7;color:#fff;font-size:.85rem;font-weight:700;padding:12px 28px;border-radius:12px;text-decoration:none;letter-spacing:.04em;">Написать @meta_ulia</a>
       </div>
     </div>
     <p style="font-size:.7rem;color:#B0A898;margin-top:16px;">© Юлия Веденеева · Тело как состояние</p>
@@ -971,7 +971,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
         <div style="flex:1"><div style="font-size:.62rem;font-weight:700;color:rgba(255,255,255,.4);margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em;">Вечер</div><input type="time" id="notif-evening" value="21:00" style="width:100%;padding:9px 12px;border:1px solid rgba(255,255,255,.12);border-radius:10px;font-size:.85rem;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff;background:rgba(255,255,255,.08);"></div>
       </div>
       <div id="notif-status" style="font-size:.75rem;font-weight:700;margin-bottom:10px;"></div>
-      <button onclick="setupNotifications()" id="notif-btn" style="width:100%;padding:12px;background:linear-gradient(135deg,#D4899A,#c4748a);color:#fff;border:none;border-radius:10px;font-size:.85rem;font-weight:800;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.01em;">Включить напоминания</button>
+      <button onclick="setupNotifications()" id="notif-btn" style="width:100%;padding:12px;background:linear-gradient(135deg,#F3BAA7,#C48474);color:#fff;border:none;border-radius:10px;font-size:.85rem;font-weight:800;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:.01em;">Включить напоминания</button>
     </div>
 
     <button id="start-btn-top" onclick="startApp()" style="width:100%;padding:16px;background:var(--graphite);color:#fff;border:none;border-radius:var(--radius-sm);font-size:.95rem;font-weight:800;cursor:pointer;letter-spacing:-.01em;margin-bottom:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;position:relative;overflow:hidden;">
@@ -1023,7 +1023,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
           <div style="width:36px;height:36px;border-radius:10px;background:#1a3a2a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🙏</div>
           <div><div style="font-size:.85rem;font-weight:800;color:var(--text);">Практика благодарности</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px;line-height:1.45;">3–5 вещей каждый вечер — переключает мозг с режима угрозы в режим ресурса</div></div>
         </div>
-        <div style="display:flex;align-items:flex-start;gap:12px;background:linear-gradient(135deg,rgba(212,137,154,.08),rgba(106,122,62,.08));border-radius:14px;padding:12px;border:1px solid rgba(212,137,154,.15);">
+        <div style="display:flex;align-items:flex-start;gap:12px;background:linear-gradient(135deg,rgba(243,186,167,.08),rgba(106,122,62,.08));border-radius:14px;padding:12px;border:1px solid rgba(243,186,167,.15);">
           <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#3d1a2a,#2C2825);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">🧬</div>
           <div>
             <div style="font-size:.85rem;font-weight:800;color:var(--text);margin-bottom:4px;">Перепрограммирование — речевые репликаторы</div>
@@ -1031,9 +1031,9 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
             <div style="font-size:.73rem;color:var(--muted);line-height:1.5;margin-bottom:8px;">«Нет денег», «Не сейчас», «Все так живут», «Я не умею», «Наверное не получится» — это не слова. Это коды, которые управляют твоими решениями, телом и тем что притягивается в жизнь.</div>
             <div style="font-size:.73rem;color:var(--muted);line-height:1.5;margin-bottom:10px;">В карте <strong style="color:var(--text);">15 программ-репликаторов</strong>. В каждой — 18 слов-кодов. Это <strong style="color:var(--text);">270 речевых паттернов</strong> которые прямо сейчас управляют твоими решениями, телом и деньгами. Работаешь с одним словом — минимум неделю, максимум пока оно не уходит из речи само. Пока слово больше не срабатывает как автомат — берёшь следующее. <strong style="color:var(--text);">Мысль → слово → тело → действие.</strong> Меняешь звено «слово» — рушится вся старая цепочка.</div>
             <div style="display:flex;gap:6px;flex-wrap:wrap;">
-              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(212,137,154,.15);color:#D4899A;">Программа нехватки</span>
-              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(212,137,154,.15);color:#D4899A;">Чужой сценарий</span>
-              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(212,137,154,.15);color:#D4899A;">Заморозка</span>
+              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(243,186,167,.15);color:#F3BAA7;">Программа нехватки</span>
+              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(243,186,167,.15);color:#F3BAA7;">Чужой сценарий</span>
+              <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(243,186,167,.15);color:#F3BAA7;">Заморозка</span>
               <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(168,188,138,.15);color:#A8BC8A;">Жертва</span>
               <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(168,188,138,.15);color:#A8BC8A;">Самосаботаж</span>
               <span style="font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(168,188,138,.15);color:#A8BC8A;">Сравнение</span>
@@ -1044,9 +1044,9 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       </div>
     </div>
     <div style="background:#1C1C1E;border-radius:16px;padding:24px 22px;margin-bottom:18px;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#A8BC8A,#D4899A);"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#A8BC8A,#F3BAA7);"></div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
-        <div style="width:3px;height:16px;background:linear-gradient(180deg,#A8BC8A,#D4899A);border-radius:2px;"></div>
+        <div style="width:3px;height:16px;background:linear-gradient(180deg,#A8BC8A,#F3BAA7);border-radius:2px;"></div>
         <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.4);">Как работает дневник</div>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;">
@@ -1063,16 +1063,16 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
           <div><div style="font-size:.85rem;font-weight:700;color:#A8BC8A;margin-bottom:3px;">Чем больше работаешь</div><div style="font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.55;">Тем глубже идут изменения. Это твой новый способ жить, а не курс с дедлайном.</div></div>
         </div>
         <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:24px;height:24px;border-radius:50%;background:rgba(212,137,154,.15);border:1px solid rgba(212,137,154,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
-            <div style="width:6px;height:6px;border-radius:50%;background:#D4899A;"></div>
+          <div style="width:24px;height:24px;border-radius:50%;background:rgba(243,186,167,.15);border:1px solid rgba(243,186,167,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#F3BAA7;"></div>
           </div>
-          <div><div style="font-size:.85rem;font-weight:700;color:#D4899A;margin-bottom:3px;">Сознание запускает тело, тело закрепляет сознание</div><div style="font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.55;">Когда работаешь на обоих уровнях — химия мозга меняется быстрее. Тело становится союзником.</div></div>
+          <div><div style="font-size:.85rem;font-weight:700;color:#F3BAA7;margin-bottom:3px;">Сознание запускает тело, тело закрепляет сознание</div><div style="font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.55;">Когда работаешь на обоих уровнях — химия мозга меняется быстрее. Тело становится союзником.</div></div>
         </div>
         <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="width:24px;height:24px;border-radius:50%;background:rgba(212,137,154,.15);border:1px solid rgba(212,137,154,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
-            <div style="width:6px;height:6px;border-radius:50%;background:#D4899A;"></div>
+          <div style="width:24px;height:24px;border-radius:50%;background:rgba(243,186,167,.15);border:1px solid rgba(243,186,167,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#F3BAA7;"></div>
           </div>
-          <div><div style="font-size:.85rem;font-weight:700;color:#D4899A;margin-bottom:3px;">Один чит-код в неделю</div><div style="font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.55;">Вся жизнь — по-другому.</div></div>
+          <div><div style="font-size:.85rem;font-weight:700;color:#F3BAA7;margin-bottom:3px;">Один чит-код в неделю</div><div style="font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.55;">Вся жизнь — по-другому.</div></div>
         </div>
       </div>
       <div style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);text-align:center;">
@@ -1084,19 +1084,19 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
     <!-- ===== ПРОДАЮЩИЙ БЛОК ===== -->
 
     <!-- 1. КРЮЧОК — незакрытый гештальт -->
-    <div style="background:#fff;border-radius:16px;padding:20px;margin-bottom:12px;border:1px solid rgba(212,137,154,.2);box-shadow:0 2px 16px rgba(212,137,154,.08);">
-      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:10px;">Почему осознание не меняет жизнь</div>
+    <div style="background:#fff;border-radius:16px;padding:20px;margin-bottom:12px;border:1px solid rgba(243,186,167,.2);box-shadow:0 2px 16px rgba(243,186,167,.08);">
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#F3BAA7;margin-bottom:10px;">Почему осознание не меняет жизнь</div>
       <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.9rem;color:#2C2825;line-height:1.65;margin-bottom:10px;">Ты можешь знать, что говоришь «нет денег» на автомате. И всё равно говорить.</div>
       <div style="font-size:.76rem;color:#7A706A;line-height:1.65;">Старая программа живёт не в голове — в теле. В нейронных дорожках, которые прокатались за годы. Знание их не стирает. Стирает ежедневное повторение нового кода через тело. Именно это делает дневник.</div>
     </div>
 
     <!-- 2. РЕЗУЛЬТАТ — цифры и сроки -->
     <div style="background:var(--graphite);border-radius:16px;padding:20px;margin-bottom:12px;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#D4899A,#A8BC8A);"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#F3BAA7,#A8BC8A);"></div>
       <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#A8BC8A;margin-bottom:14px;">Что происходит если работать каждый день</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div style="display:flex;align-items:flex-start;gap:10px;">
-          <div style="min-width:38px;height:38px;border-radius:10px;background:rgba(212,137,154,.15);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:#D4899A;flex-shrink:0;">21д</div>
+          <div style="min-width:38px;height:38px;border-radius:10px;background:rgba(243,186,167,.15);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:#F3BAA7;flex-shrink:0;">21д</div>
           <div style="font-size:.78rem;color:rgba(255,255,255,.7);line-height:1.55;padding-top:3px;">Паттерн начинает ломаться. Старое слово вылетает реже — новое приходит само.</div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:10px;">
@@ -1120,7 +1120,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       <div style="flex:1;">
         <div style="font-size:.88rem;font-weight:800;color:var(--text);margin-bottom:2px;">Юлия Веденеева</div>
         <div style="font-size:.72rem;color:var(--muted);line-height:1.4;margin-bottom:8px;">Эксперт по трансформации сознания через авторский метод — тело как состояние</div>
-        <a href="https://calendly.com/vedeneevayulia/30min" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:8px;padding:6px 14px;font-size:.72rem;font-weight:700;box-shadow:0 2px 10px rgba(212,137,154,.3);">Разбор 15 мин · вопрос-ответ</a>
+        <a href="https://calendly.com/vedeneevayulia/30min" target="_blank" style="display:inline-flex;align-items:center;gap:5px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:8px;padding:6px 14px;font-size:.72rem;font-weight:700;box-shadow:0 2px 10px rgba(243,186,167,.3);">Разбор 15 мин · вопрос-ответ</a>
       </div>
     </div>
     <!-- БЛОК ЛАБОРАТОРИЯ ПОЛНЫЙ -->
@@ -1128,23 +1128,23 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent2),var(--accent));"></div>
       <div style="font-size:.52rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:var(--accent2);margin-bottom:8px;">Следующий уровень</div>
       <h2 style="font-size:1.3rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:4px;">Лаборатория тела как состояние</h2>
-      <div style="font-size:.8rem;color:#D4899A;font-weight:600;margin-bottom:4px;">Групповая программа · 28 дней</div>
+      <div style="font-size:.8rem;color:#F3BAA7;font-weight:600;margin-bottom:4px;">Групповая программа · 28 дней</div>
       <div style="font-family:Georgia,serif;font-style:italic;font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:14px;line-height:1.5;">Авторская программа на стыке психологии, нейробиологии,<br>нейролингвистики и законов сознания</div>
       <div style="background:rgba(255,255,255,.07);border-radius:12px;padding:14px;margin-bottom:14px;border:1px solid rgba(255,255,255,.1);">
         <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;margin-bottom:8px;"><strong>Этот дневник — твой навсегда.</strong> Работаешь сама, в своём темпе, без ограничений по времени. Каждую неделю убираешь один ограничивающий репликатор и вшиваешь новый чит-код.</p>
-        <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;margin-bottom:8px;"><span style="color:#D4899A;font-weight:700;">Лаборатория тела как состояния</span> — групповая работа со мной. 28 дней, чат с поддержкой и ежедневными вопрос-ответ, 2 живые онлайн встречи в неделю, личные живые разборы и практики для перепрошивки сознания на двух уровнях сразу.</p>
+        <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;margin-bottom:8px;"><span style="color:#F3BAA7;font-weight:700;">Лаборатория тела как состояния</span> — групповая работа со мной. 28 дней, чат с поддержкой и ежедневными вопрос-ответ, 2 живые онлайн встречи в неделю, личные живые разборы и практики для перепрошивки сознания на двух уровнях сразу.</p>
         <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;margin-bottom:8px;">Мы работаем на двух уровнях одновременно. <strong style="color:#A8BC8A;">Внутренний — непроявленный:</strong> твои мысли, там живёт твоё внимание. Куда внимание — туда энергия. Большинство годами меняют поведение снаружи, но внутренняя программа остаётся нетронутой — и жизнь возвращает тот же сценарий. <strong style="color:#A8BC8A;">Внешний — проявленный:</strong> слова и действия, то что создаёт реальность. Между ними — состояние. Именно оно определяет всё: слова, решения, деньги, тело. Просто осознать недостаточно — осознание в коре мозга, а старая программа глубже. В теле. В автоматических реакциях. Без перепрошивки самого кода осознание остаётся красивой идеей. В Лаборатории мы меняем код на обоих уровнях сразу.</p>
         <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;margin-bottom:8px;">Результат — в теле, деньгах и отношениях.</p>
-        <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;"><span style="color:#D4899A;font-weight:700;">Гарантия — 100% возврат денег</span> если не будет результата, при условии что вы выполните все задания и упражнения на программе.</p>
-        <p style="font-size:.75rem;color:rgba(255,255,255,.45);margin-top:8px;">Открывается <strong style="color:#D4899A;">2 раза в год. 10 мест.</strong></p>
+        <p style="font-size:.78rem;color:#FAF8F5;line-height:1.6;"><span style="color:#F3BAA7;font-weight:700;">Гарантия — 100% возврат денег</span> если не будет результата, при условии что вы выполните все задания и упражнения на программе.</p>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.45);margin-top:8px;">Открывается <strong style="color:#F3BAA7;">2 раза в год. 10 мест.</strong></p>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
         <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:32px;height:32px;border-radius:8px;background:#D4899A;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;">8</div>
+          <div style="width:32px;height:32px;border-radius:8px;background:#F3BAA7;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;">8</div>
           <span style="font-size:.8rem;color:#FAF8F5;">Живых встреч в Zoom — 2 раза в неделю</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:32px;height:32px;border-radius:8px;background:#D4899A;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;">28</div>
+          <div style="width:32px;height:32px;border-radius:8px;background:#F3BAA7;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;">28</div>
           <span style="font-size:.8rem;color:#FAF8F5;">Дней в закрытом чате с разборами</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
@@ -1153,10 +1153,10 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
           <div style="width:32px;height:32px;border-radius:8px;background:#6A7A3E;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;flex-shrink:0;">10</div>
-          <span style="font-size:.8rem;color:#FAF8F5;"><span style="color:#D4899A;font-weight:700;">10 мест</span> · небольшая группа</span>
+          <span style="font-size:.8rem;color:#FAF8F5;"><span style="color:#F3BAA7;font-weight:700;">10 мест</span> · небольшая группа</span>
         </div>
       </div>
-      <a href="https://t.me/meta_ulia" target="_blank" style="display:block;text-align:center;background:linear-gradient(135deg,#D4899A,#c4748a);color:#fff;font-size:.88rem;font-weight:700;padding:14px;border-radius:12px;text-decoration:none;letter-spacing:.02em;">Оставить заявку и узнать подробнее →</a>
+      <a href="https://t.me/meta_ulia" target="_blank" style="display:block;text-align:center;background:linear-gradient(135deg,#F3BAA7,#C48474);color:#fff;font-size:.88rem;font-weight:700;padding:14px;border-radius:12px;text-decoration:none;letter-spacing:.02em;">Оставить заявку и узнать подробнее →</a>
     </div>
 
     <button id="start-btn" onclick="startApp()" style="width:100%;padding:16px;background:var(--graphite);color:#fff;border:none;border-radius:var(--radius-sm);font-size:.95rem;font-weight:800;cursor:pointer;letter-spacing:-.01em;margin-bottom:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;position:relative;overflow:hidden;">
@@ -1202,7 +1202,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       <div style="font-size:.6rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;">День</div>
       <div style="font-size:.65rem;color:var(--muted);line-height:1.4;">Сферы и тело</div>
     </div>
-    <div style="flex:1;padding:10px 10px;background:linear-gradient(135deg,rgba(212,137,154,.08),rgba(212,137,154,.03));text-align:center;">
+    <div style="flex:1;padding:10px 10px;background:linear-gradient(135deg,rgba(243,186,167,.08),rgba(243,186,167,.03));text-align:center;">
       <div style="font-size:.6rem;font-weight:800;color:var(--accent2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;">Вечер</div>
       <div style="font-size:.65rem;color:var(--muted);line-height:1.4;">Осознанность</div>
     </div>
@@ -1246,7 +1246,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 
   <div id="chain-card" style="display:none;margin-top:12px;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);">
     <div style="background:linear-gradient(135deg,#2A2A2F,#32303A);padding:14px 18px 12px;position:relative;">
-      <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#F3BAA7,#A8BC8A 50%,#6A7A3E);"></div>
       <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:7px;">Мысль → Результат</div>
     </div>
     <div style="background:#fff;padding:16px 18px;">
@@ -1265,7 +1265,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 
 <!-- ══════════ ИТОГ (внутри Календаря) ══════════ -->
 <div id="result-in-calendar" style="padding:0 16px 14px;">
-  <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#C97B8F;margin:18px 0 10px;display:flex;align-items:center;gap:7px;"><span style="display:inline-block;width:20px;height:2.5px;background:linear-gradient(90deg,#C97B8F,#6A7A3E);border-radius:2px;"></span>Итог недели</div>
+  <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#C98C7B;margin:18px 0 10px;display:flex;align-items:center;gap:7px;"><span style="display:inline-block;width:20px;height:2.5px;background:linear-gradient(90deg,#C98C7B,#6A7A3E);border-radius:2px;"></span>Итог недели</div>
   <div id="result-no-word-cal" class="card" style="display:none"><div class="empty">Сначала задай слово недели</div></div>
   <div id="result-content-cal">
     <div class="word-hero" id="result-word-hero-cal" style="margin-bottom:14px">
@@ -1276,7 +1276,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
     </div>
     <div style="border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);">
       <div style="background:linear-gradient(135deg,#2A2A2F,#32303A);padding:14px 18px 12px;position:relative;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#F3BAA7,#A8BC8A 50%,#6A7A3E);"></div>
         <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5);">Итог недели — заполни в воскресенье</div>
       </div>
       <div style="background:#fff;padding:18px 18px 20px;">
@@ -1374,7 +1374,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       </div>
 
       <!-- РЕАЛИЗАЦИЯ -->
-      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#D4899A;margin-bottom:8px;margin-top:16px;">Манифестация</div>
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#F3BAA7;margin-bottom:8px;margin-top:16px;">Манифестация</div>
       <div class="affirm-list">
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">1</span>
@@ -1403,7 +1403,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       </div>
 
       <!-- ИЗОБИЛИЕ -->
-      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#D4899A;margin-bottom:8px;margin-top:16px;">Изобилие</div>
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#F3BAA7;margin-bottom:8px;margin-top:16px;">Изобилие</div>
       <div class="affirm-list">
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">1</span>
@@ -1505,7 +1505,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       </div>
 
       <!-- ОТНОШЕНИЯ -->
-      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#D4899A;margin-bottom:8px;margin-top:16px;">Отношения</div>
+      <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:#F3BAA7;margin-bottom:8px;margin-top:16px;">Отношения</div>
       <div class="affirm-list">
         <div class="affirm-item affirm-collapsible" onclick="toggleAffirmItem(this)">
           <span class="a-num">1</span>
@@ -1626,7 +1626,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
     <!-- КОЛЕСО БАЛАНСА в разделе Сферы -->
     <div class="card" style="padding:0;overflow:hidden;margin-top:14px;">
       <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:16px 20px 14px;position:relative;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#F3BAA7,#A8BC8A 50%,#6A7A3E);"></div>
         <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.35);margin-bottom:3px;">Колесо баланса</div>
         <div style="font-size:.75rem;color:rgba(255,255,255,.5);">Средние оценки за все записи</div>
       </div>
@@ -1641,8 +1641,8 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 
     <!-- ОПИСАНИЕ РАЗДЕЛА -->
     <div style="background:linear-gradient(160deg,#2A2A2F 0%,#32303A 100%);border-radius:20px;padding:22px 20px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
-      <div style="position:absolute;top:0;right:0;width:160px;height:160px;background:radial-gradient(circle at 100% 0%,rgba(212,137,154,.08) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F3BAA7,#A8BC8A 50%,#6A7A3E);"></div>
+      <div style="position:absolute;top:0;right:0;width:160px;height:160px;background:radial-gradient(circle at 100% 0%,rgba(243,186,167,.08) 0%,transparent 70%);pointer-events:none;"></div>
       <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:8px;">Тело и состояние</div>
       <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.35;">Тело — это отражение твоего внутреннего состояния.</div>
       <div style="font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:16px;">Каждый день фиксируй базу: сон, вода, движение. Отмечай активности и чувства. За неделю увидишь паттерн — что даёт тебе энергию, а что забирает.</div>
@@ -1651,8 +1651,8 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
           <div style="font-size:.58rem;font-weight:800;color:#A8BC8A;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Физическое</div>
           <div style="font-size:.72rem;color:rgba(255,255,255,.55);line-height:1.45;">Сон · вода · движение · питание</div>
         </div>
-        <div style="flex:1;background:rgba(212,137,154,.12);border-radius:12px;padding:10px 12px;border-left:2px solid #D4899A;">
-          <div style="font-size:.58rem;font-weight:800;color:#D4899A;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Эмоциональное</div>
+        <div style="flex:1;background:rgba(243,186,167,.12);border-radius:12px;padding:10px 12px;border-left:2px solid #F3BAA7;">
+          <div style="font-size:.58rem;font-weight:800;color:#F3BAA7;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;">Эмоциональное</div>
           <div style="font-size:.72rem;color:rgba(255,255,255,.55);line-height:1.45;">Энергия · чувства · состояние</div>
         </div>
       </div>
@@ -1662,7 +1662,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
     <div class="card" style="padding:0;overflow:hidden;margin-bottom:14px;">
       <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:14px 20px 12px;">
         <div style="display:flex;align-items:center;justify-content:space-between;">
-          <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;">Трекер привычек</div>
+          <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#F3BAA7;">Трекер привычек</div>
           <div style="display:flex;background:rgba(255,255,255,.1);border-radius:8px;padding:2px;gap:2px;">
             <button id="tracker-day-btn" onclick="setTrackerMode('day')" style="font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:6px;border:none;cursor:pointer;background:#fff;color:#2A2A2F;font-family:-apple-system,sans-serif;">День</button>
             <button id="tracker-week-btn" onclick="setTrackerMode('week')" style="font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:6px;border:none;cursor:pointer;background:transparent;color:rgba(255,255,255,.6);font-family:-apple-system,sans-serif;">Неделя</button>
@@ -1677,7 +1677,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
     <!-- ФИЗИЧЕСКИЕ ПОКАЗАТЕЛИ -->
     <div class="card" style="padding:0;overflow:hidden;">
       <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:16px 20px 14px;">
-        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Физические показатели</div>
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#F3BAA7;margin-bottom:4px;">Физические показатели</div>
         <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Тело начинается с базы</div>
       </div>
       <div style="padding:20px;">
@@ -1747,13 +1747,13 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
     <!-- КАРТА ЧУВСТВ -->
     <div class="card" style="padding:0;overflow:hidden;">
       <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:16px 20px 14px;">
-        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Карта чувств</div>
+        <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#F3BAA7;margin-bottom:4px;">Карта чувств</div>
         <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Что живёт внутри сегодня</div>
       </div>
       <div style="padding:16px 20px;background:#1C1C1E;border-bottom:1px solid rgba(255,255,255,.06);">
         <div style="font-size:.82rem;font-weight:700;color:#A8BC8A;margin-bottom:8px;">Куда внимание — туда энергия.</div>
         <div style="font-size:.74rem;color:rgba(255,255,255,.8);line-height:1.65;">Твои мысли и чувства — это не просто эмоции. Это <span style="color:#A8BC8A;font-weight:700;">поле</span>, в котором ты живёшь. Оно формирует твои слова, решения, состояние тела и то, что притягивается в жизнь.</div>
-        <div style="font-size:.74rem;color:rgba(255,255,255,.8);line-height:1.65;margin-top:7px;">Большинство состояний живут фоном — неосознанно. <span style="color:#D4899A;font-weight:700;">Тревога в поле</span> — тело напряжено, решения осторожные. <span style="color:#D4899A;font-weight:700;">Обида в поле</span> — слова колючие, люди отдаляются. <span style="color:#A8BC8A;font-weight:700;">Радость в поле</span> — всё идёт легче, возможности открываются сами.</div>
+        <div style="font-size:.74rem;color:rgba(255,255,255,.8);line-height:1.65;margin-top:7px;">Большинство состояний живут фоном — неосознанно. <span style="color:#F3BAA7;font-weight:700;">Тревога в поле</span> — тело напряжено, решения осторожные. <span style="color:#F3BAA7;font-weight:700;">Обида в поле</span> — слова колючие, люди отдаляются. <span style="color:#A8BC8A;font-weight:700;">Радость в поле</span> — всё идёт легче, возможности открываются сами.</div>
         <div style="font-size:.74rem;color:rgba(255,255,255,.8);line-height:1.65;margin-top:7px;">Первый шаг к изменению поля — <span style="color:#A8BC8A;font-weight:700;">увидеть что в нём сейчас.</span> Когда называешь чувство, мозг выходит из автопилота. Ты уже не внутри состояния — ты его наблюдаешь. Значит можешь выбрать куда направить энергию дальше.</div>
         <div style="font-size:.74rem;color:rgba(255,255,255,.4);line-height:1.65;margin-top:7px;font-style:italic;">Отмечай честно. Даже если сегодня всё тёмное — это точка отсчёта для изменения поля.</div>
       </div>
@@ -1777,8 +1777,8 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
 
         <div style="margin-bottom:20px;">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
-            <div style="width:8px;height:8px;border-radius:50%;background:#D4899A;"></div>
-            <span style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#D4899A;">Негативные</span>
+            <div style="width:8px;height:8px;border-radius:50%;background:#F3BAA7;"></div>
+            <span style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#F3BAA7;">Негативные</span>
           </div>
           <div class="feelings-group" id="fg-difficult"></div>
         </div>
@@ -1787,7 +1787,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
         <div id="feelings-counter" style="display:none;display:flex;gap:8px;margin-bottom:14px;"></div>
 
         <!-- Состояние итог -->
-        <div style="background:linear-gradient(135deg,rgba(212,137,154,.08),rgba(106,122,62,.08));border-radius:14px;padding:16px 18px;border:1.5px solid rgba(212,137,154,.2);">
+        <div style="background:linear-gradient(135deg,rgba(243,186,167,.08),rgba(106,122,62,.08));border-radius:14px;padding:16px 18px;border:1.5px solid rgba(243,186,167,.2);">
           <div style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:10px;">Состояние сегодня</div>
           <div style="display:flex;gap:6px;margin-bottom:10px;" id="b-energy-stars">
             <span class="energy-star" onclick="setEnergy(1)">🪷</span>
@@ -1852,9 +1852,9 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
     </div>
 
     <div class="card">
-      <div style="background:linear-gradient(135deg,#3d2a3a 0%,#4a3050 100%);border-radius:14px;padding:18px 20px;margin-bottom:20px;border:1px solid rgba(212,137,154,.25);position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#b06080);"></div>
-        <div style="font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:10px;">Осознанность · Фокус внимания</div>
+      <div style="background:linear-gradient(135deg,#3d2a3a 0%,#4a3050 100%);border-radius:14px;padding:18px 20px;margin-bottom:20px;border:1px solid rgba(243,186,167,.25);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#F3BAA7,#B06660);"></div>
+        <div style="font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:#F3BAA7;margin-bottom:10px;">Осознанность · Фокус внимания</div>
         <div style="font-size:.85rem;color:rgba(255,255,255,.9);line-height:1.7;">Чтобы увидеть где находится твой фокус внимания — ответь на вопросы ниже. Это поможет обнаружить конфликт: внутреннее сопротивление реальности. Оно живёт в теле как напряжение, тревога, раздражение. Бороться с этим не нужно. <strong style="color:#fff;">Важно — увидеть.</strong></div>
       </div>
 
@@ -1869,7 +1869,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       <textarea id="d-aware2" placeholder="Моя реакция и ожидание..." onblur="saveAware()" style="margin-bottom:6px;"></textarea>
 
       <label style="margin-bottom:6px;display:block;font-size:.95rem;font-weight:800;color:#2a1e2e;line-height:1.4;">3. Что будет, если я просто позволю этому быть?</label>
-      <div style="font-size:.75rem;color:#5a3d5a;margin-bottom:10px;line-height:1.7;padding:12px 14px;background:linear-gradient(135deg,rgba(212,137,154,.1),rgba(106,122,62,.06));border-radius:10px;border-left:3px solid #D4899A;">
+      <div style="font-size:.75rem;color:#5A3D4C;margin-bottom:10px;line-height:1.7;padding:12px 14px;background:linear-gradient(135deg,rgba(243,186,167,.1),rgba(106,122,62,.06));border-radius:10px;border-left:3px solid #F3BAA7;">
         Большинство страданий рождается не из самой ситуации — а из сопротивления ей. Ум создаёт историю: <em>«это не должно было случиться»</em>, <em>«он не должен был так говорить»</em>. Это и есть несогласие с реальностью.<br><br>
         Позволить ситуации быть — не значит согласиться с ней. Это значит убрать дополнительный слой страдания — борьбу с тем, что уже случилось. Реальность всегда побеждает. Вопрос только — сколько энергии ты тратишь на эту борьбу.
       </div>
@@ -1942,7 +1942,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
   <!-- ТРЕКЕР ПРИВЫЧЕК в Динамике -->
   <div class="card" style="padding:0;overflow:hidden;">
     <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:16px 20px 14px;">
-      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#D4899A;margin-bottom:4px;">Трекер привычек</div>
+      <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#F3BAA7;margin-bottom:4px;">Трекер привычек</div>
       <div style="font-size:.78rem;color:rgba(255,255,255,.5);">Сон, вода, движение, состояние за неделю</div>
     </div>
     <div style="padding:20px;">
@@ -1954,8 +1954,8 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
   <div style="margin-top:14px;border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.2);">
     <!-- Тёмная шапка -->
     <div style="background:linear-gradient(160deg,#2A2A2F 0%,#32303A 100%);padding:24px 22px 20px;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#D4899A,#A8BC8A 40%,#6A7A3E);"></div>
-      <div style="position:absolute;top:0;right:0;width:180px;height:180px;background:radial-gradient(circle at 100% 0%,rgba(212,137,154,.09) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F3BAA7,#A8BC8A 40%,#6A7A3E);"></div>
+      <div style="position:absolute;top:0;right:0;width:180px;height:180px;background:radial-gradient(circle at 100% 0%,rgba(243,186,167,.09) 0%,transparent 70%);pointer-events:none;"></div>
       <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:8px;">Динамика реализации</div>
       <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.3;">Потенциал реализуется в движении.</div>
       <div style="font-size:.73rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:16px;">Каждая выполненная задача — шаг из потенциала в реальность. Оценивай прогресс по каждой цели — здесь видна твоя динамика.</div>
@@ -1965,7 +1965,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       </div>
     </div>
     <!-- Светлая область графика -->
-    <div style="background:linear-gradient(160deg,#F2E4E9 0%,#faedf2 40%,#EBF0E2 100%);padding:20px 22px 0;">
+    <div style="background:linear-gradient(160deg,#F2E6E4 0%,#FAEEED 40%,#EBF0E2 100%);padding:20px 22px 0;">
       <div style="position:relative;">
         <canvas id="dyn-chart2" style="width:100%;display:block;border-radius:10px;"></canvas>
         <div id="dyn-empty2" style="display:none;position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
@@ -1975,7 +1975,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       </div>
     </div>
     <!-- Футер -->
-    <div id="dyn-stats2" style="background:linear-gradient(135deg,#EBF0E2,#F2E4E9);display:flex;justify-content:space-between;align-items:center;padding:14px 22px 20px;border-top:1px solid #DDD5CC;">
+    <div id="dyn-stats2" style="background:linear-gradient(135deg,#EBF0E2,#F2E6E4);display:flex;justify-content:space-between;align-items:center;padding:14px 22px 20px;border-top:1px solid #DDD5CC;">
       <div style="display:flex;align-items:center;gap:6px;font-size:.68rem;color:var(--muted);">
         <div id="dyn-legend-dot2" style="width:10px;height:3px;border-radius:2px;background:#6A7A3E;"></div>
         <span>Выполнено %</span>
@@ -1986,7 +1986,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
   <!-- КОЛЕСО БАЛАНСА в Динамике -->
   <div class="card" style="padding:0;overflow:hidden;margin-top:14px;">
     <div style="background:linear-gradient(135deg,#2A2A2F 0%,#32303A 100%);padding:16px 20px 14px;position:relative;">
-      <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#D4899A,#A8BC8A 50%,#6A7A3E);"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,#F3BAA7,#A8BC8A 50%,#6A7A3E);"></div>
       <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.35);margin-bottom:3px;">Колесо баланса</div>
       <div style="font-size:.75rem;color:rgba(255,255,255,.5);">Средние оценки за все записи</div>
     </div>
@@ -2048,7 +2048,7 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       </div>
     </div>
 
-    <a href="https://app.xmind.com/share/mHBhtqJz" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:9px;padding:11px 20px;font-size:.82rem;font-weight:800;box-shadow:0 4px 14px rgba(212,137,154,.2);">Смотреть карту паттернов →</a>
+    <a href="https://app.xmind.com/share/mHBhtqJz" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:9px;padding:11px 20px;font-size:.82rem;font-weight:800;box-shadow:0 4px 14px rgba(243,186,167,.2);">Смотреть карту паттернов →</a>
   </div>
   <!-- Что такое репликатор -->
   <div style="background:var(--graphite);border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;position:relative;overflow:hidden;">
@@ -2078,11 +2078,11 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       <div style="background:var(--bg);border-radius:12px;padding:12px 14px;">
         <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:8px;">Слова дефицита и ожидания</div>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">хочу</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">мечтаю</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">надеюсь</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">когда-нибудь</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">если получится</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">хочу</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">мечтаю</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">надеюсь</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">когда-нибудь</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">если получится</span>
         </div>
         <div style="font-size:.7rem;color:var(--muted);">Держат мозг в режиме «ещё не». Замени на: <span style="color:var(--accent);font-weight:700;">выбираю · создаю · двигаюсь к</span></div>
       </div>
@@ -2090,10 +2090,10 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       <div style="background:var(--bg);border-radius:12px;padding:12px 14px;">
         <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:8px;">Слова жертвы</div>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">не могу</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">должна</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">вынуждена</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">приходится</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">не могу</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">должна</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">вынуждена</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">приходится</span>
         </div>
         <div style="font-size:.7rem;color:var(--muted);">«Не могу» почти всегда ложь. Замени на: <span style="color:var(--accent);font-weight:700;">не выбираю · я решила</span></div>
       </div>
@@ -2101,11 +2101,11 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       <div style="background:var(--bg);border-radius:12px;padding:12px 14px;">
         <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:8px;">Слова сомнения</div>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">попробую</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">постараюсь</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">может быть</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">наверное</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">как бы</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">попробую</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">постараюсь</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">может быть</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">наверное</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">как бы</span>
         </div>
         <div style="font-size:.7rem;color:var(--muted);">«Постараюсь» — встроенное разрешение не сделать. Замени на: <span style="color:var(--accent);font-weight:700;">делаю · иду · сделаю</span></div>
       </div>
@@ -2113,10 +2113,10 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       <div style="background:var(--bg);border-radius:12px;padding:12px 14px;">
         <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:8px;">Слова чужого сценария</div>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">надо</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">нужно</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">правильно</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">так принято</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">надо</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">нужно</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">правильно</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">так принято</span>
         </div>
         <div style="font-size:.7rem;color:var(--muted);">Кому надо? Кто решил? Замени на: <span style="color:var(--accent);font-weight:700;">я выбираю · я решила · моё решение</span></div>
       </div>
@@ -2124,10 +2124,10 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
       <div style="background:var(--bg);border-radius:12px;padding:12px 14px;">
         <div style="font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:8px;">Слова умаления себя</div>
         <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">просто</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">немножко</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">в общем-то</span>
-          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(212,137,154,.15);color:#8B2252;font-weight:600;">наверное не права</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">просто</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">немножко</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">в общем-то</span>
+          <span style="font-size:.72rem;padding:3px 9px;border-radius:20px;background:rgba(243,186,167,.15);color:#8B2422;font-weight:600;">наверное не права</span>
         </div>
         <div style="font-size:.7rem;color:var(--muted);">«Я просто эксперт» — уменьшила себя в три раза. Замени на: <span style="color:var(--accent);font-weight:700;">эксперт. точка.</span></div>
       </div>
@@ -2446,15 +2446,15 @@ const VALID_KEYS = ["tks-2024-a7f3", "tks-2024-b2e8", "tks-2024-c5k1", "tks-2024
           <div style="font-size:.82rem;color:rgba(255,255,255,.8);font-weight:600;">Индивидуальный разбор твоей ситуации</div>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <div style="width:28px;height:28px;border-radius:8px;background:rgba(212,137,154,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#D4899A;font-weight:800;font-size:.75rem;">10</div>
-          <div style="font-size:.82rem;color:rgba(255,255,255,.8);font-weight:600;"><span style="color:#D4899A;">10 мест</span> · небольшая группа</div>
+          <div style="width:28px;height:28px;border-radius:8px;background:rgba(243,186,167,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#F3BAA7;font-weight:800;font-size:.75rem;">10</div>
+          <div style="font-size:.82rem;color:rgba(255,255,255,.8);font-weight:600;"><span style="color:#F3BAA7;">10 мест</span> · небольшая группа</div>
         </div>
       </div>
       <div style="background:rgba(255,255,255,.05);border-radius:12px;padding:14px 16px;margin-bottom:18px;border:1px solid rgba(255,255,255,.08);">
         <div style="font-family:Georgia,serif;font-style:italic;font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.55;text-align:center;">&laquo;Тело не предаёт. Тело защищает.<br>По правилам которые сложились внутри.&raquo;</div>
         <div style="font-size:.6rem;color:rgba(255,255,255,.3);text-align:center;margin-top:7px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Юлия Веденеева</div>
       </div>
-      <a href="https://t.me/meta_ulia" target="_blank" style="display:block;width:100%;padding:15px;background:linear-gradient(90deg,#D4899A,#c07888);color:#fff;border:none;border-radius:12px;font-size:.88rem;font-weight:800;cursor:pointer;text-align:center;text-decoration:none;letter-spacing:.02em;box-shadow:0 6px 20px rgba(212,137,154,.35);">Написать ЛАБОРАТОРИЯ →</a>
+      <a href="https://t.me/meta_ulia" target="_blank" style="display:block;width:100%;padding:15px;background:linear-gradient(90deg,#F3BAA7,#C08A78);color:#fff;border:none;border-radius:12px;font-size:.88rem;font-weight:800;cursor:pointer;text-align:center;text-decoration:none;letter-spacing:.02em;box-shadow:0 6px 20px rgba(243,186,167,.35);">Написать ЛАБОРАТОРИЯ →</a>
       <div style="font-size:.6rem;color:rgba(255,255,255,.3);text-align:center;margin-top:10px;letter-spacing:.06em;">@meta_ulia · Юлия Веденеева</div>
     </div>
   </div>
@@ -2992,7 +2992,7 @@ function svgLine(data,labels,maxY,color){
   for(let y=0;y<=maxY;y+=maxY<=10?2:10){const yy=pT+iH*(1-y/maxY);out+=`<line x1="${pL}" y1="${yy}" x2="${W-pR}" y2="${yy}" stroke="#f0e8e0" stroke-width=".7"/>`;out+=`<text x="${pL-3}" y="${yy+4}" text-anchor="end" font-size="9" fill="#bbb">${y}</text>`;}
   const pts=data.map((v,i)=>({x:pL+i*iW,y:pT+iH*(1-Math.min(Math.max(v,0),maxY)/maxY),v}));
   if(pts.length>1){out+=`<polyline points="${pts.map(p=>p.x+','+p.y).join(' ')}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round"/>`;}
-  pts.forEach((p,i)=>{const prev=i>0?pts[i-1].v:null;const col=prev===null?color:p.v>prev?'#6A7A3E':p.v<prev?'#c07888':color;out+=`<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="${col}" stroke="#fff" stroke-width="1.5"/>`;out+=`<text x="${p.x}" y="${H-4}" text-anchor="middle" font-size="9" fill="#bbb">${labels[i]||''}</text>`;});
+  pts.forEach((p,i)=>{const prev=i>0?pts[i-1].v:null;const col=prev===null?color:p.v>prev?'#6A7A3E':p.v<prev?'#C08A78':color;out+=`<circle cx="${p.x}" cy="${p.y}" r="4.5" fill="${col}" stroke="#fff" stroke-width="1.5"/>`;out+=`<text x="${p.x}" y="${H-4}" text-anchor="middle" font-size="9" fill="#bbb">${labels[i]||''}</text>`;});
   return`<svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block;">${out}</svg>`;
 }
 
@@ -3063,9 +3063,9 @@ function renderDynamic(){
       <defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6A7A3E" stop-opacity=".25"/><stop offset="100%" stop-color="#6A7A3E" stop-opacity="0"/></linearGradient></defs>
       <path d="${areaD}" fill="url(#lg)"/>
       <path d="${pathD}" fill="none" stroke="#6A7A3E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      ${pts.map((p,i)=>`<circle cx="${p.x}" cy="${p.y}" r="${i===bestDay?5:3.5}" fill="${i===bestDay?'#D4899A':'#6A7A3E'}" stroke="white" stroke-width="1.5"/>`).join('')}
+      ${pts.map((p,i)=>`<circle cx="${p.x}" cy="${p.y}" r="${i===bestDay?5:3.5}" fill="${i===bestDay?'#F3BAA7':'#6A7A3E'}" stroke="white" stroke-width="1.5"/>`).join('')}
       ${pts.map((p,i)=>`<text x="${p.x}" y="${H-6}" text-anchor="middle" font-size="10" fill="#9A918A" font-family="-apple-system,sans-serif">${['Пн','Вт','Ср','Чт','Пт','Сб','Вс'][i]}</text>`).join('')}
-      ${pts.map((p,i)=>totals[i]>0?`<text x="${p.x}" y="${p.y-8}" text-anchor="middle" font-size="10" fill="${i===bestDay?'#D4899A':'#6A7A3E'}" font-weight="700" font-family="-apple-system,sans-serif">${totals[i]}</text>`:'').join('')}
+      ${pts.map((p,i)=>totals[i]>0?`<text x="${p.x}" y="${p.y-8}" text-anchor="middle" font-size="10" fill="${i===bestDay?'#F3BAA7':'#6A7A3E'}" font-weight="700" font-family="-apple-system,sans-serif">${totals[i]}</text>`:'').join('')}
     </svg>`;
   }
 
@@ -3389,9 +3389,9 @@ function renderFeelingsCounter(feelings){
       <div style="font-size:1.3rem;font-weight:800;color:var(--muted);">${n}</div>
       <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:2px;">Нейтральных</div>
     </div>`:'',
-    d>0?`<div style="flex:1;text-align:center;padding:10px 6px;background:rgba(212,137,154,.1);border-radius:10px;border:1px solid rgba(212,137,154,.2);">
-      <div style="font-size:1.3rem;font-weight:800;color:#D4899A;">${d}</div>
-      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:#D4899A;margin-top:2px;">Негативных</div>
+    d>0?`<div style="flex:1;text-align:center;padding:10px 6px;background:rgba(243,186,167,.1);border-radius:10px;border:1px solid rgba(243,186,167,.2);">
+      <div style="font-size:1.3rem;font-weight:800;color:#F3BAA7;">${d}</div>
+      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:#F3BAA7;margin-top:2px;">Негативных</div>
     </div>`:'',
   ].join('');
 }
@@ -3461,7 +3461,7 @@ function renderBodyDynamic(){
   if(!bodyData[wkey])bodyData[wkey]=Array.from({length:7},blankBodyDay);
   const wk=bodyData[wkey];
   const days=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
-  const colors=['#6A93C3','#5BA5A0','#6A7A3E','#D4899A'];
+  const colors=['#6A93C3','#5BA5A0','#6A7A3E','#F3BAA7'];
   // Только физические метрики в трекере
   const metrics=[
     {label:'Сон (ч)',key:'sleep',max:12,color:colors[0]},
@@ -3490,9 +3490,9 @@ function renderBodyDynamic(){
       <div style="height:1px;background:var(--border);margin-bottom:12px;"></div>
       <div style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px;">Состояние</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div style="background:rgba(212,137,154,.08);border-radius:10px;padding:10px 12px;border-top:2px solid #D4899A;">
+        <div style="background:rgba(243,186,167,.08);border-radius:10px;padding:10px 12px;border-top:2px solid #F3BAA7;">
           <div style="font-size:.6rem;color:var(--muted);margin-bottom:4px;">Ощущение</div>
-          <div style="font-size:1.2rem;font-weight:900;color:#D4899A;">${energyScore!==null?energyScore+'/10':'—'}</div>
+          <div style="font-size:1.2rem;font-weight:900;color:#F3BAA7;">${energyScore!==null?energyScore+'/10':'—'}</div>
         </div>
         <div style="background:rgba(106,122,62,.08);border-radius:10px;padding:10px 12px;border-top:2px solid #6A7A3E;">
           <div style="font-size:.6rem;color:var(--muted);margin-bottom:4px;">Эмоц. фон</div>
@@ -3523,17 +3523,17 @@ function renderBodyDynamic(){
       const fH=f!==null?Math.max(Math.round(f/maxF*55),4):0;
       return`<div onclick="goBodyDay(${i})" style="display:flex;flex-direction:column;align-items:center;flex:1;gap:3px;cursor:pointer;">
         <div style="font-size:.55rem;color:var(--muted);min-height:12px;text-align:center;">${e>0||f!==null?(e>0?e*2:''):''}${e>0&&f!==null?' / ':''}${f!==null?f:''}</div>
-        <div style="width:100%;height:60px;display:flex;align-items:flex-end;gap:2px;background:rgba(0,0,0,.04);border-radius:4px;padding:0 2px;outline:${isActive?'2px solid #D4899A':'none'};outline-offset:1px;">
-          <div style="flex:1;height:${eH}px;background:#D4899A;border-radius:3px 3px 0 0;transition:.3s;" title="Ощущение"></div>
+        <div style="width:100%;height:60px;display:flex;align-items:flex-end;gap:2px;background:rgba(0,0,0,.04);border-radius:4px;padding:0 2px;outline:${isActive?'2px solid #F3BAA7':'none'};outline-offset:1px;">
+          <div style="flex:1;height:${eH}px;background:#F3BAA7;border-radius:3px 3px 0 0;transition:.3s;" title="Ощущение"></div>
           <div style="flex:1;height:${fH}px;background:#6A7A3E;border-radius:3px 3px 0 0;transition:.3s;opacity:.75;" title="Эмоц. фон"></div>
         </div>
-        <div style="font-size:.6rem;color:${isActive?'#D4899A':'var(--muted)'};font-weight:${isActive?700:400};">${day}</div>
+        <div style="font-size:.6rem;color:${isActive?'#F3BAA7':'var(--muted)'};font-weight:${isActive?700:400};">${day}</div>
       </div>`;
     }).join('');
     return`<div style="margin-bottom:4px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
         <span style="font-size:.72rem;font-weight:700;color:var(--text);opacity:.7;">Состояние</span>
-        <span style="display:flex;align-items:center;gap:4px;font-size:.6rem;color:var(--muted);"><span style="width:10px;height:10px;background:#D4899A;border-radius:2px;display:inline-block;"></span>Ощущение</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:.6rem;color:var(--muted);"><span style="width:10px;height:10px;background:#F3BAA7;border-radius:2px;display:inline-block;"></span>Ощущение</span>
         <span style="display:flex;align-items:center;gap:4px;font-size:.6rem;color:var(--muted);"><span style="width:10px;height:10px;background:#6A7A3E;border-radius:2px;display:inline-block;opacity:.75;"></span>Эмоц. фон</span>
       </div>
       <div style="display:flex;gap:4px;align-items:flex-end;">${bars}</div>
@@ -3877,10 +3877,10 @@ function renderGoals(tab){
   for(var i=0; i<list.length; i++){
     (function(g, idx){
       var score = typeof g.score === 'number' ? g.score : null;
-      var accentColor = g.done ? '#A8BC8A' : (score !== null && score >= 7 ? '#A8BC8A' : score !== null && score >= 4 ? '#D4B96A' : score !== null ? '#D4899A' : 'var(--muted)');
+      var accentColor = g.done ? '#A8BC8A' : (score !== null && score >= 7 ? '#A8BC8A' : score !== null && score >= 4 ? '#D4B96A' : score !== null ? '#F3BAA7' : 'var(--muted)');
 
       var card = document.createElement('div');
-      card.style.cssText = 'border-radius:14px;border:1.5px solid ' + (g.done ? 'rgba(168,188,138,.4)' : 'rgba(212,137,154,.2)') + ';padding:14px 14px 10px;margin-bottom:10px;background:' + (g.done ? 'rgba(168,188,138,.05)' : 'linear-gradient(135deg,rgba(212,137,154,.06),rgba(106,122,62,.03))') + ';transition:all .2s;';
+      card.style.cssText = 'border-radius:14px;border:1.5px solid ' + (g.done ? 'rgba(168,188,138,.4)' : 'rgba(243,186,167,.2)') + ';padding:14px 14px 10px;margin-bottom:10px;background:' + (g.done ? 'rgba(168,188,138,.05)' : 'linear-gradient(135deg,rgba(243,186,167,.06),rgba(106,122,62,.03))') + ';transition:all .2s;';
 
       // Верхняя строка: чекбокс + текст + удалить
       var topRow = document.createElement('div');
@@ -4034,7 +4034,7 @@ function renderRealization(){
         <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
         @meta_ulia
       </a>
-      <a class="author-footer-link" style="background:rgba(212,137,154,.2);border:1px solid rgba(212,137,154,.3);" href="https://www.instagram.com/meta_ulia" target="_blank">
+      <a class="author-footer-link" style="background:rgba(243,186,167,.2);border:1px solid rgba(243,186,167,.3);" href="https://www.instagram.com/meta_ulia" target="_blank">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
         @meta_ulia
       </a>
@@ -4089,7 +4089,7 @@ function renderRealization(){
 
   <!-- ИНСТРУКЦИЯ — всегда видна -->
   <div style="margin-bottom:20px;background:linear-gradient(135deg,#2A2A2F,#32303A);border-radius:18px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.2);position:relative;">
-    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6A7A3E,#A8BC8A 40%,#D4899A);"></div>
+    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6A7A3E,#A8BC8A 40%,#F3BAA7);"></div>
     <div style="padding:18px 18px 6px;">
       <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:10px;">Как работать с разделом</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
@@ -4110,18 +4110,18 @@ function renderRealization(){
           <div style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.55;">Год: 3–7 результатов. Месяц: 3–5 шагов. Неделя: 3–5 действий. Конкретно.</div>
         </div>
 
-        <div style="background:linear-gradient(135deg,rgba(212,137,154,.12),rgba(212,137,154,.04));border:1px solid rgba(212,137,154,.25);border-radius:12px;padding:12px 14px;">
+        <div style="background:linear-gradient(135deg,rgba(243,186,167,.12),rgba(243,186,167,.04));border:1px solid rgba(243,186,167,.25);border-radius:12px;padding:12px 14px;">
           <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px;">
-            <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#C0697A,#D4899A);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;">3</div>
-            <div style="font-size:.68rem;font-weight:800;color:#D4899A;text-transform:uppercase;letter-spacing:.08em;">Шкала 0–10</div>
+            <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#C08169,#F3BAA7);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;">3</div>
+            <div style="font-size:.68rem;font-weight:800;color:#F3BAA7;text-transform:uppercase;letter-spacing:.08em;">Шкала 0–10</div>
           </div>
           <div style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.55;">На каждой задаче — где ты сейчас. Мозг видит разрыв и начинает искать путь.</div>
         </div>
 
-        <div style="background:linear-gradient(135deg,rgba(212,137,154,.12),rgba(212,137,154,.04));border:1px solid rgba(212,137,154,.25);border-radius:12px;padding:12px 14px;">
+        <div style="background:linear-gradient(135deg,rgba(243,186,167,.12),rgba(243,186,167,.04));border:1px solid rgba(243,186,167,.25);border-radius:12px;padding:12px 14px;">
           <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px;">
-            <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#C0697A,#D4899A);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;">4</div>
-            <div style="font-size:.68rem;font-weight:800;color:#D4899A;text-transform:uppercase;letter-spacing:.08em;">Шаг до 10</div>
+            <div style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#C08169,#F3BAA7);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:#fff;flex-shrink:0;">4</div>
+            <div style="font-size:.68rem;font-weight:800;color:#F3BAA7;text-transform:uppercase;letter-spacing:.08em;">Шаг до 10</div>
           </div>
           <div style="font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.55;">Одно действие сегодня. Маленький шаг снимает тревогу и запускает движение.</div>
         </div>
@@ -4145,20 +4145,20 @@ function renderRealization(){
         </div>
       </div>
 
-      <div style="background:linear-gradient(135deg,rgba(212,137,154,.32),rgba(168,188,138,.2));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #D4899A;">
+      <div style="background:linear-gradient(135deg,rgba(243,186,167,.32),rgba(168,188,138,.2));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #F3BAA7;">
         <div style="display:flex;flex-direction:column;gap:6px;">
           <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;">
-            <span style="font-family:Georgia,serif;font-style:italic;font-size:1rem;font-weight:700;color:#D4899A;letter-spacing:.01em;">Намерение</span>
+            <span style="font-family:Georgia,serif;font-style:italic;font-size:1rem;font-weight:700;color:#F3BAA7;letter-spacing:.01em;">Намерение</span>
             <span style="font-family:Georgia,serif;font-style:italic;font-size:.82rem;color:rgba(255,255,255,.65);">без движения —</span>
-            <span style="font-family:Georgia,serif;font-style:italic;font-size:.95rem;font-weight:700;color:#D4899A;letter-spacing:.03em;">мечта.</span>
+            <span style="font-family:Georgia,serif;font-style:italic;font-size:.95rem;font-weight:700;color:#F3BAA7;letter-spacing:.03em;">мечта.</span>
           </div>
           <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;">
             <span style="font-family:Georgia,serif;font-style:italic;font-size:1rem;font-weight:700;color:#A8BC8A;letter-spacing:.01em;">Движение</span>
             <span style="font-family:Georgia,serif;font-style:italic;font-size:.82rem;color:rgba(255,255,255,.65);">без намерения —</span>
             <span style="font-family:Georgia,serif;font-style:italic;font-size:.95rem;font-weight:700;color:#A8BC8A;letter-spacing:.03em;">суета.</span>
           </div>
-          <div style="margin-top:6px;padding-top:10px;border-top:1px solid rgba(212,137,154,.25);font-family:Georgia,serif;font-style:italic;font-size:.8rem;color:rgba(255,255,255,.55);letter-spacing:.02em;line-height:1.65;">
-            Манифестация работает через конкретный образ, а не общие желания. Задаёшь цель, разбиваешь на шаги, отмечаешь выполненное — и мозг через ретикулярную систему начинает притягивать нужных людей, ситуации и решения. Ты не ждёшь — ты двигаешься <span style="color:#D4899A;">из состояния</span> «это уже моё».
+          <div style="margin-top:6px;padding-top:10px;border-top:1px solid rgba(243,186,167,.25);font-family:Georgia,serif;font-style:italic;font-size:.8rem;color:rgba(255,255,255,.55);letter-spacing:.02em;line-height:1.65;">
+            Манифестация работает через конкретный образ, а не общие желания. Задаёшь цель, разбиваешь на шаги, отмечаешь выполненное — и мозг через ретикулярную систему начинает притягивать нужных людей, ситуации и решения. Ты не ждёшь — ты двигаешься <span style="color:#F3BAA7;">из состояния</span> «это уже моё».
           </div>
         </div>
       </div>
@@ -4176,7 +4176,7 @@ function renderRealization(){
   <div id="rp-yr" class="real-panel active">
     <div class="card">
       <!-- Описание блока -->
-      <div style="background:linear-gradient(135deg,rgba(106,122,62,.08),rgba(212,137,154,.05));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #A8BC8A;">
+      <div style="background:linear-gradient(135deg,rgba(106,122,62,.08),rgba(243,186,167,.05));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #A8BC8A;">
         <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#6A7A3E;margin-bottom:6px;">Намерение</div>
         <div style="font-size:.78rem;color:var(--muted);line-height:1.6;">Намерение — это не список задач. Это внутренний вектор: ощущение того, куда ты движешься и зачем. Когда намерение ясно — мозг начинает замечать всё что ведёт к нему. Пиши от состояния, а не от страха.</div>
       </div>
@@ -4184,7 +4184,7 @@ function renderRealization(){
       <textarea id="inp-yr-intent" class="intent-textarea"
         placeholder="Каким будет этот год для меня..."
         oninput="saveRealIntent('yr');"
-        style="width:100%;min-height:72px;padding:12px 14px;border:1.5px solid rgba(212,137,154,.3);border-radius:var(--radius-sm);font-size:.9rem;font-family:Georgia,serif;font-style:italic;color:var(--text);resize:none;background:linear-gradient(135deg,rgba(212,137,154,.06),rgba(106,122,62,.03));box-sizing:border-box;"></textarea>
+        style="width:100%;min-height:72px;padding:12px 14px;border:1.5px solid rgba(243,186,167,.3);border-radius:var(--radius-sm);font-size:.9rem;font-family:Georgia,serif;font-style:italic;color:var(--text);resize:none;background:linear-gradient(135deg,rgba(243,186,167,.06),rgba(106,122,62,.03));box-sizing:border-box;"></textarea>
 
 
       <div class="real-section-lbl" style="margin-top:16px;">Цели на год</div>
@@ -4207,7 +4207,7 @@ function renderRealization(){
       </div>
 
       <!-- Описание + шкала месяца -->
-      <div style="background:linear-gradient(135deg,rgba(106,122,62,.08),rgba(212,137,154,.05));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #A8BC8A;">
+      <div style="background:linear-gradient(135deg,rgba(106,122,62,.08),rgba(243,186,167,.05));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #A8BC8A;">
         <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#6A7A3E;margin-bottom:6px;">Как работает месяц</div>
         <div style="font-size:.78rem;color:var(--muted);line-height:1.6;">Месяц — это горизонт конкретных шагов. Напиши намерение месяца (куда ты направляешь энергию) и 3–5 целей которые двигают тебя вперёд. В конце месяца оцени состояние по шкале — это твой КПТ-трекер реализации.</div>
       </div>
@@ -4216,7 +4216,7 @@ function renderRealization(){
       <textarea id="inp-mo-intent" class="intent-textarea"
         placeholder="На что я направляю этот месяц..."
         oninput="saveRealIntent('mo');"
-        style="width:100%;min-height:72px;padding:12px 14px;border:1.5px solid rgba(212,137,154,.3);border-radius:var(--radius-sm);font-size:.9rem;font-family:Georgia,serif;font-style:italic;color:var(--text);resize:none;background:linear-gradient(135deg,rgba(212,137,154,.06),rgba(106,122,62,.03));box-sizing:border-box;"></textarea>
+        style="width:100%;min-height:72px;padding:12px 14px;border:1.5px solid rgba(243,186,167,.3);border-radius:var(--radius-sm);font-size:.9rem;font-family:Georgia,serif;font-style:italic;color:var(--text);resize:none;background:linear-gradient(135deg,rgba(243,186,167,.06),rgba(106,122,62,.03));box-sizing:border-box;"></textarea>
 
 
       <div class="real-section-lbl" style="margin-top:16px;">Цели месяца</div>
@@ -4239,8 +4239,8 @@ function renderRealization(){
       </div>
 
       <!-- Описание недели -->
-      <div style="background:linear-gradient(135deg,rgba(212,137,154,.08),rgba(106,122,62,.05));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #D4899A;">
-        <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#D4899A;margin-bottom:6px;">Фокус недели</div>
+      <div style="background:linear-gradient(135deg,rgba(243,186,167,.08),rgba(106,122,62,.05));border-radius:12px;padding:14px 16px;margin-bottom:18px;border-left:3px solid #F3BAA7;">
+        <div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#F3BAA7;margin-bottom:6px;">Фокус недели</div>
         <div style="font-size:.78rem;color:var(--muted);line-height:1.6;">Неделя — минимальная единица движения. Одно намерение + 3–5 конкретных задач. Не больше. Мозг лучше выполняет короткие чёткие команды. В конце недели отметь что сделано — это строит твой паттерн реализации.</div>
       </div>
 
@@ -4248,7 +4248,7 @@ function renderRealization(){
       <textarea id="inp-wk-intent" class="intent-textarea"
         placeholder="Что важно сделать на этой неделе..."
         oninput="saveRealIntent('wk');"
-        style="width:100%;min-height:72px;padding:12px 14px;border:1.5px solid rgba(212,137,154,.3);border-radius:var(--radius-sm);font-size:.9rem;font-family:Georgia,serif;font-style:italic;color:var(--text);resize:none;background:linear-gradient(135deg,rgba(212,137,154,.06),rgba(106,122,62,.03));box-sizing:border-box;"></textarea>
+        style="width:100%;min-height:72px;padding:12px 14px;border:1.5px solid rgba(243,186,167,.3);border-radius:var(--radius-sm);font-size:.9rem;font-family:Georgia,serif;font-style:italic;color:var(--text);resize:none;background:linear-gradient(135deg,rgba(243,186,167,.06),rgba(106,122,62,.03));box-sizing:border-box;"></textarea>
 
 
       <div class="real-section-lbl" style="margin-top:16px;">Задачи недели</div>
@@ -4266,8 +4266,8 @@ function renderRealization(){
 
     <!-- Тёмная шапка -->
     <div style="background:linear-gradient(160deg,#2A2A2F 0%,#32303A 100%);padding:24px 22px 20px;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#D4899A,#A8BC8A 40%,#6A7A3E);"></div>
-      <div style="position:absolute;top:0;right:0;width:180px;height:180px;background:radial-gradient(circle at 100% 0%,rgba(212,137,154,.09) 0%,transparent 70%);pointer-events:none;"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F3BAA7,#A8BC8A 40%,#6A7A3E);"></div>
+      <div style="position:absolute;top:0;right:0;width:180px;height:180px;background:radial-gradient(circle at 100% 0%,rgba(243,186,167,.09) 0%,transparent 70%);pointer-events:none;"></div>
       <div style="font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.3);margin-bottom:8px;">Динамика реализации</div>
       <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.3;">Потенциал реализуется в движении.</div>
       <div style="font-size:.73rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:16px;">Каждая выполненная задача — шаг из потенциала в реальность. Оценивай прогресс по каждой цели — здесь видна твоя динамика.</div>
@@ -4279,7 +4279,7 @@ function renderRealization(){
     </div>
 
     <!-- Светлая область графика -->
-    <div style="background:linear-gradient(160deg,#F2E4E9 0%,#faedf2 40%,#EBF0E2 100%);padding:20px 22px 0;">
+    <div style="background:linear-gradient(160deg,#F2E6E4 0%,#FAEEED 40%,#EBF0E2 100%);padding:20px 22px 0;">
       <div style="position:relative;">
         <canvas id="dyn-chart" style="width:100%;display:block;border-radius:10px;"></canvas>
         <div id="dyn-empty" style="display:none;position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
@@ -4290,7 +4290,7 @@ function renderRealization(){
     </div>
 
     <!-- Светлый футер с легендой -->
-    <div id="dyn-stats" style="background:linear-gradient(135deg,#EBF0E2,#F2E4E9);display:flex;justify-content:space-between;align-items:center;padding:14px 22px 20px;border-top:1px solid #DDD5CC;">
+    <div id="dyn-stats" style="background:linear-gradient(135deg,#EBF0E2,#F2E6E4);display:flex;justify-content:space-between;align-items:center;padding:14px 22px 20px;border-top:1px solid #DDD5CC;">
       <div style="display:flex;align-items:center;gap:6px;font-size:.68rem;color:var(--muted);">
         <div id="dyn-legend-dot" style="width:10px;height:3px;border-radius:2px;background:#6A7A3E;"></div>
         <span>Выполнено %</span>
@@ -4316,12 +4316,12 @@ function switchDynView(v){
         bwk.style.background='#A8BC8A'; bwk.style.color='#fff';
         bmo.style.background='transparent'; bmo.style.color='rgba(255,255,255,.35)';
       } else {
-        bmo.style.background='#D4899A'; bmo.style.color='#fff';
+        bmo.style.background='#F3BAA7'; bmo.style.color='#fff';
         bwk.style.background='transparent'; bwk.style.color='rgba(255,255,255,.35)';
       }
     }
     var dot = document.getElementById('dyn-legend-dot'+sfx);
-    if(dot) dot.style.background = v === 'wk' ? '#A8BC8A' : '#D4899A';
+    if(dot) dot.style.background = v === 'wk' ? '#A8BC8A' : '#F3BAA7';
   });
   renderDynChart();
 }
@@ -4419,13 +4419,13 @@ function renderDynChartOnCanvas(canvas, emptyEl, avgEl){
   var cw = W - pad.left - pad.right;
   var ch = H - pad.top - pad.bottom;
   var n = data.labels.length;
-  var color = dynView === 'wk' ? '#A8BC8A' : '#D4899A';
+  var color = dynView === 'wk' ? '#A8BC8A' : '#F3BAA7';
   var colorRgb = dynView === 'wk' ? '168,188,138' : '212,137,154';
 
   // Background — розово-зелёный градиент
   var bgGrad = ctx.createLinearGradient(0, 0, W, H);
-  bgGrad.addColorStop(0, '#F2E4E9');
-  bgGrad.addColorStop(0.4, '#faedf2');
+  bgGrad.addColorStop(0, '#F2E6E4');
+  bgGrad.addColorStop(0.4, '#FAEEED');
   bgGrad.addColorStop(1, '#EBF0E2');
   ctx.fillStyle = bgGrad;
   ctx.fillRect(0, 0, W, H);
@@ -4600,7 +4600,7 @@ function initScales(){
   var startOfYear = new Date(mon.getFullYear(), 0, 1);
   var wn = Math.ceil(((mon - startOfYear) / 86400000 + startOfYear.getDay() + 1) / 7);
   var wkKey = 'scale_wk_' + mon.getFullYear() + '_' + String(wn).padStart(2,'0');
-  buildScaleBtns('wk-scale-btns', 'wk-scale-val', wkKey, '#D4899A');
+  buildScaleBtns('wk-scale-btns', 'wk-scale-val', wkKey, '#F3BAA7');
 }
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -4722,13 +4722,13 @@ function renderWheelOnCanvas(canvas){
   ctx.closePath();
 
   var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, maxR);
-  grad.addColorStop(0, 'rgba(212,137,154,.55)');
+  grad.addColorStop(0, 'rgba(243,186,167,.55)');
   grad.addColorStop(0.5, 'rgba(168,188,138,.4)');
   grad.addColorStop(1, 'rgba(106,122,62,.3)');
   ctx.fillStyle = grad;
   ctx.fill();
 
-  ctx.strokeStyle = '#D4899A';
+  ctx.strokeStyle = '#F3BAA7';
   ctx.lineWidth = 2;
   ctx.stroke();
 
@@ -4736,7 +4736,7 @@ function renderWheelOnCanvas(canvas){
   pts.forEach(function(p, i){
     ctx.beginPath();
     ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
-    ctx.fillStyle = avgs[i] >= 7 ? '#6A7A3E' : avgs[i] >= 4 ? '#A8BC8A' : '#D4899A';
+    ctx.fillStyle = avgs[i] >= 7 ? '#6A7A3E' : avgs[i] >= 4 ? '#A8BC8A' : '#F3BAA7';
     ctx.fill();
     ctx.strokeStyle = '#fff';
     ctx.lineWidth = 1.5;
@@ -4768,7 +4768,7 @@ function renderWheelOnCanvas(canvas){
     ctx.fillText(sp.name, lx, ly + 4);
 
     // Значение
-    ctx.fillStyle = avg >= 7 ? '#6A7A3E' : avg >= 4 ? '#A8BC8A' : avg > 0 ? '#D4899A' : 'rgba(0,0,0,.25)';
+    ctx.fillStyle = avg >= 7 ? '#6A7A3E' : avg >= 4 ? '#A8BC8A' : avg > 0 ? '#F3BAA7' : 'rgba(0,0,0,.25)';
     ctx.font = 'bold 9px -apple-system, Arial';
     ctx.fillText(avg > 0 ? avg.toFixed(1) : '—', lx, ly + 15);
   }
